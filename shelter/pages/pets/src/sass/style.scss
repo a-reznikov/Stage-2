@@ -1,1 +1,20 @@
 @import "../../../../node_modules/normalize.scss/normalize.scss";
+@import "../../../../assets/fonts//fonts";
+
+@import "../../../main/src/sass/abstracts/constants";
+@import "../../../main/src/sass/abstracts/mixins";
+@import "../../../main/src/sass/abstracts/placeholders";
+
+@import "base/base";
+@import "base/buttons";
+
+@import "layout/wrapper";
+@import "layout/header";
+@import "layout/footer";
+
+@import "components/start";
+@import "components/about";
+@import "components/pets";
+@import "components/help";
+@import "components/donation";
+@import "components/navigation";

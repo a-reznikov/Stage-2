@@ -502,6 +502,7 @@ h1 {
   font-size: 4.4rem;
   line-height: 5.7rem;
   color: #FAFAFA;
+  margin: 0;
 }
 
 h2 {
@@ -509,6 +510,7 @@ h2 {
   font-size: 4.4rem;
   line-height: 5.7rem;
   color: #545454;
+  margin: 0;
 }
 
 h3 {
@@ -517,6 +519,7 @@ h3 {
   line-height: 4.5rem;
   color: #545454;
   letter-spacing: 0.06em;
+  margin: 0;
 }
 
 h4 {
@@ -525,6 +528,7 @@ h4 {
   line-height: 2.3rem;
   color: #545454;
   letter-spacing: 0.06em;
+  margin: 0;
 }
 
 h5 {
@@ -533,6 +537,7 @@ h5 {
   line-height: 1.7rem;
   color: #545454;
   letter-spacing: 0.06em;
+  margin: 0;
 }
 
 p {
@@ -540,11 +545,18 @@ p {
   font-size: 1.5rem;
   line-height: 2.4rem;
   color: #4C4C4C;
+  margin: 0;
 }
 
 .wrapper {
   max-width: 1200px;
   margin: auto;
+}
+
+.header__wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 /*# sourceMappingURL=style.css.map */

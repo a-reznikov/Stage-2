@@ -5,12 +5,6 @@
   color: $color;
 }
 
-@mixin flex ($justify: space-between, $align: center) {
-  display: flex;
-  justify-content: $justify;
-  align-items: $align;
-}
-
 @mixin media-tablet {
   @media (max-width: $tablet-width) { @content; }
 }
