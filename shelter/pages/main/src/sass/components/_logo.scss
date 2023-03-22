@@ -1,0 +1,9 @@
+.logo {
+  @include flex ($direction: column);
+  padding-top: 30px;
+}
+
+.logo__subtitle {
+  padding-top: 10px;
+  align-self: flex-end;
+}

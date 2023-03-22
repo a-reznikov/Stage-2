@@ -10,11 +10,13 @@
 
 @import "layout/wrapper";
 @import "layout/header";
+@import "layout/layouts";
 @import "layout/footer";
 
-@import "components/start";
+@import "components/not-only";
 @import "components/about";
-@import "components/pets";
+@import "components/our-friends";
 @import "components/help";
+@import "components/logo";
 @import "components/donation";
 @import "components/navigation";
