@@ -1,0 +1,18 @@
+.about__container {
+  padding: 80px 175px 100px;
+}
+
+.about__content {
+  max-width: 430px;
+  padding-top: 14px;
+  display: grid;
+  row-gap: 25px;
+}
+
+.about__title {
+  max-width: 370px;
+}
+
+.about__image-pets {
+  @extend %image;
+}

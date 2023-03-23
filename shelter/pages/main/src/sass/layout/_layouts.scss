@@ -4,3 +4,11 @@
   //   flex-grow: 1;
   // }
 }
+
+.layout-3-column {
+  @include flex ();
+}
+
+.layout-3-row {
+  @include flex ($direction: column);
+}

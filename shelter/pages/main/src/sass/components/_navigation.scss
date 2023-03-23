@@ -18,7 +18,7 @@
 
 .nav-item_active {
   position: relative;
-  color: $color-link-active;
+  color: $color-light-intense;
   &::after {
     content: '';
     position: relative;
@@ -28,5 +28,4 @@
     width: 100%;
     background: $color-primary;
   }
-  //border-bottom: 3px solid $color-primary;
 }

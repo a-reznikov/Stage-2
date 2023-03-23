@@ -471,6 +471,12 @@ th {
   font-style: normal;
   font-stretch: normal;
 }
+.about__image-pets, .not-only__image-puppy {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
 body {
   font-family: "Georgia";
 }
@@ -562,6 +568,24 @@ p,
   border-style: none;
   cursor: pointer;
 }
+.button_bordered {
+  background: #FAFAFA;
+  border: 2px solid #F1CDB3;
+}
+
+.button__slider {
+  border: 2px solid #F1CDB3;
+  border-radius: 100px;
+  padding: 23px 19px;
+  background-color: #FFFFFF;
+  cursor: pointer;
+}
+.button__slider_arrow {
+  display: block;
+}
+.button__slider_right {
+  transform: rotate(180deg);
+}
 
 .wrapper {
   max-width: 1200px;
@@ -578,6 +602,20 @@ p,
 .layout-2-column {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.layout-3-column {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.layout-3-row {
+  display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
 }
@@ -606,14 +644,60 @@ p,
   max-width: 460px;
 }
 
-.not-only__image {
-  max-width: 698px;
+.about__container {
+  padding: 80px 175px 100px;
 }
 
-.not-only__image-puppy {
-  display: block;
+.about__content {
+  max-width: 430px;
+  padding-top: 14px;
+  display: grid;
+  row-gap: 25px;
+}
+
+.about__title {
+  max-width: 370px;
+}
+
+.our-friends {
+  background: #F6F6F6;
+}
+
+.our-friends__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 80px 0 100px;
+}
+
+.our-friends__slider {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 60px 0;
   width: 100%;
-  height: 100%;
+}
+
+.slider__cards {
+  flex-grow: 1;
+  padding: 0 53px;
+}
+
+.our-friends__title {
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.card {
+  padding-bottom: 30px;
+  background: #FAFAFA;
+  border-radius: 9px;
+}
+.card__title {
+  padding: 30px 0;
 }
 
 .logo {

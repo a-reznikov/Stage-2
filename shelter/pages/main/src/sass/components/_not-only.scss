@@ -22,12 +22,6 @@
   max-width: 460px;
 }
 
-.not-only__image {
-  max-width: 698px;
-}
-
 .not-only__image-puppy {
-  display: block;
-  width: 100%;
-  height: 100%;
+  @extend %image;
 }

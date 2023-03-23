@@ -5,4 +5,22 @@
   border-radius: 100px;
   border-style: none;
   cursor: pointer;
+  &_bordered {
+    background: $color-light-intense;
+    border: 2px solid $color-primary;
+  }
+}
+
+.button__slider {
+  border: 2px solid $color-primary;
+  border-radius: 100px;
+  padding: 23px 19px;
+  background-color: $color-light;
+  cursor: pointer;
+  &_arrow {
+    display: block;
+  }
+  &_right {
+    transform: rotate(180deg);
+  }
 }
