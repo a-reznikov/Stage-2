@@ -1,0 +1,8 @@
+.button {
+  padding: 15px 45px;
+  @include font(400, 1.7rem, 2.2rem, $color-link-hover);
+  background: $color-primary;
+  border-radius: 100px;
+  border-style: none;
+  cursor: pointer;
+}

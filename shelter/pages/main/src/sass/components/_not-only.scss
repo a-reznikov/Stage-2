@@ -1,3 +1,33 @@
+.not-only__container {
+  padding-top: 180px;
+}
+
 .not-only {
+  margin-top: -90px;
   background: url('../../../../assets/images/noise_transparent@2x.png'), radial-gradient(100% 215.42% at 0% 0%, #5B483A 0%, #262425 100%);
+}
+
+.not-only__title {
+  max-width: 310px;
+  margin-bottom: 42px;
+}
+
+.not-only__text {
+  color: $color-link;
+  margin-bottom: 42px;
+  text-align: left;
+}
+
+.not-only__content {
+  max-width: 460px;
+}
+
+.not-only__image {
+  max-width: 698px;
+}
+
+.not-only__image-puppy {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
