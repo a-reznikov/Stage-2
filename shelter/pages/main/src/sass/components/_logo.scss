@@ -3,7 +3,14 @@
   padding-top: 30px;
 }
 
+.logo__title {
+  @include font(400, 3.2rem, 3.5rem, $color-primary);
+}
+
 .logo__subtitle {
   padding-top: 10px;
   align-self: flex-end;
+  @extend %font-second;
+  @include font(400, 1.3rem, 1.5rem, $color-light);
+  letter-spacing: 0.1em;
 }

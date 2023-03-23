@@ -475,7 +475,7 @@ body {
   font-family: "Georgia";
 }
 
-.text-light, p {
+.nav-item__link, .logo__subtitle, .text-light, p {
   font-family: "Arial", sans-serif;
 }
 
@@ -492,7 +492,7 @@ h1 {
   font-weight: 400;
   font-size: 4.4rem;
   line-height: 5.7rem;
-  color: #FAFAFA;
+  color: #FFFFFF;
 }
 
 h2 {
@@ -575,16 +575,54 @@ p,
   padding-top: 30px;
 }
 
+.logo__title {
+  font-weight: 400;
+  font-size: 3.2rem;
+  line-height: 3.5rem;
+  color: #F1CDB3;
+}
+
 .logo__subtitle {
   padding-top: 10px;
   align-self: flex-end;
+  font-weight: 400;
+  font-size: 1.3rem;
+  line-height: 1.5rem;
+  color: #FFFFFF;
+  letter-spacing: 0.1em;
 }
 
 .nav__list {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  column-gap: 35px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item {
+  list-style: none;
+}
+.nav-item__link {
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 1.5rem;
+  line-height: 2.4rem;
+  color: #CDCDCD;
+}
+
+.nav-item_active {
+  position: relative;
+  color: #FAFAFA;
+}
+.nav-item_active::after {
+  content: "";
+  position: relative;
+  display: block;
+  bottom: -3px;
+  height: 3px;
+  width: 100%;
+  background: #F1CDB3;
 }
 
 /*# sourceMappingURL=style.css.map */
