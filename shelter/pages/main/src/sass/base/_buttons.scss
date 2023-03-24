@@ -11,7 +11,7 @@
   }
 }
 
-.button__slider {
+.button__round {
   border: 2px solid $color-primary;
   border-radius: 100px;
   padding: 23px 19px;
@@ -19,6 +19,9 @@
   cursor: pointer;
   &_arrow {
     display: block;
+  }
+  &_slider {
+    background: $color-background;
   }
   &_right {
     transform: rotate(180deg);
