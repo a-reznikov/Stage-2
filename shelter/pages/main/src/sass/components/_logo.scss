@@ -1,6 +1,5 @@
 .logo {
   @include flex ($direction: column);
-  padding-top: 30px;
 }
 
 .logo__title {

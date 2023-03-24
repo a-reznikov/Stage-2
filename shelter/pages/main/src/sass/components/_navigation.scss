@@ -18,14 +18,15 @@
 
 .nav-item_active {
   position: relative;
-  color: $color-light-intense;
   &::after {
     content: '';
     position: relative;
     display: block;
-    bottom: -3px;
     height: 3px;
     width: 100%;
     background: $color-primary;
+  }
+  .nav-item__link {
+    color: $color-light-intense;;
   }
 }

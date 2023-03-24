@@ -382,109 +382,100 @@ th {
 
 @font-face {
   font-family: "Arial";
-  src: url("Arial Bold.woff2") format("woff2"), url("Arial Bold.woff") format("woff"), url("Arial Bold.ttf") format("truetype");
+  src: url("../../../../assets/fonts/arial/Arial Bold.woff2") format("woff2"), url("../../../../assets/fonts/arial/Arial Bold.woff") format("woff"), url("../../../../assets/fonts/arial/Arial Bold.ttf") format("truetype");
   font-weight: 700;
   font-style: normal;
   font-stretch: normal;
-  unicode-range: U+0020-02DC;
 }
 @font-face {
   font-family: "Arial";
-  src: url("Arial Bold Italic.woff2") format("woff2"), url("Arial Bold Italic.woff") format("woff"), url("Arial Bold Italic.ttf") format("truetype");
+  src: url("../../../../assets/fonts/arial/Arial Bold Italic.woff2") format("woff2"), url("../../../../assets/fonts/arial/Arial Bold Italic.woff") format("woff"), url("../../../../assets/fonts/arial/Arial Bold Italic.ttf") format("truetype");
   font-weight: 700;
   font-style: italic;
   font-stretch: normal;
-  unicode-range: U+0-10FFFF;
 }
 @font-face {
   font-family: "Arial";
-  src: url("Arial Italic.woff2") format("woff2"), url("Arial Italic.woff") format("woff"), url("Arial Italic.ttf") format("truetype");
+  src: url("../../../../assets/fonts/arial/Arial Italic.woff2") format("woff2"), url("../../../../assets/fonts/arial/Arial Italic.woff") format("woff"), url("../../../../assets/fonts/arial/Arial Italic.ttf") format("truetype");
   font-weight: 400;
   font-style: italic;
   font-stretch: normal;
-  unicode-range: U+0-10FFFF;
 }
 @font-face {
   font-family: "Arial";
-  src: url("Arial.woff2") format("woff2"), url("Arial.woff") format("woff"), url("Arial.ttf") format("truetype");
+  src: url("../../../../assets/fonts/arial/Arial.woff2") format("woff2"), url("../../../../assets/fonts/arial/Arial.woff") format("woff"), url("../../../../assets/fonts/arial/Arial.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
   font-stretch: normal;
-  unicode-range: U+0020-02DC;
 }
 @font-face {
   font-family: "Arial Black";
-  src: url("Arial Black.woff2") format("woff2"), url("Arial Black.woff") format("woff"), url("Arial Black.ttf") format("truetype");
+  src: url("../../../../assets/fonts/arial/Arial Black.woff2") format("woff2"), url("../../../../assets/fonts/arial/Arial Black.woff") format("woff"), url("../../../../assets/fonts/arial/Arial Black.ttf") format("truetype");
   font-weight: 900;
   font-style: normal;
   font-stretch: normal;
-  unicode-range: U+0020-2074;
 }
 @font-face {
   font-family: "Arial Narrow";
-  src: url("Arial Narrow.woff2") format("woff2"), url("Arial Narrow.woff") format("woff"), url("Arial Narrow.ttf") format("truetype");
+  src: url("../../../../assets/fonts/arial/Arial Narrow.woff2") format("woff2"), url("../../../../assets/fonts/arial/Arial Narrow.woff") format("woff"), url("../../../../assets/fonts/arial/Arial Narrow.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
   font-stretch: condensed;
-  unicode-range: U+0020-02DC;
 }
 @font-face {
   font-family: "Arial Narrow";
-  src: url("Arial Narrow Bold.woff2") format("woff2"), url("Arial Narrow Bold.woff") format("woff"), url("Arial Narrow Bold.ttf") format("truetype");
+  src: url("../../../../assets/fonts/arial/Arial Narrow Bold.woff2") format("woff2"), url("../../../../assets/fonts/arial/Arial Narrow Bold.woff") format("woff"), url("../../../../assets/fonts/arial/Arial Narrow Bold.ttf") format("truetype");
   font-weight: 700;
   font-style: normal;
   font-stretch: condensed;
-  unicode-range: U+0020-02DC;
 }
 @font-face {
   font-family: "Arial Narrow";
-  src: url("Arial Narrow Bold Italic.woff2") format("woff2"), url("Arial Narrow Bold Italic.woff") format("woff"), url("Arial Narrow Bold Italic.ttf") format("truetype");
+  src: url("../../../../assets/fonts/arial/Arial Narrow Bold Italic.woff2") format("woff2"), url("../../../../assets/fonts/arial/Arial Narrow Bold Italic.woff") format("woff"), url("../../../../assets/fonts/arial/Arial Narrow Bold Italic.ttf") format("truetype");
   font-weight: 700;
   font-style: italic;
   font-stretch: condensed;
-  unicode-range: U+0020-02DC;
 }
 @font-face {
   font-family: "Arial Narrow";
-  src: url("Arial Narrow Italic.woff2") format("woff2"), url("Arial Narrow Italic.woff") format("woff"), url("Arial Narrow Italic.ttf") format("truetype");
+  src: url("../../../../assets/fonts/arial/Arial Narrow Italic.woff2") format("woff2"), url("../../../../assets/fonts/arial/Arial Narrow Italic.woff") format("woff"), url("../../../../assets/fonts/arial/Arial Narrow Italic.ttf") format("truetype");
   font-weight: 400;
   font-style: italic;
   font-stretch: condensed;
-  unicode-range: U+0020-02DC;
 }
 @font-face {
   font-family: "Georgia";
-  src: url("Georgia Bold.woff2") format("woff2"), url("Georgia Bold.woff") format("woff"), url("Georgia Bold.ttf") format("truetype");
+  src: url("../../../../assets/fonts/georgia/Georgia Bold.woff2") format("woff2"), url("../../../../assets/fonts/georgia/Georgia Bold.woff") format("woff"), url("../../../../assets/fonts/georgia/Georgia Bold.ttf") format("truetype");
   font-weight: 700;
   font-style: normal;
   font-stretch: normal;
 }
 @font-face {
   font-family: "Georgia";
-  src: url("Georgia Bold Italic.woff2") format("woff2"), url("Georgia Bold Italic.woff") format("woff"), url("Georgia Bold Italic.ttf") format("truetype");
+  src: url("../../../../assets/fonts/georgia/Georgia Bold Italic.woff2") format("woff2"), url("../../../../assets/fonts/georgia/Georgia Bold Italic.woff") format("woff"), url("../../../../assets/fonts/georgia/Georgia Bold Italic.ttf") format("truetype");
   font-weight: 700;
   font-style: italic;
   font-stretch: normal;
 }
 @font-face {
   font-family: "Georgia";
-  src: url("Georgia Italic.woff2") format("woff2"), url("Georgia Italic.woff") format("woff"), url("Georgia Italic.ttf") format("truetype");
+  src: url("../../../../assets/fonts/georgia/Georgia Italic.woff2") format("woff2"), url("../../../../assets/fonts/georgia/Georgia Italic.woff") format("woff"), url("../../../../assets/fonts/georgia/Georgia Italic.ttf") format("truetype");
   font-weight: 400;
   font-style: italic;
   font-stretch: normal;
 }
 @font-face {
   font-family: "Georgia";
-  src: url("Georgia.woff2") format("woff2"), url("Georgia.woff") format("woff"), url("Georgia.ttf") format("truetype");
+  src: url("../../../../assets/fonts/georgia/Georgia.woff2") format("woff2"), url("../../../../assets/fonts/georgia/Georgia.woff") format("woff"), url("../../../../assets/fonts/georgia/Georgia.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
   font-stretch: normal;
 }
 body {
-  font-family: "Georgia", serif;
+  font-family: "Georgia";
 }
 
-p {
+.logo__subtitle, .nav-item__link, .text-light, p {
   font-family: "Arial", sans-serif;
 }
 
@@ -501,7 +492,7 @@ h1 {
   font-weight: 400;
   font-size: 4.4rem;
   line-height: 5.7rem;
-  color: #FAFAFA;
+  color: #FFFFFF;
 }
 
 h2 {
@@ -542,9 +533,331 @@ p {
   color: #4C4C4C;
 }
 
+.text-light {
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.2rem;
+  line-height: 1.8rem;
+  color: #B2B2B2;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+.text-light {
+  margin: 0;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.button {
+  padding: 15px 45px;
+  font-weight: 400;
+  font-size: 1.7rem;
+  line-height: 2.2rem;
+  color: #292929;
+  letter-spacing: 0.06em;
+  background: #F1CDB3;
+  border-radius: 100px;
+  border-style: none;
+  cursor: pointer;
+}
+.button_bordered {
+  padding: 13px 43px;
+  background: #FAFAFA;
+  border: 2px solid #F1CDB3;
+}
+
+.button__round {
+  border: 2px solid #F1CDB3;
+  border-radius: 100px;
+  padding: 23px 19px;
+  background-color: #FFFFFF;
+  cursor: pointer;
+}
+.button__round_arrow {
+  display: block;
+}
+.button__round_slider {
+  background: #F6F6F6;
+}
+.button__round_2_bracket {
+  padding: 12px 11px 14px 10px;
+}
+.button__round_not-available {
+  background: #F6F6F6;
+  border: 2px solid #CDCDCD;
+}
+.button__round_right {
+  transform: rotate(180deg);
+}
+
+.card {
+  padding-bottom: 30px;
+  background: #FAFAFA;
+  border-radius: 9px;
+}
+.card__image {
+  max-width: 270px;
+}
+.card__title {
+  padding: 30px 0;
+}
+
+.card__image-pets {
+  border-radius: 9px 9px 0px 0px;
+}
+
+.image-horisontal {
+  display: flex;
+  height: 270px;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 9px 9px 0px 0px;
+}
+.image-horisontal .card__image-pets {
+  width: auto;
+}
+
 .wrapper {
   max-width: 1200px;
   margin: auto;
+}
+
+.header__wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 0;
+}
+
+.layout-2-column {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.layout-3-column {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.layout-3-row {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer {
+  background: url("../../../../assets/images/noise_transparent@2x.png"), radial-gradient(110.67% 538.64% at 5.73% 50%, #513D2F 0%, #1A1A1C 100%), #211F20;
+}
+
+.footer__wrapper {
+  padding: 40px 40px 0 40px;
+}
+
+.footer__container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-title {
+  color: #FFFFFF;
+}
+
+.footer-text {
+  color: #F1CDB3;
+}
+
+.phone-link {
+  text-decoration: none;
+  color: #F1CDB3;
+}
+
+.contacts {
+  align-items: flex-start;
+  max-width: 279px;
+  row-gap: 40px;
+}
+.contacts__email {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 251px;
+}
+.contacts__phone {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 239px;
+}
+
+.address {
+  align-items: flex-start;
+  max-width: 302px;
+}
+
+.address-city {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  column-gap: 20px;
+}
+.address-city__text {
+  max-width: 260px;
+}
+
+.boston {
+  margin: 34px 0 37px 0;
+}
+
+.nav__list {
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  column-gap: 35px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item {
+  list-style: none;
+}
+.nav-item__link {
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 1.5rem;
+  line-height: 2.4rem;
+  color: #CDCDCD;
+}
+
+.nav-item_active {
+  position: relative;
+}
+.nav-item_active::after {
+  content: "";
+  position: relative;
+  display: block;
+  height: 3px;
+  width: 100%;
+  background: #F1CDB3;
+}
+.nav-item_active .nav-item__link {
+  color: #FAFAFA;
+}
+
+.logo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo__title {
+  font-weight: 400;
+  font-size: 3.2rem;
+  line-height: 3.5rem;
+  color: #F1CDB3;
+}
+
+.logo__subtitle {
+  padding-top: 10px;
+  align-self: flex-end;
+  font-weight: 400;
+  font-size: 1.3rem;
+  line-height: 1.5rem;
+  color: #FFFFFF;
+  letter-spacing: 0.1em;
+}
+
+.two__brackets {
+  font-family: "Georgia";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 2.3rem;
+  letter-spacing: 0.06em;
+  color: #CDCDCD;
+  height: 22px;
+  width: 27px;
+}
+
+.logo__title {
+  font-weight: 400;
+  font-size: 3.2rem;
+  line-height: 3.5rem;
+  color: #545454;
+}
+
+.logo__subtitle {
+  font-weight: 400;
+  font-size: 1.3rem;
+  line-height: 1.5rem;
+  color: #292929;
+}
+
+.pets {
+  background: #F6F6F6;
+}
+
+.pets-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  row-gap: 45px;
+  padding: 80px 0 100px;
+}
+.pets-container__title {
+  max-width: 400px;
+  text-align: center;
+  margin: 0 auto;
+}
+.pets-container__slider {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  column-gap: 40px;
+  row-gap: 30px;
+}
+
+.card {
+  background: #FAFAFA;
+  flex-shrink: 0;
+}
+
+.nav-item__link {
+  font-weight: 400;
+  font-size: 1.5rem;
+  line-height: 2.4rem;
+  color: #545454;
+}
+
+.nav-item_active {
+  position: relative;
+}
+.nav-item_active .nav-item__link {
+  color: #292929;
 }
 
 /*# sourceMappingURL=style.css.map */
