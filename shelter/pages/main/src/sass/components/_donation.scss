@@ -1,0 +1,23 @@
+.donation {
+  background: $color-background;
+}
+
+.donation__wrapper {
+  padding: 80px 182px 100px 183px;
+}
+
+.donation__content {
+  @include flex($align: flex-start, $direction: column);
+  max-width: 380px;
+  row-gap: 20px;
+}
+
+.donation-card {
+  @include flex();
+  padding: 10px 15px;
+  background: $color-primary;
+  border-radius: 9px;
+  &__image {
+    margin-right: 15px;
+  }
+}

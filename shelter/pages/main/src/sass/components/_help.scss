@@ -15,53 +15,11 @@
   justify-content: center;
   row-gap: 55px;
   column-gap: 119px;
-  // display: grid;
-  // width: 100%;
-  // grid-template-columns: repeat(9, auto);
-  // row-gap: 55px;
-  // justify-content: space-between;
-  // grid-template-areas:
-  // 'food . transport . toys . bowls . shampoos'
-  // '. vitamins . medicines . leashes . sleeping .';
 }
 
 .help-item {
   @include flex($direction: column);
   height: 113px;
-  // margin-bottom: 55px;
-  // &_food {
-  //   margin-right: 119.25;
-  // }
-  // 
-  // &_food {
-  //   grid-area: food;
-  //   width: calc(82.75px + 120px);
-  //   justify-self: start;
-  // }
-  // &_transportation {
-  //   grid-area: transport;
-  // }
-  // &_toys {
-  //   grid-area: toys;
-  // }
-  // &_bowls {
-  //   grid-area: bowls;
-  // }
-  // &_shampoos {
-  //   grid-area: shampoos;
-  // }
-  // &_vitamins {
-  //   grid-area: vitamins;
-  // }
-  // &_medicines {
-  //   grid-area: medicines;
-  // }
-  // &_leashes {
-  //   grid-area: leashes;
-  // }
-  // &_sleeping {
-  //   grid-area: sleeping;
-  // }
   &__title {
     text-align: center;
   }

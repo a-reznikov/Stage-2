@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Main Cozy House</title>
-  <link rel="icon" href="src/assets/img/icons/favicon.ico">
+  <link rel="icon" href="../../assets/icons/favicon.ico">
   <link rel="stylesheet" href="src/sass/style.css">
 </head>
 <body>
@@ -158,16 +158,20 @@
     </section>
     <section class="donation">
       <div class="wrapper donation__wrapper">
-        <div class="layout-2-column">
-          <div class="donation__image"></div>
+        <div class="layout-2-column donation__container">
+          <div class="donation__image donation-image">
+            <img src="src/assets/img/images/donation-dog.png" alt="donation-dog" class="donation-image__dog">
+          </div>
           <div class="donation__content">
             <h3 class="donation__title">You can also make a donation</h3>
             <h5 class="donation__subtitle">Name of the bank / Type of bank account</h5>
             <div class="donation__card donation-card">
-              <div class="donation-card__image"></div>
-              <h4 class="donation-card__number"></h4>
+              <div class="donation-card__image">
+                <img src="src/assets/img/icons/credit-card.svg" alt="credit-card" class="card__image">
+              </div>
+              <h4 class="donation-card__number">8380 2880 8028 8791 7435</h4>
             </div>
-            <p class="donation__text">Legal information and lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas a ipsum at libero sagittis dignissim sed ac diam. Praesent ultrices maximus tortor et vulputate. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
+            <p class="donation__text text-light">Legal information and lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas a ipsum at libero sagittis dignissim sed ac diam. Praesent ultrices maximus tortor et vulputate. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
           </div>
         </div>
       </div>
@@ -175,30 +179,40 @@
   </main>
   <footer class="footer">
     <div class="wrapper footer__wrapper">
-      <div class="layout-3-column">
+      <div class="layout-3-column footer__container">
         <div class="layout-3-row contacts">
-          <h3 class="contacts__title">For questions and suggestions</h3>
+          <h3 class="contacts__title footer-title">For questions and suggestions</h3>
           <div class="contacts__email contacts-email">
-            <div class="contacts-email__image"></div>
-            <h4 class="contacts-email__mail">email@shelter.com</h4>
+            <div class="contacts-email__image">
+              <img src="src/assets/img/icons/mail.svg" alt="mail" class="mail__image">
+            </div>
+            <h4 class="contacts-email__mail footer-text">email@shelter.com</h4>
           </div>
           <div class="contacts__phone contacts-phone">
-            <div class="contacts-phone__image"></div>
-            <h4 class="contacts-phone__number"><a class="phone-link" href="tel:+136745677554">+13 674 567 75 54</a></h4>
+            <div class="contacts-phone__image">
+              <img src="src/assets/img/icons/phone.svg" alt="phone" class="phone__image">
+            </div>
+            <h4 class="contacts-phone__number footer-text"><a class="phone-link" href="tel:+136745677554">+13 674 567 75 54</a></h4>
           </div>
         </div>
         <div class="layout-3-row address">
-          <h3 class="address__title">We are waiting for your visit</h3>
-          <div class="address__city address-city">
-            <div class="address-city__image"></div>
-            <h4 class="address-city__text">1 Central Street, Boston (entrance from the store)</h4>
+          <h3 class="address__title footer-title">We are waiting for your visit</h3>
+          <div class="address__city address-city boston">
+            <div class="address-city__image">
+              <img src="src/assets/img/icons/pin.svg" alt="pin" class="pin__image">
+            </div>
+            <h4 class="address-city__text footer-text">1 Central Street, Boston (entrance from the store)</h4>
           </div>
-          <div class="address__city address-city">
-            <div class="address-city__image"></div>
-            <h4 class="address-city__text">18 South Park, London </h4>
+          <div class="address__city address-city london">
+            <div class="address-city__image">
+              <img src="src/assets/img/icons/pin.svg" alt="pin" class="pin__image">
+            </div>
+            <h4 class="address-city__text footer-text">18 South Park, London </h4>
           </div>
         </div>
-        <div class="footer__image"></div>
+        <div class="footer__image">
+          <img src="src/assets/img/images/footer-puppy.png" alt="footer-puppy" class="footer__image_puppy">
+        </div>
       </div>
     </div>
   </footer>
