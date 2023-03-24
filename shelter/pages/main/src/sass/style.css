@@ -708,7 +708,7 @@ p,
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: 80px 0 100px;
+  padding: 80px 87px 100px;
 }
 
 .help__title {
@@ -718,12 +718,14 @@ p,
 }
 
 .help__content {
-  display: grid;
-  width: 100%;
-  grid-template-columns: repeat(9, auto);
-  grid-template-rows: repeat(2, auto);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
   row-gap: 55px;
-  grid-template-areas: "food . transport . toys . bowls . shampoos" ". vitamins . medicines . leashes . sleeping .";
+  column-gap: 119px;
 }
 
 .help-item {
@@ -732,34 +734,6 @@ p,
   justify-content: space-between;
   align-items: center;
   height: 113px;
-  max-width: max-content;
-}
-.help-item_food {
-  grid-area: food;
-}
-.help-item_transportation {
-  grid-area: transport;
-}
-.help-item_toys {
-  grid-area: toys;
-}
-.help-item_bowls {
-  grid-area: bowls;
-}
-.help-item_shampoos {
-  grid-area: shampoos;
-}
-.help-item_vitamins {
-  grid-area: vitamins;
-}
-.help-item_medicines {
-  grid-area: medicines;
-}
-.help-item_leashes {
-  grid-area: leashes;
-}
-.help-item_sleeping {
-  grid-area: sleeping;
 }
 .help-item__title {
   text-align: center;
