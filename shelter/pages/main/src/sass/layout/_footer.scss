@@ -24,6 +24,8 @@ padding: 40px 40px 0 40px;
 }
 
 .contacts {
+  align-self: flex-start;
+  margin-top: 16px;
   align-items: flex-start;
   max-width: 279px;
   row-gap: 40px;
@@ -31,6 +33,7 @@ padding: 40px 40px 0 40px;
     @include flex ();
     width: 100%;
     max-width: 251px;
+    padding: 3px 0;
   }
   &__phone {
     @include flex ();
@@ -40,6 +43,8 @@ padding: 40px 40px 0 40px;
 }
 
 .address {
+  align-self: flex-start;
+  margin-top: 16px;
   align-items: flex-start;
   max-width: 302px;
 }
@@ -53,5 +58,5 @@ padding: 40px 40px 0 40px;
 }
 
 .boston {
-  margin: 34px 0 37px 0;
+  margin: 34px 0 32px 0;
 }

@@ -3,8 +3,9 @@
 }
 
 .about__content {
+  align-self: flex-start;
   max-width: 430px;
-  padding-top: 14px;
+  margin-top: 14px;
   display: grid;
   row-gap: 25px;
 }

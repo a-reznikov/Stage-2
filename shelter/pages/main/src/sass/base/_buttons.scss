@@ -16,11 +16,15 @@
 .button__round {
   border: 2px solid $color-primary;
   border-radius: 100px;
-  padding: 23px 19px;
+  width: 52px;
+  height: 52px;
   background-color: $color-light;
   cursor: pointer;
   &_arrow {
     display: block;
+    width: 14px;
+    height: 6px;
+    margin: 0 auto;
   }
   &_slider {
     background: $color-background;

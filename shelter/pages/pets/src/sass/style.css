@@ -578,12 +578,16 @@ img {
 .button__round {
   border: 2px solid #F1CDB3;
   border-radius: 100px;
-  padding: 23px 19px;
+  width: 52px;
+  height: 52px;
   background-color: #FFFFFF;
   cursor: pointer;
 }
 .button__round_arrow {
   display: block;
+  width: 14px;
+  height: 6px;
+  margin: 0 auto;
 }
 .button__round_slider {
   background: #F6F6F6;
@@ -682,6 +686,8 @@ img {
 }
 
 .contacts {
+  align-self: flex-start;
+  margin-top: 16px;
   align-items: flex-start;
   max-width: 279px;
   row-gap: 40px;
@@ -693,6 +699,7 @@ img {
   align-items: center;
   width: 100%;
   max-width: 251px;
+  padding: 3px 0;
 }
 .contacts__phone {
   display: flex;
@@ -704,6 +711,8 @@ img {
 }
 
 .address {
+  align-self: flex-start;
+  margin-top: 16px;
   align-items: flex-start;
   max-width: 302px;
 }
@@ -720,7 +729,7 @@ img {
 }
 
 .boston {
-  margin: 34px 0 37px 0;
+  margin: 34px 0 32px 0;
 }
 
 .nav__list {
@@ -836,6 +845,7 @@ img {
   margin: 0 auto;
 }
 .pets-container__slider {
+  padding: 15px 0;
   display: flex;
   flex-direction: row;
   justify-content: space-between;

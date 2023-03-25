@@ -578,22 +578,19 @@ img {
 .button__round {
   border: 2px solid #F1CDB3;
   border-radius: 100px;
-  padding: 23px 19px;
+  width: 52px;
+  height: 52px;
   background-color: #FFFFFF;
   cursor: pointer;
 }
 .button__round_arrow {
   display: block;
+  width: 14px;
+  height: 6px;
+  margin: 0 auto;
 }
 .button__round_slider {
   background: #F6F6F6;
-}
-.button__round_2_bracket {
-  padding: 12px 11px 14px 10px;
-}
-.button__round_not-available {
-  background: #F6F6F6;
-  border: 2px solid #CDCDCD;
 }
 .button__round_right {
   transform: rotate(180deg);
@@ -689,6 +686,8 @@ img {
 }
 
 .contacts {
+  align-self: flex-start;
+  margin-top: 16px;
   align-items: flex-start;
   max-width: 279px;
   row-gap: 40px;
@@ -700,6 +699,7 @@ img {
   align-items: center;
   width: 100%;
   max-width: 251px;
+  padding: 3px 0;
 }
 .contacts__phone {
   display: flex;
@@ -711,6 +711,8 @@ img {
 }
 
 .address {
+  align-self: flex-start;
+  margin-top: 16px;
   align-items: flex-start;
   max-width: 302px;
 }
@@ -727,7 +729,7 @@ img {
 }
 
 .boston {
-  margin: 34px 0 37px 0;
+  margin: 34px 0 32px 0;
 }
 
 .not-only__container {
@@ -751,6 +753,8 @@ img {
 }
 
 .not-only__content {
+  align-self: flex-start;
+  margin-top: 163px;
   max-width: 460px;
 }
 
@@ -759,8 +763,9 @@ img {
 }
 
 .about__content {
+  align-self: flex-start;
   max-width: 430px;
-  padding-top: 14px;
+  margin-top: 14px;
   display: grid;
   row-gap: 25px;
 }
@@ -810,7 +815,7 @@ img {
 }
 
 .help__title {
-  max-width: 308px;
+  max-width: 315px;
   text-align: center;
   margin-bottom: 60px;
 }
