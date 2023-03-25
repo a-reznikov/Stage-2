@@ -23,3 +23,9 @@
   background: $color-light-intense;
   flex-shrink: 0;
 }
+
+.pets__navigation {
+  @include flex ();
+  width: 100%;
+  max-width: 340px;
+}

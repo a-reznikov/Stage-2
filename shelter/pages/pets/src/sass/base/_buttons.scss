@@ -1,11 +1,19 @@
-.two__brackets {
-  font-family: 'Georgia';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 2.3rem;
+.pag-button {
+  border: 2px solid $color-link;
+  border-radius: 100px;
+  background: $color-background;
+  cursor: pointer;
+  @include font(400, 2.0rem, 2.3rem, $color-link);
+  width: 52px;
+  height: 52px;
   letter-spacing: 0.06em;
-  color: #CDCDCD;
-  height: 22px;
-  width: 27px;
+  &_colored {
+    background: $color-primary;
+    color: $color-link-hover;
+    border: none;
+  }
+  &_available {
+    border: 2px solid $color-primary;
+    color: $color-link-hover;
+  }
 }
