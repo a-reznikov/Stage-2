@@ -1,0 +1,34 @@
+.pets {
+  background: $color-background;
+}
+
+.pets-container {
+  @include flex ($direction: column);
+  row-gap: 45px;
+  padding: 80px 0 100px;
+  &__title {
+    max-width: 400px;
+    text-align: center;
+    margin: 0 auto;
+    @include font(400, 3.5rem, 4.5rem, $color-text-title);
+    letter-spacing: 0.06em;
+  }
+  &__slider {
+    padding: 15px 0;
+    @include flex ();
+    flex-wrap: wrap;
+    column-gap: 40px;
+    row-gap: 30px;
+  }
+}
+
+.card {
+  background: $color-light-intense;
+  flex-shrink: 0;
+}
+
+.pets__navigation {
+  @include flex ();
+  width: 100%;
+  max-width: 340px;
+}

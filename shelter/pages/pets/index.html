@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cozy House</title>
+  <link rel="icon" href="../../assets/icons/favicon.ico">
+  <link rel="stylesheet" href="src/sass/style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="wrapper header__wrapper">
+      <div class="logo" onclick="window.location.href = '../main/index.html'">
+        <h3 class="logo__title">Cozy House</h3>
+        <p class="logo__subtitle">Shelter for pets in Boston</p>
+      </div>
+      <nav class="nav">
+        <ul class="nav__list" id="nav-list">
+          <li class="nav__item nav-item"><a href="../main/index.html" class="nav-item__link">About the shelter</a></li>
+          <li class="nav__item nav-item nav-item_active"><a href="#" class="nav-item__link">Our pets</a></li>
+          <li class="nav__item nav-item"><a href="../main/index.html#help" class="nav-item__link">Help the shelter</a></li>
+          <li class="nav__item nav-item"><a href="#contacts" class="nav-item__link">Contacts</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main class="main">
+    <section class="pets">
+      <div class="wrapper pets__wrapper">
+        <div class="pets__container pets-container">
+          <h1 class="pets-container__title">Our friends who <br>are looking for a house</h1>
+          <div class="pets-container__slider">
+            <article class="layout-3-row card">
+              <div class="card__image">
+                <img src="../../assets/images/pets/katrine-min.png" alt="pets-katrine" class="card__image-pets">
+              </div>
+              <h4 class="card__title">Katrine</h4>
+              <button class="card__button button button_bordered">Learn more</button>
+            </article>
+            <article class="layout-3-row card">
+              <div class="card__image">
+                <img src="../../assets/images/pets/jennifer-min.png" alt="pets-jennifer" class="card__image-pets">
+              </div>
+              <h4 class="card__title">Jennifer</h4>
+              <button class="card__button button button_bordered">Learn more</button>
+            </article>
+            <article class="layout-3-row card">
+              <div class="card__image">
+                <img src="../../assets/images/pets/woody-min.png" alt="pets-woody" class="card__image-pets">
+              </div>
+              <h4 class="card__title">Woody</h4>
+              <button class="card__button button button_bordered">Learn more</button>
+            </article>
+            <article class="layout-3-row card">
+              <div class="card__image image-horisontal">
+                <img src="../../assets/images/pets/sophia-min.png" alt="pets-sophia" class="card__image-pets">
+              </div>
+              <h4 class="card__title">Sophia</h4>
+              <button class="card__button button button_bordered">Learn more</button>
+            </article>
+            <article class="layout-3-row card">
+              <div class="card__image">
+                <img src="../../assets/images/pets/timmy-min.png" alt="pets-timmy" class="card__image-pets">
+              </div>
+              <h4 class="card__title">Timmy</h4>
+              <button class="card__button button button_bordered">Learn more</button>
+            </article>
+            <article class="layout-3-row card">
+              <div class="card__image">
+                <img src="../../assets/images/pets/charly-min.png" alt="pets-charly" class="card__image-pets">
+              </div>
+              <h4 class="card__title">Charly</h4>
+              <button class="card__button button button_bordered">Learn more</button>
+            </article>
+            <article class="layout-3-row card">
+              <div class="card__image">
+                <img src="../../assets/images/pets/scarlett-min.png" alt="pets-scarlett" class="card__image-pets">
+              </div>
+              <h4 class="card__title">Scarlett</h4>
+              <button class="card__button button button_bordered">Learn more</button>
+            </article>
+            <article class="layout-3-row card">
+              <div class="card__image">
+                <img src="../../assets/images/pets/freddie-min.png" alt="pets-freddie" class="card__image-pets">
+              </div>
+              <h4 class="card__title">Freddie</h4>
+              <button class="card__button button button_bordered">Learn more</button>
+            </article>
+          </div>
+          <div class="pets__navigation">
+            <button class="pets-container__button pag-button pag-button_first pag-button_left">
+              <span class="pag-button__two">&lt;&lt;</span>
+            </button>
+            <button class="pets-container__button pag-button pag-button_prev pag-button_left">
+              <span class="pag-button__one">&lt;</span>
+            </button>
+            <button class="pets-container__button pag-button pag-button_number pag-button_colored">
+              <span class="pag-button__number">1</span>
+            </button>
+            <button class="pets-container__button pag-button pag-button_next pag-button_available">
+              <span class="pag-button__one">&gt;</span>
+            </button>
+            <button class="pets-container__button pag-button pag-button_last pag-button_available">
+              <span class="pag-button__two">&gt;&gt;</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer" id="contacts">
+    <div class="wrapper footer__wrapper">
+      <div class="layout-3-column footer__container">
+        <div class="layout-3-row contacts">
+          <h3 class="contacts__title footer-title">For questions and suggestions</h3>
+          <div class="contacts__email contacts-email">
+            <div class="contacts-email__image">
+              <img src="../../assets/icons/mail.svg" alt="mail" class="mail__image">
+            </div>
+            <h4 class="contacts-email__mail footer-text"><a class="footer-link" href="mailto:email@shelter.com">email@shelter.com</a></h4>
+          </div>
+          <div class="contacts__phone contacts-phone">
+            <div class="contacts-phone__image">
+              <img src="../../assets/icons/phone.svg" alt="phone" class="phone__image">
+            </div>
+            <h4 class="contacts-phone__number footer-text"><a class="footer-link" href="tel:+136745677554">+13 674 567 75 54</a></h4>
+          </div>
+        </div>
+        <div class="layout-3-row address">
+          <h3 class="address__title footer-title">We are waiting for your visit</h3>
+          <div class="address__city address-city boston">
+            <div class="address-city__image">
+              <img src="../../assets/icons/pin.svg" alt="pin" class="pin__image">
+            </div>
+            <h4 class="address-city__text footer-text"><a class="footer-link" href="https://goo.gl/maps/uwHmrMysrQ2frakcA" target="_blank">1 Central Street, Boston (entrance from the store)</a></h4>
+          </div>
+          <div class="address__city address-city london">
+            <div class="address-city__image">
+              <img src="../../assets/icons/pin.svg" alt="pin" class="pin__image">
+            </div>
+            <h4 class="address-city__text footer-text"><a class="footer-link" href="https://goo.gl/maps/YaAiFDgW9vufM5Rb6" target="_blank">18 South Park, London</a></h4>
+          </div>
+        </div>
+        <div class="footer__image">
+          <img src="../../assets/images/footer-puppy.png" alt="footer-puppy" class="footer__image_puppy">
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="src/scripts/index.js"></script>
+</body>
+</html>

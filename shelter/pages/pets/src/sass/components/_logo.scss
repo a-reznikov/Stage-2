@@ -1,0 +1,19 @@
+.logo {
+  &:hover {
+    .logo__title {
+      color: $color-primary;
+    }
+    .logo__subtitle {
+      color: $color-primary;
+    }
+  }
+}
+
+.logo__title {
+  @include font(400, 3.2rem, 3.5rem, $color-text-title);
+}
+
+.logo__subtitle {
+  @include font(400, 1.3rem, 1.5rem, $color-link-hover);
+
+}

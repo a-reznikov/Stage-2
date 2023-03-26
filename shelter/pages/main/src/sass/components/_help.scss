@@ -1,0 +1,26 @@
+.help__container {
+  @include flex($direction: column);
+  padding: 80px 87px 100px;
+}
+
+.help__title {
+  max-width: 315px;
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.help__content {
+  @include flex();
+  flex-wrap: wrap;
+  justify-content: center;
+  row-gap: 55px;
+  column-gap: 119px;
+}
+
+.help-item {
+  @include flex($direction: column);
+  height: 113px;
+  &__title {
+    text-align: center;
+  }
+}

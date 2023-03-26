@@ -1,0 +1,39 @@
+.card {
+  padding-bottom: 30px;
+  background: $color-light-intense;
+  border-radius: 9px;
+  @extend %transition;
+  &__image {
+    max-width: 270px;
+  }
+  &__title {
+    padding: 30px 0;
+  }
+  &:hover {
+    cursor: pointer;
+    background: $color-light;
+    box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
+    .card__button {
+      background: $color-light;
+    }
+    .card__button:hover {
+      background: $color-primary-light;
+      border: 2px solid $color-primary-light;
+    }
+  }
+}
+
+.card__image-pets {
+  border-radius: 9px 9px 0px 0px;
+}
+
+.image-horisontal {
+  display: flex;
+  height: 270px;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 9px 9px 0px 0px;
+  .card__image-pets {
+    width: auto;
+  }
+}
