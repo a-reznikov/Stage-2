@@ -843,6 +843,11 @@ img {
   max-width: 400px;
   text-align: center;
   margin: 0 auto;
+  font-weight: 400;
+  font-size: 3.5rem;
+  line-height: 4.5rem;
+  color: #545454;
+  letter-spacing: 0.06em;
 }
 .pets-container__slider {
   padding: 15px 0;
@@ -874,6 +879,9 @@ img {
   font-size: 1.5rem;
   line-height: 2.4rem;
   color: #545454;
+}
+.nav-item__link:hover {
+  color: #FAFAFA;
 }
 
 .nav-item_active {

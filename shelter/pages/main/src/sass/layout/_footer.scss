@@ -18,9 +18,14 @@ padding: 40px 40px 0 40px;
   color: $color-primary;
 }
 
-.phone-link {
+.footer-link {
   text-decoration: none;
   color: $color-primary;
+  @extend %transition;
+  &:hover {
+    cursor: pointer;
+    color: $color-light;
+  }
 }
 
 .contacts {

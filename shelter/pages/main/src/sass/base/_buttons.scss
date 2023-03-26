@@ -6,20 +6,33 @@
   border-radius: 100px;
   border-style: none;
   cursor: pointer;
+  @extend %transition;
   &_bordered {
     padding: 13px 43px;
     background: $color-light-intense;
     border: 2px solid $color-primary;
   }
+  &_bordered:hover {
+    background: $color-primary-light;
+    border: 2px solid $color-primary-light;
+  }
+  &_colored:hover {
+    background: $color-primary-light;
+  }
 }
 
 .button__round {
-  border: 2px solid $color-primary;
-  border-radius: 100px;
   width: 52px;
   height: 52px;
   background-color: $color-light;
+  border: 2px solid $color-primary;
+  border-radius: 100px;
   cursor: pointer;
+  @extend %transition;
+  &:hover {
+    background: $color-primary-light;
+    border: 2px solid $color-primary-light;
+  }
   &_arrow {
     display: block;
     width: 14px;

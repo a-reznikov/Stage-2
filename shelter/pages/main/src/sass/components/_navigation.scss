@@ -8,11 +8,14 @@
 
 .nav-item {
   list-style: none;
-
   &__link {
     text-decoration: none;
     @extend %font-second;
     @include font(400, 1.5rem, 2.4rem, $color-link);
+    @extend %transition;
+  }
+  &__link:hover {
+    color: $color-light-intense;
   }
 }
 

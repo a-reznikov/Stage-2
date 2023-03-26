@@ -4,23 +4,23 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Main Cozy House</title>
+  <title>Cozy House</title>
   <link rel="icon" href="../../assets/icons/favicon.ico">
   <link rel="stylesheet" href="src/sass/style.css">
 </head>
 <body>
   <header class="header">
     <div class="wrapper header__wrapper">
-      <div class="logo">
+      <div class="logo" onclick="window.location.href = '#'">
         <h3 class="logo__title">Cozy House</h3>
-        <span class="logo__subtitle">Shelter for pets in Boston</span>
+        <p class="logo__subtitle">Shelter for pets in Boston</p>
       </div>
       <nav class="nav">
         <ul class="nav__list" id="nav-list">
           <li class="nav__item nav-item nav-item_active"><a href="#" class="nav-item__link">About the shelter</a></li>
-          <li class="nav__item nav-item"><a href="#" class="nav-item__link">Our pets</a></li>
-          <li class="nav__item nav-item"><a href="#" class="nav-item__link">Help the shelter</a></li>
-          <li class="nav__item nav-item"><a href="#" class="nav-item__link">Contacts</a></li>
+          <li class="nav__item nav-item"><a href="../pets/index.html" class="nav-item__link">Our pets</a></li>
+          <li class="nav__item nav-item"><a href="#help" class="nav-item__link">Help the shelter</a></li>
+          <li class="nav__item nav-item"><a href="#contacts" class="nav-item__link">Contacts</a></li>
         </ul>
       </nav>
     </div>
@@ -32,7 +32,7 @@
           <div class="not-only__content">
             <h1 class="not-only__title">Not only people need a house</h1>
             <p class="not-only__text">We offer to give a chance to a little and nice puppy with an extremely wide and open heart. He or she will love you more than anybody else in the world, you will see!</p>
-            <button class="not-only__button button button_colored">Make a friend</button>
+            <button class="not-only__button button button_colored" onclick="window.location.href = '#our-friends'">Make a friend</button>
           </div>
           <div class="not-only__image">
             <img src="src/assets/img/images/start-screen-puppy.png" alt="start-screen-puppy" class="not-only__image-puppy">
@@ -54,7 +54,7 @@
         </div>
       </div>
     </section>
-    <section class="our-friends">
+    <section class="our-friends" id="our-friends">
       <div class="wrapper our-friends__wrapper">
         <div class="our-friends__container">
           <h3 class="our-friends__title">Our friends who <br>are looking for a house</h3>
@@ -89,11 +89,11 @@
               <img src="src/assets/img/icons/Arrow.svg" alt="arrow" class="button__round_arrow button__round_right">
             </button>
           </div>
-          <button class="our-friends__button button button">Get to know the rest</button>
+          <button class="our-friends__button_get button button_colored" onclick="window.location.href = '../pets/index.html'">Get to know the rest</button>
         </div>
       </div>
     </section>
-    <section class="help">
+    <section class="help" id="help">
       <div class="wrapper help__wrapper">
         <div class="help__container">
           <h3 class="help__title">How you can help our shelter</h3>
@@ -165,7 +165,7 @@
           <div class="donation__content">
             <h3 class="donation__title">You can also <br>make a donation</h3>
             <h5 class="donation__subtitle">Name of the bank / Type of bank account</h5>
-            <div class="donation__card donation-card">
+            <div class="donation__card donation-card" onclick="window.location.href = '#no_scroll'">
               <div class="donation-card__image">
                 <img src="src/assets/img/icons/credit-card.svg" alt="credit-card" class="card__image">
               </div>
@@ -177,7 +177,7 @@
       </div>
     </section>
   </main>
-  <footer class="footer">
+  <footer class="footer" id="contacts">
     <div class="wrapper footer__wrapper">
       <div class="layout-3-column footer__container">
         <div class="layout-3-row contacts">
@@ -186,13 +186,13 @@
             <div class="contacts-email__image">
               <img src="../../assets/icons/mail.svg" alt="mail" class="mail__image">
             </div>
-            <h4 class="contacts-email__mail footer-text">email@shelter.com</h4>
+            <h4 class="contacts-email__mail footer-text"><a class="footer-link" href="mailto:email@shelter.com">email@shelter.com</a></h4>
           </div>
           <div class="contacts__phone contacts-phone">
             <div class="contacts-phone__image">
               <img src="../../assets/icons/phone.svg" alt="phone" class="phone__image">
             </div>
-            <h4 class="contacts-phone__number footer-text"><a class="phone-link" href="tel:+136745677554">+13 674 567 75 54</a></h4>
+            <h4 class="contacts-phone__number footer-text"><a class="footer-link" href="tel:+136745677554">+13 674 567 75 54</a></h4>
           </div>
         </div>
         <div class="layout-3-row address">
@@ -201,13 +201,13 @@
             <div class="address-city__image">
               <img src="../../assets/icons/pin.svg" alt="pin" class="pin__image">
             </div>
-            <h4 class="address-city__text footer-text">1 Central Street, Boston (entrance from the store)</h4>
+            <h4 class="address-city__text footer-text"><a class="footer-link" href="https://goo.gl/maps/uwHmrMysrQ2frakcA" target="_blank">1 Central Street, Boston (entrance from the store)</a></h4>
           </div>
           <div class="address__city address-city london">
             <div class="address-city__image">
               <img src="../../assets/icons/pin.svg" alt="pin" class="pin__image">
             </div>
-            <h4 class="address-city__text footer-text">18 South Park, London </h4>
+            <h4 class="address-city__text footer-text"><a class="footer-link" href="https://goo.gl/maps/YaAiFDgW9vufM5Rb6" target="_blank">18 South Park, London</a></h4>
           </div>
         </div>
         <div class="footer__image">

@@ -1,9 +1,19 @@
 .logo {
   @include flex ($direction: column);
+  cursor: pointer;
+  &:hover {
+    .logo__title {
+      color: $color-primary-light;
+    }
+    .logo__subtitle {
+      color: $color-link;
+    }
+  }
 }
 
 .logo__title {
   @include font(400, 3.2rem, 3.5rem, $color-primary);
+  @extend %transition;
 }
 
 .logo__subtitle {
@@ -12,4 +22,5 @@
   @extend %font-second;
   @include font(400, 1.3rem, 1.5rem, $color-light);
   letter-spacing: 0.1em;
+  @extend %transition;
 }

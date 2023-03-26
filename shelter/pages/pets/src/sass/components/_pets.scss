@@ -10,6 +10,8 @@
     max-width: 400px;
     text-align: center;
     margin: 0 auto;
+    @include font(400, 3.5rem, 4.5rem, $color-text-title);
+    letter-spacing: 0.06em;
   }
   &__slider {
     padding: 15px 0;

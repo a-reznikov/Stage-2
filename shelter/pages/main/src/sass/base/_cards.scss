@@ -2,11 +2,24 @@
   padding-bottom: 30px;
   background: $color-light-intense;
   border-radius: 9px;
+  @extend %transition;
   &__image {
     max-width: 270px;
   }
   &__title {
     padding: 30px 0;
+  }
+  &:hover {
+    cursor: pointer;
+    background: $color-light;
+    box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
+    .card__button {
+      background: $color-light;
+    }
+    .card__button:hover {
+      background: $color-primary-light;
+      border: 2px solid $color-primary-light;
+    }
   }
 }
 

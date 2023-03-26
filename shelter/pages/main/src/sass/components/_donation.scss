@@ -17,7 +17,12 @@
   padding: 10px 15px;
   background: $color-primary;
   border-radius: 9px;
+  @extend %transition;
   &__image {
     margin-right: 15px;
+  }
+  &:hover {
+    cursor: pointer;
+    background: $color-primary-light;
   }
 }
