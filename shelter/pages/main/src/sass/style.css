@@ -598,6 +598,10 @@ img {
   background: #FDDCC4;
   border: 2px solid #FDDCC4;
 }
+.button__round:active {
+  background: #F1CDB3;
+  border: 2px solid #F1CDB3;
+}
 .button__round_arrow {
   display: block;
   width: 14px;

@@ -11,16 +11,16 @@
 <body>
   <header class="header">
     <div class="wrapper header__wrapper">
-      <div class="logo">
+      <div class="logo" onclick="window.location.href = '../main/index.html'">
         <h3 class="logo__title">Cozy House</h3>
         <p class="logo__subtitle">Shelter for pets in Boston</p>
       </div>
       <nav class="nav">
         <ul class="nav__list" id="nav-list">
-          <li class="nav__item nav-item"><a href="#" class="nav-item__link">About the shelter</a></li>
+          <li class="nav__item nav-item"><a href="../main/index.html" class="nav-item__link">About the shelter</a></li>
           <li class="nav__item nav-item nav-item_active"><a href="#" class="nav-item__link">Our pets</a></li>
-          <li class="nav__item nav-item"><a href="#" class="nav-item__link">Help the shelter</a></li>
-          <li class="nav__item nav-item"><a href="#" class="nav-item__link">Contacts</a></li>
+          <li class="nav__item nav-item"><a href="../main/index.html#help" class="nav-item__link">Help the shelter</a></li>
+          <li class="nav__item nav-item"><a href="#contacts" class="nav-item__link">Contacts</a></li>
         </ul>
       </nav>
     </div>
@@ -109,7 +109,7 @@
       </div>
     </section>
   </main>
-  <footer class="footer">
+  <footer class="footer" id="contacts">
     <div class="wrapper footer__wrapper">
       <div class="layout-3-column footer__container">
         <div class="layout-3-row contacts">
@@ -118,13 +118,13 @@
             <div class="contacts-email__image">
               <img src="../../assets/icons/mail.svg" alt="mail" class="mail__image">
             </div>
-            <h4 class="contacts-email__mail footer-text">email@shelter.com</h4>
+            <h4 class="contacts-email__mail footer-text"><a class="footer-link" href="mailto:email@shelter.com">email@shelter.com</a></h4>
           </div>
           <div class="contacts__phone contacts-phone">
             <div class="contacts-phone__image">
               <img src="../../assets/icons/phone.svg" alt="phone" class="phone__image">
             </div>
-            <h4 class="contacts-phone__number footer-text"><a class="phone-link" href="tel:+136745677554">+13 674 567 75 54</a></h4>
+            <h4 class="contacts-phone__number footer-text"><a class="footer-link" href="tel:+136745677554">+13 674 567 75 54</a></h4>
           </div>
         </div>
         <div class="layout-3-row address">
@@ -133,13 +133,13 @@
             <div class="address-city__image">
               <img src="../../assets/icons/pin.svg" alt="pin" class="pin__image">
             </div>
-            <h4 class="address-city__text footer-text">1 Central Street, Boston (entrance from the store)</h4>
+            <h4 class="address-city__text footer-text"><a class="footer-link" href="https://goo.gl/maps/uwHmrMysrQ2frakcA" target="_blank">1 Central Street, Boston (entrance from the store)</a></h4>
           </div>
           <div class="address__city address-city london">
             <div class="address-city__image">
               <img src="../../assets/icons/pin.svg" alt="pin" class="pin__image">
             </div>
-            <h4 class="address-city__text footer-text">18 South Park, London </h4>
+            <h4 class="address-city__text footer-text"><a class="footer-link" href="https://goo.gl/maps/YaAiFDgW9vufM5Rb6" target="_blank">18 South Park, London</a></h4>
           </div>
         </div>
         <div class="footer__image">
@@ -148,5 +148,6 @@
       </div>
     </div>
   </footer>
+  <script src="src/scripts/index.js"></script>
 </body>
 </html>

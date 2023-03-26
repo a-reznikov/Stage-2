@@ -2,18 +2,29 @@
   border: 2px solid $color-link;
   border-radius: 100px;
   background: $color-background;
-  cursor: pointer;
   @include font(400, 2.0rem, 2.3rem, $color-link);
   width: 52px;
   height: 52px;
   letter-spacing: 0.06em;
+  cursor: default;
+  @extend %transition;
   &_colored {
+    cursor: pointer;
     background: $color-primary;
     color: $color-link-hover;
     border: none;
   }
   &_available {
+    cursor: pointer;
     border: 2px solid $color-primary;
     color: $color-link-hover;
+    &:hover {
+      background: $color-primary-light;
+      border: 2px solid $color-primary-light;
+    }
+    &:active {
+      background: $color-primary;
+      border: 2px solid $color-primary;
+    }
   }
 }

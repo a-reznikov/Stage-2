@@ -471,6 +471,10 @@ th {
   font-style: normal;
   font-stretch: normal;
 }
+.pag-button, .logo__subtitle, .logo__title, .nav-item__link, .footer-link, .card, .button__round, .button {
+  transition: all 0.3s ease-in-out;
+}
+
 body {
   font-family: "Georgia";
 }
@@ -574,14 +578,25 @@ img {
   background: #FAFAFA;
   border: 2px solid #F1CDB3;
 }
+.button_bordered:hover {
+  background: #FDDCC4;
+  border: 2px solid #FDDCC4;
+}
+.button_colored:hover {
+  background: #FDDCC4;
+}
 
 .button__round {
-  border: 2px solid #F1CDB3;
-  border-radius: 100px;
   width: 52px;
   height: 52px;
   background-color: #FFFFFF;
+  border: 2px solid #F1CDB3;
+  border-radius: 100px;
   cursor: pointer;
+}
+.button__round:hover {
+  background: #FDDCC4;
+  border: 2px solid #FDDCC4;
 }
 .button__round_arrow {
   display: block;
@@ -606,6 +621,18 @@ img {
 }
 .card__title {
   padding: 30px 0;
+}
+.card:hover {
+  cursor: pointer;
+  background: #FFFFFF;
+  box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
+}
+.card:hover .card__button {
+  background: #FFFFFF;
+}
+.card:hover .card__button:hover {
+  background: #FDDCC4;
+  border: 2px solid #FDDCC4;
 }
 
 .card__image-pets {
@@ -680,9 +707,13 @@ img {
   color: #F1CDB3;
 }
 
-.phone-link {
+.footer-link {
   text-decoration: none;
   color: #F1CDB3;
+}
+.footer-link:hover {
+  cursor: pointer;
+  color: #FFFFFF;
 }
 
 .contacts {
@@ -750,6 +781,9 @@ img {
   line-height: 2.4rem;
   color: #CDCDCD;
 }
+.nav-item__link:hover {
+  color: #FAFAFA;
+}
 
 .nav-item_active {
   position: relative;
@@ -771,6 +805,13 @@ img {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  cursor: pointer;
+}
+.logo:hover .logo__title {
+  color: #FDDCC4;
+}
+.logo:hover .logo__subtitle {
+  color: #CDCDCD;
 }
 
 .logo__title {
@@ -794,7 +835,6 @@ img {
   border: 2px solid #CDCDCD;
   border-radius: 100px;
   background: #F6F6F6;
-  cursor: pointer;
   font-weight: 400;
   font-size: 2rem;
   line-height: 2.3rem;
@@ -802,15 +842,33 @@ img {
   width: 52px;
   height: 52px;
   letter-spacing: 0.06em;
+  cursor: default;
 }
 .pag-button_colored {
+  cursor: pointer;
   background: #F1CDB3;
   color: #292929;
   border: none;
 }
 .pag-button_available {
+  cursor: pointer;
   border: 2px solid #F1CDB3;
   color: #292929;
+}
+.pag-button_available:hover {
+  background: #FDDCC4;
+  border: 2px solid #FDDCC4;
+}
+.pag-button_available:active {
+  background: #F1CDB3;
+  border: 2px solid #F1CDB3;
+}
+
+.logo:hover .logo__title {
+  color: #F1CDB3;
+}
+.logo:hover .logo__subtitle {
+  color: #F1CDB3;
 }
 
 .logo__title {
@@ -881,7 +939,7 @@ img {
   color: #545454;
 }
 .nav-item__link:hover {
-  color: #FAFAFA;
+  color: #292929;
 }
 
 .nav-item_active {
