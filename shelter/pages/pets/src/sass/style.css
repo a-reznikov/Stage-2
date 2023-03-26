@@ -490,6 +490,10 @@ html {
 
 body {
   font-size: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
 }
 
 h1 {
@@ -598,6 +602,10 @@ img {
   background: #FDDCC4;
   border: 2px solid #FDDCC4;
 }
+.button__round:active {
+  background: #F1CDB3;
+  border: 2px solid #F1CDB3;
+}
 .button__round_arrow {
   display: block;
   width: 14px;
@@ -653,6 +661,10 @@ img {
 .wrapper {
   max-width: 1200px;
   margin: auto;
+}
+
+.header {
+  z-index: 1;
 }
 
 .header__wrapper {
@@ -864,6 +876,10 @@ img {
   border: 2px solid #F1CDB3;
 }
 
+.header {
+  background: #FFFFFF;
+}
+
 .logo:hover .logo__title {
   color: #F1CDB3;
 }
@@ -883,6 +899,10 @@ img {
   font-size: 1.3rem;
   line-height: 1.5rem;
   color: #292929;
+}
+
+body {
+  background: #F6F6F6;
 }
 
 .pets {

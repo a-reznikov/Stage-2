@@ -1,3 +1,7 @@
+.header {
+  z-index: 1;
+}
+
 .header__wrapper {
   @include flex ();
   padding: 30px 0;
