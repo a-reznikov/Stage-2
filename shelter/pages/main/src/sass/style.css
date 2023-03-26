@@ -730,10 +730,10 @@ img {
 
 .contacts {
   align-self: flex-start;
-  margin-top: 16px;
+  margin-top: 17px;
   align-items: flex-start;
   max-width: 279px;
-  row-gap: 40px;
+  row-gap: 39.5px;
 }
 .contacts__email {
   display: flex;
@@ -755,7 +755,7 @@ img {
 
 .address {
   align-self: flex-start;
-  margin-top: 16px;
+  margin-top: 17px;
   align-items: flex-start;
   max-width: 302px;
 }
@@ -772,7 +772,7 @@ img {
 }
 
 .boston {
-  margin: 34px 0 32px 0;
+  margin: 33px 0 32px 0;
 }
 
 .not-only__container {
@@ -808,9 +808,9 @@ img {
 .about__content {
   align-self: flex-start;
   max-width: 430px;
-  margin-top: 14px;
+  margin-top: 16px;
   display: grid;
-  row-gap: 25px;
+  row-gap: 24px;
 }
 
 .about__title {
@@ -858,9 +858,10 @@ img {
 }
 
 .help__title {
+  margin-top: 2px;
   max-width: 315px;
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: 58px;
 }
 
 .help__content {
@@ -953,7 +954,7 @@ img {
 .nav__list {
   display: grid;
   grid-template-columns: repeat(4, auto);
-  column-gap: 35px;
+  column-gap: 36px;
   margin: 0;
   padding: 0;
 }
