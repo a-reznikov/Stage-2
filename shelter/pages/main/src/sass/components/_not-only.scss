@@ -1,5 +1,9 @@
 .not-only__container {
   padding-top: 180px;
+  @include media-laptop-l {
+    padding-top: 150px;
+    row-gap: 100px;
+  }
 }
 
 .not-only {
@@ -19,7 +23,31 @@
 }
 
 .not-only__content {
+  display: flex;
+  flex-direction: column;
   align-self: flex-start;
   margin-top: 163px;
+  flex-basis: 40%;
   max-width: 460px;
+  @include media-laptop-l {
+    margin: 0 124px;
+    flex-basis: 100%;
+    max-width: 905px;
+  }
+  .not-only__button {
+    max-width: 208px;
+    @include media-laptop-l {
+      align-self: center;
+    }
+  }
+}
+
+.not-only__image {
+  flex-basis: 60%;
+  max-width: 698px;
+  @include media-laptop-l {
+    align-self: flex-end;
+    margin-left: 139px;
+    flex-basis: 100%;
+  }
 }

@@ -12,6 +12,10 @@
   align-items: $align;
 }
 
+@mixin media-laptop-l {
+  @media (max-width: $laptop-l-width) { @content; }
+}
+
 @mixin media-tablet {
   @media (max-width: $tablet-width) { @content; }
 }

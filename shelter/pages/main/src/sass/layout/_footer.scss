@@ -8,6 +8,7 @@ padding: 40px 40px 0 40px;
 
 .footer__container {
   @include flex ();
+  padding-top: 40px;
 }
 
 .footer-title {

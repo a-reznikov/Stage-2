@@ -3,16 +3,19 @@
   &__container {
     max-width: 915px;
     margin: 0 auto;
+    padding: 80px 0 100px 0;
   }
 }
 
-.donation__wrapper {
-  padding: 80px 0 100px 0;
+.donation__image {
+  flex-basis: 57%;
+  max-width: 505px;
 }
 
 .donation__content {
-  @include flex($align: flex-start, $direction: column);
+  flex-basis: 43%;
   max-width: 380px;
+  @include flex($align: flex-start, $direction: column);
   row-gap: 20px;
 }
 
