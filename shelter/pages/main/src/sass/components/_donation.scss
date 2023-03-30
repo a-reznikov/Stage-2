@@ -1,9 +1,13 @@
 .donation {
   background: $color-background;
+  &__container {
+    max-width: 915px;
+    margin: 0 auto;
+  }
 }
 
 .donation__wrapper {
-  padding: 80px 182px 100px 183px;
+  padding: 80px 0 100px 0;
 }
 
 .donation__content {
