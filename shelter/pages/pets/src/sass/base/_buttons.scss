@@ -9,7 +9,6 @@
   cursor: default;
   @extend %transition;
   &_colored {
-    cursor: pointer;
     background: $color-primary;
     color: $color-link-hover;
     border: none;

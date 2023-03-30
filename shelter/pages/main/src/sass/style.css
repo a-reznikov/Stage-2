@@ -636,9 +636,6 @@ img {
   box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
 }
 .card:hover .card__button {
-  background: #FFFFFF;
-}
-.card:hover .card__button:hover {
   background: #FDDCC4;
   border: 2px solid #FDDCC4;
 }
@@ -920,9 +917,13 @@ img {
 .donation {
   background: #F6F6F6;
 }
+.donation__container {
+  max-width: 915px;
+  margin: 0 auto;
+}
 
 .donation__wrapper {
-  padding: 80px 182px 100px 183px;
+  padding: 80px 0 100px 0;
 }
 
 .donation__content {
@@ -986,6 +987,7 @@ img {
 }
 .nav-item_active .nav-item__link {
   color: #FAFAFA;
+  cursor: default;
 }
 
 /*# sourceMappingURL=style.css.map */

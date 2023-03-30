@@ -636,9 +636,6 @@ img {
   box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
 }
 .card:hover .card__button {
-  background: #FFFFFF;
-}
-.card:hover .card__button:hover {
   background: #FDDCC4;
   border: 2px solid #FDDCC4;
 }
@@ -811,6 +808,9 @@ img {
 .nav-item_active .nav-item__link {
   color: #FAFAFA;
 }
+.nav-item_active .nav-item__link_disable {
+  cursor: default;
+}
 
 .logo {
   display: flex;
@@ -857,7 +857,6 @@ img {
   cursor: default;
 }
 .pag-button_colored {
-  cursor: pointer;
   background: #F1CDB3;
   color: #292929;
   border: none;
@@ -966,6 +965,7 @@ body {
   position: relative;
 }
 .nav-item_active .nav-item__link {
+  cursor: default;
   color: #292929;
 }
 

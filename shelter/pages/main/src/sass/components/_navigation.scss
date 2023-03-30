@@ -30,6 +30,7 @@
     background: $color-primary;
   }
   .nav-item__link {
-    color: $color-light-intense;;
+    color: $color-light-intense;
+    cursor: default;
   }
 }

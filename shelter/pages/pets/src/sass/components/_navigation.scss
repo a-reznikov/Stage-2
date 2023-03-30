@@ -10,6 +10,7 @@
 .nav-item_active {
   position: relative;
   .nav-item__link {
+    cursor: default;
     color: $color-link-hover;
   }
 }
