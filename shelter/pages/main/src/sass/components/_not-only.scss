@@ -72,10 +72,13 @@
   @include media-tablet {
     max-height: 593px;
   }
-  @include media-tablet-m {
-    margin-left: 90px;
+  @include media-tablet-l {
+    max-height: 100%;
   }
   @include media-mobile-l {
     margin-left: 40px;
+  }
+  @include media-mobile {
+    padding-bottom: 0.83px;
   }
 }
