@@ -4,6 +4,9 @@
     padding-top: 150px;
     row-gap: 100px;
   }
+  @include media-tablet-m {
+    row-gap: 105px;
+  }
 }
 
 .not-only {
@@ -17,6 +20,11 @@
   @include media-tablet-m {
     margin: 0 auto 42px;
     text-align: center;
+  }
+  @include media-mobile-l {
+    margin: 0 20px 42px;
+    @include font(400, 2.5rem, 3.2rem, $color-light);
+    letter-spacing: 0.06em;
   }
 }
 
@@ -63,5 +71,11 @@
   }
   @include media-tablet {
     max-height: 593px;
+  }
+  @include media-tablet-m {
+    margin-left: 90px;
+  }
+  @include media-mobile-l {
+    margin-left: 40px;
   }
 }

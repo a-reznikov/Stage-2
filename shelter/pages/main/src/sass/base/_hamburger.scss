@@ -14,14 +14,14 @@
   @extend %hamburger-line;
 }
 
+.hamburger__line:nth-child(1) {
+  transform: translateY(0px);
+}
+
 .hamburger__line:nth-child(2) {
-  transform: translateY(8px);
+  transform: translateY(10px);
 }
 
 .hamburger__line:nth-child(3) {
-  transform: translateY(16px);
-}
-
-.hamburger__line:nth-child(4) {
-  transform: translateY(24px);
+  transform: translateY(20px);
 }
