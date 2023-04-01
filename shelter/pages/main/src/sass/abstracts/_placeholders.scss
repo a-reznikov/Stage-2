@@ -9,3 +9,11 @@
 %font-second {
   font-family: 'Arial', sans-serif ;
 }
+
+%hamburger-line {
+  position: absolute;
+  display: inline-block;
+  background-color: $color-primary;
+  height: 2px;
+  width: 100%;
+}

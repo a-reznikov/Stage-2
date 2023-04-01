@@ -1,0 +1,27 @@
+.hamburger {
+  display: none;
+  width: 30px;
+  height: 22px;
+  cursor: pointer;
+  @include media-tablet-l {
+    display: block;
+    position: relative;
+    z-index: 2;
+  }
+}
+
+.hamburger__line {
+  @extend %hamburger-line;
+}
+
+.hamburger__line:nth-child(2) {
+  transform: translateY(8px);
+}
+
+.hamburger__line:nth-child(3) {
+  transform: translateY(16px);
+}
+
+.hamburger__line:nth-child(4) {
+  transform: translateY(24px);
+}

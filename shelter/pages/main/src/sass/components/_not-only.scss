@@ -14,12 +14,20 @@
 .not-only__title {
   max-width: 310px;
   margin-bottom: 42px;
+  @include media-tablet-m {
+    margin: 0 auto 42px;
+    text-align: center;
+  }
 }
 
 .not-only__text {
   color: $color-link;
   margin-bottom: 42px;
   text-align: left;
+  @include media-tablet-m {
+    margin: 0 auto 42px;
+    text-align: center;
+  }
 }
 
 .not-only__content {
@@ -33,6 +41,9 @@
     margin: 0 124px;
     flex-basis: 100%;
     max-width: 905px;
+  }
+  @include media-tablet-m {
+    margin: 0;
   }
   .not-only__button {
     max-width: 208px;

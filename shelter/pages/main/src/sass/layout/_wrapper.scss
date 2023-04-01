@@ -5,4 +5,7 @@
   @include media-laptop-l {
     padding: 0 30px;
   }
+  @include media-tablet-m {
+    padding: 0 10px;
+  }
 }
