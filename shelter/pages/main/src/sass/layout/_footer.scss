@@ -9,6 +9,13 @@ padding: 40px 40px 0 40px;
 .footer__container {
   @include flex ();
   padding-top: 40px;
+  @include media-laptop-l {
+    column-gap: 20px;
+  }
+  @include media-laptop-m {
+    padding-top: 31px;
+    flex-wrap: wrap;
+  }
 }
 
 .footer-title {
@@ -46,6 +53,10 @@ padding: 40px 40px 0 40px;
     width: 100%;
     max-width: 239px;
   }
+  @include media-laptop-m {
+    margin-top: 0;
+    padding-left: 34px;
+  }
 }
 
 .address {
@@ -53,6 +64,10 @@ padding: 40px 40px 0 40px;
   margin-top: 17px;
   align-items: flex-start;
   max-width: 302px;
+  @include media-laptop-m {
+    margin-top: 0;
+    padding-right: 34px;
+  }
 }
 
 .address-city {
@@ -65,4 +80,11 @@ padding: 40px 40px 0 40px;
 
 .boston {
   margin: 33px 0 32px 0;
+}
+
+.footer__image {
+  @include media-laptop-m {
+    padding-top: 65px;
+    margin: 0 auto;
+  }
 }

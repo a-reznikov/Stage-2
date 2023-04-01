@@ -10,6 +10,11 @@
 .donation__image {
   flex-basis: 57%;
   max-width: 505px;
+  @include media-laptop-l {
+    order: 2;
+    flex-basis: 100%;
+    margin-top: 60px;
+  }
 }
 
 .donation__content {
@@ -17,6 +22,11 @@
   max-width: 380px;
   @include flex($align: flex-start, $direction: column);
   row-gap: 20px;
+  @include media-laptop-l {
+    flex-basis: 100%;
+    margin: 0 164px;
+    max-width: 915px;
+  }
 }
 
 .donation-card {

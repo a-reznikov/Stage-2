@@ -710,6 +710,17 @@ img {
   align-items: center;
   padding-top: 40px;
 }
+@media (max-width: 1110px) {
+  .footer__container {
+    column-gap: 20px;
+  }
+}
+@media (max-width: 980px) {
+  .footer__container {
+    padding-top: 31px;
+    flex-wrap: wrap;
+  }
+}
 
 .footer-title {
   color: #FFFFFF;
@@ -752,12 +763,24 @@ img {
   width: 100%;
   max-width: 239px;
 }
+@media (max-width: 980px) {
+  .contacts {
+    margin-top: 0;
+    padding-left: 34px;
+  }
+}
 
 .address {
   align-self: flex-start;
   margin-top: 17px;
   align-items: flex-start;
   max-width: 302px;
+}
+@media (max-width: 980px) {
+  .address {
+    margin-top: 0;
+    padding-right: 34px;
+  }
 }
 
 .address-city {
@@ -773,6 +796,13 @@ img {
 
 .boston {
   margin: 33px 0 32px 0;
+}
+
+@media (max-width: 980px) {
+  .footer__image {
+    padding-top: 65px;
+    margin: 0 auto;
+  }
 }
 
 .wrapper {
@@ -1062,6 +1092,13 @@ img {
   flex-basis: 57%;
   max-width: 505px;
 }
+@media (max-width: 1110px) {
+  .donation__image {
+    order: 2;
+    flex-basis: 100%;
+    margin-top: 60px;
+  }
+}
 
 .donation__content {
   flex-basis: 43%;
@@ -1071,6 +1108,13 @@ img {
   justify-content: space-between;
   align-items: flex-start;
   row-gap: 20px;
+}
+@media (max-width: 1110px) {
+  .donation__content {
+    flex-basis: 100%;
+    margin: 0 164px;
+    max-width: 915px;
+  }
 }
 
 .donation-card {
