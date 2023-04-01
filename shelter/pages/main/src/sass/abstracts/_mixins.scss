@@ -16,6 +16,10 @@
   @media (max-width: $laptop-l-width) { @content; }
 }
 
+@mixin media-laptop-m {
+  @media (max-width: $laptop-m-width) { @content; }
+}
+
 @mixin media-tablet {
   @media (max-width: $tablet-width) { @content; }
 }

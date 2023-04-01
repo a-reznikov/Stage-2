@@ -50,4 +50,7 @@
     margin-left: 139px;
     flex-basis: 100%;
   }
+  @include media-tablet {
+    max-height: 593px;
+  }
 }

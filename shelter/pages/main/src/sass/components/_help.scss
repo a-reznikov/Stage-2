@@ -1,6 +1,12 @@
 .help__container {
   @include flex($direction: column);
   padding: 80px 87px 100px;
+  @media (max-width: 1279px) {
+    padding: 80px 39px 100px;
+  }
+  @include media-tablet {
+    padding: 80px 39px 100px;
+  }
 }
 
 .help__title {
@@ -16,6 +22,15 @@
   justify-content: center;
   row-gap: 55px;
   column-gap: 119px;
+  @media (max-width: 1279px) {
+    column-gap: 10%;
+  }
+  @include media-laptop-l {
+    column-gap: 9%;
+  }
+  @include media-tablet {
+    justify-content: space-between;
+  }
 }
 
 .help-item {
@@ -23,5 +38,8 @@
   height: 113px;
   &__title {
     text-align: center;
+  }
+  @include media-tablet {
+    width: 170px;
   }
 }
