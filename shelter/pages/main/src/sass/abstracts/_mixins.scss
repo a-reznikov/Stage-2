@@ -36,6 +36,9 @@
   @media (max-width: $mobile-l-width) { @content; }
 }
 
+@mixin media-mobile-m {
+  @media (max-width: $mobile-m-width) { @content; }
+}
 
 @mixin media-mobile {
   @media (max-width: $mobile-width) { @content; }

@@ -4,6 +4,9 @@
     max-width: 915px;
     margin: 0 auto;
     padding: 80px 0 100px 0;
+    @include media-tablet-m {
+      padding: 42px 0 42.83px 0;
+    }
   }
 }
 
@@ -14,6 +17,10 @@
     order: 2;
     flex-basis: 100%;
     margin-top: 60px;
+  }
+  @include media-tablet-m {
+    margin-top: 42px;
+    padding: 0 20px;
   }
 }
 
@@ -26,6 +33,34 @@
     flex-basis: 100%;
     margin: 0 164px;
     max-width: 915px;
+  }
+  @include media-tablet-m {
+    margin: 0 auto;
+    align-items: center;
+    .donation__title {
+      text-align: center;
+    }
+    .donation__text {
+      padding: 0 10px;
+      text-align: center;
+    }
+  }
+  @include media-mobile-l {
+    margin: 0 auto;
+    align-items: center;
+    .donation__title {
+      @include font(400, 2.5rem, 3.2rem, $color-text-title);
+    }
+    .donation__subtitle {
+      letter-spacing: 0;
+      @include font(400, 1.5rem, 2.4rem, $color-text-title);
+    }
+  }
+  @include media-mobile-m {
+    .donation__text {
+      letter-spacing: 0;
+      text-align: justify;  
+    }
   }
 }
 
@@ -41,5 +76,10 @@
   &:hover {
     cursor: pointer;
     background: $color-primary-light;
+  }
+  &__number {
+    @include media-mobile-l {
+      @include font(400, 1.5rem, 1.7rem, $color-text-title);
+    }
   }
 }

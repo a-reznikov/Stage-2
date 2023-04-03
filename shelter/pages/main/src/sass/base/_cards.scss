@@ -18,6 +18,22 @@
       border: 2px solid $color-primary-light;
     }
   }
+  @include media-mobile-l {
+    margin: 0 20px;
+  }
+  @include media-mobile-m {
+    margin: 0;
+  }
+  &__tablet {
+    @include media-laptop-l {
+      display: none;
+    }
+  }
+  &__mobile {
+    @include media-tablet-m {
+      display: none;
+    }
+  }
 }
 
 .card__image-pets {

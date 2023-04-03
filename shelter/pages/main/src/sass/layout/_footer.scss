@@ -16,10 +16,24 @@ padding: 40px 40px 0 40px;
     padding-top: 31px;
     flex-wrap: wrap;
   }
+  @include media-tablet-m {
+    row-gap: 40px;
+    flex-direction: column;
+  }
+  @include media-mobile-l {
+    padding-top: 30px;
+  }
 }
 
 .footer-title {
   color: $color-light;
+  @include media-tablet-m {
+    text-align: center;
+  }
+  @include media-mobile-l {
+    padding: 0 11px 1px;
+    @include font(400, 2.5rem, 3.2rem, $color-light);
+  }
 }
 
 .footer-text {
@@ -57,6 +71,14 @@ padding: 40px 40px 0 40px;
     margin-top: 0;
     padding-left: 34px;
   }
+  @include media-tablet-m {
+    align-self: center;
+    padding-left: 0;
+  }
+  @include media-mobile-l {
+    margin: 0 11px;
+    align-items: center;
+  }
 }
 
 .address {
@@ -68,7 +90,13 @@ padding: 40px 40px 0 40px;
     margin-top: 0;
     padding-right: 34px;
   }
+  @include media-tablet-m {
+    align-self: center;
+    padding: 0;
+    row-gap: 40px;
+  }
 }
+
 
 .address-city {
   @include flex ();
@@ -80,11 +108,18 @@ padding: 40px 40px 0 40px;
 
 .boston {
   margin: 33px 0 32px 0;
+  @include media-tablet-m {
+    margin: 0;
+  }
 }
 
 .footer__image {
   @include media-laptop-m {
     padding-top: 65px;
     margin: 0 auto;
+  }
+  @include media-tablet-m {
+    align-self: center;
+    padding: 0 20px;
   }
 }
