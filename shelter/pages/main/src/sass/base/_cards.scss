@@ -18,18 +18,21 @@
       border: 2px solid $color-primary-light;
     }
   }
+}
+
+.our-friends__card {
   @include media-mobile-l {
     margin: 0 20px;
   }
   @include media-mobile-m {
     margin: 0;
   }
-  &__tablet {
+  &_tablet {
     @include media-laptop-l {
       display: none;
     }
   }
-  &__mobile {
+  &_mobile {
     @include media-tablet-m {
       display: none;
     }

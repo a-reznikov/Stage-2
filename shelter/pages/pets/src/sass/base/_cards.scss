@@ -1,0 +1,7 @@
+.pets__card {
+  &_laptop {
+    @include media-laptop {
+      display: none;
+    }
+  }
+}

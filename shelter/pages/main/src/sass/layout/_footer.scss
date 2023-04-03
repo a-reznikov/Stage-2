@@ -95,6 +95,11 @@ padding: 40px 40px 0 40px;
     padding: 0;
     row-gap: 40px;
   }
+  &__title {
+    @include media-mobile-l {
+      padding: 0 11px 0px;
+    }
+  }
 }
 
 
@@ -104,6 +109,12 @@ padding: 40px 40px 0 40px;
   &__text {
     max-width: 260px;
   }
+  &__image {
+    flex-shrink: 0;
+  }
+  // @include media-tablet-m {
+  //   column-gap: 19;
+  // }
 }
 
 .boston {
@@ -120,6 +131,6 @@ padding: 40px 40px 0 40px;
   }
   @include media-tablet-m {
     align-self: center;
-    padding: 0 20px;
+    padding: 0 20px 0.35px;
   }
 }

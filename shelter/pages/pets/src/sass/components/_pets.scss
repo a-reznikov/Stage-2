@@ -23,6 +23,20 @@ body {
     flex-wrap: wrap;
     column-gap: 40px;
     row-gap: 30px;
+    @media (max-width: 1279px) {
+      column-gap: 1%;
+    }
+    @include media-laptop {
+      padding: 0;
+    }
+  }
+  @include media-laptop {
+    padding: 80px 10px 76px;
+    row-gap: 30px;
+  }
+  @include media-laptop-s {
+    padding: 80px 64px 76px;
+    row-gap: 30px;
   }
 }
 
@@ -35,4 +49,7 @@ body {
   @include flex ();
   width: 100%;
   max-width: 340px;
+  @include media-laptop {
+    padding-top: 10px;
+  }
 }
