@@ -14,6 +14,10 @@
 .logo__title {
   @include font(400, 3.2rem, 3.5rem, $color-primary);
   @extend %transition;
+  @include media-mobile-l {
+    letter-spacing: 0.06em;
+    margin-top: 1px;
+  }
 }
 
 .logo__subtitle {
@@ -23,4 +27,8 @@
   @include font(400, 1.3rem, 1.5rem, $color-light);
   letter-spacing: 0.1em;
   @extend %transition;
+  @include media-mobile-l {
+    padding-top: 9px;
+    padding-right: 1px;
+  }
 }

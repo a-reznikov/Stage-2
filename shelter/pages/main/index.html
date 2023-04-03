@@ -11,19 +11,25 @@
 <body>
   <header class="header">
     <div class="wrapper header__wrapper">
-      <div class="logo" onclick="window.location.href = '#'">
-        <h3 class="logo__title">Cozy House</h3>
-        <p class="logo__subtitle">Shelter for pets in Boston</p>
+      <div class="header__container">
+        <div class="logo" onclick="window.location.href = '#'">
+          <h3 class="logo__title">Cozy House</h3>
+          <p class="logo__subtitle">Shelter for pets in Boston</p>
+        </div>
+        <nav class="nav">
+          <ul class="nav__list" id="nav-list">
+            <li class="nav__item nav-item nav-item_active"><span class="nav-item__link">About the shelter</span></li>
+            <li class="nav__item nav-item"><a href="../pets/index.html" class="nav-item__link">Our pets</a></li>
+            <li class="nav__item nav-item"><a href="#help" class="nav-item__link">Help the shelter</a></li>
+            <li class="nav__item nav-item"><a href="#contacts" class="nav-item__link">Contacts</a></li>
+          </ul>
+        </nav>
+        <span class="hamburger" id="burger">
+          <span class="hamburger__line hamburger__line_cross"></span>
+          <span class="hamburger__line hamburger__line_hiden"></span>
+          <span class="hamburger__line hamburger__line_cross"></span> 
+        </span>
       </div>
-      <nav class="nav">
-        <ul class="nav__list" id="nav-list">
-          <!-- <li class="nav__item nav-item nav-item_active"><a href="#" class="nav-item__link nav-item__link_disable">About the shelter</a></li> -->
-          <li class="nav__item nav-item nav-item_active"><span class="nav-item__link">About the shelter</span></li>
-          <li class="nav__item nav-item"><a href="../pets/index.html" class="nav-item__link">Our pets</a></li>
-          <li class="nav__item nav-item"><a href="#help" class="nav-item__link">Help the shelter</a></li>
-          <li class="nav__item nav-item"><a href="#contacts" class="nav-item__link">Contacts</a></li>
-        </ul>
-      </nav>
     </div>
   </header>
   <main class="main">
@@ -64,21 +70,21 @@
               <img src="src/assets/img/icons/Arrow.svg" alt="arrow" class="button__round_arrow button__round_left">
             </button>
             <div class="layout-3-column slider__cards">
-              <article class="layout-3-row card">
+              <article class="layout-3-row card our-friends__card">
                 <div class="card__image">
                   <img src="../../assets/images/pets/katrine-min.png" alt="pets-katrine" class="card__image-pets">
                 </div>
                 <h4 class="card__title">Katrine</h4>
                 <button class="card__button button button_bordered">Learn more</button>
               </article>
-              <article class="layout-3-row card">
+              <article class="layout-3-row card our-friends__card_mobile">
                 <div class="card__image">
                   <img src="../../assets/images/pets/jennifer-min.png" alt="pets-jennifer" class="card__image-pets">
                 </div>
                 <h4 class="card__title">Jennifer</h4>
                 <button class="card__button button button_bordered">Learn more</button>
               </article>
-              <article class="layout-3-row card">
+              <article class="layout-3-row card our-friends__card_tablet">
                 <div class="card__image">
                   <img src="../../assets/images/pets/woody-min.png" alt="pets-woody" class="card__image-pets">
                 </div>
