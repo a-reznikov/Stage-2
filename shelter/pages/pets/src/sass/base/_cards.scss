@@ -4,4 +4,9 @@
       display: none;
     }
   }
+  &_mobile {
+    @include media-tablet-s {
+      display: none;
+    }
+  }
 }
