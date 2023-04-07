@@ -1,1 +1,18 @@
-console.log("1. Вёрстка страницы Main соответствует макету при ширине экрана 1280px: +14\nблок <header>: +2\nблок Not only: +2\nблок About: +2\nблок Our Friends: +2\nблок Help: +2\nблок In addition: +2\nблок <footer>: +2\n2. Вёрстка страницы Main соответствует макету при ширине экрана 768px: +14\nблок <header>: +2\nблок Not only: +2\nблок About: +2\nблок Our Friends: +2\nблок Help: +2\nблок In addition: +2\nблок <footer>: +2\n3. Вёрстка страницы Main соответствует макету при ширине экрана 320px: +14\nблок <header>: +2\nблок Not only: +2\nблок About: +2\nблок Our Friends: +2\nблок Help: +2\nблок In addition: +2\nблок <footer>: +2\n4. Вёрстка страницы Pets соответствует макету при ширине экрана 1280px: +6\nблок <header>: +2\nблок Our Friends: +2\nблок <footer>: +2\n5. Вёрстка страницы Pets соответствует макету при ширине экрана 768px: +6\nблок <header>: +2\nблок Our Friends: +2\nблок <footer>: +2\n6. Вёрстка страницы Pets соответствует макету при ширине экрана 320px: +6\nблок <header>: +2\nблок Our Friends: +2\nблок <footer>: +2\n7. Ни на одном из разрешений до 320px включительно не появляется горизонтальная полоса прокрутки, справа от отдельных блоков не появляются белые поля. Весь контент страницы при этом сохраняется: не обрезается и не удаляется: +20\nнет полосы прокрутки при ширине страницы Main от 1280рх до 768рх: +5\nнет полосы прокрутки при ширине страницы Main от 768рх до 320рх: +5\nнет полосы прокрутки при ширине страницы Pets от 1280рх до 768рх: +5\nнет полосы прокрутки при ширине страницы Pets от 768рх до 320рх: +5\n8. Верстка резиновая: при плавном изменении размера экрана от 1280px до 320px верстка подстраивается под этот размер, элементы верстки меняют свои размеры и расположение, не наезжают друг на друга, изображения могут менять размер, но сохраняют правильные пропорции: +8\nна странице Main: +4\nна странице Pets: +4\n9. При ширине экрана меньше 768px на обеих страницах меню в хедере скрывается, появляется иконка бургер-меню: +4\nОткрытие меню при клике на иконку бургер-меню на текущем этапе не проверяется\n10. Верстка обеих страниц валидная: для проверки валидности вёрстки используйте сервис https://validator.w3.org/ : +8\n Итоговая оценка: 100");
+const body = document.querySelector('.body');
+const wrapper = document.querySelector('.wrapper');
+const burgerIcon = document.querySelector('.hamburger');
+const navigation = document.querySelector('.nav');
+const naviLinks = document.querySelectorAll('.nav-item__link');
+
+function toggleBurgerMenu() {
+  burgerIcon.classList.toggle('hamburger_opened');
+  navigation.classList.toggle('nav_opened');
+  body.classList.toggle("body_overlay");
+  wrapper.classList.toggle("wrapper_overlay");
+}
+
+burgerIcon.onclick = toggleBurgerMenu;
+
+naviLinks.forEach(links => {
+  links.onclick = toggleBurgerMenu;
+});
