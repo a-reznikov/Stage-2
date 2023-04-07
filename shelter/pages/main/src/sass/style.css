@@ -471,7 +471,7 @@ th {
   font-style: normal;
   font-stretch: normal;
 }
-.nav-item__link, .donation-card, .logo__subtitle, .logo__title, .footer-link, .card, .button__round, .button {
+.nav-item__link, .nav, .donation-card, .logo__subtitle, .logo__title, .footer-link, .hamburger, .card, .button__round, .button {
   transition: all 0.3s ease-in-out;
 }
 
@@ -724,6 +724,9 @@ img {
     position: relative;
     z-index: 2;
   }
+}
+.hamburger_opened {
+  transform: rotate(-90deg);
 }
 
 .hamburger__line:nth-child(1) {
@@ -1507,8 +1510,32 @@ img {
 
 @media (max-width: 767px) {
   .nav {
-    display: none;
+    position: fixed;
+    display: flex;
+    width: 320px;
+    height: 100vh;
+    top: 0;
+    right: -320px;
+    background: #292929;
   }
+  .nav .nav__list {
+    grid-template-rows: repeat(4, auto);
+    row-gap: 40px;
+    margin: auto auto;
+    padding: 0;
+    column-gap: 0;
+    grid-template-columns: 243px;
+  }
+  .nav .nav__list .nav-item {
+    text-align: center;
+  }
+  .nav .nav__list .nav-item .nav-item__link {
+    font-size: 3.2rem;
+    line-height: 5.1rem;
+  }
+}
+.nav_opened {
+  right: 0;
 }
 
 .nav__list {

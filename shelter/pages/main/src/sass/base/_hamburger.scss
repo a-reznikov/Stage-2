@@ -3,10 +3,14 @@
   width: 30px;
   height: 22px;
   cursor: pointer;
+  @extend %transition;
   @include media-tablet-l {
     display: block;
     position: relative;
     z-index: 2;
+  }
+  &_opened {
+    transform: rotate(-90deg);
   }
 }
 
