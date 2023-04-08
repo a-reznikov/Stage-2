@@ -1287,4 +1287,8 @@ body {
   color: #292929;
 }
 
+.nav_opened {
+  background: #FFFFFF;
+}
+
 /*# sourceMappingURL=style.css.map */

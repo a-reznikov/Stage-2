@@ -28,3 +28,9 @@ naviLinks.forEach(links => {
 
 
 burger.onclick = toggleBurgerMenu;
+
+window.addEventListener('click', (event) => { 
+  if (isOpened && !navigation.contains(event.target) && !burger.contains(event.target)) {
+    toggleBurgerMenu();
+  };
+}, false);
