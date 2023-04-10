@@ -2,6 +2,8 @@
   padding-bottom: 30px;
   background: $color-light-intense;
   border-radius: 9px;
+  // flex-shrink: 0;
+  min-width: 270px;
   @extend %transition;
   &__image {
     max-width: 270px;

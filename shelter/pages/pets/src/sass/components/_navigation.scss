@@ -14,3 +14,9 @@
     color: $color-link-hover;
   }
 }
+
+.nav {
+  &_opened {
+    background: $color-light;
+  }
+}
