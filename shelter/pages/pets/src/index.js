@@ -3,8 +3,10 @@ import { Cards } from './scripts/cards'
 
 window.onload = function () {
   
-  renderCards();
+  startTemplate();
 }
+
+let widthScreen = window.innerWidth;
 
 const body = document.querySelector('.body');
 const wrapper = document.querySelector('.wrapper');
@@ -118,6 +120,54 @@ let showPets = randomPets.slice(begin, amountShowCards);
 console.log(showPets);
 
 //Render cards
+
+
+const mediaSixCards = window.matchMedia("(max-width: 1193px)");
+const mediaThreeCards = window.matchMedia("(max-width: 610px)");
+
+function reloadCards(amount) {
+  MaxPages = resultArray.length / amount;
+  page = 1;
+  begin = 0;
+  end = amount;
+  showPets = randomPets.slice(begin, amount);
+  renderCards();
+}
+
+mediaSixCards.onchange = (e) => {
+  if (e.matches) {
+    amountShowCards = 6;
+    reloadCards(amountShowCards);
+  } else {
+    amountShowCards = 8;
+    reloadCards(amountShowCards);
+  }
+};
+
+mediaThreeCards.onchange = (e) => {
+  if (e.matches) {
+    amountShowCards = 3;
+    reloadCards(amountShowCards);
+  } else {
+    amountShowCards = 6;
+    reloadCards(amountShowCards);
+  }
+};
+
+
+function startTemplate() {
+  if (widthScreen >= 1193) {
+    amountShowCards = 8;
+    reloadCards(amountShowCards)
+  } else if(widthScreen <= 610) {
+    amountShowCards = 3;
+    reloadCards(amountShowCards)
+  } else {
+    amountShowCards = 6;
+    reloadCards(amountShowCards)
+  }
+}
+
 const renderCards = () => {
   const petContainer = getPetContainer();
   generateCards(showPets).forEach(petCards => {
@@ -161,7 +211,7 @@ function showPrevPage() {
     firstPagButton.classList.remove('pag-button_available');
     prevPagButton.removeEventListener('click', showPrevPage, false);
     firstPagButton.removeEventListener('click', showFirstPage, false);
-  } else if(page <= MaxPages) {
+  } else if(page <= MaxPages && page != 1) {
     page --;
     console.log(page);
     numberPag.textContent = `${page}`;
