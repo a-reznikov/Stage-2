@@ -102,7 +102,10 @@ for (let i = 0; i < 6; i++) {
 console.log(resultArray);
 
 let amountShowCards = 8;
-let pages = 0;
+let MaxPages = resultArray.length / amountShowCards;
+let page = 1;
+let begin = 0;
+let end = amountShowCards;
 
 const randomPets = [];
 resultArray.forEach(element => {
@@ -111,7 +114,7 @@ resultArray.forEach(element => {
 
 console.log(randomPets);
 
-let showPets = randomPets.slice(pages, amountShowCards);
+let showPets = randomPets.slice(begin, amountShowCards);
 console.log(showPets);
 
 //Render cards
@@ -135,5 +138,120 @@ const generateCards = (showPets) => {
   });
   return petCards;
 }
+
+
+//Cnange Show
+const firstPagButton = document.querySelector('.pag-button_first');
+const prevPagButton = document.querySelector('.pag-button_prev');
+const numberPag = document.querySelector('.pag-button_number');
+const nextPagButton = document.querySelector('.pag-button_next');
+const lastPagButton = document.querySelector('.pag-button_last');
+
+function showPrevPage() {
+  if (page === 2) {
+    page --;
+    console.log(page);
+    numberPag.textContent = `${page}`;
+    begin -= amountShowCards;
+    end -= amountShowCards;
+    console.log(begin, end);
+    showPets = randomPets.slice(begin, end);
+    renderCards();
+    prevPagButton.classList.remove('pag-button_available');
+    firstPagButton.classList.remove('pag-button_available');
+    prevPagButton.removeEventListener('click', showPrevPage, false);
+    firstPagButton.removeEventListener('click', showFirstPage, false);
+  } else if(page <= MaxPages) {
+    page --;
+    console.log(page);
+    numberPag.textContent = `${page}`;
+    begin -= amountShowCards;
+    end -= amountShowCards;
+    console.log(begin, end);
+    showPets = randomPets.slice(begin, end);
+    renderCards();
+    nextPagButton.classList.add('pag-button_available');
+    lastPagButton.classList.add('pag-button_available');
+    nextPagButton.addEventListener('click', showNextPage, false);
+    lastPagButton.addEventListener('click', showLastPage, false);
+  }
+}
+
+function showNextPage() {
+  if (page === MaxPages - 1) {
+    page ++;
+    console.log(page);
+    numberPag.textContent = `${page}`;
+    begin += amountShowCards;
+    end += amountShowCards;
+    console.log(begin, end);
+    showPets = randomPets.slice(begin, end);
+    renderCards();
+    nextPagButton.classList.remove('pag-button_available');
+    lastPagButton.classList.remove('pag-button_available');
+    nextPagButton.removeEventListener('click', showNextPage, false);
+    lastPagButton.removeEventListener('click', showLastPage, false);
+  } else if (page >= 1) {
+    page ++;
+    console.log(page);
+    numberPag.textContent = `${page}`;
+    begin += amountShowCards;
+    end += amountShowCards;
+    console.log(begin, end);
+    showPets = randomPets.slice(begin, end);
+    renderCards();
+    firstPagButton.classList.add('pag-button_available');
+    prevPagButton.classList.add('pag-button_available');
+    prevPagButton.addEventListener('click', showPrevPage, false);
+    firstPagButton.addEventListener('click', showFirstPage, false);
+  }
+}
+
+function showFirstPage() {
+  page = 1;
+  console.log(page);
+  numberPag.textContent = `${page}`;
+  begin = 0;
+  end = amountShowCards;
+  console.log(begin, end);
+  showPets = randomPets.slice(begin, end);
+  renderCards();
+  prevPagButton.classList.remove('pag-button_available');
+  firstPagButton.classList.remove('pag-button_available');
+  prevPagButton.removeEventListener('click', showPrevPage, false);
+  firstPagButton.removeEventListener('click', showFirstPage, false);
+
+  nextPagButton.classList.add('pag-button_available');
+  lastPagButton.classList.add('pag-button_available');
+  nextPagButton.addEventListener('click', showNextPage, false);
+  lastPagButton.addEventListener('click', showLastPage, false);
+}
+
+
+function showLastPage() {
+  page = MaxPages;
+  console.log(page);
+  numberPag.textContent = `${page}`;
+  begin = (MaxPages - 1) * amountShowCards;
+  end = MaxPages * amountShowCards;
+  console.log(begin, end);
+  showPets = randomPets.slice(begin, end);
+  renderCards();
+  nextPagButton.classList.remove('pag-button_available');
+  lastPagButton.classList.remove('pag-button_available');
+  nextPagButton.removeEventListener('click', showNextPage, false);
+  lastPagButton.removeEventListener('click', showLastPage, false);
+
+  prevPagButton.classList.add('pag-button_available');
+  firstPagButton.classList.add('pag-button_available');
+  prevPagButton.addEventListener('click', showPrevPage, false);
+  firstPagButton.addEventListener('click', showFirstPage, false);
+}
+
+
+firstPagButton.addEventListener('click', showFirstPage, false);
+prevPagButton.addEventListener('click', showPrevPage, false);
+nextPagButton.addEventListener('click', showNextPage, false);
+lastPagButton.addEventListener('click', showLastPage, false);
 
 
