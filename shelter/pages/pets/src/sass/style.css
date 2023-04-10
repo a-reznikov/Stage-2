@@ -636,6 +636,7 @@ img {
   border: 2px solid #F1CDB3;
   border-radius: 100px;
   cursor: pointer;
+  flex-shrink: 0;
 }
 .button__round:hover {
   background: #FDDCC4;
@@ -662,6 +663,7 @@ img {
   padding-bottom: 30px;
   background: #FAFAFA;
   border-radius: 9px;
+  min-width: 270px;
 }
 .card__image {
   max-width: 270px;
