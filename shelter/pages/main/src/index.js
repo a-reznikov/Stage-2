@@ -3,7 +3,7 @@ import { Cards } from './scripts/cards'
 
 window.onload = function () {
   
-  renderCards();
+  startTemplate();
 }
 
 //Burger
@@ -48,17 +48,15 @@ window.addEventListener('click', (event) => {
 //Cards generator
 const prevButtonSlider = document.querySelector('.button-slider_prev');
 const nextButtonSlider = document.querySelector('.button-slider_next');
-const sliderCards = document.querySelector('.slider__cards');
-const sliderContainer = document.querySelector('.slider-wrapper__container');
-let widthScreen = window.innerWidth;
-let widthSlider = sliderCards.clientWidth;
-let widthContainer = sliderContainer.clientWidth;
-console.log(widthSlider);
-console.log(widthContainer);
 let amountShowCards = 0;
+const mediaTwoCards = window.matchMedia("(max-width: 1110px)");
+const mediaOneCards = window.matchMedia("(max-width: 767px)");
+
+
+let widthScreen = window.innerWidth;
 let allCards = dataPets;
-let withoutCurrentSlide = allCards;
-let tapeSlider = [];
+let withoutCurrentSlide = [];
+withoutCurrentSlide.push(...allCards);
 let prevSlide = [];
 let currentSlide = [];
 let nextSlide = [];
@@ -69,7 +67,7 @@ function randomCard(array) {
   return randomNumberCard;
 }
 
-function createArrayCards(amount, arrayCards) {
+function createArrayCards(amount, arrayCards, withoutCurrentSlide) {
   if (arrayCards === currentSlide) {
     while (amount != 0) {
       let numberCard = randomCard(withoutCurrentSlide);
@@ -90,23 +88,54 @@ function createArrayCards(amount, arrayCards) {
   return arrayCards;
 }
 
-
-if (widthScreen >= 1110) {
-  amountShowCards = 3;
-  currentSlide = createArrayCards(amountShowCards, currentSlide);
+function reloadCards(amount) {
+  withoutCurrentSlide = [];
+  withoutCurrentSlide.push(...allCards);
+  prevSlide = [];
+  currentSlide = [];
+  nextSlide = [];
+  currentSlide = createArrayCards(amount, currentSlide, withoutCurrentSlide);
   console.log('currentSlide', currentSlide);
-  prevSlide = createArrayCards(amountShowCards, prevSlide);
+  prevSlide = createArrayCards(amount, prevSlide, withoutCurrentSlide);
   console.log('prevSlide', prevSlide);
-  nextSlide = createArrayCards(amountShowCards, nextSlide);
+  nextSlide = createArrayCards(amount, nextSlide, withoutCurrentSlide);
   console.log('nextSlide', nextSlide);
-  tapeSlider.push(...prevSlide);
-  tapeSlider.push(...currentSlide);
-  tapeSlider.push(...nextSlide);
+  renderCards();
 }
 
-window.addEventListener('resize',(e) => {
-  widthScreen = window.innerWidth;
-});
+mediaTwoCards.onchange = (e) => {
+  if (e.matches) {
+    amountShowCards = 2;
+    reloadCards(amountShowCards)
+  } else {
+    amountShowCards = 3;
+    reloadCards(amountShowCards)
+  }
+};
+
+mediaOneCards.onchange = (e) => {
+  if (e.matches) {
+    amountShowCards = 1;
+    reloadCards(amountShowCards)
+  } else {
+    amountShowCards = 2;
+    reloadCards(amountShowCards)
+  }
+};
+
+function startTemplate() {
+  if (widthScreen >= 1110) {
+    amountShowCards = 3;
+    reloadCards(amountShowCards)
+  } else if(widthScreen <= 767) {
+    amountShowCards = 1;
+    reloadCards(amountShowCards)
+  } else {
+    amountShowCards = 2;
+    reloadCards(amountShowCards)
+  }
+}
+
 
 
 const renderCards = () => {
@@ -130,9 +159,21 @@ const renderCards = () => {
   sliderContainer.append(sliderItemNext);
 }
 
-// const renderContainer = () => {
-//   const slideContainer = getSliderContainer();
-// }
+const renderCardsPrev = () => {
+  const sliderItemPrev = getSliderItemPrev();
+  generateCards(prevSlide).forEach(petCards => {
+    sliderItemPrev.append(petCards.generateCard())
+  });
+  sliderContainer.prepend(sliderItemPrev);
+}
+
+const renderCardsNext = () => {
+  const sliderItemNext = getSliderItemNext();
+  generateCards(nextSlide).forEach(petCards => {
+    sliderItemNext.append(petCards.generateCard())
+  });
+  sliderContainer.append(sliderItemNext);
+}
 
 const getSliderContainer = () => {
   const slideContainer = document.querySelector('.slider-wrapper__container');
@@ -168,25 +209,64 @@ const generateCards = (Slide) => {
 
 
 //Slider
+const sliderWrapper = document.querySelector('.slider-wrapper');
+const sliderContainer = document.querySelector('.slider-wrapper__container');
+const sliderItem = document.querySelector('.slider-wrapper__item');
 
 function showNextSlide() {
-  const sliderItems = document.querySelectorAll('.slider-wrapper__item');
-  const sliderContainer = document.querySelector('.slider-wrapper__container');
-  const widthContainer = sliderContainer.clientWidth;
-  sliderItems.forEach(slide => {
-    slide.style.left = `${widthContainer}px`;
-  });
+  sliderContainer.classList.add("transition-next");
 }
 
 function showPrevSlide() {
-  const sliderItems = document.querySelectorAll('.slider-wrapper__item');
-  const sliderContainer = document.querySelector('.slider-wrapper__container');
-  const widthContainer = sliderContainer.clientWidth;
-  sliderItems.forEach(slide => {
-    slide.style.left = `-${widthContainer}px`;
-  });
+  sliderContainer.classList.add("transition-prev");
 }
 
+function createWithoutCurrent(current, allCards) {
+  let newWithoutCurrentSlide = [];
+  allCards.forEach(element => {
+    if (current.indexOf(element) === -1) {
+      newWithoutCurrentSlide.push(element);
+    }
+  });
+  return newWithoutCurrentSlide;
+}
+
+sliderContainer.addEventListener("animationend", (animationEvent) => {
+  let newWithoutCurrentSlide = [];
+  if (animationEvent.animationName === "move-prev") {
+    sliderContainer.classList.remove("transition-prev");
+    const itemCurrent = document.querySelector('.item_current');
+    document.querySelector(".item_next").innerHTML = itemCurrent.innerHTML;
+    const itemPrev = document.querySelector('.item_prev');
+    document.querySelector(".item_current").innerHTML = itemPrev.innerHTML;
+    nextSlide = [];
+    nextSlide.push(...currentSlide);
+    currentSlide = [];
+    currentSlide.push(...prevSlide);
+    newWithoutCurrentSlide = createWithoutCurrent(currentSlide, allCards);
+    prevSlide = [];
+    prevSlide = createArrayCards(amountShowCards, prevSlide, newWithoutCurrentSlide);
+    renderCardsPrev();
+  } else {
+    sliderContainer.classList.remove("transition-next");
+    const itemCurrent = document.querySelector('.item_current');
+    document.querySelector(".item_prev").innerHTML = itemCurrent.innerHTML;
+    const itemNext = document.querySelector('.item_next');
+    document.querySelector(".item_current").innerHTML = itemNext.innerHTML;
+    prevSlide = [];
+    prevSlide.push(...currentSlide);
+    currentSlide = [];
+    currentSlide.push(...nextSlide);
+    newWithoutCurrentSlide = createWithoutCurrent(currentSlide, allCards);
+    nextSlide = [];
+    nextSlide = createArrayCards(amountShowCards, nextSlide, newWithoutCurrentSlide);
+    console.log('prevSlide', prevSlide);
+    console.log('currentSlide', currentSlide);
+    console.log('nextSlide', nextSlide);
+    renderCardsNext();
+  }
+});
+  
 prevButtonSlider.onclick = showPrevSlide;
 nextButtonSlider.onclick = showNextSlide;
 
