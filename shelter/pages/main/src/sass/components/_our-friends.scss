@@ -69,3 +69,23 @@
     flex-shrink: 0;
   }
 }
+
+
+.slider-wrapper {
+  overflow: hidden;
+  &__container {
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    max-width: 100%;
+  }
+  &__item {
+    transition: all 0.5s;
+    min-width: 100%;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    left: -100%;
+  }
+}
+

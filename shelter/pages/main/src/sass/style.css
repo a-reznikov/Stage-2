@@ -636,6 +636,7 @@ img {
   border: 2px solid #F1CDB3;
   border-radius: 100px;
   cursor: pointer;
+  flex-shrink: 0;
 }
 .button__round:hover {
   background: #FDDCC4;
@@ -1267,6 +1268,24 @@ img {
     justify-content: center;
     flex-shrink: 0;
   }
+}
+
+.slider-wrapper {
+  overflow: hidden;
+}
+.slider-wrapper__container {
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  max-width: 100%;
+}
+.slider-wrapper__item {
+  transition: all 0.5s;
+  min-width: 100%;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  left: -100%;
 }
 
 .help__container {

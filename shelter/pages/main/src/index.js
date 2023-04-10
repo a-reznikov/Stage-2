@@ -48,13 +48,20 @@ window.addEventListener('click', (event) => {
 //Cards generator
 const prevButtonSlider = document.querySelector('.button-slider_prev');
 const nextButtonSlider = document.querySelector('.button-slider_next');
+const sliderCards = document.querySelector('.slider__cards');
+const sliderContainer = document.querySelector('.slider-wrapper__container');
 let widthScreen = window.innerWidth;
+let widthSlider = sliderCards.clientWidth;
+let widthContainer = sliderContainer.clientWidth;
+console.log(widthSlider);
+console.log(widthContainer);
 let amountShowCards = 0;
 let allCards = dataPets;
 let withoutCurrentSlide = allCards;
-let prevArrayCards = [];
+let tapeSlider = [];
+let prevSlide = [];
 let currentSlide = [];
-let nextArrayCards = [];
+let nextSlide = [];
 
 function randomCard(array) {
   const amountCards = array.length;
@@ -88,48 +95,96 @@ if (widthScreen >= 1110) {
   amountShowCards = 3;
   currentSlide = createArrayCards(amountShowCards, currentSlide);
   console.log('currentSlide', currentSlide);
-  prevArrayCards = createArrayCards(amountShowCards, prevArrayCards);
-  console.log('prevArrayCards', prevArrayCards);
-  nextArrayCards = createArrayCards(amountShowCards, nextArrayCards);
-  console.log('nextArrayCards', nextArrayCards);
+  prevSlide = createArrayCards(amountShowCards, prevSlide);
+  console.log('prevSlide', prevSlide);
+  nextSlide = createArrayCards(amountShowCards, nextSlide);
+  console.log('nextSlide', nextSlide);
+  tapeSlider.push(...prevSlide);
+  tapeSlider.push(...currentSlide);
+  tapeSlider.push(...nextSlide);
 }
 
 window.addEventListener('resize',(e) => {
   widthScreen = window.innerWidth;
-  // console.log(widthScreen);
 });
 
+
 const renderCards = () => {
-  const sliderCards = getSliderCards();
-  generateCards(currentSlide).forEach(petCards => {
-    sliderCards.append(petCards.generateCard())
+  const sliderItemPrev = getSliderItemPrev();
+  const SliderItemCurrent = getSliderItemCurrent();
+  const sliderItemNext = getSliderItemNext();
+  const sliderContainer = getSliderContainer();
+  generateCards(prevSlide).forEach(petCards => {
+    sliderItemPrev.append(petCards.generateCard())
   });
+  sliderContainer.append(sliderItemPrev);
+
+  generateCards(currentSlide).forEach(petCards => {
+    SliderItemCurrent.append(petCards.generateCard())
+  });
+  sliderContainer.append(SliderItemCurrent);
+
+  generateCards(nextSlide).forEach(petCards => {
+    sliderItemNext.append(petCards.generateCard())
+  });
+  sliderContainer.append(sliderItemNext);
 }
 
-const getSliderCards = () => {
-  const sliderCards = document.querySelector('.slider__cards');
-  sliderCards.innerHTML = "";
-  return sliderCards;
+// const renderContainer = () => {
+//   const slideContainer = getSliderContainer();
+// }
+
+const getSliderContainer = () => {
+  const slideContainer = document.querySelector('.slider-wrapper__container');
+  slideContainer.innerHTML = "";
+  return slideContainer;
 }
 
-const generateCards = (currentSlide) => {
+const getSliderItemPrev = () => {
+  const sliderItem = document.querySelector('.item_prev');
+  sliderItem.innerHTML = "";
+  return sliderItem;
+}
+
+const getSliderItemCurrent = () => {
+  const sliderItem = document.querySelector('.item_current');
+  sliderItem.innerHTML = "";
+  return sliderItem;
+}
+
+const getSliderItemNext = () => {
+  const sliderItem = document.querySelector('.item_next');
+  sliderItem.innerHTML = "";
+  return sliderItem;
+}
+
+const generateCards = (Slide) => {
   let petCards = [];
-  currentSlide.forEach(pet=> {
+  Slide.forEach(pet=> {
     petCards.push(new Cards(pet))
   });
   return petCards;
 }
 
+
+//Slider
+
 function showNextSlide() {
-  prevArrayCards = currentSlide;
-  currentSlide = nextArrayCards;
-  renderCards();
+  const sliderItems = document.querySelectorAll('.slider-wrapper__item');
+  const sliderContainer = document.querySelector('.slider-wrapper__container');
+  const widthContainer = sliderContainer.clientWidth;
+  sliderItems.forEach(slide => {
+    slide.style.left = `${widthContainer}px`;
+  });
 }
 
 function showPrevSlide() {
-  nextArrayCards = currentSlide;
-  currentSlide = prevArrayCards;
-  renderCards();
+  const sliderItems = document.querySelectorAll('.slider-wrapper__item');
+  const sliderContainer = document.querySelector('.slider-wrapper__container');
+  const widthContainer = sliderContainer.clientWidth;
+  sliderItems.forEach(slide => {
+    slide.style.left = `-${widthContainer}px`;
+  });
 }
 
 prevButtonSlider.onclick = showPrevSlide;

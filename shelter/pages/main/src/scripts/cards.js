@@ -10,7 +10,11 @@ generateCard() {
     cardArticle.className = 'layout-3-row card our-friends__card';
 
     if (this.urlImage) {
-      template += '<div class="card__image">';
+      if (this.petName === 'Sophia') {
+        template += '<div class="card__image image-horisontal">';
+      } else {
+        template += '<div class="card__image">';
+      }
       template += `<img src="${this.urlImage}" alt="pets-${this.petName}" class="card__image-pets">`;
       template += '</div>';
     } else {
