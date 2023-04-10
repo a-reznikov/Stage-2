@@ -23,9 +23,6 @@
   @include flex ();
   margin: 60px 0;
   width: 100%;
-  @include media-tablet-m {
-    flex-wrap: wrap;
-  }
   @include media-mobile-l {
     flex-wrap: wrap;
     margin: 42px 0;
@@ -55,17 +52,56 @@
 
 .slider__cards {
   flex-grow: 1;
-  padding: 0 53px;
+  margin: 0 53px;
   @include media-laptop-l {
-    padding: 0 12px;
+    margin: 0 12px;
     justify-content: space-around;
   }
   @include media-tablet {
     justify-content: space-between;
   }
   @include media-tablet-m {
-    padding: 0 15px;
+    margin: 0 15px;
     justify-content: center;
-    flex-shrink: 0;
   }
 }
+
+
+.slider-wrapper {
+  overflow: hidden;
+  &__container {
+    display: flex;
+    position: relative;
+    max-width: 100%;
+    left: -100%;
+  }
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    min-width: 100%;
+    @include media-tablet-l {
+      justify-content: center;
+    }
+  }
+}
+
+@keyframes move-next {
+  from {left: -100%;}
+  to {left: -200%;}
+}
+
+.transition-next {
+  animation-name: move-next;
+  animation-duration: 1s;
+}
+
+@keyframes move-prev {
+  from {left: -100%;}
+  to {left: 0;}
+}
+
+.transition-prev {
+  animation-name: move-prev;
+  animation-duration: 1s;
+}
+
