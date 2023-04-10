@@ -1,5 +1,6 @@
 import dataPets from "./../../../assets/json/pets.json" assert { type: "json" };
 import { Cards } from './scripts/cards'
+import { Modal } from './scripts/modal'
 
 window.onload = function () {
   
