@@ -1,5 +1,6 @@
 import dataPets from "./../../../assets/json/pets.json" assert { type: "json" };
 import { Cards } from './scripts/cards'
+import { Modal } from './scripts/modal'
 
 window.onload = function () {
   
@@ -101,7 +102,7 @@ for (let i = 0; i < 6; i++) {
     });
 }
 
-console.log(resultArray);
+// console.log(resultArray);
 
 let amountShowCards = 8;
 let MaxPages = resultArray.length / amountShowCards;
@@ -114,10 +115,10 @@ resultArray.forEach(element => {
   randomPets.push(allCards[element]);
 });
 
-console.log(randomPets);
+// console.log(randomPets);
 
 let showPets = randomPets.slice(begin, amountShowCards);
-console.log(showPets);
+// console.log(showPets);
 
 //Render cards
 
@@ -200,11 +201,11 @@ const lastPagButton = document.querySelector('.pag-button_last');
 function showPrevPage() {
   if (page === 2) {
     page --;
-    console.log(page);
+    // console.log(page);
     numberPag.textContent = `${page}`;
     begin -= amountShowCards;
     end -= amountShowCards;
-    console.log(begin, end);
+    // console.log(begin, end);
     showPets = randomPets.slice(begin, end);
     renderCards();
     prevPagButton.classList.remove('pag-button_available');
@@ -213,11 +214,11 @@ function showPrevPage() {
     firstPagButton.removeEventListener('click', showFirstPage, false);
   } else if(page <= MaxPages && page != 1) {
     page --;
-    console.log(page);
+    // console.log(page);
     numberPag.textContent = `${page}`;
     begin -= amountShowCards;
     end -= amountShowCards;
-    console.log(begin, end);
+    // console.log(begin, end);
     showPets = randomPets.slice(begin, end);
     renderCards();
     nextPagButton.classList.add('pag-button_available');
@@ -230,11 +231,11 @@ function showPrevPage() {
 function showNextPage() {
   if (page === MaxPages - 1) {
     page ++;
-    console.log(page);
+    // console.log(page);
     numberPag.textContent = `${page}`;
     begin += amountShowCards;
     end += amountShowCards;
-    console.log(begin, end);
+    // console.log(begin, end);
     showPets = randomPets.slice(begin, end);
     renderCards();
     nextPagButton.classList.remove('pag-button_available');
@@ -243,11 +244,11 @@ function showNextPage() {
     lastPagButton.removeEventListener('click', showLastPage, false);
   } else if (page >= 1) {
     page ++;
-    console.log(page);
+    // console.log(page);
     numberPag.textContent = `${page}`;
     begin += amountShowCards;
     end += amountShowCards;
-    console.log(begin, end);
+    // console.log(begin, end);
     showPets = randomPets.slice(begin, end);
     renderCards();
     firstPagButton.classList.add('pag-button_available');
@@ -259,11 +260,11 @@ function showNextPage() {
 
 function showFirstPage() {
   page = 1;
-  console.log(page);
+  // console.log(page);
   numberPag.textContent = `${page}`;
   begin = 0;
   end = amountShowCards;
-  console.log(begin, end);
+  // console.log(begin, end);
   showPets = randomPets.slice(begin, end);
   renderCards();
   prevPagButton.classList.remove('pag-button_available');
@@ -280,11 +281,11 @@ function showFirstPage() {
 
 function showLastPage() {
   page = MaxPages;
-  console.log(page);
+  // console.log(page);
   numberPag.textContent = `${page}`;
   begin = (MaxPages - 1) * amountShowCards;
   end = MaxPages * amountShowCards;
-  console.log(begin, end);
+  // console.log(begin, end);
   showPets = randomPets.slice(begin, end);
   renderCards();
   nextPagButton.classList.remove('pag-button_available');
@@ -304,4 +305,49 @@ prevPagButton.addEventListener('click', showPrevPage, false);
 nextPagButton.addEventListener('click', showNextPage, false);
 lastPagButton.addEventListener('click', showLastPage, false);
 
+
+//Modal
+
+const renderModal = (petFind) => {
+  const modalWrapper = getModalWrapper();
+  let modal = new Modal (petFind);
+  modalWrapper.append(modal.generateModal());
+}
+
+const getModalWrapper = () => {
+  const modalWrapper = document.querySelector('.modal__wrapper');
+  modalWrapper.classList.add('modal__wrapper_overlay');
+  body.classList.add("body_overlay");
+  modalWrapper.innerHTML = "";
+  return modalWrapper;
+}
+
+function searchCard(petSearchName) {
+  allCards.forEach(card => {
+    if(card.petName === petSearchName) {
+      // console.log(card);
+      renderModal(card);
+    }
+  });
+}
+
+function OpenModal(e) {
+  let cardsModal = document.querySelectorAll('.card');
+  let modalWrapperOverlay = document.querySelector('.modal__wrapper_overlay');
+  let modalButton = document.querySelector('.modal__button');
+  let modal = document.querySelector('.modal');
+  cardsModal.forEach(card => {
+    if (card.contains(e.target)) {
+      // console.log(card.querySelector('.card__title').textContent);
+      let petSearchName = card.querySelector('.card__title').textContent;
+      searchCard(petSearchName);
+    }
+  });
+  if (!modal.contains(e.target) || modalButton.contains(e.target)) {
+    modalWrapperOverlay.classList.remove('modal__wrapper_overlay');
+    body.classList.remove("body_overlay");
+  }
+}
+
+window.addEventListener('click', (e) => { OpenModal(e); }, false);
 
