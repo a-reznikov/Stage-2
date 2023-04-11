@@ -32,7 +32,7 @@ generateModal() {
     template += `<h4 class="modal-content__subtitle">${this.type} - ${this.breed}</h4>`;
     template += `<h5 class="modal-content__description">${this.description}</h5>`;
     template += `<ul class="modal-content__list">`;
-    template += `<li class="modal-content__item"><span class="modal__feature modal__age">Age: </span><span class="modal__text modal__age-text">${this.inoculations}</span></li>`;
+    template += `<li class="modal-content__item"><span class="modal__feature modal__age">Age: </span><span class="modal__text modal__age-text">${this.age}</span></li>`;
     template += `<li class="modal-content__item"><span class="modal__feature modal__inoculations">Inoculations: </span><span class="modal__text modal__inoculations-text">${this.inoculations}</span></li>`;
     template += `<li class="modal-content__item"><span class="modal__feature modal__diseases">Diseases: </span><span class="modal__text modal__diseases-text">${this.diseases}</span></li>`;
     template += `<li class="modal-content__item"><span class="modal__feature modal__parasites">Parasites: </span><span class="modal__text modal__parasites-text">${this.parasites}</span></li>`;        
