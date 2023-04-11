@@ -1,9 +1,12 @@
 import dataPets from "./../../../assets/json/pets.json" assert { type: "json" };
-import { Cards } from './scripts/cards'
+import { Cards } from './scripts/cards';
+import { Modal } from './scripts/modal'
 
 window.onload = function () {
   
+  // renderModal();
   startTemplate();
+  // detectedCard ();
 }
 
 //Burger
@@ -95,11 +98,11 @@ function reloadCards(amount) {
   currentSlide = [];
   nextSlide = [];
   currentSlide = createArrayCards(amount, currentSlide, withoutCurrentSlide);
-  console.log('currentSlide', currentSlide);
+  // console.log('currentSlide', currentSlide);
   prevSlide = createArrayCards(amount, prevSlide, withoutCurrentSlide);
-  console.log('prevSlide', prevSlide);
+  // console.log('prevSlide', prevSlide);
   nextSlide = createArrayCards(amount, nextSlide, withoutCurrentSlide);
-  console.log('nextSlide', nextSlide);
+  // console.log('nextSlide', nextSlide);
   renderCards();
 }
 
@@ -260,9 +263,9 @@ sliderContainer.addEventListener("animationend", (animationEvent) => {
     newWithoutCurrentSlide = createWithoutCurrent(currentSlide, allCards);
     nextSlide = [];
     nextSlide = createArrayCards(amountShowCards, nextSlide, newWithoutCurrentSlide);
-    console.log('prevSlide', prevSlide);
-    console.log('currentSlide', currentSlide);
-    console.log('nextSlide', nextSlide);
+    // console.log('prevSlide', prevSlide);
+    // console.log('currentSlide', currentSlide);
+    // console.log('nextSlide', nextSlide);
     renderCardsNext();
   }
 });
@@ -270,4 +273,48 @@ sliderContainer.addEventListener("animationend", (animationEvent) => {
 prevButtonSlider.onclick = showPrevSlide;
 nextButtonSlider.onclick = showNextSlide;
 
-//
+//Modal
+
+const renderModal = (petFind) => {
+  const modalWrapper = getModalWrapper();
+  let modal = new Modal (petFind);
+  modalWrapper.append(modal.generateModal());
+}
+
+const getModalWrapper = () => {
+  const modalWrapper = document.querySelector('.modal__wrapper');
+  modalWrapper.classList.add('modal__wrapper_overlay');
+  body.classList.add("body_overlay");
+  modalWrapper.innerHTML = "";
+  return modalWrapper;
+}
+
+function searchCard(petSearchName) {
+  allCards.forEach(card => {
+    if(card.petName === petSearchName) {
+      // console.log(card);
+      renderModal(card);
+    }
+  });
+}
+
+function OpenModal(e) {
+  let cardsModal = document.querySelectorAll('.card');
+  let modalWrapperOverlay = document.querySelector('.modal__wrapper_overlay');
+  let modalButton = document.querySelector('.modal__button');
+  let modal = document.querySelector('.modal');
+  cardsModal.forEach(card => {
+    if (card.contains(e.target)) {
+      // console.log(card.querySelector('.card__title').textContent);
+      let petSearchName = card.querySelector('.card__title').textContent;
+      searchCard(petSearchName);
+    }
+  });
+  if (!modal.contains(e.target) || modalButton.contains(e.target)) {
+    modalWrapperOverlay.classList.remove('modal__wrapper_overlay');
+    body.classList.remove("body_overlay");
+  }
+}
+
+window.addEventListener('click', (e) => { OpenModal(e); }, false);
+

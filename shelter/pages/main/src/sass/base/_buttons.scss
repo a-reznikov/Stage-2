@@ -44,6 +44,13 @@
     height: 6px;
     margin: 0 auto;
   }
+  &_cross {
+    position: relative;
+    display: block;
+    width: 12px;
+    height: 12px;
+    margin: 18px;
+  }
   &_slider {
     background: $color-background;
   }
