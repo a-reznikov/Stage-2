@@ -131,6 +131,15 @@ function reloadCards(amount) {
   page = 1;
   begin = 0;
   end = amount;
+  numberPag.textContent = `${page}`;
+  prevPagButton.classList.remove('pag-button_available');
+  firstPagButton.classList.remove('pag-button_available');
+  prevPagButton.removeEventListener('click', showPrevPage, false);
+  firstPagButton.removeEventListener('click', showFirstPage, false);
+  nextPagButton.classList.add('pag-button_available');
+  lastPagButton.classList.add('pag-button_available');
+  nextPagButton.addEventListener('click', showNextPage, false);
+  lastPagButton.addEventListener('click', showLastPage, false);
   showPets = randomPets.slice(begin, amount);
   renderCards();
 }
@@ -143,11 +152,12 @@ mediaSixCards.onchange = (e) => {
     amountShowCards = 8;
     reloadCards(amountShowCards);
   }
+
 };
 
 mediaThreeCards.onchange = (e) => {
   if (e.matches) {
-    amountShowCards = 3;
+    amountShowCards = 3;;
     reloadCards(amountShowCards);
   } else {
     amountShowCards = 6;
