@@ -1,1 +1,1 @@
-console.log('Template import');
+console.log('Import js files');
