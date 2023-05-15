@@ -1,3 +1,5 @@
-import { template } from './js/template';
+import { creatTemplate } from './js/template';
 
-console.log('index.js is connected!');
+window.onload = function load() {
+  creatTemplate();
+};
