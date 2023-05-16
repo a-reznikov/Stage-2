@@ -19,13 +19,11 @@ function createMatrixBase(order) {
     matrixBase.push(matrixBase[i]);
     i += 1;
   }
-  console.log(matrixBase);
   return matrixBase;
 }
 
 function getRandomPositions(positions) {
   const position = Math.floor(Math.random() * positions);
-  console.log(position);
   return position;
 }
 
@@ -57,10 +55,40 @@ function createMatrixMines(matrixBase) {
     matrixMines[rowNumber][columnNumber] = 9;
   }
   console.log(positionsMines);
-  console.log(matrixMines);
+  console.log('matrixMines', matrixMines);
+  return matrixMines;
+}
+
+function addNumberToMatrix(matrixWhitMines) {
+  const matrix = matrixWhitMines;
+  const matrixOrder = matrix.length;
+  for (let i = 0; i < matrixOrder - 1;) {
+    for (let j = 0; j < matrixOrder;) {
+      if (matrix[i][j] === 9) {
+        for (let r = -1; r <= 1;) {
+          const row = i + r;
+          for (let c = -1; c <= 1;) {
+            const column = j + c;
+            if (row >= 0 && row < matrixOrder && column >= 0 && column < matrixOrder) {
+              if (matrix[row][column] !== 9) {
+                matrix[row][column] += 1;
+              }
+            }
+            c += 1;
+          }
+          r += 1;
+        }
+      }
+      j += 1;
+    }
+    i += 1;
+  }
+  return matrix;
 }
 
 window.onload = function load() {
   creatTemplate();
-  createMatrixMines(createMatrixBase());
+  const baseMatrix = createMatrixBase();
+  const matrixMines = createMatrixMines(baseMatrix);
+  addNumberToMatrix(matrixMines);
 };
