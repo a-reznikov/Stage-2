@@ -1,0 +1,38 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background: $color-background;
+}
+
+.status-game {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.amount {
+  font-size: 3.2rem;
+}
+
+.emoji {
+  width: 32px;
+  height: 32px;
+}
+
+.happy {
+  background-image: url(../assets/ico/happy_emoji.svg);
+}
+
+.sad {
+  background-image: url(../assets/ico/sad_emoji.svg);
+}
+
+.playground {
+  display: flex;
+  flex-wrap: wrap;
+  &_10 {
+    max-width: 320px;
+  }
+}

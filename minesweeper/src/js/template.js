@@ -11,17 +11,17 @@ export function creatTemplate() {
   const statusGame = document.createElement('div');
   statusGame.className = 'status-game';
   const amountMines = document.createElement('span');
-  amountMines.className = 'amount-mines';
+  amountMines.className = 'amount mines';
   const emoji = document.createElement('div');
-  emoji.className = 'emoji';
-  const amountSteps = document.createElement('span');
-  amountSteps.className = 'amount-steps';
+  emoji.className = 'emoji happy';
+  const amountTimes = document.createElement('span');
+  amountTimes.className = 'amount times';
   const playground = document.createElement('div');
   playground.className = 'playground';
 
   statusGame.append(amountMines);
   statusGame.append(emoji);
-  statusGame.append(amountSteps);
+  statusGame.append(amountTimes);
   wrapper.append(titleGame);
   wrapper.append(statusGame);
   wrapper.append(playground);

@@ -1,4 +1,5 @@
 import { creatTemplate } from './js/template';
+import { creatCell } from './js/cell';
 
 const quantityMines = 10;
 
@@ -59,7 +60,7 @@ function createMatrixMines(matrixBase) {
   return matrixMines;
 }
 
-function addNumberToMatrix(matrixWhitMines) {
+function addNumbersToMatrix(matrixWhitMines) {
   const matrix = matrixWhitMines;
   const matrixOrder = matrix.length;
   for (let i = 0; i < matrixOrder - 1;) {
@@ -86,9 +87,31 @@ function addNumberToMatrix(matrixWhitMines) {
   return matrix;
 }
 
+function getAmount() {
+  const amountMines = document.querySelector('.mines');
+  const amountTimes = document.querySelector('.times');
+  amountMines.textContent = `${quantityMines}`.padStart(3, 0);
+  amountTimes.textContent = '000';
+}
+
+function generateCells(matrix) {
+  const playground = document.querySelector('.playground');
+  const matrixOrder = matrix.length;
+  for (let i = 0; i < matrixOrder - 1;) {
+    for (let j = 0; j < matrixOrder;) {
+      playground.append(creatCell(matrix[i][j]));
+      j += 1;
+    }
+    i += 1;
+  }
+  playground.className = `playground playground_${matrixOrder}`;
+}
+
 window.onload = function load() {
   creatTemplate();
+  getAmount();
   const baseMatrix = createMatrixBase();
   const matrixMines = createMatrixMines(baseMatrix);
-  addNumberToMatrix(matrixMines);
+  const matrix = addNumbersToMatrix(matrixMines);
+  generateCells(matrix);
 };
