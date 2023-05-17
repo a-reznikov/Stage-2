@@ -1,7 +1,7 @@
 import { creatTemplate } from './js/template';
 import { creatCell } from './js/cell';
 
-const quantityMines = 10;
+const quantityMines = 99;
 
 function createMatrixBase(order) {
   let matrixOrder = 0;
@@ -11,13 +11,13 @@ function createMatrixBase(order) {
     matrixOrder = order;
   }
   const matrixBase = [];
-  for (let i = 0; i < matrixOrder - 1;) {
+  let i = 0;
+  while (i < matrixOrder) {
     matrixBase[i] = [];
     for (let j = 0; j < matrixOrder;) {
       matrixBase[i].push(0);
       j += 1;
     }
-    matrixBase.push(matrixBase[i]);
     i += 1;
   }
   return matrixBase;
@@ -52,8 +52,9 @@ function createMatrixMines(matrixBase) {
     const codePosition = position / matrixOrder;
     const rowNumber = Math.floor(codePosition);
     const columnNumber = Math.round((codePosition - rowNumber) * matrixOrder);
-    i += 1;
     matrixMines[rowNumber][columnNumber] = 9;
+    // console.log(`RowColumn${rowNumber}${columnNumber}`);
+    i += 1;
   }
   console.log(positionsMines);
   console.log('matrixMines', matrixMines);
@@ -63,7 +64,7 @@ function createMatrixMines(matrixBase) {
 function addNumbersToMatrix(matrixWhitMines) {
   const matrix = matrixWhitMines;
   const matrixOrder = matrix.length;
-  for (let i = 0; i < matrixOrder - 1;) {
+  for (let i = 0; i < matrixOrder;) {
     for (let j = 0; j < matrixOrder;) {
       if (matrix[i][j] === 9) {
         for (let r = -1; r <= 1;) {
@@ -97,7 +98,7 @@ function getAmount() {
 function generateCells(matrix) {
   const playground = document.querySelector('.playground');
   const matrixOrder = matrix.length;
-  for (let i = 0; i < matrixOrder - 1;) {
+  for (let i = 0; i < matrixOrder;) {
     for (let j = 0; j < matrixOrder;) {
       playground.append(creatCell(matrix[i][j]));
       j += 1;
