@@ -1,7 +1,7 @@
 import { creatTemplate } from './js/template';
 import { creatCell } from './js/cell';
 
-const quantityMines = 99;
+const quantityMines = 30;
 
 function createMatrixBase(order) {
   let matrixOrder = 0;
@@ -105,7 +105,14 @@ function generateCells(matrix) {
     }
     i += 1;
   }
+}
+
+function applyStyle(matrix) {
+  const matrixOrder = matrix.length;
+  const playground = document.querySelector('.playground');
+  const wrapper = document.querySelector('.wrapper');
   playground.className = `playground playground_${matrixOrder}`;
+  wrapper.className = `wrapper wrapper_${matrixOrder}`;
 }
 
 window.onload = function load() {
@@ -115,4 +122,5 @@ window.onload = function load() {
   const matrixMines = createMatrixMines(baseMatrix);
   const matrix = addNumbersToMatrix(matrixMines);
   generateCells(matrix);
+  applyStyle(matrix);
 };

@@ -4,5 +4,38 @@
   height: 32px;
   justify-content: center;
   align-items: center;
-  border: solid 1px $color-dark;
+  font-size: 2.4rem;
+  font-weight: 800;
+  background-image: url(../assets/ico/empty.svg);
+  background-size: contain;
+  color: white;
+  &_one {
+    color: $color-one;
+  }
+  &_two {
+    color: $color-two;
+  }
+  &_three {
+    color: $color-three;
+  }
+  &_four {
+    color: $color-four;
+  }
+  &_five {
+    color: $color-five;
+  }
+  &_six {
+    color: $color-six;
+  }
+  &_seven {
+    color: $color-seven;
+  }
+  &_eight {
+    color: $color-eight;
+  }
+  &_mine {
+    background-image: url(../assets/ico/mine.svg);
+    background-size: contain;
+    color: white;
+  }
 }

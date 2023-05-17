@@ -3,17 +3,31 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  background: $color-background;
+  margin: 20px auto 0;
+  background: $color-primary;
+  // border: 10px solid $color-primary;
+  box-shadow: 2px 4px 5px $color-dark;
+  &_10 {
+    max-width: 340px;
+  }
+  &_15 {
+    max-width: 500px;
+  }
 }
 
 .status-game {
   display: flex;
+  width: 100%;
   justify-content: space-between;
   align-items: center;
+  border: 10px solid $color-primary;
 }
 
 .amount {
   font-size: 3.2rem;
+  color: $color-amount;
+  background: $color-dark;
+  line-height: 2.4rem;
 }
 
 .emoji {
@@ -32,7 +46,13 @@
 .playground {
   display: flex;
   flex-wrap: wrap;
+  margin-bottom: 10px;
   &_10 {
-    max-width: 320px;
+    max-width: 322px;
   }
+  &_15 {
+    max-width: 480px;
+  }
+  border-right: solid 2px $color-light;
+  border-bottom: solid 2px $color-light;
 }
