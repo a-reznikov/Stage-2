@@ -4,11 +4,10 @@
   height: 32px;
   justify-content: center;
   align-items: center;
-  font-size: 2.4rem;
   font-weight: 800;
-  background-image: url(../assets/ico/empty.svg);
+  background-image: url(../assets/ico/closed.svg);
   background-size: contain;
-  color: white;
+  font-size: 0;
   &_one {
     color: $color-one;
   }
@@ -33,9 +32,19 @@
   &_eight {
     color: $color-eight;
   }
-  &_mine {
+  &_mine.cell_show {
     background-image: url(../assets/ico/mine.svg);
     background-size: contain;
-    color: white;
+  }
+  &_mine.cell_show.exp {
+    background-image: url(../assets/ico/mine_exp.svg);
+    background-size: contain;
+  }
+  &_open {
+    background-image: url(../assets/ico/empty.svg);
+  }
+  &_show {
+    font-size: 2.4rem;
+    background-image: url(../assets/ico/empty.svg);
   }
 }

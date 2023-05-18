@@ -1,7 +1,7 @@
 import { creatTemplate } from './js/template';
 import { creatCell } from './js/cell';
 
-const quantityMines = 30;
+const quantityMines = 10;
 
 function createMatrixBase(order) {
   let matrixOrder = 0;
@@ -115,6 +115,16 @@ function applyStyle(matrix) {
   wrapper.className = `wrapper wrapper_${matrixOrder}`;
 }
 
+function loseGame() {
+  const cellMines = document.querySelectorAll('.cell_mine');
+  const emoji = document.querySelector('.emoji');
+  emoji.classList.remove('happy');
+  emoji.classList.add('sad');
+  cellMines.forEach((cell) => {
+    cell.classList.add('cell_show');
+  });
+}
+
 window.onload = function load() {
   creatTemplate();
   getAmount();
@@ -123,4 +133,51 @@ window.onload = function load() {
   const matrix = addNumbersToMatrix(matrixMines);
   generateCells(matrix);
   applyStyle(matrix);
+  const playground = document.querySelector('.playground');
+
+  function handlerDown(event) {
+    const currenCell = event.target;
+    if (currenCell.classList.contains('cell')) {
+      currenCell.classList.add('cell_open');
+    }
+  }
+
+  function handlerUp(event) {
+    const currenCell = event.target;
+    currenCell.classList.remove('cell_open');
+    if (currenCell.classList.contains('cell_mine')) {
+      currenCell.classList.add('exp');
+      loseGame();
+      playground.removeEventListener('mousedown', handlerDown);
+      playground.removeEventListener('mouseup', handlerUp);
+    }
+    if (currenCell.classList.contains('cell')) {
+      currenCell.classList.add('cell_show');
+    }
+  }
+
+  playground.addEventListener('mousedown', handlerDown);
+  playground.addEventListener('mouseup', handlerUp);
 };
+
+// const playground = document.querySelector('.playground');
+// console.log(playground);
+
+// playground.addEventListener('mousedown', (event) => {
+//   const currenCell = event.target;
+//   if (currenCell.classList.contains('cell')) {
+//     currenCell.classList.add('cell_open');
+//   }
+// });
+
+// playground.addEventListener('mouseup', (event) => {
+//   const currenCell = event.target;
+//   currenCell.classList.remove('cell_open');
+//   if (currenCell.classList.contains('cell_mine')) {
+//     currenCell.classList.add('exp');
+//     loseGame();
+//   }
+//   if (currenCell.classList.contains('cell')) {
+//     currenCell.classList.add('cell_show');
+//   }
+// });
