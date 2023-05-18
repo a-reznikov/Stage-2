@@ -183,6 +183,9 @@ function startGame() {
   function handlerUp(event) {
     const currenCell = event.target;
     currenCell.classList.remove('cell_open');
+    if (event.button === 2) {
+      console.log('Flag!');
+    }
     if (currenCell.classList.contains('cell_mine')) {
       currenCell.classList.add('exp');
       loseGame();
@@ -198,8 +201,13 @@ function startGame() {
     }
   }
 
+  function handlerContext(event) {
+    event.preventDefault();
+  }
+
   playground.addEventListener('mousedown', handlerDown);
   playground.addEventListener('mouseup', handlerUp);
+  playground.addEventListener('contextmenu', handlerContext);
 }
 
 function cleanTemplate() {
