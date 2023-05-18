@@ -125,7 +125,7 @@ function loseGame() {
   });
 }
 
-window.onload = function load() {
+function startGame() {
   creatTemplate();
   getAmount();
   const baseMatrix = createMatrixBase();
@@ -158,6 +158,24 @@ window.onload = function load() {
 
   playground.addEventListener('mousedown', handlerDown);
   playground.addEventListener('mouseup', handlerUp);
+}
+
+function cleanTemplate() {
+  const body = document.querySelector('body');
+  body.innerHTML = '';
+}
+
+function refreshGame() {
+  cleanTemplate();
+  startGame();
+  const emoji = document.querySelector('.emoji');
+  emoji.addEventListener('click', refreshGame);
+}
+
+window.onload = function load() {
+  startGame();
+  const emoji = document.querySelector('.emoji');
+  emoji.addEventListener('click', refreshGame);
 };
 
 // const playground = document.querySelector('.playground');
