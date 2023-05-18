@@ -115,6 +115,44 @@ function applyStyle(matrix) {
   wrapper.className = `wrapper wrapper_${matrixOrder}`;
 }
 
+function searchPositionEmtyCell(event) {
+  const cells = document.querySelectorAll('.cell');
+  const arrCells = Array.from(cells);
+  const position = arrCells.indexOf(event.target);
+  return position;
+}
+
+function openNearbyCells(matrix, position, openedCell) {
+  let openedCells = [];
+  if (openedCell) {
+    openedCells = openedCell;
+  }
+  openedCells.push(position);
+  const cells = document.querySelectorAll('.cell');
+  const matrixOrder = matrix.length;
+  const codePosition = position / matrixOrder;
+  const rowNumber = Math.floor(codePosition);
+  const columnNumber = Math.round((codePosition - rowNumber) * matrixOrder);
+  for (let r = -1; r <= 1;) {
+    const row = rowNumber + r;
+    for (let c = -1; c <= 1;) {
+      const column = columnNumber + c;
+      if (row >= 0 && row < matrixOrder && column >= 0 && column < matrixOrder) {
+        if (!(row === rowNumber && column === columnNumber)) {
+          const numberNearbyCell = row * matrixOrder + column;
+          const nearbyCell = cells[numberNearbyCell];
+          nearbyCell.classList.add('cell_show');
+          if (nearbyCell.classList.contains('cell_empty') && openedCells.indexOf(numberNearbyCell) === -1) {
+            openNearbyCells(matrix, numberNearbyCell, openedCells);
+          }
+        }
+      }
+      c += 1;
+    }
+    r += 1;
+  }
+}
+
 function loseGame() {
   const cellMines = document.querySelectorAll('.cell_mine');
   const emoji = document.querySelector('.emoji');
@@ -151,7 +189,11 @@ function startGame() {
       playground.removeEventListener('mousedown', handlerDown);
       playground.removeEventListener('mouseup', handlerUp);
     }
-    if (currenCell.classList.contains('cell')) {
+    if (currenCell.classList.contains('cell_empty')) {
+      currenCell.classList.add('cell_show');
+      const position = searchPositionEmtyCell(event);
+      openNearbyCells(matrix, position);
+    } else if (currenCell.classList.contains('cell')) {
       currenCell.classList.add('cell_show');
     }
   }
@@ -177,25 +219,3 @@ window.onload = function load() {
   const emoji = document.querySelector('.emoji');
   emoji.addEventListener('click', refreshGame);
 };
-
-// const playground = document.querySelector('.playground');
-// console.log(playground);
-
-// playground.addEventListener('mousedown', (event) => {
-//   const currenCell = event.target;
-//   if (currenCell.classList.contains('cell')) {
-//     currenCell.classList.add('cell_open');
-//   }
-// });
-
-// playground.addEventListener('mouseup', (event) => {
-//   const currenCell = event.target;
-//   currenCell.classList.remove('cell_open');
-//   if (currenCell.classList.contains('cell_mine')) {
-//     currenCell.classList.add('exp');
-//     loseGame();
-//   }
-//   if (currenCell.classList.contains('cell')) {
-//     currenCell.classList.add('cell_show');
-//   }
-// });
