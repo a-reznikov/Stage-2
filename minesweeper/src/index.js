@@ -2,6 +2,7 @@ import { creatTemplate } from './js/template';
 import { creatCell } from './js/cell';
 
 const quantityMines = 10;
+let isFirstClick = true;
 
 function createMatrixBase(order) {
   let matrixOrder = 0;
@@ -28,24 +29,22 @@ function getRandomPositions(positions) {
   return position;
 }
 
-function getPositionsMines(order) {
+function getPositionsMines(order, holdPosition) {
   const positions = order ** 2;
   const positionsMines = [];
-  let tryGen = 0;
   while (positionsMines.length < quantityMines) {
     const randomPosition = getRandomPositions(positions);
-    if (positionsMines.indexOf(randomPosition) === -1) {
+    if (positionsMines.indexOf(randomPosition) === -1 && randomPosition !== holdPosition) {
       positionsMines.push(randomPosition);
     }
-    tryGen += 1;
   }
-  console.log('tryGen', tryGen);
   return positionsMines;
 }
 
-function createMatrixMines(matrixBase) {
+function createMatrixMines(matrixBase, holdPosition) {
+  console.log('holdPosition', holdPosition);
   const matrixOrder = matrixBase.length;
-  const positionsMines = getPositionsMines(matrixOrder);
+  const positionsMines = getPositionsMines(matrixOrder, holdPosition);
   const matrixMines = matrixBase;
   for (let i = 0; i < positionsMines.length;) {
     const position = positionsMines[i];
@@ -53,11 +52,8 @@ function createMatrixMines(matrixBase) {
     const rowNumber = Math.floor(codePosition);
     const columnNumber = Math.round((codePosition - rowNumber) * matrixOrder);
     matrixMines[rowNumber][columnNumber] = 9;
-    // console.log(`RowColumn${rowNumber}${columnNumber}`);
     i += 1;
   }
-  console.log(positionsMines);
-  console.log('matrixMines', matrixMines);
   return matrixMines;
 }
 
@@ -107,22 +103,34 @@ function generateCells(matrix) {
   }
 }
 
+function isWin(order) {
+  const cellsShow = document.querySelectorAll('.cell_show');
+  const cellMines = document.querySelectorAll('.cell_mine');
+  const emoji = document.querySelector('.emoji');
+  let amountShow = 0;
+  cellsShow.forEach((cell) => {
+    if (!cell.classList.contains('cell_mine')) {
+      amountShow += 1;
+    }
+  });
+  const needCellsForWin = order ** 2 - quantityMines;
+  console.log(needCellsForWin);
+  if (amountShow === needCellsForWin) {
+    emoji.classList.add('win');
+    cellMines.forEach((cell) => {
+      if (cell.classList.contains('cell_mine')) {
+        cell.classList.add('cell_flag');
+      }
+    });
+  }
+}
+
 function applyStyle(matrix) {
   const matrixOrder = matrix.length;
   const playground = document.querySelector('.playground');
   const wrapper = document.querySelector('.wrapper');
   playground.className = `playground playground_${matrixOrder}`;
   wrapper.className = `wrapper wrapper_${matrixOrder}`;
-}
-
-function isWin(order) {
-  const cellsShow = document.querySelectorAll('.cell_show');
-  const emoji = document.querySelector('.emoji');
-  const amountShow = cellsShow.length;
-  const needCellsForWin = order ** 2 - quantityMines;
-  if (amountShow === needCellsForWin) {
-    emoji.classList.add('win');
-  }
 }
 
 function toggleFlag(cell) {
@@ -199,37 +207,98 @@ function loseGame() {
       cell.classList.add('cell_flag-wrong');
     }
   });
+  isFirstClick = true;
 }
 
-function startGame() {
+function cleanPlayground() {
+  const playground = document.querySelector('.playground');
+  playground.innerHTML = '';
+}
+
+function restartGame(holdPosition) {
+  console.log('ReSTART_____________________');
+  cleanPlayground();
+  const baseMatrix = createMatrixBase();
+  const matrixMines = createMatrixMines(baseMatrix, holdPosition);
+  const matrix = addNumbersToMatrix(matrixMines);
+  generateCells(matrix);
+  applyStyle(matrix);
+  return matrix;
+}
+
+function refreshGame() {
+  console.log('REFRESH============================>');
+  restartGame();
+  getAmount();
+  const emoji = document.querySelector('.emoji');
+  emoji.className = 'emoji happy';
+  emoji.addEventListener('click', refreshGame);
+  isFirstClick = true;
+  console.log('<============================REFRESH');
+}
+
+window.onload = function load() {
   creatTemplate();
   getAmount();
   const baseMatrix = createMatrixBase();
   const matrixMines = createMatrixMines(baseMatrix);
   const matrix = addNumbersToMatrix(matrixMines);
   const matrixOrder = matrix.length;
+  let currentMatrix = [];
   generateCells(matrix);
   applyStyle(matrix);
+  const emoji = document.querySelector('.emoji');
   const playground = document.querySelector('.playground');
+
+  function firstClick(event, curMatrix, holdPosition) {
+    const cells = document.querySelectorAll('.cell');
+    let positionHoldCell = 0;
+    cells.forEach((cell) => {
+      if (positionHoldCell === holdPosition) {
+        const currentCell = cell;
+        if (event.button === 2) {
+          console.log('Flag!');
+          toggleFlag(currentCell);
+        } else if (currentCell.classList.contains('cell_mine')) {
+          currentCell.classList.add('exp');
+          loseGame();
+          // playground.removeEventListener('mouseup', handlerUp);
+        } else if (currentCell.classList.contains('cell_empty')) {
+          currentCell.classList.add('cell_show');
+          const position = searchPositionEmtyCell(event);
+          openNearbyCells(curMatrix, position);
+        } else if (currentCell.classList.contains('cell')) {
+          currentCell.classList.add('cell_show');
+        }
+        isWin(matrixOrder);
+      }
+      positionHoldCell += 1;
+    });
+  }
 
   function handlerUp(event) {
     const currentCell = event.target;
-    currentCell.classList.remove('cell_open');
-    if (event.button === 2) {
+    if (isFirstClick) {
+      console.log('Firs click');
+      const positionHold = searchPositionEmtyCell(event);
+      currentMatrix = restartGame(positionHold);
+      firstClick(event, currentMatrix, positionHold);
+    } else if (event.button === 2) {
       console.log('Flag!');
       toggleFlag(currentCell);
     } else if (currentCell.classList.contains('cell_mine')) {
       currentCell.classList.add('exp');
       loseGame();
-      playground.removeEventListener('mouseup', handlerUp);
+      // playground.removeEventListener('mouseup', handlerUp);
     } else if (currentCell.classList.contains('cell_empty')) {
       currentCell.classList.add('cell_show');
       const position = searchPositionEmtyCell(event);
-      openNearbyCells(matrix, position);
+      openNearbyCells(currentMatrix, position);
     } else if (currentCell.classList.contains('cell')) {
       currentCell.classList.add('cell_show');
     }
     isWin(matrixOrder);
+    isFirstClick = false;
   }
 
   function handlerContext(event) {
@@ -238,22 +307,6 @@ function startGame() {
 
   playground.addEventListener('mouseup', handlerUp);
   playground.addEventListener('contextmenu', handlerContext);
-}
 
-function cleanTemplate() {
-  const body = document.querySelector('body');
-  body.innerHTML = '';
-}
-
-function refreshGame() {
-  cleanTemplate();
-  startGame();
-  const emoji = document.querySelector('.emoji');
-  emoji.addEventListener('click', refreshGame);
-}
-
-window.onload = function load() {
-  startGame();
-  const emoji = document.querySelector('.emoji');
   emoji.addEventListener('click', refreshGame);
 };
