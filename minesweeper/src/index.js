@@ -115,6 +115,32 @@ function applyStyle(matrix) {
   wrapper.className = `wrapper wrapper_${matrixOrder}`;
 }
 
+function isWin(order) {
+  const cellsShow = document.querySelectorAll('.cell_show');
+  const emoji = document.querySelector('.emoji');
+  const amountShow = cellsShow.length;
+  const needCellsForWin = order ** 2 - quantityMines;
+  if (amountShow === needCellsForWin) {
+    emoji.classList.add('win');
+  }
+}
+
+function toggleFlag(cell) {
+  const currentCell = cell;
+  console.log(currentCell);
+  const amountMines = document.querySelector('.mines');
+  let currentAmountMines = +amountMines.textContent;
+  if (currentCell.classList.contains('cell_flag')) {
+    currentCell.classList.remove('cell_flag');
+    currentAmountMines += 1;
+    amountMines.textContent = `${currentAmountMines}`.padStart(3, 0);
+  } else if (currentAmountMines > 0) {
+    currentCell.classList.add('cell_flag');
+    currentAmountMines -= 1;
+    amountMines.textContent = `${currentAmountMines}`.padStart(3, 0);
+  }
+}
+
 function searchPositionEmtyCell(event) {
   const cells = document.querySelectorAll('.cell');
   const arrCells = Array.from(cells);
@@ -142,6 +168,9 @@ function openNearbyCells(matrix, position, openedCell) {
           const numberNearbyCell = row * matrixOrder + column;
           const nearbyCell = cells[numberNearbyCell];
           nearbyCell.classList.add('cell_show');
+          if (nearbyCell.classList.contains('cell_flag')) {
+            toggleFlag(nearbyCell);
+          }
           if (nearbyCell.classList.contains('cell_empty') && openedCells.indexOf(numberNearbyCell) === -1) {
             openNearbyCells(matrix, numberNearbyCell, openedCells);
           }
@@ -169,43 +198,35 @@ function startGame() {
   const baseMatrix = createMatrixBase();
   const matrixMines = createMatrixMines(baseMatrix);
   const matrix = addNumbersToMatrix(matrixMines);
+  const matrixOrder = matrix.length;
   generateCells(matrix);
   applyStyle(matrix);
   const playground = document.querySelector('.playground');
 
-  function handlerDown(event) {
-    const currenCell = event.target;
-    if (currenCell.classList.contains('cell')) {
-      currenCell.classList.add('cell_open');
-    }
-  }
-
   function handlerUp(event) {
-    const currenCell = event.target;
-    currenCell.classList.remove('cell_open');
+    const currentCell = event.target;
+    currentCell.classList.remove('cell_open');
     if (event.button === 2) {
       console.log('Flag!');
-    }
-    if (currenCell.classList.contains('cell_mine')) {
-      currenCell.classList.add('exp');
+      toggleFlag(currentCell);
+    } else if (currentCell.classList.contains('cell_mine')) {
+      currentCell.classList.add('exp');
       loseGame();
-      playground.removeEventListener('mousedown', handlerDown);
       playground.removeEventListener('mouseup', handlerUp);
-    }
-    if (currenCell.classList.contains('cell_empty')) {
-      currenCell.classList.add('cell_show');
+    } else if (currentCell.classList.contains('cell_empty')) {
+      currentCell.classList.add('cell_show');
       const position = searchPositionEmtyCell(event);
       openNearbyCells(matrix, position);
-    } else if (currenCell.classList.contains('cell')) {
-      currenCell.classList.add('cell_show');
+    } else if (currentCell.classList.contains('cell')) {
+      currentCell.classList.add('cell_show');
     }
+    isWin(matrixOrder);
   }
 
   function handlerContext(event) {
     event.preventDefault();
   }
 
-  playground.addEventListener('mousedown', handlerDown);
   playground.addEventListener('mouseup', handlerUp);
   playground.addEventListener('contextmenu', handlerContext);
 }

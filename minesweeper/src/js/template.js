@@ -12,7 +12,7 @@ export function creatTemplate() {
   statusGame.className = 'status-game';
   const amountMines = document.createElement('span');
   amountMines.className = 'amount mines';
-  const emoji = document.createElement('div');
+  const emoji = document.createElement('button');
   emoji.className = 'emoji happy';
   const amountTimes = document.createElement('span');
   amountTimes.className = 'amount times';

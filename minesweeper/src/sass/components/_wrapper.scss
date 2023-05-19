@@ -33,6 +33,12 @@
 .emoji {
   width: 32px;
   height: 32px;
+  background-size: contain;
+  border: none;
+  outline: none;
+  &:active {
+    background-image: url(../assets/ico/active_emoji.svg);
+  }
 }
 
 .happy {
@@ -41,6 +47,10 @@
 
 .sad {
   background-image: url(../assets/ico/sad_emoji.svg);
+}
+
+.win {
+  background-image: url(../assets/ico/win_emoji.svg);
 }
 
 .playground {

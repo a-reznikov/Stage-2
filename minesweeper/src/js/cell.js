@@ -1,5 +1,5 @@
 export function creatCell(cellValue) {
-  const cell = document.createElement('div');
+  const cell = document.createElement('button');
   cell.className = 'cell';
   switch (cellValue) {
     case 1:
