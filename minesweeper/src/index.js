@@ -184,11 +184,20 @@ function openNearbyCells(matrix, position, openedCell) {
 
 function loseGame() {
   const cellMines = document.querySelectorAll('.cell_mine');
+  const cellFlag = document.querySelectorAll('.cell_flag');
   const emoji = document.querySelector('.emoji');
   emoji.classList.remove('happy');
   emoji.classList.add('sad');
   cellMines.forEach((cell) => {
-    cell.classList.add('cell_show');
+    if (!cell.classList.contains('cell_flag')) {
+      cell.classList.add('cell_show');
+    }
+  });
+  cellFlag.forEach((cell) => {
+    if (!cell.classList.contains('cell_mine')) {
+      cell.classList.remove('cell_flag');
+      cell.classList.add('cell_flag-wrong');
+    }
   });
 }
 

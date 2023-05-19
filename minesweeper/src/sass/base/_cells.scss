@@ -37,6 +37,9 @@
   &_flag {
     background-image: url(../assets/ico/flag.svg);
   }
+  &_flag-wrong {
+    background-image: url(../assets/ico/flag_wrong.svg);
+  }
   &_mine.cell_show {
     background-image: url(../assets/ico/mine.svg);
   }
