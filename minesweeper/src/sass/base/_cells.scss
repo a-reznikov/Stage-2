@@ -5,11 +5,22 @@
   justify-content: center;
   align-items: center;
   font-weight: 800;
-  background-image: url(../assets/ico/closed.svg);
   background-size: contain;
   font-size: 0;
   border: none;
   outline: none;
+  &_close {
+    background-image: url(../assets/ico/closed.svg);
+  }
+  &_close:active {
+    background-image: url(../assets/ico/empty.svg);
+  }
+  &_blocked {
+    background-image: url(../assets/ico/closed.svg);
+  }
+  &_blocked:active {
+    background-image: url(../assets/ico/closed.svg);
+  }
   &_one {
     color: $color-one;
   }
@@ -50,7 +61,16 @@
     font-size: 2.4rem;
     background-image: url(../assets/ico/empty.svg);
   }
-  &:active {
-    background-image: url(../assets/ico/empty.svg);
+  &_flag:active {
+    background-image: url(../assets/ico/flag.svg);
+  }
+  &_flag-wrong:active {
+    background-image: url(../assets/ico/flag_wrong.svg);
+  }
+  &_mine.cell_show:active {
+    background-image: url(../assets/ico/mine.svg);
+  }
+  &_mine.cell_show.exp:active {
+    background-image: url(../assets/ico/mine_exp.svg);
   }
 }
