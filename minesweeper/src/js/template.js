@@ -49,6 +49,8 @@ export function creatTemplate() {
   amountTimes.className = 'amount times';
   const playground = document.createElement('div');
   playground.className = 'playground';
+  const score = document.createElement('ol');
+  score.className = 'score';
 
   statusGame.append(amountMines);
   statusGame.append(emoji);
@@ -63,6 +65,7 @@ export function creatTemplate() {
   wrapper.append(settings);
   wrapper.append(statusGame);
   wrapper.append(playground);
+  wrapper.append(score);
   container.append(wrapper);
   body.append(container);
   return body;

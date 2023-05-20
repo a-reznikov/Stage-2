@@ -4,10 +4,12 @@ import { creatCell } from './js/cell';
 let quantityMines = 10;
 let sizePlayground = 10;
 let counterTime = 0;
-let counterClick = 0;
+let counterClickLeft = 0;
+let counterClickRight = 0;
 let isFirstClick = true;
 let isLose = false;
 let isWinner = false;
+const score = [];
 
 function createMatrixBase(order) {
   let matrixOrder = 0;
@@ -108,6 +110,17 @@ function generateCells(matrix) {
   }
 }
 
+function generateScore() {
+  const scoreList = document.querySelector('.score');
+  scoreList.innerHTML = '';
+  score.forEach((element) => {
+    const lastResult = document.createElement('li');
+    lastResult.className = 'results';
+    lastResult.textContent = element;
+    scoreList.append(lastResult);
+  });
+}
+
 function applyStyle(matrix) {
   const matrixOrder = matrix.length;
   const playground = document.querySelector('.playground');
@@ -128,6 +141,16 @@ function startTimer() {
   }, 1000);
 }
 
+function writeScore(result) {
+  const resultDate = `${result} Time: ${counterTime} sec, Clicks: left - ${counterClickLeft}, right - ${counterClickRight}`;
+  if (score.length === 10) {
+    score.pop();
+  }
+  score.unshift(resultDate);
+  generateScore();
+  console.log(score);
+}
+
 function isWin(order) {
   const cellsShow = document.querySelectorAll('.cell_show');
   const cellMines = document.querySelectorAll('.cell_mine');
@@ -141,7 +164,8 @@ function isWin(order) {
   const needCellsForWin = order ** 2 - quantityMines;
   if (amountShow === needCellsForWin) {
     console.log('You win, your time:', counterTime, 'sec');
-    console.log('You win, counterClick:', counterClick, 'clicks');
+    console.log('You win, counterClickLeft:', counterClickLeft, 'clicks');
+    writeScore('Win');
     isWinner = true;
     emoji.classList.add('win');
     cellMines.forEach((cell) => {
@@ -217,7 +241,8 @@ function openNearbyCells(matrix, position, openedCell) {
 
 function loseGame() {
   console.log('You lose, your time:', counterTime, 'sec');
-  console.log('You lose, counterClick:', counterClick, 'clicks');
+  console.log('You lose, counterClickLeft:', counterClickLeft, 'clicks');
+  writeScore('Lose');
   counterTime = 0;
   const cellMines = document.querySelectorAll('.cell_mine');
   const cellFlag = document.querySelectorAll('.cell_flag');
@@ -244,6 +269,14 @@ function loseGame() {
   isFirstClick = true;
 }
 
+function countClick(event) {
+  if (event.button === 2) {
+    counterClickRight += 1;
+  } else {
+    counterClickLeft += 1;
+  }
+}
+
 function cleanPlayground() {
   const playground = document.querySelector('.playground');
   playground.innerHTML = '';
@@ -263,7 +296,8 @@ function restartGame(size, holdPosition) {
 function refreshGame(size) {
   console.log('REFRESH============================>');
   counterTime = 0;
-  counterClick = 0;
+  counterClickLeft = 0;
+  counterClickRight = 0;
   const emoji = document.querySelector('.emoji');
   emoji.className = 'emoji happy';
   restartGame(size);
@@ -332,7 +366,7 @@ window.onload = function load() {
   }
 
   function handlerUp(event) {
-    counterClick += 1;
+    countClick(event);
     const currentCell = event.target;
     const isFlag = currentCell.classList.contains('cell_flag');
     const isClose = currentCell.classList.contains('cell_close');
