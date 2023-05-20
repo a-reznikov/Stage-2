@@ -45,8 +45,12 @@ export function creatTemplate() {
   statusGame.className = 'status-game';
   const amountMines = document.createElement('span');
   amountMines.className = 'amount mines';
+  const amountFlags = document.createElement('span');
+  amountFlags.className = 'amount flags';
   const emoji = document.createElement('button');
   emoji.className = 'emoji happy';
+  const amountSteps = document.createElement('span');
+  amountSteps.className = 'amount steps';
   const amountTimes = document.createElement('span');
   amountTimes.className = 'amount times';
   const playground = document.createElement('div');
@@ -55,7 +59,9 @@ export function creatTemplate() {
   score.className = 'score';
 
   statusGame.append(amountMines);
+  statusGame.append(amountFlags);
   statusGame.append(emoji);
+  statusGame.append(amountSteps);
   statusGame.append(amountTimes);
   wrapper.append(titleGame);
   size.append(smallSize);

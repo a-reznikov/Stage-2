@@ -9,8 +9,9 @@ import LoseSound from './assets/audio/lose.mp3';
 let quantityMines = 10;
 let sizePlayground = 10;
 let counterTime = 0;
-let counterClickLeft = 0;
-let counterClickRight = 0;
+let counterFlag = 0;
+let currentAmountMines = quantityMines - counterFlag;
+let counterSteps = 0;
 let isFirstClick = true;
 let isLose = false;
 let isWinner = false;
@@ -99,9 +100,13 @@ function addNumbersToMatrix(matrixWhitMines) {
 
 function getAmount() {
   const amountMines = document.querySelector('.mines');
+  const amountFlags = document.querySelector('.flags');
+  const amountSteps = document.querySelector('.steps');
   const amountTimes = document.querySelector('.times');
   amountMines.textContent = `${quantityMines}`.padStart(3, 0);
+  amountFlags.textContent = `${counterFlag}`.padStart(3, 0);
   amountTimes.textContent = '000';
+  amountSteps.textContent = '000';
 }
 
 function generateCells(matrix) {
@@ -158,7 +163,7 @@ function startTimer() {
 }
 
 function writeScore() {
-  const resultDate = `Winner Time: ${counterTime} sec, Clicks: left - ${counterClickLeft}, right - ${counterClickRight}`;
+  const resultDate = `Winner Time: ${counterTime} sec, Steps:  ${counterSteps}`;
   if (score.length === 10) {
     score.pop();
   }
@@ -180,7 +185,7 @@ function isWin(order) {
   const needCellsForWin = order ** 2 - quantityMines;
   if (amountShow === needCellsForWin) {
     console.log('You win, your time:', counterTime, 'sec');
-    console.log('You win, counterClickLeft:', counterClickLeft, 'clicks');
+    console.log('You win, counterSteps:', counterSteps, 'steps');
     writeScore();
     const sound = new Audio(WinSound);
     soundPlay(sound);
@@ -205,18 +210,23 @@ function showCell(cell) {
 function toggleFlag(cell) {
   const currentCell = cell;
   const amountMines = document.querySelector('.mines');
-  let currentAmountMines = +amountMines.textContent;
+  const amountFlags = document.querySelector('.flags');
+  console.log(currentAmountMines);
   if (currentCell.classList.contains('cell_close')) {
     const sound = new Audio(FlagSound);
     soundPlay(sound);
     if (currentCell.classList.contains('cell_flag')) {
       currentCell.classList.remove('cell_flag');
-      currentAmountMines += 1;
+      counterFlag -= 1;
+      currentAmountMines = quantityMines - counterFlag;
       amountMines.textContent = `${currentAmountMines}`.padStart(3, 0);
-    } else if (currentAmountMines > 0) {
+      amountFlags.textContent = `${counterFlag}`.padStart(3, 0);
+    } else {
       currentCell.classList.add('cell_flag');
-      currentAmountMines -= 1;
+      counterFlag += 1;
+      currentAmountMines = quantityMines - counterFlag;
       amountMines.textContent = `${currentAmountMines}`.padStart(3, 0);
+      amountFlags.textContent = `${counterFlag}`.padStart(3, 0);
     }
   }
 }
@@ -290,12 +300,10 @@ function loseGame() {
   isFirstClick = true;
 }
 
-function countClick(event) {
-  if (event.button === 2) {
-    counterClickRight += 1;
-  } else {
-    counterClickLeft += 1;
-  }
+function countSteps() {
+  const amountSteps = document.querySelector('.steps');
+  counterSteps += 1;
+  amountSteps.textContent = `${counterSteps}`.padStart(3, 0);
 }
 
 function activeSoundClick() {
@@ -332,8 +340,8 @@ function restartGame(size, holdPosition) {
 function refreshGame(size) {
   console.log('REFRESH============================>');
   counterTime = 0;
-  counterClickLeft = 0;
-  counterClickRight = 0;
+  counterFlag = 0;
+  counterSteps = 0;
   const emoji = document.querySelector('.emoji');
   emoji.className = 'emoji happy';
   restartGame(size);
@@ -391,10 +399,12 @@ window.onload = function load() {
         if (event.button === 2) {
           toggleFlag(currentCell);
         } else if (currentCell.classList.contains('cell_empty')) {
+          countSteps();
           activeSoundClick();
           showCell(currentCell);
           openNearbyCells(curMatrix, holdPosition);
         } else if (currentCell.classList.contains('cell')) {
+          countSteps();
           activeSoundClick();
           showCell(currentCell);
         }
@@ -405,7 +415,6 @@ window.onload = function load() {
   }
 
   function handlerUp(event) {
-    countClick(event);
     const currentCell = event.target;
     const isFlag = currentCell.classList.contains('cell_flag');
     const isClose = currentCell.classList.contains('cell_close');
@@ -416,6 +425,7 @@ window.onload = function load() {
     } else if (event.button === 2) {
       toggleFlag(currentCell);
     } else if (!isFlag && isClose && !isLose) {
+      countSteps();
       if (currentCell.classList.contains('cell_mine')) {
         currentCell.classList.add('exp');
         loseGame();
