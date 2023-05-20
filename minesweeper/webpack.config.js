@@ -35,6 +35,10 @@ module.exports = {
         ],
       },
       {
+        test: /\.(png|jpe?g|svg|ttf|woff2?|mp3|ogg)$/,
+        type: 'asset/resource',
+      },
+      {
         test: /\.html$/i,
         loader: 'html-loader',
       },

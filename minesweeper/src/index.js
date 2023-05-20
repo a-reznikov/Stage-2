@@ -1,5 +1,10 @@
 import { creatTemplate } from './js/template';
 import { creatCell } from './js/cell';
+import clickSound from './assets/audio/click.mp3';
+import ExploseSound from './assets/audio/mine-exp.mp3';
+import FlagSound from './assets/audio/flag.mp3';
+import WinSound from './assets/audio/win.mp3';
+import LoseSound from './assets/audio/lose.mp3';
 
 let quantityMines = 10;
 let sizePlayground = 10;
@@ -166,6 +171,8 @@ function isWin(order) {
     console.log('You win, your time:', counterTime, 'sec');
     console.log('You win, counterClickLeft:', counterClickLeft, 'clicks');
     writeScore('Win');
+    const sound = new Audio(WinSound);
+    sound.play();
     isWinner = true;
     emoji.classList.add('win');
     cellMines.forEach((cell) => {
@@ -189,6 +196,8 @@ function toggleFlag(cell) {
   const amountMines = document.querySelector('.mines');
   let currentAmountMines = +amountMines.textContent;
   if (currentCell.classList.contains('cell_close')) {
+    const sound = new Audio(FlagSound);
+    sound.play();
     if (currentCell.classList.contains('cell_flag')) {
       currentCell.classList.remove('cell_flag');
       currentAmountMines += 1;
@@ -243,6 +252,10 @@ function loseGame() {
   console.log('You lose, your time:', counterTime, 'sec');
   console.log('You lose, counterClickLeft:', counterClickLeft, 'clicks');
   writeScore('Lose');
+  const sound = new Audio(ExploseSound);
+  sound.play();
+  const soundLose = new Audio(LoseSound);
+  soundLose.play();
   counterTime = 0;
   const cellMines = document.querySelectorAll('.cell_mine');
   const cellFlag = document.querySelectorAll('.cell_flag');
@@ -275,6 +288,11 @@ function countClick(event) {
   } else {
     counterClickLeft += 1;
   }
+}
+
+function activeSoundClick() {
+  const sound = new Audio(clickSound);
+  sound.play();
 }
 
 function cleanPlayground() {
@@ -354,9 +372,11 @@ window.onload = function load() {
         if (event.button === 2) {
           toggleFlag(currentCell);
         } else if (currentCell.classList.contains('cell_empty')) {
+          activeSoundClick();
           showCell(currentCell);
           openNearbyCells(curMatrix, holdPosition);
         } else if (currentCell.classList.contains('cell')) {
+          activeSoundClick();
           showCell(currentCell);
         }
         isWin(sizePlayground);
@@ -382,10 +402,12 @@ window.onload = function load() {
         loseGame();
         isLose = true;
       } else if (currentCell.classList.contains('cell_empty')) {
+        activeSoundClick();
         showCell(currentCell);
         const position = searchPositionEmtyCell(event);
         openNearbyCells(currentMatrix, position);
       } else if (currentCell.classList.contains('cell')) {
+        activeSoundClick();
         showCell(currentCell);
       }
       isWin(sizePlayground);
