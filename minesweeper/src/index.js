@@ -2,6 +2,7 @@ import { creatTemplate } from './js/template';
 import { creatCell } from './js/cell';
 
 const quantityMines = 10;
+let sizePlayground = 10;
 let isFirstClick = true;
 let isLose = false;
 
@@ -227,10 +228,10 @@ function cleanPlayground() {
   playground.innerHTML = '';
 }
 
-function restartGame(holdPosition) {
+function restartGame(size, holdPosition) {
   console.log('_____________________ReSTART_____________________');
   cleanPlayground();
-  const baseMatrix = createMatrixBase();
+  const baseMatrix = createMatrixBase(size);
   const matrixMines = createMatrixMines(baseMatrix, holdPosition);
   const matrix = addNumbersToMatrix(matrixMines);
   generateCells(matrix);
@@ -238,13 +239,10 @@ function restartGame(holdPosition) {
   return matrix;
 }
 
-function refreshGame() {
+function refreshGame(size) {
   console.log('REFRESH============================>');
-  restartGame();
+  restartGame(size);
   getAmount();
-  const emoji = document.querySelector('.emoji');
-  emoji.className = 'emoji happy';
-  emoji.addEventListener('click', refreshGame);
   isFirstClick = true;
   isLose = false;
   console.log('<============================REFRESH');
@@ -253,10 +251,17 @@ function refreshGame() {
 window.onload = function load() {
   creatTemplate();
   getAmount();
-  const baseMatrix = createMatrixBase();
+  const selectSize = document.querySelector('.size');
+  sizePlayground = selectSize.value;
+  console.log(sizePlayground);
+  selectSize.addEventListener('change', () => {
+    sizePlayground = selectSize.value;
+    console.log(sizePlayground);
+    refreshGame(sizePlayground);
+  });
+  const baseMatrix = createMatrixBase(sizePlayground);
   const matrixMines = createMatrixMines(baseMatrix);
   const matrix = addNumbersToMatrix(matrixMines);
-  const matrixOrder = matrix.length;
   let currentMatrix = [];
   generateCells(matrix);
   applyStyle(matrix);
@@ -277,7 +282,7 @@ window.onload = function load() {
         } else if (currentCell.classList.contains('cell')) {
           showCell(currentCell);
         }
-        isWin(matrixOrder);
+        isWin(sizePlayground);
       }
       positionHoldCell += 1;
     });
@@ -289,7 +294,7 @@ window.onload = function load() {
     const isClose = currentCell.classList.contains('cell_close');
     if (isFirstClick) {
       const positionHold = searchPositionEmtyCell(event);
-      currentMatrix = restartGame(positionHold);
+      currentMatrix = restartGame(sizePlayground, positionHold);
       firstClick(event, currentMatrix, positionHold);
     } else if (event.button === 2) {
       toggleFlag(currentCell);
@@ -305,7 +310,7 @@ window.onload = function load() {
       } else if (currentCell.classList.contains('cell')) {
         showCell(currentCell);
       }
-      isWin(matrixOrder);
+      isWin(sizePlayground);
     }
     isFirstClick = false;
   }
@@ -317,5 +322,5 @@ window.onload = function load() {
   playground.addEventListener('mouseup', handlerUp);
   playground.addEventListener('contextmenu', handlerContext);
 
-  emoji.addEventListener('click', refreshGame);
+  emoji.addEventListener('click', () => refreshGame(sizePlayground));
 };

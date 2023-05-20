@@ -1,5 +1,8 @@
 export function creatTemplate() {
   const TITLE = 'Minesweeper';
+  const SMALL = '10x10';
+  const MEDIUM = '15x15';
+  const LARGE = '25x25';
   const body = document.querySelector('body');
   const container = document.createElement('main');
   container.className = 'main';
@@ -8,6 +11,22 @@ export function creatTemplate() {
   const titleGame = document.createElement('h1');
   titleGame.className = 'title';
   titleGame.textContent = TITLE;
+  const settings = document.createElement('div');
+  settings.className = 'settings';
+  const size = document.createElement('select');
+  size.className = 'size';
+  const smallSize = document.createElement('option');
+  smallSize.className = 'smallSize';
+  smallSize.textContent = SMALL;
+  smallSize.value = 10;
+  const mediumSize = document.createElement('option');
+  mediumSize.className = 'mediumSize';
+  mediumSize.textContent = MEDIUM;
+  mediumSize.value = 15;
+  const largeSize = document.createElement('option');
+  largeSize.className = 'largeSize';
+  largeSize.textContent = LARGE;
+  largeSize.value = 25;
   const statusGame = document.createElement('div');
   statusGame.className = 'status-game';
   const amountMines = document.createElement('span');
@@ -23,6 +42,11 @@ export function creatTemplate() {
   statusGame.append(emoji);
   statusGame.append(amountTimes);
   wrapper.append(titleGame);
+  size.append(smallSize);
+  size.append(mediumSize);
+  size.append(largeSize);
+  settings.append(size);
+  wrapper.append(settings);
   wrapper.append(statusGame);
   wrapper.append(playground);
   container.append(wrapper);
