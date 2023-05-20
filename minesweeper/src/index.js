@@ -3,8 +3,10 @@ import { creatCell } from './js/cell';
 
 let quantityMines = 10;
 let sizePlayground = 10;
+let counterTime = 0;
 let isFirstClick = true;
 let isLose = false;
+let isWinner = false;
 
 function createMatrixBase(order) {
   let matrixOrder = 0;
@@ -113,6 +115,18 @@ function applyStyle(matrix) {
   wrapper.className = `wrapper wrapper_${matrixOrder}`;
 }
 
+function startTimer() {
+  const amountTimes = document.querySelector('.times');
+  const intervalId = setInterval(() => {
+    if (isLose || isFirstClick || isWinner) {
+      clearInterval(intervalId);
+    } else {
+      counterTime += 1;
+      amountTimes.textContent = `${counterTime}`.padStart(3, 0);
+    }
+  }, 1000);
+}
+
 function isWin(order) {
   const cellsShow = document.querySelectorAll('.cell_show');
   const cellMines = document.querySelectorAll('.cell_mine');
@@ -125,6 +139,8 @@ function isWin(order) {
   });
   const needCellsForWin = order ** 2 - quantityMines;
   if (amountShow === needCellsForWin) {
+    console.log('You win, your time:', counterTime, 'sec');
+    isWinner = true;
     emoji.classList.add('win');
     cellMines.forEach((cell) => {
       if (cell.classList.contains('cell_mine')) {
@@ -198,6 +214,8 @@ function openNearbyCells(matrix, position, openedCell) {
 }
 
 function loseGame() {
+  console.log('You lose, your time:', counterTime, 'sec');
+  counterTime = 0;
   const cellMines = document.querySelectorAll('.cell_mine');
   const cellFlag = document.querySelectorAll('.cell_flag');
   const cellsClose = document.querySelectorAll('.cell_close');
@@ -241,11 +259,13 @@ function restartGame(size, holdPosition) {
 
 function refreshGame(size) {
   console.log('REFRESH============================>');
+  counterTime = 0;
   const emoji = document.querySelector('.emoji');
   emoji.className = 'emoji happy';
   restartGame(size);
   getAmount();
   isFirstClick = true;
+  isWinner = false;
   isLose = false;
   console.log('<============================REFRESH');
 }
@@ -289,6 +309,7 @@ window.onload = function load() {
   function firstClick(event, curMatrix, holdPosition) {
     const cells = document.querySelectorAll('.cell');
     let positionHoldCell = 0;
+    startTimer();
     cells.forEach((cell) => {
       if (positionHoldCell === holdPosition) {
         const currentCell = cell;

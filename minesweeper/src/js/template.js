@@ -24,7 +24,7 @@ export function creatTemplate() {
   quantityMines.id = 'quantity-mines';
   quantityMines.setAttribute('min', '10');
   quantityMines.setAttribute('max', '99');
-  quantityMines.setAttribute('maxlength', '2');
+  quantityMines.setAttribute('placeholder', 'Default 10"');
   const size = document.createElement('select');
   size.className = 'size';
   const smallSize = document.createElement('option');
