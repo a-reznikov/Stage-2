@@ -4,6 +4,7 @@ import { creatCell } from './js/cell';
 let quantityMines = 10;
 let sizePlayground = 10;
 let counterTime = 0;
+let counterClick = 0;
 let isFirstClick = true;
 let isLose = false;
 let isWinner = false;
@@ -140,6 +141,7 @@ function isWin(order) {
   const needCellsForWin = order ** 2 - quantityMines;
   if (amountShow === needCellsForWin) {
     console.log('You win, your time:', counterTime, 'sec');
+    console.log('You win, counterClick:', counterClick, 'clicks');
     isWinner = true;
     emoji.classList.add('win');
     cellMines.forEach((cell) => {
@@ -215,6 +217,7 @@ function openNearbyCells(matrix, position, openedCell) {
 
 function loseGame() {
   console.log('You lose, your time:', counterTime, 'sec');
+  console.log('You lose, counterClick:', counterClick, 'clicks');
   counterTime = 0;
   const cellMines = document.querySelectorAll('.cell_mine');
   const cellFlag = document.querySelectorAll('.cell_flag');
@@ -260,6 +263,7 @@ function restartGame(size, holdPosition) {
 function refreshGame(size) {
   console.log('REFRESH============================>');
   counterTime = 0;
+  counterClick = 0;
   const emoji = document.querySelector('.emoji');
   emoji.className = 'emoji happy';
   restartGame(size);
@@ -328,6 +332,7 @@ window.onload = function load() {
   }
 
   function handlerUp(event) {
+    counterClick += 1;
     const currentCell = event.target;
     const isFlag = currentCell.classList.contains('cell_flag');
     const isClose = currentCell.classList.contains('cell_close');
