@@ -15,6 +15,7 @@ let isFirstClick = true;
 let isLose = false;
 let isWinner = false;
 const score = [];
+let isMute = false;
 
 function createMatrixBase(order) {
   let matrixOrder = 0;
@@ -134,6 +135,16 @@ function applyStyle(matrix) {
   wrapper.className = `wrapper wrapper_${matrixOrder}`;
 }
 
+function soundPlay(currentSound) {
+  const sound = currentSound;
+  if (isMute) {
+    sound.volume = 0;
+  } else {
+    sound.volume = 1;
+  }
+  sound.play();
+}
+
 function startTimer() {
   const amountTimes = document.querySelector('.times');
   const intervalId = setInterval(() => {
@@ -146,8 +157,8 @@ function startTimer() {
   }, 1000);
 }
 
-function writeScore(result) {
-  const resultDate = `${result} Time: ${counterTime} sec, Clicks: left - ${counterClickLeft}, right - ${counterClickRight}`;
+function writeScore() {
+  const resultDate = `Winner Time: ${counterTime} sec, Clicks: left - ${counterClickLeft}, right - ${counterClickRight}`;
   if (score.length === 10) {
     score.pop();
   }
@@ -170,9 +181,9 @@ function isWin(order) {
   if (amountShow === needCellsForWin) {
     console.log('You win, your time:', counterTime, 'sec');
     console.log('You win, counterClickLeft:', counterClickLeft, 'clicks');
-    writeScore('Win');
+    writeScore();
     const sound = new Audio(WinSound);
-    sound.play();
+    soundPlay(sound);
     isWinner = true;
     emoji.classList.add('win');
     cellMines.forEach((cell) => {
@@ -197,7 +208,7 @@ function toggleFlag(cell) {
   let currentAmountMines = +amountMines.textContent;
   if (currentCell.classList.contains('cell_close')) {
     const sound = new Audio(FlagSound);
-    sound.play();
+    soundPlay(sound);
     if (currentCell.classList.contains('cell_flag')) {
       currentCell.classList.remove('cell_flag');
       currentAmountMines += 1;
@@ -249,13 +260,10 @@ function openNearbyCells(matrix, position, openedCell) {
 }
 
 function loseGame() {
-  console.log('You lose, your time:', counterTime, 'sec');
-  console.log('You lose, counterClickLeft:', counterClickLeft, 'clicks');
-  writeScore('Lose');
   const sound = new Audio(ExploseSound);
-  sound.play();
+  soundPlay(sound);
   const soundLose = new Audio(LoseSound);
-  soundLose.play();
+  soundPlay(soundLose);
   counterTime = 0;
   const cellMines = document.querySelectorAll('.cell_mine');
   const cellFlag = document.querySelectorAll('.cell_flag');
@@ -292,7 +300,17 @@ function countClick(event) {
 
 function activeSoundClick() {
   const sound = new Audio(clickSound);
-  sound.play();
+  soundPlay(sound);
+}
+
+function toggleMute() {
+  const volume = document.querySelector('.volume');
+  volume.classList.toggle('volume_mute');
+  if (isMute) {
+    isMute = false;
+  } else {
+    isMute = true;
+  }
 }
 
 function cleanPlayground() {
@@ -360,6 +378,7 @@ window.onload = function load() {
   generateCells(matrix);
   applyStyle(matrix);
   const emoji = document.querySelector('.emoji');
+  const volume = document.querySelector('.volume');
   const playground = document.querySelector('.playground');
 
   function firstClick(event, curMatrix, holdPosition) {
@@ -423,4 +442,5 @@ window.onload = function load() {
   playground.addEventListener('contextmenu', handlerContext);
 
   emoji.addEventListener('click', () => refreshGame(sizePlayground));
+  volume.addEventListener('click', toggleMute);
 };

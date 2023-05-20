@@ -39,6 +39,8 @@ export function creatTemplate() {
   hardSize.className = 'hardSize';
   hardSize.textContent = HARD;
   hardSize.value = 25;
+  const volume = document.createElement('button');
+  volume.className = 'volume';
   const statusGame = document.createElement('div');
   statusGame.className = 'status-game';
   const amountMines = document.createElement('span');
@@ -62,6 +64,7 @@ export function creatTemplate() {
   settings.append(labelMines);
   settings.append(quantityMines);
   settings.append(size);
+  settings.append(volume);
   wrapper.append(settings);
   wrapper.append(statusGame);
   wrapper.append(playground);
