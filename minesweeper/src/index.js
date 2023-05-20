@@ -1,7 +1,7 @@
 import { creatTemplate } from './js/template';
 import { creatCell } from './js/cell';
 
-const quantityMines = 10;
+let quantityMines = 10;
 let sizePlayground = 10;
 let isFirstClick = true;
 let isLose = false;
@@ -241,6 +241,8 @@ function restartGame(size, holdPosition) {
 
 function refreshGame(size) {
   console.log('REFRESH============================>');
+  const emoji = document.querySelector('.emoji');
+  emoji.className = 'emoji happy';
   restartGame(size);
   getAmount();
   isFirstClick = true;
@@ -259,6 +261,22 @@ window.onload = function load() {
     console.log(sizePlayground);
     refreshGame(sizePlayground);
   });
+
+  const inputMines = document.querySelector('.quantity-mines');
+  inputMines.addEventListener('change', () => {
+    if (inputMines.value < 10) {
+      quantityMines = 10;
+      inputMines.value = quantityMines;
+    } else if (inputMines.value > 99) {
+      quantityMines = 99;
+      inputMines.value = quantityMines;
+    } else {
+      quantityMines = inputMines.value;
+    }
+    console.log(quantityMines);
+    refreshGame(sizePlayground);
+  });
+
   const baseMatrix = createMatrixBase(sizePlayground);
   const matrixMines = createMatrixMines(baseMatrix);
   const matrix = addNumbersToMatrix(matrixMines);

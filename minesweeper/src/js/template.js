@@ -1,8 +1,9 @@
 export function creatTemplate() {
   const TITLE = 'Minesweeper';
-  const SMALL = '10x10';
-  const MEDIUM = '15x15';
-  const LARGE = '25x25';
+  const SMALL = 'easy - 10x10';
+  const MEDIUM = 'medium - 15x15';
+  const HARD = 'hard - 25x25';
+  const LABEL = 'Mines';
   const body = document.querySelector('body');
   const container = document.createElement('main');
   container.className = 'main';
@@ -13,6 +14,17 @@ export function creatTemplate() {
   titleGame.textContent = TITLE;
   const settings = document.createElement('div');
   settings.className = 'settings';
+  const labelMines = document.createElement('label');
+  labelMines.className = 'label-mines';
+  labelMines.textContent = LABEL;
+  labelMines.setAttribute('for', 'quantity-mines');
+  const quantityMines = document.createElement('input');
+  quantityMines.className = 'quantity-mines';
+  quantityMines.type = 'number';
+  quantityMines.id = 'quantity-mines';
+  quantityMines.setAttribute('min', '10');
+  quantityMines.setAttribute('max', '99');
+  quantityMines.setAttribute('maxlength', '2');
   const size = document.createElement('select');
   size.className = 'size';
   const smallSize = document.createElement('option');
@@ -23,10 +35,10 @@ export function creatTemplate() {
   mediumSize.className = 'mediumSize';
   mediumSize.textContent = MEDIUM;
   mediumSize.value = 15;
-  const largeSize = document.createElement('option');
-  largeSize.className = 'largeSize';
-  largeSize.textContent = LARGE;
-  largeSize.value = 25;
+  const hardSize = document.createElement('option');
+  hardSize.className = 'hardSize';
+  hardSize.textContent = HARD;
+  hardSize.value = 25;
   const statusGame = document.createElement('div');
   statusGame.className = 'status-game';
   const amountMines = document.createElement('span');
@@ -44,7 +56,9 @@ export function creatTemplate() {
   wrapper.append(titleGame);
   size.append(smallSize);
   size.append(mediumSize);
-  size.append(largeSize);
+  size.append(hardSize);
+  settings.append(labelMines);
+  settings.append(quantityMines);
   settings.append(size);
   wrapper.append(settings);
   wrapper.append(statusGame);
