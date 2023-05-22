@@ -27,11 +27,19 @@
 
 .settings {
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
   align-items: center;
   width: 100%;
   padding: 5px;
+  row-gap: 10px;
+  >* {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+  }
 }
+
 
 .quantity-mines {
   padding: 5px;
@@ -39,8 +47,10 @@
   font-size: 0.8rem;
   min-width: 80px;
   color: $color-dark;
+  background: $color-dark;
+  color: $color-amount;
   &::placeholder {
-    color: $color-dark;
+    color: $color-amount;
   }
 }
 
@@ -48,6 +58,8 @@
   padding: 5px;
   font-family: 'MINE-SWEEPER';
   font-size: 0.8rem;
+  background: $color-dark;
+  color: $color-amount;
 }
 
 .volume {
@@ -68,6 +80,16 @@
   justify-content: space-between;
   align-items: center;
   padding: 5px;
+}
+
+.status {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-family: 'MINE-SWEEPER';
+  font-weight: 400;
+  font-size: 0.6rem;
+  row-gap: 5px;
 }
 
 .amount {
@@ -142,5 +164,12 @@
 }
 
 button.outer {
+  padding: 3px;
+  font-family: 'MINE-SWEEPER';
+  font-size: 0.8rem;
   border: outset 4px $color-background;
+}
+
+button.outer:active {
+  border: inset 4px $color-background;
 }

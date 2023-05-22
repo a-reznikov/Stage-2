@@ -143,6 +143,19 @@ function applyStyle(matrix) {
   wrapper.className = `wrapper outer wrapper_${matrixOrder}`;
 }
 
+function openModal(event) {
+  const resultDate = `You ${event}! Time: ${counterTime} sec, Steps:  ${counterSteps}`;
+  const modalOverlay = document.querySelector('.modal__wrapper');
+  const modalTitle = document.querySelector('.modal__title');
+  modalOverlay.classList.add('modal__wrapper_overlay');
+  modalTitle.textContent = resultDate;
+}
+
+function closeModal() {
+  const modalOverlay = document.querySelector('.modal__wrapper');
+  modalOverlay.classList.remove('modal__wrapper_overlay');
+}
+
 function soundPlay(currentSound) {
   const sound = currentSound;
   if (isMute) {
@@ -190,6 +203,7 @@ function isWin(order) {
     console.log('You win, your time:', counterTime, 'sec');
     console.log('You win, counterSteps:', counterSteps, 'steps');
     writeScore();
+    openModal('Win');
     const sound = new Audio(WinSound);
     soundPlay(sound);
     isWinner = true;
@@ -282,6 +296,7 @@ function loseGame() {
   const cellFlag = document.querySelectorAll('.cell_flag');
   const cellsClose = document.querySelectorAll('.cell_close');
   const emoji = document.querySelector('.emoji');
+  openModal('Lose');
   emoji.classList.remove('happy');
   emoji.classList.add('sad');
   cellMines.forEach((cell) => {
@@ -320,6 +335,7 @@ function toggleMute() {
   if (isMute) {
     isMute = false;
   } else {
+    activeSoundClick();
     isMute = true;
   }
 }
@@ -352,6 +368,7 @@ function refreshGame(size) {
   isFirstClick = true;
   isWinner = false;
   isLose = false;
+  activeSoundClick();
   console.log('<============================REFRESH');
 }
 
@@ -360,15 +377,15 @@ window.onload = function load() {
   getAmount();
   const selectSize = document.querySelector('.size');
   sizePlayground = selectSize.value;
-  console.log(sizePlayground);
+
   selectSize.addEventListener('change', () => {
     sizePlayground = selectSize.value;
-    console.log(sizePlayground);
-    refreshGame(sizePlayground);
+    activeSoundClick();
   });
 
   const inputMines = document.querySelector('.quantity-mines');
   inputMines.addEventListener('change', () => {
+    activeSoundClick();
     if (inputMines.value < 10) {
       quantityMines = 10;
       inputMines.value = quantityMines;
@@ -378,8 +395,6 @@ window.onload = function load() {
     } else {
       quantityMines = inputMines.value;
     }
-    console.log(quantityMines);
-    refreshGame(sizePlayground);
   });
 
   const baseMatrix = createMatrixBase(sizePlayground);
@@ -390,6 +405,8 @@ window.onload = function load() {
   applyStyle(matrix);
   const emoji = document.querySelector('.emoji');
   const volume = document.querySelector('.volume');
+  const newGame = document.querySelector('.button_new-game');
+  const buttonModalClose = document.querySelector('.button__modal_close');
   const playground = document.querySelector('.playground');
 
   function firstClick(event, curMatrix, holdPosition) {
@@ -455,5 +472,7 @@ window.onload = function load() {
   playground.addEventListener('contextmenu', handlerContext);
 
   emoji.addEventListener('click', () => refreshGame(sizePlayground));
+  newGame.addEventListener('click', () => refreshGame(sizePlayground));
+  buttonModalClose.addEventListener('click', closeModal);
   volume.addEventListener('click', toggleMute);
 };
