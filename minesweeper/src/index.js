@@ -136,8 +136,8 @@ function applyStyle(matrix) {
   const matrixOrder = matrix.length;
   const playground = document.querySelector('.playground');
   const wrapper = document.querySelector('.wrapper');
-  playground.className = `playground playground_${matrixOrder}`;
-  wrapper.className = `wrapper wrapper_${matrixOrder}`;
+  playground.className = `playground inter playground_${matrixOrder}`;
+  wrapper.className = `wrapper outer wrapper_${matrixOrder}`;
 }
 
 function soundPlay(currentSound) {

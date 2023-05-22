@@ -7,13 +7,13 @@ export function creatTemplate() {
   const body = document.querySelector('body');
   const container = document.createElement('main');
   container.className = 'main';
-  const wrapper = document.createElement('section');
-  wrapper.className = 'wrapper';
+  const wrapperOuter = document.createElement('section');
+  wrapperOuter.className = 'wrapper outer';
   const titleGame = document.createElement('h1');
-  titleGame.className = 'title';
+  titleGame.className = 'title inter';
   titleGame.textContent = TITLE;
   const settings = document.createElement('div');
-  settings.className = 'settings';
+  settings.className = 'settings inter';
   const labelMines = document.createElement('label');
   labelMines.className = 'label-mines';
   labelMines.textContent = LABEL;
@@ -24,7 +24,7 @@ export function creatTemplate() {
   quantityMines.id = 'quantity-mines';
   quantityMines.setAttribute('min', '10');
   quantityMines.setAttribute('max', '99');
-  quantityMines.setAttribute('placeholder', 'Default 10"');
+  quantityMines.setAttribute('placeholder', '10...99');
   const size = document.createElement('select');
   size.className = 'size';
   const smallSize = document.createElement('option');
@@ -42,7 +42,7 @@ export function creatTemplate() {
   const volume = document.createElement('button');
   volume.className = 'volume';
   const statusGame = document.createElement('div');
-  statusGame.className = 'status-game';
+  statusGame.className = 'status-game inter';
   const amountMines = document.createElement('span');
   amountMines.className = 'amount mines';
   const amountFlags = document.createElement('span');
@@ -54,7 +54,7 @@ export function creatTemplate() {
   const amountTimes = document.createElement('span');
   amountTimes.className = 'amount times';
   const playground = document.createElement('div');
-  playground.className = 'playground';
+  playground.className = 'playground inter';
   const score = document.createElement('ol');
   score.className = 'score';
 
@@ -63,7 +63,7 @@ export function creatTemplate() {
   statusGame.append(emoji);
   statusGame.append(amountSteps);
   statusGame.append(amountTimes);
-  wrapper.append(titleGame);
+  wrapperOuter.append(titleGame);
   size.append(smallSize);
   size.append(mediumSize);
   size.append(hardSize);
@@ -71,11 +71,11 @@ export function creatTemplate() {
   settings.append(quantityMines);
   settings.append(size);
   settings.append(volume);
-  wrapper.append(settings);
-  wrapper.append(statusGame);
-  wrapper.append(playground);
-  wrapper.append(score);
-  container.append(wrapper);
+  wrapperOuter.append(settings);
+  wrapperOuter.append(statusGame);
+  wrapperOuter.append(playground);
+  wrapperOuter.append(score);
+  container.append(wrapperOuter);
   body.append(container);
   return body;
 }

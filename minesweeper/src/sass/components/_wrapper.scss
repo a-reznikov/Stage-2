@@ -4,18 +4,29 @@
   justify-content: space-between;
   align-items: center;
   margin: 20px auto 0;
+  padding: 10px;
+  row-gap: 10px;
   background: $color-primary;
-  // border: 10px solid $color-primary;
-  box-shadow: 2px 4px 5px $color-dark;
   &_10 {
-    max-width: 340px;
+    max-width: 360px;
   }
   &_15 {
-    max-width: 500px;
+    max-width: 520px;
   }
   &_25 {
-    max-width: 820px;
+    max-width: 840px;
   }
+}
+
+.title {
+  width: 100%;
+  padding: 5px;
+  text-align: center;
+}
+
+.settings {
+  width: 100%;
+  padding: 5px;
 }
 
 .volume {
@@ -31,7 +42,7 @@
   width: 100%;
   justify-content: space-between;
   align-items: center;
-  border: 10px solid $color-primary;
+  padding: 5px;
 }
 
 .amount {
@@ -67,16 +78,21 @@
 .playground {
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: 10px;
   &_10 {
-    max-width: 322px;
+    max-width: 330px;
   }
   &_15 {
-    max-width: 482px;
+    max-width: 490px;
   }
   &_25 {
-    max-width: 802px;
+    max-width: 810px;
   }
-  border-right: solid 2px $color-light;
-  border-bottom: solid 2px $color-light;
+}
+
+.outer {
+  border: outset 5px $color-background;
+}
+
+.inter {
+  border: inset 5px $color-background;
 }
