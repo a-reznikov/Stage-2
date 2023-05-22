@@ -1,0 +1,36 @@
+.wrapper {
+  max-width: $content-width;
+  margin: auto;
+  padding: 0 40px;
+  @include media-laptop-l {
+    padding: 0 30px;
+  }
+  @include media-tablet-m {
+    padding: 0 10px;
+  }
+  &:before {
+    content: '';
+    display: block;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 0;
+    background: rgba(0, 0, 0, 0);
+    z-index: -1;
+    @extend %transition;
+  }
+  &_overlay {
+    background: rgba(0, 0, 0, 0);
+    &:before {
+      content: '';
+      display: block;
+      top: 0;
+      right: 0;
+      height: 100%;
+      width: 100%;
+      background: rgba(0, 0, 0, .5);
+      z-index: 2;
+    }
+  }
+}

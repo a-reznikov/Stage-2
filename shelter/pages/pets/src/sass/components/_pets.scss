@@ -1,0 +1,73 @@
+body {
+  background: $color-background;
+}
+
+.pets {
+  background: $color-background;
+}
+
+.pets-container {
+  @include flex ($direction: column);
+  row-gap: 45px;
+  padding: 80px 0 100px;
+  &__title {
+    max-width: 400px;
+    text-align: center;
+    margin: 0 auto;
+    @include font(400, 3.5rem, 4.5rem, $color-text-title);
+    letter-spacing: 0.06em;
+    @include media-tablet-s {
+      @include font(400, 2.5rem, 3.2rem, $color-text-title);
+    }
+  }
+  &__slider {
+    padding: 15px 0;
+    @include flex ();
+    flex-wrap: wrap;
+    column-gap: 40px;
+    row-gap: 30px;
+    @media (max-width: 1279px) {
+      column-gap: 1%;
+    }
+    @include media-laptop {
+      padding: 0;
+    }
+    @include media-tablet-m {
+      padding: 0 15px 0;
+    }
+    @include media-tablet-s {
+      flex-direction: column;
+    }
+  }
+  @include media-laptop {
+    padding: 80px 10px 76px;
+    row-gap: 30px;
+  }
+  @include media-laptop-s {
+    padding: 80px 64px 76px;
+  }
+  @include media-tablet-m {
+    padding: 80px 0 76px;
+  }
+  @include media-tablet-s {
+    padding: 42px 0 42px;
+    row-gap: 42px;
+  }
+}
+
+.card {
+  background: $color-light-intense;
+  flex-shrink: 0;
+}
+
+.pets__navigation {
+  @include flex ();
+  width: 100%;
+  max-width: 340px;
+  @include media-laptop {
+    padding-top: 10px;
+  }
+  @include media-tablet-s {
+    padding-top: 0;
+  }
+}

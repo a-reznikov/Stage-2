@@ -1,0 +1,16 @@
+.layout-2-column {
+  @include flex ();
+  column-gap: 25px;
+  @include media-laptop-l {
+    column-gap: 0;
+    flex-direction: column;
+  }
+}
+
+.layout-3-column {
+  @include flex ();
+}
+
+.layout-3-row {
+  @include flex ($direction: column);
+}

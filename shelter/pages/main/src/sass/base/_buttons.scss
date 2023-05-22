@@ -1,0 +1,60 @@
+.button {
+  padding: 15px 45px;
+  @include font(400, 1.7rem, 2.2rem, $color-link-hover);
+  letter-spacing: 0.06em;
+  background: $color-primary;
+  border-radius: 100px;
+  border-style: none;
+  cursor: pointer;
+  @extend %transition;
+  &_bordered {
+    padding: 13px 43px;
+    background: $color-light-intense;
+    border: 2px solid $color-primary;
+  }
+  &_bordered:hover {
+    background: $color-primary-light;
+    border: 2px solid $color-primary-light;
+  }
+  &_colored:hover {
+    background: $color-primary-light;
+  }
+}
+
+.button__round {
+  width: 52px;
+  height: 52px;
+  background-color: $color-light;
+  border: 2px solid $color-primary;
+  border-radius: 100px;
+  cursor: pointer;
+  flex-shrink: 0;
+  @extend %transition;
+  &:hover {
+    background: $color-primary-light;
+    border: 2px solid $color-primary-light;
+  }
+  &:active {
+    background: $color-primary;
+    border: 2px solid $color-primary;
+  }
+  &_arrow {
+    display: block;
+    width: 14px;
+    height: 6px;
+    margin: 0 auto;
+  }
+  &_cross {
+    position: relative;
+    display: block;
+    width: 12px;
+    height: 12px;
+    margin: 18px;
+  }
+  &_slider {
+    background: $color-background;
+  }
+  &_right {
+    transform: rotate(180deg);
+  }
+}

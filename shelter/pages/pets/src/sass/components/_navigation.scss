@@ -1,0 +1,22 @@
+.nav-item {
+  &__link {
+    @include font(400, 1.5rem, 2.4rem, $color-text-title);
+  }
+  &__link:hover {
+    color: $color-link-hover;
+  }
+}
+
+.nav-item_active {
+  position: relative;
+  .nav-item__link {
+    cursor: default;
+    color: $color-link-hover;
+  }
+}
+
+.nav {
+  &_opened {
+    background: $color-light;
+  }
+}

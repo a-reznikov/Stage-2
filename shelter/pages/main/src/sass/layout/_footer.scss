@@ -1,0 +1,133 @@
+.footer {
+  background: url('../../../../assets/images/noise_transparent@2x.png'), radial-gradient(110.67% 538.64% at 5.73% 50%, #513D2F 0%, #1A1A1C 100%), #211F20;
+}
+
+.footer__wrapper {
+padding: 40px 40px 0 40px;
+}
+
+.footer__container {
+  @include flex ();
+  padding-top: 40px;
+  @include media-laptop-l {
+    column-gap: 20px;
+  }
+  @include media-laptop-m {
+    padding-top: 31px;
+    flex-wrap: wrap;
+  }
+  @include media-tablet-m {
+    row-gap: 40px;
+    flex-direction: column;
+  }
+  @include media-mobile-l {
+    padding-top: 30px;
+  }
+}
+
+.footer-title {
+  color: $color-light;
+  @include media-tablet-m {
+    text-align: center;
+  }
+  @include media-mobile-l {
+    padding: 0 11px 1px;
+    @include font(400, 2.5rem, 3.2rem, $color-light);
+  }
+}
+
+.footer-text {
+  color: $color-primary;
+}
+
+.footer-link {
+  text-decoration: none;
+  color: $color-primary;
+  @extend %transition;
+  &:hover {
+    cursor: pointer;
+    color: $color-light;
+  }
+}
+
+.contacts {
+  align-self: flex-start;
+  margin-top: 17px;
+  align-items: flex-start;
+  max-width: 279px;
+  row-gap: 39.5px;
+  &__email {
+    @include flex ();
+    width: 100%;
+    max-width: 251px;
+    padding: 3px 0;
+  }
+  &__phone {
+    @include flex ();
+    width: 100%;
+    max-width: 239px;
+  }
+  @include media-laptop-m {
+    margin-top: 0;
+    padding-left: 34px;
+  }
+  @include media-tablet-m {
+    align-self: center;
+    padding-left: 0;
+  }
+  @include media-mobile-l {
+    margin: 0 11px;
+    align-items: center;
+  }
+}
+
+.address {
+  align-self: flex-start;
+  margin-top: 17px;
+  align-items: flex-start;
+  max-width: 302px;
+  @include media-laptop-m {
+    margin-top: 0;
+    padding-right: 34px;
+  }
+  @include media-tablet-m {
+    align-self: center;
+    padding: 0;
+    row-gap: 40px;
+  }
+  &__title {
+    @include media-mobile-l {
+      padding: 0 11px 0px;
+    }
+  }
+}
+
+
+.address-city {
+  @include flex ();
+  column-gap: 20px;
+  &__text {
+    max-width: 260px;
+  }
+  &__image {
+    flex-shrink: 0;
+  }
+}
+
+.boston {
+  margin: 33px 0 32px 0;
+  @include media-tablet-m {
+    margin: 0;
+  }
+}
+
+.footer__image {
+  @include media-laptop-m {
+    padding-top: 65px;
+    margin: 0 auto;
+  }
+  @include media-tablet-m {
+    align-self: center;
+    padding: 0 20px 0.35px;
+  }
+}

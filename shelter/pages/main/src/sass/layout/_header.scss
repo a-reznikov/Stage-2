@@ -1,0 +1,12 @@
+.header {
+  z-index: 1;
+}
+
+.header__container {
+  @include flex ();
+  padding: 30px 0;
+  @include media-tablet-m {
+    padding: 30px 10px;
+  }
+}
+
