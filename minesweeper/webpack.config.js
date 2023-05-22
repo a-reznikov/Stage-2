@@ -35,7 +35,7 @@ module.exports = {
         ],
       },
       {
-        test: /\.(png|jpe?g|svg|ttf|woff2?|mp3|ogg)$/,
+        test: /\.(png|jpe?g|svg|ttf|eot|woff2?|mp3|ogg)$/,
         type: 'asset/resource',
       },
       {

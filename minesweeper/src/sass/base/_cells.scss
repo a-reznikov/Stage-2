@@ -6,6 +6,7 @@
   align-items: center;
   font-weight: 800;
   background-size: contain;
+  font-family: 'MINE-SWEEPER';
   font-size: 0;
   border: none;
   outline: none;
@@ -58,7 +59,7 @@
     background-image: url(../assets/ico/mine_exp.svg);
   }
   &_show {
-    font-size: 2.4rem;
+    font-size: 1.8rem;
     background-image: url(../assets/ico/empty.svg);
   }
   &_flag:active {

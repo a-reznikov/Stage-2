@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  margin: 20px auto 0;
+  margin: 20px auto;
   padding: 10px;
   row-gap: 10px;
   background: $color-primary;
@@ -22,18 +22,43 @@
   width: 100%;
   padding: 5px;
   text-align: center;
+  font-family: 'MINE-SWEEPER';
 }
 
 .settings {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
   width: 100%;
   padding: 5px;
+}
+
+.quantity-mines {
+  padding: 5px;
+  font-family: 'MINE-SWEEPER';
+  font-size: 0.8rem;
+  min-width: 80px;
+  color: $color-dark;
+  &::placeholder {
+    color: $color-dark;
+  }
+}
+
+.size {
+  padding: 5px;
+  font-family: 'MINE-SWEEPER';
+  font-size: 0.8rem;
 }
 
 .volume {
   width: 32px;
   height: 32px;
+  background-image: url(../assets/ico/volume.svg);
   &_mute {
-    background: red;
+    background-image: url(../assets/ico/volume_mute.svg);
+  }
+  &:active {
+    border: inset 4px $color-background;
   }
 }
 
@@ -46,10 +71,15 @@
 }
 
 .amount {
-  font-size: 3.2rem;
+  font-family: 'MINE-SWEEPER';
+  font-weight: 400;
+  font-size: 1.4rem;
   color: $color-amount;
   background: $color-dark;
-  line-height: 2.4rem;
+  min-width: 60px;
+  text-align: center;
+  padding-left: 2px;
+  // line-height: 2.4rem;
 }
 
 .emoji {
@@ -89,10 +119,28 @@
   }
 }
 
+.score {
+  width: 100%;
+  padding: 5px 0;
+  text-align: center;
+  font-family: 'MINE-SWEEPER';
+  font-size: 1rem;
+  font-weight: 700;
+  >* {
+    font-size: 0.8rem;
+    font-weight: 400;
+    list-style: none;
+  }
+}
+
 .outer {
   border: outset 5px $color-background;
 }
 
 .inter {
   border: inset 5px $color-background;
+}
+
+button.outer {
+  border: outset 4px $color-background;
 }

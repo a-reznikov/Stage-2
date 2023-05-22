@@ -124,10 +124,13 @@ function generateCells(matrix) {
 function generateScore() {
   const scoreList = document.querySelector('.score');
   scoreList.innerHTML = '';
+  scoreList.textContent = 'Last 10 games won!';
+  let index = 0;
   score.forEach((element) => {
+    index += 1;
     const lastResult = document.createElement('li');
     lastResult.className = 'results';
-    lastResult.textContent = element;
+    lastResult.textContent = `${index}. ${element}`;
     scoreList.append(lastResult);
   });
 }
