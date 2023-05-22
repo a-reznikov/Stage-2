@@ -26,11 +26,14 @@
   padding: 10px;
   row-gap: 20px;
   border: outset 4px $color-background;
-  // width: 50%;
-  // max-width: 900px;
-  // max-height: 500px;
   background: $color-primary;
   &__title {
+    text-align: center;
+    font-family: 'MINE-SWEEPER';
+    font-size: 0.8rem;
+  }
+  &__subtitle {
+    text-align: center;
     font-family: 'MINE-SWEEPER';
     font-size: 0.8rem;
   }

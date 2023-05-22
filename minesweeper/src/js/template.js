@@ -103,6 +103,8 @@ export function creatTemplate() {
   score.textContent = 'Last 10 games won!';
   const modalTitle = document.createElement('h2');
   modalTitle.className = 'modal__title';
+  const modalSubTitle = document.createElement('h3');
+  modalSubTitle.className = 'modal__subtitle';
   const modalButtonClose = document.createElement('button');
   modalButtonClose.className = 'button outer button__modal_close';
   modalButtonClose.textContent = 'Close';
@@ -143,6 +145,7 @@ export function creatTemplate() {
   settings.append(buttonsPanel);
 
   modal.append(modalTitle);
+  modal.append(modalSubTitle);
   modal.append(modalButtonClose);
 
   modalWrapper.append(modal);

@@ -130,15 +130,6 @@
 .playground {
   display: flex;
   flex-wrap: wrap;
-  &_10 {
-    max-width: 330px;
-  }
-  &_15 {
-    max-width: 490px;
-  }
-  &_25 {
-    max-width: 810px;
-  }
 }
 
 .score {

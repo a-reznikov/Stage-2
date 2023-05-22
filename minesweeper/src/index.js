@@ -8,6 +8,7 @@ import LoseSound from './assets/audio/lose.mp3';
 
 let quantityMines = 10;
 let sizePlayground = 10;
+let preSize = 0;
 let counterTime = 0;
 let counterFlag = 0;
 let currentAmountMines = quantityMines - counterFlag;
@@ -15,8 +16,10 @@ let counterSteps = 0;
 let isFirstClick = true;
 let isLose = false;
 let isWinner = false;
-const score = [];
 let isMute = false;
+let score = [];
+const saved = {};
+const savedGameToLs = {};
 
 function createMatrixBase(order) {
   let matrixOrder = 0;
@@ -137,18 +140,34 @@ function generateScore() {
 
 function applyStyle(matrix) {
   const matrixOrder = matrix.length;
-  const playground = document.querySelector('.playground');
   const wrapper = document.querySelector('.wrapper');
-  playground.className = `playground inter playground_${matrixOrder}`;
   wrapper.className = `wrapper outer wrapper_${matrixOrder}`;
 }
 
-function openModal(event) {
-  const resultDate = `You ${event}! Time: ${counterTime} sec, Steps:  ${counterSteps}`;
+function openModal(event, nameSave) {
+  console.log(event);
   const modalOverlay = document.querySelector('.modal__wrapper');
   const modalTitle = document.querySelector('.modal__title');
+  const modalSubTitle = document.querySelector('.modal__subtitle');
+  let modaTitle = '';
+  let modaSubTitle = '';
   modalOverlay.classList.add('modal__wrapper_overlay');
-  modalTitle.textContent = resultDate;
+  if (event === 'Save') {
+    modaTitle = 'The game has been saved!';
+    modaSubTitle = nameSave;
+  } else if (event === 'Load') {
+    modaTitle = 'The game has been load!';
+    modaSubTitle = nameSave;
+  } else if (event === 'Win') {
+    modaTitle = `You ${event}! Time: ${counterTime} sec, Steps:  ${counterSteps}`;
+    modaSubTitle = 'You\'re a real genius!';
+  } else {
+    modaTitle = `You ${event}! Time: ${counterTime} sec, Steps:  ${counterSteps}`;
+    modaSubTitle = 'Try again!';
+  }
+
+  modalTitle.textContent = modaTitle;
+  modalSubTitle.textContent = modaSubTitle;
 }
 
 function closeModal() {
@@ -331,13 +350,103 @@ function activeSoundClick() {
 
 function toggleMute() {
   const volume = document.querySelector('.volume');
-  volume.classList.toggle('volume_mute');
   if (isMute) {
+    volume.classList.remove('volume_mute');
     isMute = false;
   } else {
+    volume.classList.add('volume_mute');
     activeSoundClick();
     isMute = true;
   }
+}
+
+function saveGame(hoSave) {
+  let hoSaveGame = '';
+  const playground = document.querySelector('.playground');
+  const now = new Date();
+  const date = now.toLocaleString();
+  if (hoSave === 'usersInitSave') {
+    hoSaveGame = 'The player saved the game';
+    saved.name = `${hoSaveGame}: ${date}`;
+    saved.quantityMines = quantityMines;
+    saved.sizePlayground = sizePlayground;
+    saved.counterTime = counterTime;
+    saved.counterFlag = counterFlag;
+    saved.currentAmountMines = currentAmountMines;
+    saved.counterSteps = counterSteps;
+    saved.isFirstClick = isFirstClick;
+    saved.isLose = isLose;
+    saved.isWinner = isWinner;
+    saved.isMute = isMute;
+    saved.score = score;
+    saved.html = playground.innerHTML;
+    console.log(saved);
+    openModal('Save', saved.name);
+  } else if (hoSave === 'autoSave') {
+    hoSaveGame = 'Auto save game';
+    savedGameToLs.name = `${hoSaveGame}: ${date}`;
+    savedGameToLs.quantityMines = quantityMines;
+    savedGameToLs.sizePlayground = sizePlayground;
+    savedGameToLs.counterTime = counterTime;
+    savedGameToLs.counterFlag = counterFlag;
+    savedGameToLs.currentAmountMines = currentAmountMines;
+    savedGameToLs.counterSteps = counterSteps;
+    savedGameToLs.isFirstClick = isFirstClick;
+    savedGameToLs.isLose = isLose;
+    savedGameToLs.isWinner = isWinner;
+    savedGameToLs.isMute = isMute;
+    savedGameToLs.score = score;
+    savedGameToLs.html = playground.innerHTML;
+    console.log('AutoSave', savedGameToLs);
+    openModal('Save', savedGameToLs.name);
+  }
+}
+
+function loadGame(dateSave) {
+  const wrapper = document.querySelector('.wrapper');
+  const playground = document.querySelector('.playground');
+  const inputMines = document.querySelector('.quantity-mines');
+  const size = document.querySelector('.size');
+  const volume = document.querySelector('.volume');
+  const amountMines = document.querySelector('.mines');
+  const amountFlags = document.querySelector('.flags');
+  const amountSteps = document.querySelector('.steps');
+  const amountTimes = document.querySelector('.times');
+
+  playground.innerHTML = dateSave.html;
+  quantityMines = dateSave.quantityMines;
+  sizePlayground = dateSave.sizePlayground;
+  counterTime = dateSave.counterTime;
+  counterFlag = dateSave.counterFlag;
+  currentAmountMines = dateSave.currentAmountMines;
+  counterSteps = dateSave.counterSteps;
+  isFirstClick = dateSave.isFirstClick;
+  isLose = dateSave.isLose;
+  isWinner = dateSave.isWinner;
+  isMute = dateSave.isMute;
+  score = dateSave.score;
+  wrapper.className = `wrapper outer wrapper_${sizePlayground}`;
+
+  inputMines.value = quantityMines;
+  if (sizePlayground === '10') {
+    size.selectedIndex = 1;
+  } else if (sizePlayground === '15') {
+    size.selectedIndex = 2;
+  } else {
+    size.selectedIndex = 3;
+  }
+  if (isMute) {
+    volume.classList.add('volume_mute');
+  } else {
+    volume.classList.remove('volume_mute');
+    activeSoundClick();
+  }
+  amountMines.textContent = `${currentAmountMines}`.padStart(3, 0);
+  amountFlags.textContent = `${counterFlag}`.padStart(3, 0);
+  amountSteps.textContent = `${counterSteps}`.padStart(3, 0);
+  amountTimes.textContent = `${counterTime}`.padStart(3, 0);
+  //startTimer();
+  openModal('Load', dateSave.name);
 }
 
 function cleanPlayground() {
@@ -372,6 +481,11 @@ function refreshGame(size) {
   console.log('<============================REFRESH');
 }
 
+function newGame() {
+  sizePlayground = preSize;
+  refreshGame(sizePlayground);
+}
+
 window.onload = function load() {
   creatTemplate();
   getAmount();
@@ -379,7 +493,7 @@ window.onload = function load() {
   sizePlayground = selectSize.value;
 
   selectSize.addEventListener('change', () => {
-    sizePlayground = selectSize.value;
+    preSize = selectSize.value;
     activeSoundClick();
   });
 
@@ -405,7 +519,9 @@ window.onload = function load() {
   applyStyle(matrix);
   const emoji = document.querySelector('.emoji');
   const volume = document.querySelector('.volume');
-  const newGame = document.querySelector('.button_new-game');
+  const buttonNewGame = document.querySelector('.button_new-game');
+  const buttonSaveGame = document.querySelector('.button_save');
+  const buttonLoadGame = document.querySelector('.button_load');
   const buttonModalClose = document.querySelector('.button__modal_close');
   const playground = document.querySelector('.playground');
 
@@ -472,7 +588,24 @@ window.onload = function load() {
   playground.addEventListener('contextmenu', handlerContext);
 
   emoji.addEventListener('click', () => refreshGame(sizePlayground));
-  newGame.addEventListener('click', () => refreshGame(sizePlayground));
+  buttonNewGame.addEventListener('click', newGame);
   buttonModalClose.addEventListener('click', closeModal);
+  buttonSaveGame.addEventListener('click', () => saveGame('usersInitSave'));
+  buttonLoadGame.addEventListener('click', () => loadGame(saved));
   volume.addEventListener('click', toggleMute);
 };
+
+function getLocalStorage() {
+  if (localStorage.getItem('autoSavedGameToLs')) {
+    const savedGameFromLs = JSON.parse(localStorage.getItem('autoSavedGameToLs'));
+    console.log(savedGameFromLs.name);
+    loadGame(savedGameFromLs);
+  }
+}
+window.addEventListener('load', getLocalStorage);
+
+function setLocalStorage() {
+  saveGame('autoSave');
+  localStorage.setItem('autoSavedGameToLs', JSON.stringify(savedGameToLs));
+}
+window.addEventListener('beforeunload', setLocalStorage);
