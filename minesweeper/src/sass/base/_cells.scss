@@ -1,7 +1,7 @@
 .cell {
   display: flex;
-  width: 32px;
-  height: 32px;
+  width: 18px;
+  height: 18px;
   justify-content: center;
   align-items: center;
   font-weight: 800;
@@ -59,7 +59,7 @@
     background-image: url(../assets/ico/mine_exp.svg);
   }
   &_show {
-    font-size: 1.8rem;
+    font-size: 0.8rem;
     background-image: url(../assets/ico/empty.svg);
   }
   &_flag:active {

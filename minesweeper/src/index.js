@@ -8,7 +8,7 @@ import LoseSound from './assets/audio/lose.mp3';
 
 let quantityMines = 10;
 let sizePlayground = 10;
-let preSize = 0;
+let preSize = 10;
 let counterTime = 0;
 let counterFlag = 0;
 let currentAmountMines = quantityMines - counterFlag;
@@ -17,9 +17,11 @@ let isFirstClick = true;
 let isLose = false;
 let isWinner = false;
 let isMute = false;
+let haveSave = false;
+let currentTheme = 'light';
 let score = [];
-const saved = {};
-const savedGameToLs = {};
+let saved = {};
+let savedGameToLs = {};
 
 function createMatrixBase(order) {
   let matrixOrder = 0;
@@ -144,35 +146,55 @@ function applyStyle(matrix) {
   wrapper.className = `wrapper outer wrapper_${matrixOrder}`;
 }
 
-function openModal(event, nameSave) {
+function openModal(event, nameSaveFirst, nameSaveSecond) {
   console.log(event);
   const modalOverlay = document.querySelector('.modal__wrapper');
   const modalTitle = document.querySelector('.modal__title');
-  const modalSubTitle = document.querySelector('.modal__subtitle');
+  const modalSubTitleFirst = document.querySelector('.subtitle_first');
+  const modalSubTitleSecond = document.querySelector('.subtitle_second');
+  const modalSubTitleThird = document.querySelector('.subtitle_third');
   let modaTitle = '';
-  let modaSubTitle = '';
+  let subTitleFirst = '';
+  let subTitleSecond = '';
+  let subTitleThird = '';
   modalOverlay.classList.add('modal__wrapper_overlay');
   if (event === 'Save') {
     modaTitle = 'The game has been saved!';
-    modaSubTitle = nameSave;
+    subTitleFirst = nameSaveFirst;
   } else if (event === 'Load') {
     modaTitle = 'The game has been load!';
-    modaSubTitle = nameSave;
+    subTitleFirst = nameSaveFirst;
+  } else if (event === 'Not save') {
+    modaTitle = 'You don\'t have a saved game';
+    subTitleFirst = 'Use the Save Game before';
+  } else if (event === 'Choose save') {
+    modaTitle = 'Choose a saved game:';
+    subTitleFirst = nameSaveFirst;
+    if (haveSave) {
+      subTitleSecond = nameSaveSecond;
+    } else {
+      subTitleSecond = 'No saved game yet';
+    }
+    subTitleThird = 'Start New Game';
   } else if (event === 'Win') {
     modaTitle = `You ${event}! Time: ${counterTime} sec, Steps:  ${counterSteps}`;
-    modaSubTitle = 'You\'re a real genius!';
+    subTitleFirst = 'You\'re a real genius!';
   } else {
     modaTitle = `You ${event}! Time: ${counterTime} sec, Steps:  ${counterSteps}`;
-    modaSubTitle = 'Try again!';
+    subTitleFirst = 'Try again!';
   }
 
   modalTitle.textContent = modaTitle;
-  modalSubTitle.textContent = modaSubTitle;
+  modalSubTitleFirst.textContent = subTitleFirst;
+  modalSubTitleSecond.textContent = subTitleSecond;
+  modalSubTitleThird.textContent = subTitleThird;
 }
 
 function closeModal() {
   const modalOverlay = document.querySelector('.modal__wrapper');
+  const modal = document.querySelector('.modal');
   modalOverlay.classList.remove('modal__wrapper_overlay');
+  modal.classList.remove('modal__save');
 }
 
 function soundPlay(currentSound) {
@@ -189,6 +211,7 @@ function startTimer() {
   const amountTimes = document.querySelector('.times');
   const intervalId = setInterval(() => {
     if (isLose || isFirstClick || isWinner) {
+      console.log('ClearTimer');
       clearInterval(intervalId);
     } else {
       counterTime += 1;
@@ -204,7 +227,6 @@ function writeScore() {
   }
   score.unshift(resultDate);
   generateScore();
-  console.log(score);
 }
 
 function isWin(order) {
@@ -360,15 +382,31 @@ function toggleMute() {
   }
 }
 
+function toggleTheme() {
+  const theme = document.querySelector('.theme');
+  const wrapper = document.querySelector('.wrapper');
+  if (currentTheme === 'light') {
+    theme.classList.add('theme_dark');
+    wrapper.classList.add('wrapper_dark');
+    currentTheme = 'dark';
+  } else {
+    theme.classList.remove('theme_dark');
+    wrapper.classList.remove('wrapper_dark');
+    currentTheme = 'light';
+  }
+}
+
 function saveGame(hoSave) {
   let hoSaveGame = '';
   const playground = document.querySelector('.playground');
   const now = new Date();
   const date = now.toLocaleString();
+  haveSave = true;
   if (hoSave === 'usersInitSave') {
     hoSaveGame = 'The player saved the game';
     saved.name = `${hoSaveGame}: ${date}`;
     saved.quantityMines = quantityMines;
+    console.log(sizePlayground);
     saved.sizePlayground = sizePlayground;
     saved.counterTime = counterTime;
     saved.counterFlag = counterFlag;
@@ -378,6 +416,8 @@ function saveGame(hoSave) {
     saved.isLose = isLose;
     saved.isWinner = isWinner;
     saved.isMute = isMute;
+    saved.haveSave = haveSave;
+    saved.currentTheme = currentTheme;
     saved.score = score;
     saved.html = playground.innerHTML;
     console.log(saved);
@@ -395,6 +435,8 @@ function saveGame(hoSave) {
     savedGameToLs.isLose = isLose;
     savedGameToLs.isWinner = isWinner;
     savedGameToLs.isMute = isMute;
+    savedGameToLs.haveSave = haveSave;
+    savedGameToLs.currentTheme = currentTheme;
     savedGameToLs.score = score;
     savedGameToLs.html = playground.innerHTML;
     console.log('AutoSave', savedGameToLs);
@@ -402,51 +444,68 @@ function saveGame(hoSave) {
   }
 }
 
-function loadGame(dateSave) {
+function loadGame(dateSave, eventClose) {
   const wrapper = document.querySelector('.wrapper');
   const playground = document.querySelector('.playground');
   const inputMines = document.querySelector('.quantity-mines');
   const size = document.querySelector('.size');
   const volume = document.querySelector('.volume');
+  const theme = document.querySelector('.theme');
   const amountMines = document.querySelector('.mines');
   const amountFlags = document.querySelector('.flags');
   const amountSteps = document.querySelector('.steps');
   const amountTimes = document.querySelector('.times');
 
-  playground.innerHTML = dateSave.html;
-  quantityMines = dateSave.quantityMines;
-  sizePlayground = dateSave.sizePlayground;
-  counterTime = dateSave.counterTime;
-  counterFlag = dateSave.counterFlag;
-  currentAmountMines = dateSave.currentAmountMines;
-  counterSteps = dateSave.counterSteps;
-  isFirstClick = dateSave.isFirstClick;
-  isLose = dateSave.isLose;
-  isWinner = dateSave.isWinner;
-  isMute = dateSave.isMute;
-  score = dateSave.score;
-  wrapper.className = `wrapper outer wrapper_${sizePlayground}`;
+  if (eventClose) {
+    closeModal();
+  }
 
-  inputMines.value = quantityMines;
-  if (sizePlayground === '10') {
-    size.selectedIndex = 1;
-  } else if (sizePlayground === '15') {
-    size.selectedIndex = 2;
+  if (haveSave) {
+    playground.innerHTML = dateSave.html;
+    quantityMines = dateSave.quantityMines;
+    sizePlayground = dateSave.sizePlayground;
+    counterTime = dateSave.counterTime;
+    counterFlag = dateSave.counterFlag;
+    currentAmountMines = dateSave.currentAmountMines;
+    counterSteps = dateSave.counterSteps;
+    isFirstClick = dateSave.isFirstClick;
+    isLose = dateSave.isLose;
+    isWinner = dateSave.isWinner;
+    isMute = dateSave.isMute;
+    haveSave = dateSave.haveSave;
+    currentTheme = dateSave.currentTheme;
+    score = dateSave.score;
+    wrapper.className = `wrapper outer wrapper_${sizePlayground}`;
+
+    inputMines.value = quantityMines;
+    if (sizePlayground === 10) {
+      size.selectedIndex = 1;
+    } else if (sizePlayground === 15) {
+      size.selectedIndex = 2;
+    } else {
+      size.selectedIndex = 3;
+    }
+    if (isMute) {
+      volume.classList.add('volume_mute');
+    } else {
+      volume.classList.remove('volume_mute');
+      activeSoundClick();
+    }
+    if (currentTheme === 'light') {
+      theme.classList.remove('theme_dark');
+    } else {
+      theme.classList.add('theme_dark');
+      currentTheme = 'dark';
+    }
+    amountMines.textContent = `${currentAmountMines}`.padStart(3, 0);
+    amountFlags.textContent = `${counterFlag}`.padStart(3, 0);
+    amountSteps.textContent = `${counterSteps}`.padStart(3, 0);
+    amountTimes.textContent = `${counterTime}`.padStart(3, 0);
+    startTimer();
+    openModal('Load', dateSave.name);
   } else {
-    size.selectedIndex = 3;
+    openModal('Not save');
   }
-  if (isMute) {
-    volume.classList.add('volume_mute');
-  } else {
-    volume.classList.remove('volume_mute');
-    activeSoundClick();
-  }
-  amountMines.textContent = `${currentAmountMines}`.padStart(3, 0);
-  amountFlags.textContent = `${counterFlag}`.padStart(3, 0);
-  amountSteps.textContent = `${counterSteps}`.padStart(3, 0);
-  amountTimes.textContent = `${counterTime}`.padStart(3, 0);
-  //startTimer();
-  openModal('Load', dateSave.name);
 }
 
 function cleanPlayground() {
@@ -481,9 +540,21 @@ function refreshGame(size) {
   console.log('<============================REFRESH');
 }
 
-function newGame() {
+function newGame(eventClose) {
+  if (eventClose) {
+    closeModal();
+    console.log('Click');
+  }
   sizePlayground = preSize;
   refreshGame(sizePlayground);
+}
+
+function chooseGame(autoSave, playerSave) {
+  const modal = document.querySelector('.modal');
+  modal.classList.add('modal__save');
+  const nameAutoSave = autoSave.name;
+  const namePlayerSave = playerSave.name;
+  openModal('Choose save', nameAutoSave, namePlayerSave);
 }
 
 window.onload = function load() {
@@ -523,6 +594,10 @@ window.onload = function load() {
   const buttonSaveGame = document.querySelector('.button_save');
   const buttonLoadGame = document.querySelector('.button_load');
   const buttonModalClose = document.querySelector('.button__modal_close');
+  const buttonModalAutoSave = document.querySelector('.button__modal_save-auto');
+  const buttonModalSavePalyer = document.querySelector('.button__modal_save-player');
+  const buttonModalNewGame = document.querySelector('.button__modal_new-game');
+  const buttonTheme = document.querySelector('.theme');
   const playground = document.querySelector('.playground');
 
   function firstClick(event, curMatrix, holdPosition) {
@@ -590,16 +665,25 @@ window.onload = function load() {
   emoji.addEventListener('click', () => refreshGame(sizePlayground));
   buttonNewGame.addEventListener('click', newGame);
   buttonModalClose.addEventListener('click', closeModal);
+  buttonModalAutoSave.addEventListener('click', () => loadGame(savedGameToLs, 'closeModal'));
+  buttonModalSavePalyer.addEventListener('click', () => loadGame(saved, 'closeModal'));
+  buttonModalNewGame.addEventListener('click', () => newGame('closeModal'));
   buttonSaveGame.addEventListener('click', () => saveGame('usersInitSave'));
   buttonLoadGame.addEventListener('click', () => loadGame(saved));
   volume.addEventListener('click', toggleMute);
+  buttonTheme.addEventListener('click', toggleTheme);
 };
 
 function getLocalStorage() {
   if (localStorage.getItem('autoSavedGameToLs')) {
-    const savedGameFromLs = JSON.parse(localStorage.getItem('autoSavedGameToLs'));
-    console.log(savedGameFromLs.name);
-    loadGame(savedGameFromLs);
+    const autoSavedGameFromLs = JSON.parse(localStorage.getItem('autoSavedGameToLs'));
+    const playerSavedGameFromLs = JSON.parse(localStorage.getItem('playerSavedGameToLs'));
+    savedGameToLs = autoSavedGameFromLs;
+    saved = playerSavedGameFromLs;
+    haveSave = savedGameToLs.haveSave;
+    console.log(saved.name);
+    console.log(savedGameToLs.name);
+    chooseGame(savedGameToLs, saved);
   }
 }
 window.addEventListener('load', getLocalStorage);
@@ -607,5 +691,6 @@ window.addEventListener('load', getLocalStorage);
 function setLocalStorage() {
   saveGame('autoSave');
   localStorage.setItem('autoSavedGameToLs', JSON.stringify(savedGameToLs));
+  localStorage.setItem('playerSavedGameToLs', JSON.stringify(saved));
 }
 window.addEventListener('beforeunload', setLocalStorage);

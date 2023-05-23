@@ -34,14 +34,14 @@ export function creatTemplate() {
   buttonLoad.className = 'button outer button_load';
   buttonLoad.textContent = LOAD_GAME;
   const quantityMines = document.createElement('input');
-  quantityMines.className = 'quantity-mines inter';
+  quantityMines.className = 'quantity-mines input inter';
   quantityMines.type = 'number';
   quantityMines.id = 'quantity-mines';
   quantityMines.setAttribute('min', '10');
   quantityMines.setAttribute('max', '99');
   quantityMines.setAttribute('placeholder', '10 Mines...');
   const size = document.createElement('select');
-  size.className = 'size inter';
+  size.className = 'size input inter';
   size.textContent = 'Level';
   const defSize = document.createElement('option');
   defSize.className = 'def-size';
@@ -64,6 +64,8 @@ export function creatTemplate() {
   hardSize.value = 25;
   const volume = document.createElement('button');
   volume.className = 'volume outer';
+  const theme = document.createElement('button');
+  theme.className = 'theme outer';
   const statusGame = document.createElement('div');
   statusGame.className = 'status-game inter';
   const statusMines = document.createElement('div');
@@ -103,8 +105,21 @@ export function creatTemplate() {
   score.textContent = 'Last 10 games won!';
   const modalTitle = document.createElement('h2');
   modalTitle.className = 'modal__title';
-  const modalSubTitle = document.createElement('h3');
-  modalSubTitle.className = 'modal__subtitle';
+  const modalSubTitleFirst = document.createElement('h3');
+  modalSubTitleFirst.className = 'modal__subtitle subtitle_first';
+  const modalButtonAutoSave = document.createElement('button');
+  modalButtonAutoSave.className = 'button outer button__modal_save-auto hidden';
+  modalButtonAutoSave.textContent = 'Load Auto Save';
+  const modalSubTitleSecond = document.createElement('h3');
+  modalSubTitleSecond.className = 'modal__subtitle subtitle_second hidden';
+  const modalButtonPlayerSave = document.createElement('button');
+  modalButtonPlayerSave.className = 'button outer button__modal_save-player hidden';
+  modalButtonPlayerSave.textContent = 'Load Your Save';
+  const modalSubTitleThird = document.createElement('h3');
+  modalSubTitleThird.className = 'modal__subtitle subtitle_third hidden';
+  const modalButtonNewGame = document.createElement('button');
+  modalButtonNewGame.className = 'button outer button__modal_new-game hidden';
+  modalButtonNewGame.textContent = 'Start New Game';
   const modalButtonClose = document.createElement('button');
   modalButtonClose.className = 'button outer button__modal_close';
   modalButtonClose.textContent = 'Close';
@@ -133,6 +148,7 @@ export function creatTemplate() {
   size.append(mediumSize);
   size.append(hardSize);
 
+  controls.append(theme);
   controls.append(quantityMines);
   controls.append(size);
   controls.append(volume);
@@ -145,7 +161,12 @@ export function creatTemplate() {
   settings.append(buttonsPanel);
 
   modal.append(modalTitle);
-  modal.append(modalSubTitle);
+  modal.append(modalSubTitleFirst);
+  modal.append(modalButtonAutoSave);
+  modal.append(modalSubTitleSecond);
+  modal.append(modalButtonPlayerSave);
+  modal.append(modalSubTitleThird);
+  modal.append(modalButtonNewGame);
   modal.append(modalButtonClose);
 
   modalWrapper.append(modal);

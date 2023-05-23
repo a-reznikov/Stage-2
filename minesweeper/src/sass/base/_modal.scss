@@ -37,4 +37,12 @@
     font-family: 'MINE-SWEEPER';
     font-size: 0.8rem;
   }
+  .hidden {
+    display: none;
+  }
+  &__save {
+    .hidden {
+      display: block;
+    }
+  }
 }
