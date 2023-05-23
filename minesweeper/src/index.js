@@ -61,7 +61,6 @@ function getPositionsMines(order, holdPosition) {
 }
 
 function createMatrixMines(matrixBase, holdPosition) {
-  console.log('holdPosition', holdPosition);
   const matrixOrder = matrixBase.length;
   const positionsMines = getPositionsMines(matrixOrder, holdPosition);
   const matrixMines = matrixBase;
@@ -155,7 +154,6 @@ function applyStyle(order) {
 }
 
 function openModal(event, nameSaveFirst, nameSaveSecond) {
-  console.log(event);
   const modalOverlay = document.querySelector('.modal__wrapper');
   const modalTitle = document.querySelector('.modal__title');
   const modalSubTitleFirst = document.querySelector('.subtitle_first');
@@ -219,7 +217,6 @@ function startTimer() {
   const amountTimes = document.querySelector('.times');
   const intervalId = setInterval(() => {
     if (isLose || isFirstClick || isWinner) {
-      console.log('ClearTimer');
       clearInterval(intervalId);
     } else {
       counterTime += 1;
@@ -249,8 +246,6 @@ function isWin(order) {
   });
   const needCellsForWin = order ** 2 - quantityMines;
   if (amountShow === needCellsForWin) {
-    console.log('You win, your time:', counterTime, 'sec');
-    console.log('You win, counterSteps:', counterSteps, 'steps');
     writeScore();
     openModal('Win');
     const sound = new Audio(WinSound);
@@ -277,7 +272,6 @@ function toggleFlag(cell) {
   const currentCell = cell;
   const amountMines = document.querySelector('.mines');
   const amountFlags = document.querySelector('.flags');
-  console.log(currentAmountMines);
   if (currentCell.classList.contains('cell_close')) {
     const sound = new Audio(FlagSound);
     soundPlay(sound);
@@ -414,7 +408,6 @@ function saveGame(hoSave) {
     hoSaveGame = 'The player saved the game';
     saved.name = `${hoSaveGame}: ${date}`;
     saved.quantityMines = quantityMines;
-    console.log(sizePlayground);
     saved.sizePlayground = sizePlayground;
     saved.counterTime = counterTime;
     saved.counterFlag = counterFlag;
@@ -428,7 +421,6 @@ function saveGame(hoSave) {
     saved.currentTheme = currentTheme;
     saved.score = score;
     saved.html = playground.innerHTML;
-    console.log(saved);
     openModal('Save', saved.name);
   } else if (hoSave === 'autoSave') {
     hoSaveGame = 'Auto save game';
@@ -447,7 +439,6 @@ function saveGame(hoSave) {
     savedGameToLs.currentTheme = currentTheme;
     savedGameToLs.score = score;
     savedGameToLs.html = playground.innerHTML;
-    console.log('AutoSave', savedGameToLs);
     openModal('Save', savedGameToLs.name);
   }
 }
@@ -523,7 +514,6 @@ function cleanPlayground() {
 }
 
 function restartGame(size, holdPosition) {
-  console.log('_____________________ReSTART_____________________');
   cleanPlayground();
   const baseMatrix = createMatrixBase(size);
   const matrixMines = createMatrixMines(baseMatrix, holdPosition);
@@ -536,7 +526,6 @@ function restartGame(size, holdPosition) {
 }
 
 function refreshGame(size) {
-  console.log('REFRESH============================>');
   counterTime = 0;
   counterFlag = 0;
   counterSteps = 0;
@@ -548,7 +537,6 @@ function refreshGame(size) {
   isWinner = false;
   isLose = false;
   activeSoundClick();
-  console.log('<============================REFRESH');
 }
 
 function newGame(eventClose) {
@@ -693,8 +681,6 @@ function getLocalStorage() {
     saved = playerSavedGameFromLs;
     haveSave = savedGameToLs.haveSave;
     score = autoSavedGameFromLs.score;
-    console.log(saved.name);
-    console.log(savedGameToLs.name);
     chooseGame(savedGameToLs, saved);
   }
 }
