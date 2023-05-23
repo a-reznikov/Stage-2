@@ -6,6 +6,9 @@ import FlagSound from './assets/audio/flag.mp3';
 import WinSound from './assets/audio/win.mp3';
 import LoseSound from './assets/audio/lose.mp3';
 
+const USER = 'user';
+const AUTO = 'auto';
+
 let quantityMines = 10;
 let sizePlayground = 10;
 let preSize = 10;
@@ -17,7 +20,8 @@ let isFirstClick = true;
 let isLose = false;
 let isWinner = false;
 let isMute = false;
-let haveSave = false;
+let haveSaveUser = false;
+let haveSaveAuto = false;
 let currentTheme = 'light';
 let score = [];
 let saved = {};
@@ -176,7 +180,7 @@ function openModal(event, nameSaveFirst, nameSaveSecond) {
   } else if (event === 'Choose save') {
     modaTitle = 'Choose a saved game:';
     subTitleFirst = nameSaveFirst;
-    if (haveSave) {
+    if (haveSaveUser) {
       subTitleSecond = nameSaveSecond;
     } else {
       subTitleSecond = 'No saved game yet';
@@ -403,8 +407,8 @@ function saveGame(hoSave) {
   const playground = document.querySelector('.playground');
   const now = new Date();
   const date = now.toLocaleString();
-  haveSave = true;
-  if (hoSave === 'usersInitSave') {
+  if (hoSave === 'user') {
+    haveSaveUser = true;
     hoSaveGame = 'The player saved the game';
     saved.name = `${hoSaveGame}: ${date}`;
     saved.quantityMines = quantityMines;
@@ -417,12 +421,14 @@ function saveGame(hoSave) {
     saved.isLose = isLose;
     saved.isWinner = isWinner;
     saved.isMute = isMute;
-    saved.haveSave = haveSave;
+    saved.haveSaveUser = haveSaveUser;
+    saved.haveSaveAuto = haveSaveAuto;
     saved.currentTheme = currentTheme;
     saved.score = score;
     saved.html = playground.innerHTML;
     openModal('Save', saved.name);
-  } else if (hoSave === 'autoSave') {
+  } else if (hoSave === 'auto') {
+    haveSaveAuto = true;
     hoSaveGame = 'Auto save game';
     savedGameToLs.name = `${hoSaveGame}: ${date}`;
     savedGameToLs.quantityMines = quantityMines;
@@ -435,7 +441,8 @@ function saveGame(hoSave) {
     savedGameToLs.isLose = isLose;
     savedGameToLs.isWinner = isWinner;
     savedGameToLs.isMute = isMute;
-    savedGameToLs.haveSave = haveSave;
+    savedGameToLs.haveSaveUser = haveSaveUser;
+    savedGameToLs.haveSaveAuto = haveSaveAuto;
     savedGameToLs.currentTheme = currentTheme;
     savedGameToLs.score = score;
     savedGameToLs.html = playground.innerHTML;
@@ -443,7 +450,7 @@ function saveGame(hoSave) {
   }
 }
 
-function loadGame(dateSave, eventClose) {
+function loadGame(dateSave, isUser, eventClose) {
   const wrapper = document.querySelector('.wrapper');
   const playground = document.querySelector('.playground');
   const inputMines = document.querySelector('.quantity-mines');
@@ -459,52 +466,104 @@ function loadGame(dateSave, eventClose) {
     closeModal();
   }
 
-  if (haveSave) {
-    playground.innerHTML = dateSave.html;
-    quantityMines = dateSave.quantityMines;
-    sizePlayground = dateSave.sizePlayground;
-    counterTime = dateSave.counterTime;
-    counterFlag = dateSave.counterFlag;
-    currentAmountMines = dateSave.currentAmountMines;
-    counterSteps = dateSave.counterSteps;
-    isFirstClick = dateSave.isFirstClick;
-    isLose = dateSave.isLose;
-    isWinner = dateSave.isWinner;
-    isMute = dateSave.isMute;
-    haveSave = dateSave.haveSave;
-    currentTheme = dateSave.currentTheme;
-    wrapper.className = `wrapper outer wrapper_${sizePlayground}`;
+  if (isUser === USER) {
+    if (haveSaveUser) {
+      playground.innerHTML = dateSave.html;
+      quantityMines = dateSave.quantityMines;
+      sizePlayground = dateSave.sizePlayground;
+      counterTime = dateSave.counterTime;
+      counterFlag = dateSave.counterFlag;
+      currentAmountMines = dateSave.currentAmountMines;
+      counterSteps = dateSave.counterSteps;
+      isFirstClick = dateSave.isFirstClick;
+      isLose = dateSave.isLose;
+      isWinner = dateSave.isWinner;
+      isMute = dateSave.isMute;
+      haveSaveUser = dateSave.haveSaveUser;
+      haveSaveAuto = dateSave.haveSaveAuto;
+      currentTheme = dateSave.currentTheme;
+      wrapper.className = `wrapper outer wrapper_${sizePlayground}`;
 
-    inputMines.value = quantityMines;
-    if (sizePlayground === 10) {
-      size.selectedIndex = 1;
-    } else if (sizePlayground === 15) {
-      size.selectedIndex = 2;
+      inputMines.value = quantityMines;
+      if (sizePlayground === '10') {
+        size.selectedIndex = 1;
+      } else if (sizePlayground === '15') {
+        size.selectedIndex = 2;
+      } else if (sizePlayground === '25') {
+        size.selectedIndex = 3;
+      }
+      if (isMute) {
+        volume.classList.add('volume_mute');
+      } else {
+        volume.classList.remove('volume_mute');
+        activeSoundClick();
+      }
+      if (currentTheme === 'light') {
+        theme.classList.remove('theme_dark');
+      } else {
+        theme.classList.add('theme_dark');
+        currentTheme = 'dark';
+      }
+      amountMines.textContent = `${currentAmountMines}`.padStart(3, 0);
+      amountFlags.textContent = `${counterFlag}`.padStart(3, 0);
+      amountSteps.textContent = `${counterSteps}`.padStart(3, 0);
+      amountTimes.textContent = `${counterTime}`.padStart(3, 0);
+      startTimer();
+      generateScore();
+      openModal('Load', dateSave.name);
+      applyStyle(sizePlayground);
     } else {
-      size.selectedIndex = 3;
+      openModal('Not save');
     }
-    if (isMute) {
-      volume.classList.add('volume_mute');
+  } else if (isUser === AUTO) {
+    if (haveSaveAuto) {
+      playground.innerHTML = dateSave.html;
+      quantityMines = dateSave.quantityMines;
+      sizePlayground = dateSave.sizePlayground;
+      counterTime = dateSave.counterTime;
+      counterFlag = dateSave.counterFlag;
+      currentAmountMines = dateSave.currentAmountMines;
+      counterSteps = dateSave.counterSteps;
+      isFirstClick = dateSave.isFirstClick;
+      isLose = dateSave.isLose;
+      isWinner = dateSave.isWinner;
+      isMute = dateSave.isMute;
+      haveSaveUser = dateSave.haveSaveUser;
+      haveSaveAuto = dateSave.haveSaveAuto;
+      currentTheme = dateSave.currentTheme;
+      wrapper.className = `wrapper outer wrapper_${sizePlayground}`;
+
+      inputMines.value = quantityMines;
+      if (sizePlayground === '10') {
+        size.selectedIndex = 1;
+      } else if (sizePlayground === '15') {
+        size.selectedIndex = 2;
+      } else if (sizePlayground === '25') {
+        size.selectedIndex = 3;
+      }
+      if (isMute) {
+        volume.classList.add('volume_mute');
+      } else {
+        volume.classList.remove('volume_mute');
+        activeSoundClick();
+      }
+      if (currentTheme === 'light') {
+        theme.classList.remove('theme_dark');
+      } else {
+        theme.classList.add('theme_dark');
+        currentTheme = 'dark';
+      }
+      amountMines.textContent = `${currentAmountMines}`.padStart(3, 0);
+      amountFlags.textContent = `${counterFlag}`.padStart(3, 0);
+      amountSteps.textContent = `${counterSteps}`.padStart(3, 0);
+      amountTimes.textContent = `${counterTime}`.padStart(3, 0);
+      startTimer();
+      generateScore();
+      openModal('Load', dateSave.name);
+      applyStyle(sizePlayground);
     } else {
-      volume.classList.remove('volume_mute');
-      activeSoundClick();
+      openModal('Not save');
     }
-    if (currentTheme === 'light') {
-      theme.classList.remove('theme_dark');
-    } else {
-      theme.classList.add('theme_dark');
-      currentTheme = 'dark';
-    }
-    amountMines.textContent = `${currentAmountMines}`.padStart(3, 0);
-    amountFlags.textContent = `${counterFlag}`.padStart(3, 0);
-    amountSteps.textContent = `${counterSteps}`.padStart(3, 0);
-    amountTimes.textContent = `${counterTime}`.padStart(3, 0);
-    startTimer();
-    generateScore();
-    openModal('Load', dateSave.name);
-    applyStyle(sizePlayground);
-  } else {
-    openModal('Not save');
   }
 }
 
@@ -664,11 +723,11 @@ window.onload = function load() {
   emoji.addEventListener('click', () => refreshGame(sizePlayground));
   buttonNewGame.addEventListener('click', newGame);
   buttonModalClose.addEventListener('click', closeModal);
-  buttonModalAutoSave.addEventListener('click', () => loadGame(savedGameToLs, 'closeModal'));
-  buttonModalSavePalyer.addEventListener('click', () => loadGame(saved, 'closeModal'));
+  buttonModalAutoSave.addEventListener('click', () => loadGame(savedGameToLs, AUTO, 'closeModal'));
+  buttonModalSavePalyer.addEventListener('click', () => loadGame(saved, USER, 'closeModal'));
   buttonModalNewGame.addEventListener('click', () => newGame('closeModal'));
-  buttonSaveGame.addEventListener('click', () => saveGame('usersInitSave'));
-  buttonLoadGame.addEventListener('click', () => loadGame(saved));
+  buttonSaveGame.addEventListener('click', () => saveGame(USER));
+  buttonLoadGame.addEventListener('click', () => loadGame(saved, USER));
   volume.addEventListener('click', toggleMute);
   buttonTheme.addEventListener('click', toggleTheme);
 };
@@ -679,7 +738,9 @@ function getLocalStorage() {
     const playerSavedGameFromLs = JSON.parse(localStorage.getItem('playerSavedGameToLs'));
     savedGameToLs = autoSavedGameFromLs;
     saved = playerSavedGameFromLs;
-    haveSave = savedGameToLs.haveSave;
+    haveSaveUser = savedGameToLs.haveSaveUser;
+    haveSaveAuto = savedGameToLs.haveSaveAuto;
+    // preSize = savedGameToLs.sizePlayground;
     score = autoSavedGameFromLs.score;
     chooseGame(savedGameToLs, saved);
   }
@@ -687,7 +748,7 @@ function getLocalStorage() {
 window.addEventListener('load', getLocalStorage);
 
 function setLocalStorage() {
-  saveGame('autoSave');
+  saveGame(AUTO);
   localStorage.setItem('autoSavedGameToLs', JSON.stringify(savedGameToLs));
   localStorage.setItem('playerSavedGameToLs', JSON.stringify(saved));
 }
