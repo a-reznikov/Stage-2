@@ -140,10 +140,18 @@ function generateScore() {
   });
 }
 
-function applyStyle(matrix) {
-  const matrixOrder = matrix.length;
+function applyStyle(order) {
+  const matrixOrder = order;
   const wrapper = document.querySelector('.wrapper');
+  const theme = document.querySelector('.theme');
   wrapper.className = `wrapper outer wrapper_${matrixOrder}`;
+  if (currentTheme === 'light') {
+    theme.classList.remove('theme_dark');
+    wrapper.classList.remove('wrapper_dark');
+  } else {
+    theme.classList.add('theme_dark');
+    wrapper.classList.add('wrapper_dark');
+  }
 }
 
 function openModal(event, nameSaveFirst, nameSaveSecond) {
@@ -474,7 +482,6 @@ function loadGame(dateSave, eventClose) {
     isMute = dateSave.isMute;
     haveSave = dateSave.haveSave;
     currentTheme = dateSave.currentTheme;
-    score = dateSave.score;
     wrapper.className = `wrapper outer wrapper_${sizePlayground}`;
 
     inputMines.value = quantityMines;
@@ -502,7 +509,9 @@ function loadGame(dateSave, eventClose) {
     amountSteps.textContent = `${counterSteps}`.padStart(3, 0);
     amountTimes.textContent = `${counterTime}`.padStart(3, 0);
     startTimer();
+    generateScore();
     openModal('Load', dateSave.name);
+    applyStyle(sizePlayground);
   } else {
     openModal('Not save');
   }
@@ -519,8 +528,10 @@ function restartGame(size, holdPosition) {
   const baseMatrix = createMatrixBase(size);
   const matrixMines = createMatrixMines(baseMatrix, holdPosition);
   const matrix = addNumbersToMatrix(matrixMines);
+  const matrixOrder = matrix.length;
   generateCells(matrix);
-  applyStyle(matrix);
+  generateScore();
+  applyStyle(matrixOrder);
   return matrix;
 }
 
@@ -543,7 +554,6 @@ function refreshGame(size) {
 function newGame(eventClose) {
   if (eventClose) {
     closeModal();
-    console.log('Click');
   }
   sizePlayground = preSize;
   refreshGame(sizePlayground);
@@ -585,9 +595,10 @@ window.onload = function load() {
   const baseMatrix = createMatrixBase(sizePlayground);
   const matrixMines = createMatrixMines(baseMatrix);
   const matrix = addNumbersToMatrix(matrixMines);
+  const matrixOrder = matrix.length;
   let currentMatrix = [];
   generateCells(matrix);
-  applyStyle(matrix);
+  applyStyle(matrixOrder);
   const emoji = document.querySelector('.emoji');
   const volume = document.querySelector('.volume');
   const buttonNewGame = document.querySelector('.button_new-game');
@@ -681,6 +692,7 @@ function getLocalStorage() {
     savedGameToLs = autoSavedGameFromLs;
     saved = playerSavedGameFromLs;
     haveSave = savedGameToLs.haveSave;
+    score = autoSavedGameFromLs.score;
     console.log(saved.name);
     console.log(savedGameToLs.name);
     chooseGame(savedGameToLs, saved);

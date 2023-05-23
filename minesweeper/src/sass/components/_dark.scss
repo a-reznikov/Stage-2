@@ -1,0 +1,131 @@
+.wrapper_dark {
+  background: $color-dark;
+  .title {
+    color: $color-light;
+  }
+  .quantity-mines {
+    &::placeholder {
+      color: $color-light;
+    }
+  }
+  .input {
+    background: $color-dark;
+    color: $color-amount;
+  }
+  .volume {
+    background: $color-background-dark;
+    background-image: url(../assets/ico/volume.svg);
+    &_mute {
+      background-image: url(../assets/ico/volume_mute.svg);
+    }
+    &:active {
+      border: inset 4px $color-background-dark;
+    }
+  }
+  .theme {
+    background: linear-gradient(to top right, $color-light 50%, transparent 50%);
+    // background-image: url(../assets/ico/volume.svg);
+    &_dark {
+      background: linear-gradient(to bottom left, $color-light 50%, transparent 50%);
+    }
+    &:active {
+      background: linear-gradient(to top right, $color-light 50%, transparent 50%);
+      border: inset 4px $color-background;
+    }
+  }
+  .emoji {
+    &:active {
+      background-image: url(../assets/ico/active_emoji.svg);
+    }
+  }
+  
+  .happy {
+    background-image: url(../assets/ico/happy_emoji_dark.svg);
+  }
+  
+  .sad {
+    background-image: url(../assets/ico/sad_emoji_dark.svg);
+  }
+  
+  .win {
+    background-image: url(../assets/ico/win_emoji_dark.svg);
+  }
+  
+  .status {
+    color: $color-light;
+  }
+  .score {
+    color: $color-light;
+  }
+  &.outer {
+    border: outset 5px $color-contrast;
+  }
+  .outer {
+    border: outset 5px $color-contrast;
+  }
+  .inter {
+    border: inset 5px $color-contrast;
+  }
+  .button {
+    background: $color-dark;
+    color: $color-light;
+  }
+  button.outer {
+    border: outset 4px $color-contrast;
+  }
+  button.outer:active {
+    border: inset 4px $color-contrast;
+  }
+  .cell {
+    &_close {
+      background-image: url(../assets/ico/closed_dark.svg);
+    }
+    &_close:active {
+      background-image: url(../assets/ico/empty_dark.svg);
+    }
+    &_blocked {
+      background-image: url(../assets/ico/closed_dark.svg);
+    }
+    &_blocked:active {
+      background-image: url(../assets/ico/closed_dark.svg);
+    }
+    &_flag {
+      background-image: url(../assets/ico/flag_dark.svg);
+    }
+    &_flag-wrong {
+      background-image: url(../assets/ico/flag_wrong_dark.svg);
+    }
+    &_mine.cell_show {
+      background-image: url(../assets/ico/mine_dark.svg);
+    }
+    &_mine.cell_show.exp {
+      background-image: url(../assets/ico/mine_exp_dark.svg);
+    }
+    &_show {
+      background-image: url(../assets/ico/empty_dark.svg);
+    }
+    &_flag:active {
+      background-image: url(../assets/ico/flag_dark.svg);
+    }
+    &_flag-wrong:active {
+      background-image: url(../assets/ico/flag_wrong_dark.svg);
+    }
+    &_mine.cell_show:active {
+      background-image: url(../assets/ico/mine_dark.svg);
+    }
+    &_mine.cell_show.exp:active {
+      background-image: url(../assets/ico/mine_exp_dark.svg);
+    }
+  }
+  .modal {
+    background: $color-background-dark;
+    border: outset 4px $color-contrast;
+    &__save {
+      .hidden {
+        background: $color-background-dark;
+        border: outset 4px $color-contrast;
+      }
+    }
+  }
+  
+}

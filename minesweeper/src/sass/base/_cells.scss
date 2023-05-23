@@ -61,6 +61,9 @@
   &_show {
     font-size: 0.8rem;
     background-image: url(../assets/ico/empty.svg);
+    @include media-laptop {
+      font-size: 0.8rem;
+    }
   }
   &_flag:active {
     background-image: url(../assets/ico/flag.svg);

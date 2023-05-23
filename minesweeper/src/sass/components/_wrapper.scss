@@ -79,6 +79,7 @@
 .volume {
   width: 32px;
   height: 32px;
+  background: $color-background;
   background-image: url(../assets/ico/volume.svg);
   &_mute {
     background-image: url(../assets/ico/volume_mute.svg);
@@ -192,4 +193,3 @@ button.outer {
 button.outer:active {
   border: inset 4px $color-background;
 }
-
