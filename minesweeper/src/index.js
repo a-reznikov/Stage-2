@@ -8,6 +8,7 @@ import LoseSound from './assets/audio/lose.mp3';
 
 const USER = 'user';
 const AUTO = 'auto';
+let matrix = [];
 
 let quantityMines = 10;
 let sizePlayground = 10;
@@ -80,7 +81,7 @@ function createMatrixMines(matrixBase, holdPosition) {
 }
 
 function addNumbersToMatrix(matrixWhitMines) {
-  const matrix = matrixWhitMines;
+  matrix = matrixWhitMines;
   const matrixOrder = matrix.length;
   for (let i = 0; i < matrixOrder;) {
     for (let j = 0; j < matrixOrder;) {
@@ -117,7 +118,8 @@ function getAmount() {
   amountSteps.textContent = '000';
 }
 
-function generateCells(matrix) {
+function generateCells(matrixGen) {
+  matrix = matrixGen;
   const playground = document.querySelector('.playground');
   const matrixOrder = matrix.length;
   for (let i = 0; i < matrixOrder;) {
@@ -187,7 +189,11 @@ function openModal(event, nameSaveFirst, nameSaveSecond) {
     }
     subTitleThird = 'Start New Game';
   } else if (event === 'Win') {
-    modaTitle = `You ${event}! Time: ${counterTime} sec, Steps:  ${counterSteps}`;
+    if (counterTime === 0) {
+      modaTitle = `You ${event}! Time: faster than 1 sec, Steps:  ${counterSteps}`;
+    } else {
+      modaTitle = `You ${event}! Time: ${counterTime} sec, Steps:  ${counterSteps}`;
+    }
     subTitleFirst = 'You\'re a real genius!';
   } else {
     modaTitle = `You ${event}! Time: ${counterTime} sec, Steps:  ${counterSteps}`;
@@ -230,7 +236,12 @@ function startTimer() {
 }
 
 function writeScore() {
-  const resultDate = `Winner Time: ${counterTime} sec, Steps:  ${counterSteps}`;
+  let resultDate = '';
+  if (counterTime === 0) {
+    resultDate = `Winner Time: faster than 1 sec, Steps:  ${counterSteps}`;
+  } else {
+    resultDate = `Winner Time: ${counterTime} sec, Steps:  ${counterSteps}`;
+  }
   if (score.length === 10) {
     score.pop();
   }
@@ -302,7 +313,7 @@ function searchPositionEmtyCell(event) {
   return position;
 }
 
-function openNearbyCells(matrix, position, openedCell) {
+function openNearbyCells(matrixOpen, position, openedCell) {
   let openedCells = [];
   if (openedCell) {
     openedCells = openedCell;
@@ -338,7 +349,6 @@ function loseGame() {
   soundPlay(sound);
   const soundLose = new Audio(LoseSound);
   soundPlay(soundLose);
-  counterTime = 0;
   const cellMines = document.querySelectorAll('.cell_mine');
   const cellFlag = document.querySelectorAll('.cell_flag');
   const cellsClose = document.querySelectorAll('.cell_close');
@@ -425,6 +435,7 @@ function saveGame(hoSave) {
     saved.haveSaveAuto = haveSaveAuto;
     saved.currentTheme = currentTheme;
     saved.score = score;
+    saved.matrix = matrix;
     saved.html = playground.innerHTML;
     openModal('Save', saved.name);
   } else if (hoSave === 'auto') {
@@ -445,6 +456,7 @@ function saveGame(hoSave) {
     savedGameToLs.haveSaveAuto = haveSaveAuto;
     savedGameToLs.currentTheme = currentTheme;
     savedGameToLs.score = score;
+    savedGameToLs.matrix = matrix;
     savedGameToLs.html = playground.innerHTML;
     openModal('Save', savedGameToLs.name);
   }
@@ -462,10 +474,6 @@ function loadGame(dateSave, isUser, eventClose) {
   const amountSteps = document.querySelector('.steps');
   const amountTimes = document.querySelector('.times');
 
-  if (eventClose) {
-    closeModal();
-  }
-
   if (isUser === USER) {
     if (haveSaveUser) {
       playground.innerHTML = dateSave.html;
@@ -482,6 +490,7 @@ function loadGame(dateSave, isUser, eventClose) {
       haveSaveUser = dateSave.haveSaveUser;
       haveSaveAuto = dateSave.haveSaveAuto;
       currentTheme = dateSave.currentTheme;
+      matrix = dateSave.matrix;
       wrapper.className = `wrapper outer wrapper_${sizePlayground}`;
 
       inputMines.value = quantityMines;
@@ -492,6 +501,7 @@ function loadGame(dateSave, isUser, eventClose) {
       } else if (sizePlayground === '25') {
         size.selectedIndex = 3;
       }
+      preSize = +sizePlayground;
       if (isMute) {
         volume.classList.add('volume_mute');
       } else {
@@ -508,11 +518,15 @@ function loadGame(dateSave, isUser, eventClose) {
       amountFlags.textContent = `${counterFlag}`.padStart(3, 0);
       amountSteps.textContent = `${counterSteps}`.padStart(3, 0);
       amountTimes.textContent = `${counterTime}`.padStart(3, 0);
-      startTimer();
       generateScore();
+      if (eventClose) {
+        closeModal();
+        startTimer('From modal');
+      }
       openModal('Load', dateSave.name);
       applyStyle(sizePlayground);
     } else {
+      closeModal();
       openModal('Not save');
     }
   } else if (isUser === AUTO) {
@@ -531,6 +545,7 @@ function loadGame(dateSave, isUser, eventClose) {
       haveSaveUser = dateSave.haveSaveUser;
       haveSaveAuto = dateSave.haveSaveAuto;
       currentTheme = dateSave.currentTheme;
+      matrix = dateSave.matrix;
       wrapper.className = `wrapper outer wrapper_${sizePlayground}`;
 
       inputMines.value = quantityMines;
@@ -541,6 +556,7 @@ function loadGame(dateSave, isUser, eventClose) {
       } else if (sizePlayground === '25') {
         size.selectedIndex = 3;
       }
+      preSize = +sizePlayground;
       if (isMute) {
         volume.classList.add('volume_mute');
       } else {
@@ -557,8 +573,11 @@ function loadGame(dateSave, isUser, eventClose) {
       amountFlags.textContent = `${counterFlag}`.padStart(3, 0);
       amountSteps.textContent = `${counterSteps}`.padStart(3, 0);
       amountTimes.textContent = `${counterTime}`.padStart(3, 0);
-      startTimer();
       generateScore();
+      if (eventClose) {
+        closeModal();
+        startTimer('From modal');
+      }
       openModal('Load', dateSave.name);
       applyStyle(sizePlayground);
     } else {
@@ -576,7 +595,7 @@ function restartGame(size, holdPosition) {
   cleanPlayground();
   const baseMatrix = createMatrixBase(size);
   const matrixMines = createMatrixMines(baseMatrix, holdPosition);
-  const matrix = addNumbersToMatrix(matrixMines);
+  matrix = addNumbersToMatrix(matrixMines);
   const matrixOrder = matrix.length;
   generateCells(matrix);
   generateScore();
@@ -588,6 +607,7 @@ function refreshGame(size) {
   counterTime = 0;
   counterFlag = 0;
   counterSteps = 0;
+  counterTime = 0;
   const emoji = document.querySelector('.emoji');
   emoji.className = 'emoji happy';
   restartGame(size);
@@ -641,7 +661,7 @@ window.onload = function load() {
 
   const baseMatrix = createMatrixBase(sizePlayground);
   const matrixMines = createMatrixMines(baseMatrix);
-  const matrix = addNumbersToMatrix(matrixMines);
+  matrix = addNumbersToMatrix(matrixMines);
   const matrixOrder = matrix.length;
   let currentMatrix = [];
   generateCells(matrix);
@@ -661,7 +681,7 @@ window.onload = function load() {
   function firstClick(event, curMatrix, holdPosition) {
     const cells = document.querySelectorAll('.cell');
     let positionHoldCell = 0;
-    startTimer();
+    startTimer('From first click');
     cells.forEach((cell) => {
       if (positionHoldCell === holdPosition) {
         const currentCell = cell;
@@ -740,7 +760,6 @@ function getLocalStorage() {
     saved = playerSavedGameFromLs;
     haveSaveUser = savedGameToLs.haveSaveUser;
     haveSaveAuto = savedGameToLs.haveSaveAuto;
-    // preSize = savedGameToLs.sizePlayground;
     score = autoSavedGameFromLs.score;
     chooseGame(savedGameToLs, saved);
   }
