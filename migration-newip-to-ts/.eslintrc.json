@@ -11,7 +11,7 @@
     "parserOptions": {
         "ecmaVersion": 2020,
         "sourceType": "module",
-        "project": "./tsconfig.json"
+        "project": "./migration-newip-to-ts/tsconfig.json"
     },
     "env": {
         "es6": true,
@@ -24,6 +24,7 @@
         "no-console": 0,
         "class-methods-use-this": "off",
         "@typescript-eslint/no-explicit-any": "error",
+        "@typescript-eslint/no-inferrable-types": "off",
         "@typescript-eslint/explicit-member-accessibility": [
             "error",
             {
