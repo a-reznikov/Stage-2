@@ -1,45 +1,46 @@
 {
-    "plugins": ["prettier", "@typescript-eslint", "import"],
-    "extends": [
-        "airbnb-base",
-        "airbnb-typescript/base",
-        "plugin:@typescript-eslint/recommended",
-        "plugin:prettier/recommended",
-        "prettier"
+  "root": true,
+  "plugins": ["prettier", "@typescript-eslint", "import"],
+  "extends": [
+    "airbnb-base",
+    "airbnb-typescript/base",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 2020,
+    "sourceType": "module",
+    "project": "./tsconfig.json"
+  },
+  "env": {
+    "es6": true,
+    "browser": true,
+    "node": true
+  },
+  "rules": {
+    "no-debugger": "off",
+    "no-console": 0,
+    "class-methods-use-this": "off",
+    "prettier/prettier": "error",
+    "@typescript-eslint/no-explicit-any": "error",
+    "@typescript-eslint/no-inferrable-types": "off",
+    "import/extensions": ["off"],
+    "@typescript-eslint/explicit-member-accessibility": [
+      "error",
+      {
+        "accessibility": "explicit",
+        "overrides": {
+          "accessors": "explicit",
+          "constructors": "off",
+          "methods": "explicit",
+          "properties": "explicit",
+          "parameterProperties": "explicit"
+        }
+      }
     ],
-    "parser": "@typescript-eslint/parser",
-    "parserOptions": {
-        "ecmaVersion": 2020,
-        "sourceType": "module",
-        "project": "./migration-newip-to-ts/tsconfig.json"
-    },
-    "env": {
-        "es6": true,
-        "browser": true,
-        "node": true
-    },
-    "root": true,
-    "rules": {
-        "no-debugger": "off",
-        "no-console": 0,
-        "class-methods-use-this": "off",
-        "@typescript-eslint/no-explicit-any": "error",
-        "@typescript-eslint/no-inferrable-types": "off",
-        "@typescript-eslint/explicit-member-accessibility": [
-            "error",
-            {
-                "accessibility": "explicit",
-                "overrides": {
-                  "accessors": "explicit",
-                  "constructors": "off",
-                  "methods": "explicit",
-                  "properties": "explicit",
-                  "parameterProperties": "explicit"
-                }
-            }
-        ],
-        "max-lines-per-function": ["error", 40],
-        "@typescript-eslint/explicit-function-return-type": "error", 
-        "@typescript-eslint/no-unnecessary-type-assertion": "error"
-    }
+    "max-lines-per-function": ["error", 40],
+    "@typescript-eslint/explicit-function-return-type": "error",
+    "@typescript-eslint/no-unnecessary-type-assertion": "error"
+  }
 }
