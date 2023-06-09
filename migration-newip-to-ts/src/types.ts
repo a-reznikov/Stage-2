@@ -39,12 +39,12 @@ export interface StatusArticles {
 }
 
 export interface SourcesId {
-  sources?: string;
+  sources?: string | null;
 }
 
 export interface Endpoint {
   endpoint: string;
-  options: SourcesId;
+  options?: SourcesId;
 }
 
 export type Callback<T> = (data: T) => void;
