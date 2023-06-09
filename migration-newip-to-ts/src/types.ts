@@ -2,7 +2,7 @@ export interface Api {
   apiKey: string;
 }
 
-export interface NewsSource {
+export interface SourcesObject {
   id: string;
   name: string;
   description: string;
@@ -11,9 +11,9 @@ export interface NewsSource {
   country: string;
 }
 
-export interface NewsRequest {
+export interface StatusSources {
   status: string;
-  sources: Array<NewsSource>;
+  sources: Array<SourcesObject>;
 }
 
 export interface ArticlesSource {
@@ -21,7 +21,7 @@ export interface ArticlesSource {
   name: string;
 }
 
-export interface ArticlesRequest {
+export interface ArticlesObject {
   source: ArticlesSource;
   author: string;
   title: string;
@@ -30,4 +30,10 @@ export interface ArticlesRequest {
   urlToImage: string;
   publishedAt: string;
   content: string;
+}
+
+export interface StatusArticles {
+  status: string;
+  totalResults: number;
+  articles: ArticlesObject[];
 }
