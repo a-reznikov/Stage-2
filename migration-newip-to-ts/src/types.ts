@@ -37,3 +37,14 @@ export interface StatusArticles {
   totalResults: number;
   articles: ArticlesObject[];
 }
+
+export interface SourcesId {
+  sources?: string;
+}
+
+export interface Endpoint {
+  endpoint: string;
+  options: SourcesId;
+}
+
+export type Callback<T> = (data: T) => void;
