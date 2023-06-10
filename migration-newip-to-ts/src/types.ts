@@ -34,13 +34,14 @@ export interface ArticlesObject {
   content: string;
 }
 
-export interface SourcesId {
+export interface Options {
   sources?: string | null;
+  q?: string | null;
 }
 
 export interface Endpoint {
   endpoint: string;
-  options?: SourcesId;
+  options?: Options;
 }
 
 export type Callback<T> = (data: T) => void;

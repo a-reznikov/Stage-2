@@ -1,4 +1,4 @@
-import { Api, Callback, Endpoint, SourcesId } from '../../types';
+import { Api, Callback, Endpoint, Options } from '../../types';
 
 class Loader {
   constructor(private baseLink: string, private options: Api) {}
@@ -23,23 +23,17 @@ class Loader {
     return res;
   }
 
-  private makeUrl(options: SourcesId, endpoint: string): string {
+  private makeUrl(options: Options, endpoint: string): string {
     const urlOptions: { [index: string]: string | null } = { ...this.options, ...options };
     let url: string = `${this.baseLink}${endpoint}?`;
 
     Object.keys(urlOptions).forEach((key: string): void => {
       url += `${key}=${urlOptions[key]}&`;
     });
-
     return url.slice(0, -1);
   }
 
-  private load<LaodType>(
-    method: string,
-    endpoint: string,
-    callback: Callback<LaodType>,
-    options: SourcesId = {}
-  ): void {
+  private load<LaodType>(method: string, endpoint: string, callback: Callback<LaodType>, options: Options = {}): void {
     fetch(this.makeUrl(options, endpoint), { method })
       .then(this.errorHandler)
       .then((res: Response): Promise<LaodType> => res.json())
