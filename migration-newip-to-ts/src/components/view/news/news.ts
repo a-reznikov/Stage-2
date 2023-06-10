@@ -3,7 +3,7 @@ import { ArticlesObject } from '../../../types';
 
 class News {
   public draw(data: ArticlesObject[]): void {
-    const news = data.length >= 10 ? data.filter((_item: ArticlesObject, idx: number) => idx < 10) : data;
+    const news = data.length >= 10 ? data.filter((_item: ArticlesObject, idx: number): boolean => idx < 10) : data;
     const fragment: DocumentFragment = document.createDocumentFragment();
     const newsItemTemp: HTMLTemplateElement | null = document.querySelector('#newsItemTemp');
     if (newsItemTemp && newsItemTemp instanceof HTMLElement) {

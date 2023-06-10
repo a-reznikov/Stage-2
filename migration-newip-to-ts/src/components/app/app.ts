@@ -11,12 +11,12 @@ class App {
     const sources: HTMLDivElement | null = document.querySelector('.sources');
 
     if (sources) {
-      sources.addEventListener('click', (e: MouseEvent) =>
-        this.controller.getNews(e, (data: Pick<Status, 'status' | 'totalResults' | 'articles'>) =>
+      sources.addEventListener('click', (e: MouseEvent): void =>
+        this.controller.getNews(e, (data: Pick<Status, 'status' | 'totalResults' | 'articles'>): void =>
           this.view.drawNews(data)
         )
       );
-      this.controller.getSources((data: Pick<Status, 'status' | 'sources'>) => this.view.drawSources(data));
+      this.controller.getSources((data: Pick<Status, 'status' | 'sources'>): void => this.view.drawSources(data));
     }
   }
 }

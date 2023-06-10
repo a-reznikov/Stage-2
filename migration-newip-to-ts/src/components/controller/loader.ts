@@ -27,7 +27,7 @@ class Loader {
     const urlOptions: { [index: string]: string | null } = { ...this.options, ...options };
     let url: string = `${this.baseLink}${endpoint}?`;
 
-    Object.keys(urlOptions).forEach((key: string) => {
+    Object.keys(urlOptions).forEach((key: string): void => {
       url += `${key}=${urlOptions[key]}&`;
     });
 
@@ -42,9 +42,9 @@ class Loader {
   ): void {
     fetch(this.makeUrl(options, endpoint), { method })
       .then(this.errorHandler)
-      .then((res: Response) => res.json())
-      .then((data: LaodType) => callback(data))
-      .catch((err: Error) => console.error(err));
+      .then((res: Response): Promise<LaodType> => res.json())
+      .then((data: LaodType): void => callback(data))
+      .catch((err: Error): void => console.error(err));
   }
 }
 
