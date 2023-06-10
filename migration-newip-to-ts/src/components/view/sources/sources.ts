@@ -8,11 +8,11 @@ class Sources {
 
     if (sourceItemTemp && sourceItemTemp instanceof HTMLElement) {
       data.forEach((item: SourcesObject) => {
-        const sourceClone: Node = sourceItemTemp.content.cloneNode(true);
-        const sourceItem: HTMLElement | null = (<Element>sourceClone.parentNode).querySelector('.source__item');
+        const sourceClone: ParentNode = <ParentNode>sourceItemTemp.content.cloneNode(true);
+        const sourceItem: HTMLElement | null = sourceClone.querySelector('.source__item');
         if (sourceItem) {
           sourceItem.setAttribute('data-source-id', item.id);
-          const sourceItemName: HTMLElement | null = sourceItem.querySelector('.source__item-name');
+          const sourceItemName: HTMLElement | null = sourceClone.querySelector('.source__item-name');
           if (sourceItemName) {
             sourceItemName.textContent = item.name;
           }
