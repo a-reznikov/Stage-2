@@ -3,9 +3,9 @@ import { Api, Callback, Endpoint, SourcesId } from '../../types';
 class Loader {
   constructor(private baseLink: string, private options: Api) {}
 
-  protected getResp<T>(
+  protected getResp<RespType>(
     { endpoint, options = {} }: Endpoint,
-    callback: Callback<T> = (): void => {
+    callback: Callback<RespType> = (): void => {
       console.error('No callback for GET response');
     }
   ): void {

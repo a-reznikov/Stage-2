@@ -2,7 +2,7 @@ import { Callback } from '../../types';
 import AppLoader from './appLoader';
 
 class AppController extends AppLoader {
-  public getSources<T>(callback: Callback<T>): void {
+  public getSources<GetType>(callback: Callback<GetType>): void {
     super.getResp(
       {
         endpoint: 'sources',
@@ -11,7 +11,7 @@ class AppController extends AppLoader {
     );
   }
 
-  public getNews<T>(e: MouseEvent, callback: Callback<T>): void {
+  public getNews<GetType>(e: MouseEvent, callback: Callback<GetType>): void {
     let target: HTMLDivElement | null = <HTMLDivElement>e.target;
     const newsContainer: HTMLDivElement | null = <HTMLDivElement>e.currentTarget;
 
