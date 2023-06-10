@@ -59,3 +59,8 @@ export enum ApiKeys {
   main = 'bd767d6423de451fac45cea1e3bc8157',
   spare = '4fc1c4cdb41f48e8bdd14259015df9c1',
 }
+
+export enum EndpointName {
+  sources = 'sources',
+  everything = 'everything',
+}
