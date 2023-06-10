@@ -34,12 +34,17 @@ class Loader {
     return url.slice(0, -1);
   }
 
-  private load<T>(method: string, endpoint: string, callback: Callback<T>, options: SourcesId = {}): void {
+  private load<LaodType>(
+    method: string,
+    endpoint: string,
+    callback: Callback<LaodType>,
+    options: SourcesId = {}
+  ): void {
     fetch(this.makeUrl(options, endpoint), { method })
       .then(this.errorHandler)
-      .then((res) => res.json())
-      .then((data) => callback(data))
-      .catch((err) => console.error(err));
+      .then((res: Response) => res.json())
+      .then((data: LaodType) => callback(data))
+      .catch((err: Error) => console.error(err));
   }
 }
 
