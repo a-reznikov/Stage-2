@@ -11,9 +11,11 @@ export interface SourcesObject {
   country: string;
 }
 
-export interface StatusSources {
+export interface Status {
   status: string;
   sources: Array<SourcesObject>;
+  totalResults: number;
+  articles: ArticlesObject[];
 }
 
 export interface ArticlesSource {
@@ -30,12 +32,6 @@ export interface ArticlesObject {
   urlToImage: string;
   publishedAt: string;
   content: string;
-}
-
-export interface StatusArticles {
-  status: string;
-  totalResults: number;
-  articles: ArticlesObject[];
 }
 
 export interface SourcesId {

@@ -1,4 +1,4 @@
-import { StatusArticles, StatusSources } from '../../types';
+import { Status } from '../../types';
 import AppController from '../controller/controller';
 import { AppView } from '../view/appView';
 
@@ -12,9 +12,11 @@ class App {
 
     if (sources) {
       sources.addEventListener('click', (e: MouseEvent) =>
-        this.controller.getNews(e, (data: StatusArticles) => this.view.drawNews(data))
+        this.controller.getNews(e, (data: Pick<Status, 'status' | 'totalResults' | 'articles'>) =>
+          this.view.drawNews(data)
+        )
       );
-      this.controller.getSources((data: StatusSources) => this.view.drawSources(data));
+      this.controller.getSources((data: Pick<Status, 'status' | 'sources'>) => this.view.drawSources(data));
     }
   }
 }
