@@ -1,4 +1,10 @@
+@import "abstracts/constants";
+@import "abstracts/mixins";
+
 @import "base/base";
 
 @import "components/news";
 @import "components/sources";
+
+@import "layout/header";
+@import "layout/footer";

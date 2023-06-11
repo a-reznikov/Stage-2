@@ -1,0 +1,19 @@
+.footer {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.copyright {
+  font-size: 1.4rem;
+  text-align: center;
+  &_link {
+    color: $color-dark;
+    &:hover {
+      color: $color-primary;
+    }
+    &:before {
+      content: '©';
+    }
+  }
+}
