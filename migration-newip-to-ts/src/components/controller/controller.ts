@@ -4,7 +4,7 @@ import AppLoader from './appLoader';
 class AppController extends AppLoader {
   private optionName: string | null = '';
 
-  private option: Options = {};
+  private option: Partial<Options> = {};
 
   public getSources<GetType>(callback: Callback<GetType>): void {
     super.getResp(

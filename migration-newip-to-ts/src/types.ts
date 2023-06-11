@@ -35,8 +35,8 @@ export interface ArticlesObject {
 }
 
 export interface Options {
-  sources?: string | null;
-  q?: string | null;
+  sources: string | null;
+  q: string | null;
 }
 
 export interface Endpoint {
