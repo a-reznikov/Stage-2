@@ -1,4 +1,3 @@
-import './news.css';
 import { ArticlesObject } from '../../../types';
 
 class News {

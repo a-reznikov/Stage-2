@@ -2,30 +2,39 @@ const path = require('path');
 const { merge } = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const baseConfig = {
-  entry: path.resolve(__dirname, './src/index.ts'),
+  entry: ['./src/index.ts', './src/sass/style.scss'],
+  output: {
+    filename: 'index.js',
+    path: path.resolve(__dirname, '../dist'),
+  },
   mode: 'development',
   module: {
     rules: [
       { test: /\.ts$/i, use: 'ts-loader' },
       {
-        test: /\.css$/i,
-        use: ['style-loader', 'css-loader'],
+        test: /\.s[ac]ss$/i,
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+      },
+      {
+        test: /\.(png|jpe?g|svg|ttf|eot|woff2?|mp3|ogg)$/,
+        type: 'asset/resource',
       },
     ],
   },
   resolve: {
     extensions: ['.ts', '.js', '.json'],
   },
-  output: {
-    filename: 'index.js',
-    path: path.resolve(__dirname, '../dist'),
-  },
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, './src/index.html'),
       filename: 'index.html',
+      favicon: './src/assets/img/icons/favicon.ico',
+    }),
+    new MiniCssExtractPlugin({
+      filename: 'style.css',
     }),
     new CleanWebpackPlugin(),
   ],
