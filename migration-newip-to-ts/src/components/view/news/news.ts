@@ -12,7 +12,13 @@ class News {
         if (idx % 2 && newsItem) newsItem.classList.add('alt');
         if (newsClone) {
           const Photo: HTMLElement | null = newsClone.querySelector('.news__meta-photo');
-          if (Photo) Photo.style.backgroundImage = `url(${item.urlToImage || 'img/news_placeholder.jpg'})`;
+          if (Photo) {
+            if (item.urlToImage) {
+              Photo.style.backgroundImage = `url(${item.urlToImage})`;
+            } else {
+              Photo.classList.add('placeholder');
+            }
+          }
           const Author: HTMLElement | null = newsClone.querySelector('.news__meta-author');
           if (Author) Author.textContent = item.author || item.source.name;
           const Date: HTMLElement | null = newsClone.querySelector('.news__meta-date');

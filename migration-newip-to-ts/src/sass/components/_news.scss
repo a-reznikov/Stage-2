@@ -27,6 +27,9 @@
     background-position: center;
     transition: transform 0.2s;
   }
+  .placeholder {
+    background-image: url('../assets/img/images/news_placeholder.jpg');
+  }
   &-details {
     list-style: none;
     position: absolute;
