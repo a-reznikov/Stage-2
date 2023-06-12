@@ -1,0 +1,20 @@
+.main {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.wrapper {
+  display: flex;
+  padding: 30px 10px;
+}
+
+.aside {
+  flex-basis: 30%;
+  order: 1;
+  text-align: center;
+}
+
+.section {
+  flex-basis: 70%;
+  text-align: center;
+}
