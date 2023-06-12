@@ -2,9 +2,9 @@
   height: 100px;
   display: flex;
   align-items: center;
-  padding: 10px 30px;
+  padding: 10px 10px;
   background: $color-primary;
-  font-size: 2.0rem;
+  font-size: 1.2rem;
   color: $color-light;
   &__git-hub {
     width: 42px;
@@ -16,8 +16,12 @@
     }
   }
   &__rss {
-    width: 121px;
-    height: 45px;
+    width: 81px;
+    height: 30px;
+    @include media-mobile {
+      width: 121px;
+      height: 45px;
+    }
     &_link {
       display: block;
       background: url('../assets/img/icons/rs_logo.svg');
@@ -33,6 +37,9 @@
       transform: scale(1.1);
     }
   }
+  @include media-mobile {
+    font-size: 2.0rem;
+  }
 }
 
 .footer__container {
@@ -44,7 +51,8 @@
 
 .footer__info {
   display: flex;
-  column-gap: 20px;
+  row-gap: 10px;
+  flex-direction: column;
   align-items: center;
   .copyright {
     text-align: center;
@@ -60,5 +68,9 @@
         content: '©';
       }
     }
+  }
+  @include media-mobile {
+    column-gap: 20px;
+    flex-direction: row;
   }
 }

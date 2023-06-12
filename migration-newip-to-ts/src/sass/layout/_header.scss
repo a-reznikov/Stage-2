@@ -2,8 +2,13 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-direction: column;
   padding: 10px 30px;
   background: $color-primary;
+  row-gap: 10px;
+  @include media-mobile {
+    flex-direction: row;
+  }
 }
 
 .logo {
@@ -12,6 +17,7 @@
   justify-content: space-between;
   flex-basis: 50%;
   max-width: 230px;
+  column-gap: 5px;
   &__image {
     width: 42px;
     height: 42px;
