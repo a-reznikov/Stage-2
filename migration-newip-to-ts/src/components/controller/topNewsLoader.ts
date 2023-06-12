@@ -16,9 +16,9 @@ class TopNewsLoader extends AppLoader {
   }
 
   public getNews<GetType>(callback: Callback<GetType>): void {
-    const newsContainer: HTMLDivElement | null = document.querySelector('.news');
-    if (newsContainer) {
-      newsContainer.setAttribute('data-source', 'Top News');
+    const newsTitle: HTMLDivElement | null = document.querySelector('.section__title');
+    if (newsTitle) {
+      newsTitle.setAttribute('data-source', 'Top News');
       super.getResp(
         {
           endpoint: 'top-headlines',

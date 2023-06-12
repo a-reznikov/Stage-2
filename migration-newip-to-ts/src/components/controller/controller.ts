@@ -17,7 +17,7 @@ class AppController extends AppLoader {
 
   public getNews<GetType>(e: MouseEvent, callback: Callback<GetType>): void {
     const target: HTMLElement | null = <HTMLElement>e.target;
-    const newsContainer: HTMLDivElement | null = document.querySelector('.news');
+    const newsTitle: HTMLDivElement | null = document.querySelector('.section__title');
     let sourceId: string | null = target.getAttribute('data-source-id');
     if (target.classList.contains('source__item') || target.classList.contains('source__item-name')) {
       if (target.classList.contains('source__item-name')) {
@@ -38,9 +38,12 @@ class AppController extends AppLoader {
       }
     }
 
-    if (target && newsContainer) {
-      if (newsContainer.getAttribute('data-source') !== this.optionName) {
-        if (this.optionName) newsContainer.setAttribute('data-source', this.optionName);
+    if (target && newsTitle) {
+      if (newsTitle.getAttribute('data-source') !== this.optionName) {
+        if (this.optionName) {
+          newsTitle.setAttribute('data-source', this.optionName);
+          newsTitle.textContent = `${this.optionName[0].toUpperCase()}${this.optionName.slice(1)}`;
+        }
         super.getResp(
           {
             endpoint: EndpointName.everything,
