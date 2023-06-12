@@ -1,9 +1,12 @@
 import { Status } from '../../types';
 import AppController from '../controller/controller';
+import TopNewsLoader from '../controller/topNewsLoader';
 import { AppView } from '../view/appView';
 
 class App {
   private controller: AppController = new AppController();
+
+  private topNews: TopNewsLoader = new TopNewsLoader();
 
   private view: AppView = new AppView();
 
@@ -23,6 +26,9 @@ class App {
           this.view.drawNews(data)
         );
       });
+      this.topNews.getNews((data: Pick<Status, 'status' | 'totalResults' | 'articles'>): void =>
+        this.view.drawNews(data)
+      );
       this.controller.getSources((data: Pick<Status, 'status' | 'sources'>): void => this.view.drawSources(data));
     }
   }

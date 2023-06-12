@@ -25,11 +25,18 @@ class Loader {
 
   private makeUrl(options: Partial<Options>, endpoint: string): string {
     const urlOptions: { [index: string]: string | null } = { ...this.options, ...options };
-    let url: string = `${this.baseLink}${endpoint}?`;
+    const urlOptionsTop: { [index: string]: string | null } = { ...options, ...this.options };
 
-    Object.keys(urlOptions).forEach((key: string): void => {
-      url += `${key}=${urlOptions[key]}&`;
-    });
+    let url: string = `${this.baseLink}${endpoint}?`;
+    if (endpoint === 'top-headlines') {
+      Object.keys(urlOptionsTop).forEach((key: string): void => {
+        url += `${key}=${urlOptionsTop[key]}&`;
+      });
+    } else {
+      Object.keys(urlOptions).forEach((key: string): void => {
+        url += `${key}=${urlOptions[key]}&`;
+      });
+    }
     return url.slice(0, -1);
   }
 
