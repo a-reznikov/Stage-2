@@ -11,7 +11,7 @@ html {
 body {
   color:$color-dark;
   background: $color-background;
-  font-family: 'Roboto', sans-serif;
+  @extend %font-main;
 }
 
 h1 {

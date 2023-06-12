@@ -17,3 +17,51 @@
     height: 42px;
   }
 }
+
+.form {
+  display: flex;
+  align-items: center;
+  background: $color-light;
+  border-radius: 5px;
+  padding: 5px;
+  &__button {
+    width: 28px;
+    height: 28px;
+    background: $color-light;
+    background-image: url('../assets/img/icons/search.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    color: $color-light;
+    border: solid 1px $color-light;
+    border-radius: 5px;
+    border: none;
+    transition: ease-in-out 0.3s;
+    &:hover {
+      cursor: pointer;
+      background-image: url('../assets/img/icons/search_focus.svg');
+    }
+    &:active {
+      background-image: url('../assets/img/icons/search_focus.svg');
+      border: 0;
+      outline: 0;
+      transform: scale(1.1);
+    }
+  }
+  &__input {
+    width: 100px;
+    border: none;
+    outline: none;
+    transition: ease-in-out 0.3s;
+    background: $color-light;
+    margin-right: 5px;
+    border-radius: 5px;
+    @extend %font-main;
+    @include font(400, 1.4rem, 1.4rem, $color-text-dark);
+    &:focus {
+      width: 200px;
+    }
+    &:focus~.form__button {
+      background-image: url('../assets/img/icons/search_focus.svg');
+    }
+  }
+}
