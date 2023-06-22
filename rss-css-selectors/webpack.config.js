@@ -15,6 +15,10 @@ const baseConfig = {
     rules: [
       { test: /\.ts$/i, use: 'ts-loader' },
       {
+        test: /\.html$/i,
+        loader: 'html-loader',
+      },
+      {
         test: /\.s[ac]ss$/i,
         use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
       },
