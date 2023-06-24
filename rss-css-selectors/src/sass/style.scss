@@ -1,3 +1,56 @@
 body {
   background: silver;
 }
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  height: 50px;
+  background: red;
+}
+
+.main {
+  // width: 100vw;
+  display: flex;
+  height: 100vh;
+}
+
+.playground {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background: gray;
+}
+
+.display {
+  width: 60%;
+  height: 20%;
+  background: yellow;
+}
+
+.interection {
+  width: 80%;
+  height: 50%;
+  display: flex;
+
+  &__editor {
+    flex-basis: 50%;
+    background: white;
+  }
+
+  &__viewer {
+    flex-basis: 50%;
+    background: black;
+  }
+}
+
+.level {
+  width: 20%;
+  background: brown;
+}

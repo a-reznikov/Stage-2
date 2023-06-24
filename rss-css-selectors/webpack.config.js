@@ -5,7 +5,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const baseConfig = {
-  entry: ['./src/index.ts', './src/sass/style.scss'],
+  entry: ['./src/components/index.ts', './src/sass/style.scss'],
   output: {
     filename: 'index.js',
     path: path.resolve(__dirname, '../dist'),
