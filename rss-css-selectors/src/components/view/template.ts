@@ -1,4 +1,4 @@
-export default function createTemplate(): void {
+export default function createTemplate(): HTMLBodyElement | null {
   const body: HTMLBodyElement | null = document.querySelector('body');
   if (body) body.className = 'body';
   const header: HTMLHeadElement = document.createElement('header');
@@ -30,4 +30,5 @@ export default function createTemplate(): void {
     body.append(main);
     body.append(footer);
   }
+  return body || null;
 }
