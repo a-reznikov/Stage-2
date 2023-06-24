@@ -1,0 +1,15 @@
+.interection {
+  width: 80%;
+  height: 50%;
+  display: flex;
+
+  &__editor {
+    flex-basis: 50%;
+    background: white;
+  }
+
+  &__viewer {
+    flex-basis: 50%;
+    background: black;
+  }
+}
