@@ -9,9 +9,10 @@ export default function createTemplate(): HTMLBodyElement | null {
   playground.className = 'playground';
   const display: HTMLElement = document.createElement('section');
   display.className = 'display';
-  const plateFancy: HTMLElement = document.createElement('plate');
-  plateFancy.className = 'plate';
-  plateFancy.setAttribute('id', 'fancy');
+  const plate: HTMLElement = document.createElement('plate');
+  plate.className = 'plate';
+  const egg: HTMLElement = document.createElement('egg');
+  egg.className = 'egg';
   const interection: HTMLElement = document.createElement('section');
   interection.className = 'playground__interection interection';
   const editor: HTMLElement = document.createElement('section');
@@ -25,7 +26,8 @@ export default function createTemplate(): HTMLBodyElement | null {
   if (body) {
     interection.append(editor);
     interection.append(viewer);
-    display.append(plateFancy);
+    display.append(plate);
+    display.append(egg);
     playground.append(display);
     playground.append(interection);
     main.append(playground);
