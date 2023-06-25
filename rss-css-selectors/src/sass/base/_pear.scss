@@ -1,0 +1,27 @@
+.pear {
+  position: relative;
+  width: 54px;
+  height: 54px;
+  background-color: #d7c322;
+  border-radius: 50% 15% 50% 50%;
+  border-color: #b5a100;
+  border-style: solid;
+  border-width: 2px 3px 9px 3px;
+  box-shadow: 0px 5px 0px rgba(0, 0, 0, .2);
+
+  &:after {
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 10px;
+    background-color: brown;
+    z-index: 2;
+    top: -5px;
+    left: 48px;
+    transform: rotate(45deg)
+  }
+
+  &:hover {
+    box-shadow: 0 0 0 6px $color-opacity-light;
+  }
+}
