@@ -1,0 +1,18 @@
+.bento {
+  @extend %items;
+  @extend %transition;
+  background: $color-brown-light;
+  border: solid 3px $color-brown-dark;
+  border-width: 20px 2px;
+
+  &:before {
+    content: "";
+    position: absolute;
+    width: calc(100%);
+    top: 0;
+    left: 0;
+    border: solid 10px $color-opacity-dark;
+    border-width: 10px 0 0 0px;
+  }
+
+}

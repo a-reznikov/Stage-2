@@ -1,3 +1,16 @@
 %transition {
   transition: transform ease-out 0.2s;
 }
+
+%items {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  margin: 0 10px;
+  position: relative;
+  box-shadow: 0px 8px 0px $color-opacity-dark;
+
+  &:hover {
+    box-shadow: 0 0 0 6px $color-opacity-light;
+  }
+}
