@@ -2,12 +2,24 @@
   position: relative;
   width: 54px;
   height: 54px;
-  background-color: #d7c322;
+  background-color: $color-pear;
   border-radius: 50% 15% 50% 50%;
-  border-color: #b5a100;
+  border-color: $color-pear-dark;
   border-style: solid;
   border-width: 2px 3px 9px 3px;
-  box-shadow: 0px 5px 0px rgba(0, 0, 0, .2);
+  box-shadow: 0px 5px 0px $color-opacity-dark;
+
+  &:before {
+    content: "";
+    display: block;
+    position: absolute;
+    background: $color-opacity-light;
+    height: 26%;
+    width: 25%;
+    top: 6px;
+    left: 34%;
+    border-radius: 50px;
+  }
 
   &:after {
     content: "";
