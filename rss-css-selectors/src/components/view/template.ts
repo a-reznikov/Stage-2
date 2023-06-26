@@ -1,4 +1,4 @@
-import generateTable from './table';
+import generatItems from '../model/generator';
 
 export default function createTemplate(): HTMLBodyElement | null {
   const body: HTMLBodyElement | null = document.querySelector('body');
@@ -38,6 +38,6 @@ export default function createTemplate(): HTMLBodyElement | null {
     body.append(main);
     body.append(footer);
   }
-  generateTable();
+  generatItems();
   return body || null;
 }
