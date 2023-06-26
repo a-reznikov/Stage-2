@@ -19,6 +19,7 @@ export default function generateTable(): HTMLElement | null {
     table.append(bento);
     table.append(egg);
     table.append(pear);
+    bento.append(pear);
     table.append(lemon);
   }
   return table || null;

@@ -1,9 +1,13 @@
 .bento {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   @extend %items;
   @extend %transition;
-  background: $color-brown-light;
-  border: solid 3px $color-brown-dark;
+  background: $color-bento-light;
+  border: double 3px $color-bento-dark;
   border-width: 20px 2px;
+  border-radius: 50% 20% / 10% 40%;
 
   &:before {
     content: "";
