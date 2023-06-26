@@ -1,33 +1,53 @@
 [
   {
-    "tag": "plate",
-    "classItem": "plate",
-    "id": ""
+    "level": "1",
+    "items": [
+      {
+        "tag": "plate",
+        "classItem": "plate",
+        "id": ""
+      },
+      {
+        "tag": "plate",
+        "classItem": "plate",
+        "id": "dark"
+      }
+    ]
   },
   {
-    "tag": "bento",
-    "classItem": "bento",
-    "id": ""
-  },
-  {
-    "tag": "lemon",
-    "classItem": "lemon",
-    "id": ""
-  },
-  {
-    "tag": "pear",
-    "classItem": "pear",
-    "id": ""
-  }
-  ,
-  {
-    "tag": "egg",
-    "classItem": "egg",
-    "id": ""
-  },
-  {
-    "tag": "plate",
-    "classItem": "plate",
-    "id": "dark"
+    "level": "2",
+    "items": [
+      {
+        "tag": "plate",
+        "classItem": "plate",
+        "id": ""
+      },
+      {
+        "tag": "bento",
+        "classItem": "bento",
+        "id": ""
+      },
+      {
+        "tag": "lemon",
+        "classItem": "lemon",
+        "id": ""
+      },
+      {
+        "tag": "pear",
+        "classItem": "pear",
+        "id": ""
+      }
+      ,
+      {
+        "tag": "egg",
+        "classItem": "egg",
+        "id": ""
+      },
+      {
+        "tag": "plate",
+        "classItem": "plate",
+        "id": "dark"
+      }
+    ]
   }
 ]

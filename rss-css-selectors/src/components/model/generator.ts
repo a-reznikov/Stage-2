@@ -4,9 +4,10 @@ import Item from './item';
 import renderItems from '../view/renderItems';
 
 export default function generatItems(): void {
-  const items: Items[] = data;
+  const level: number = 1;
+  const levelItems: Items[] = data[level].items;
 
-  items.forEach((element: Items) => {
+  levelItems.forEach((element: Items) => {
     const newItem = new Item(element);
     const item = newItem.createItme();
     renderItems(item);
