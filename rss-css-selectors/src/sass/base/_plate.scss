@@ -2,7 +2,7 @@
   @extend %items;
   @extend %transition;
   background: $color-light;
-  border-radius: 100px;
+  border-radius: 70% 30% 64% 36% / 33% 70% 30% 67%;
   border-bottom: solid 5px $color-border-light;
 
   &:before {
@@ -13,22 +13,19 @@
     top: calc(50% - 32px);
     height: 65px;
     width: 65px;
-    border-radius: 60px;
+    border-radius: 70% 30% 65% 35% / 35% 70% 30% 65%;
     border-top: solid 6px $color-border-dark;
     opacity: 0.4;
     background: $color-light;
   }
 }
 
-#fancy:after {
-  content: "";
-  display: block;
-  position: absolute;
-  left: calc(50% - 47px);
-  top: calc(50% - 44px);
-  height: 68px;
-  width: 74px;
-  border-radius: 60px;
-  border: solid 10px $color-fancy;
-  opacity: 0.4;
+#dark {
+  background: $color-bento-graphite;
+  border-bottom: solid 5px $color-opacity-graphite;
+
+  &:before {
+    border-top: solid 6px $color-dark;
+    background: $color-bento-graphite;
+  }
 }

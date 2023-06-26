@@ -2,9 +2,9 @@ export default function generateTable(): HTMLElement | null {
   const table: HTMLElement | null = document.querySelector('.table');
   const plate: HTMLElement = document.createElement('plate');
   plate.className = 'plate';
-  const plateFancy: HTMLElement = document.createElement('plate');
-  plateFancy.className = 'plate';
-  plateFancy.setAttribute('id', 'fancy');
+  const plateDark: HTMLElement = document.createElement('plate');
+  plateDark.className = 'plate';
+  plateDark.setAttribute('id', 'dark');
   const bento: HTMLElement = document.createElement('bento');
   bento.className = 'bento';
   const egg: HTMLElement = document.createElement('egg');
@@ -15,7 +15,7 @@ export default function generateTable(): HTMLElement | null {
   lemon.className = 'lemon';
   if (table) {
     table.append(plate);
-    table.append(plateFancy);
+    table.append(plateDark);
     table.append(bento);
     table.append(egg);
     table.append(pear);
