@@ -7,8 +7,8 @@ export default function createTemplate(): HTMLBodyElement | null {
   main.className = 'main';
   const playground: HTMLElement = document.createElement('section');
   playground.className = 'playground';
-  const display: HTMLElement = document.createElement('section');
-  display.className = 'display';
+  const table: HTMLElement = document.createElement('section');
+  table.className = 'table';
   const plate: HTMLElement = document.createElement('plate');
   plate.className = 'plate';
   const lemon: HTMLElement = document.createElement('lemon');
@@ -26,9 +26,9 @@ export default function createTemplate(): HTMLBodyElement | null {
   if (body) {
     interection.append(editor);
     interection.append(viewer);
-    display.append(plate);
-    display.append(lemon);
-    playground.append(display);
+    table.append(plate);
+    plate.append(lemon);
+    playground.append(table);
     playground.append(interection);
     main.append(playground);
     main.append(level);
