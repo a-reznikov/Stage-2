@@ -11,8 +11,8 @@ export default function createTemplate(): HTMLBodyElement | null {
   display.className = 'display';
   const plate: HTMLElement = document.createElement('plate');
   plate.className = 'plate';
-  const pear: HTMLElement = document.createElement('pear');
-  pear.className = 'pear';
+  const lemon: HTMLElement = document.createElement('lemon');
+  lemon.className = 'lemon';
   const interection: HTMLElement = document.createElement('section');
   interection.className = 'playground__interection interection';
   const editor: HTMLElement = document.createElement('section');
@@ -27,7 +27,7 @@ export default function createTemplate(): HTMLBodyElement | null {
     interection.append(editor);
     interection.append(viewer);
     display.append(plate);
-    display.append(pear);
+    display.append(lemon);
     playground.append(display);
     playground.append(interection);
     main.append(playground);

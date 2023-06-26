@@ -1,0 +1,30 @@
+.lemon {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  margin: 10px;
+  background-color: $color-lemon;
+  border-radius: 50% 15%;
+  border-color: $color-lemon-dark;
+  border-style: solid;
+  border-width: 2px 4px 4px 2px;
+  box-shadow: 4px 4px 0px $color-opacity-dark;
+  transform: rotate(45deg);
+
+  &:before {
+    content: "";
+    display: block;
+    position: absolute;
+    background: rgba(255, 255, 255, 0.4);
+    height: 16%;
+    width: 39%;
+    top: 8px;
+    left: 5%;
+    border-radius: 50px;
+    transform: rotate(130deg);
+  }
+
+  &:hover {
+    box-shadow: 0 0 0 6px $color-opacity-light;
+  }
+}
