@@ -1,6 +1,7 @@
 import generatItems from '../model/generator';
+import createTable from './table';
 
-export default function createTemplate(): HTMLBodyElement | null {
+export default async function createTemplate(): Promise<void> {
   const body: HTMLBodyElement | null = document.querySelector('body');
   if (body) body.className = 'body';
   const header: HTMLHeadElement = document.createElement('header');
@@ -11,10 +12,6 @@ export default function createTemplate(): HTMLBodyElement | null {
   playground.className = 'playground';
   const table: HTMLElement = document.createElement('section');
   table.className = 'table';
-  const tableTop: HTMLElement = document.createElement('div');
-  tableTop.className = 'table__top';
-  const tableLegs: HTMLElement = document.createElement('div');
-  tableLegs.className = 'table__legs';
   const interection: HTMLElement = document.createElement('section');
   interection.className = 'playground__interection interection';
   const editor: HTMLElement = document.createElement('section');
@@ -25,11 +22,10 @@ export default function createTemplate(): HTMLBodyElement | null {
   level.className = 'level';
   const footer: HTMLElement = document.createElement('footer');
   footer.className = 'footer';
+  createTable(table);
   if (body) {
     interection.append(editor);
     interection.append(viewer);
-    table.append(tableTop);
-    table.append(tableLegs);
     playground.append(table);
     playground.append(interection);
     main.append(playground);
@@ -39,5 +35,5 @@ export default function createTemplate(): HTMLBodyElement | null {
     body.append(footer);
   }
   generatItems();
-  return body || null;
+  // return body || null;
 }
