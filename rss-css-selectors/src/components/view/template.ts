@@ -1,3 +1,5 @@
+import generateTable from './table';
+
 export default function createTemplate(): HTMLBodyElement | null {
   const body: HTMLBodyElement | null = document.querySelector('body');
   if (body) body.className = 'body';
@@ -9,10 +11,6 @@ export default function createTemplate(): HTMLBodyElement | null {
   playground.className = 'playground';
   const table: HTMLElement = document.createElement('section');
   table.className = 'table';
-  const plate: HTMLElement = document.createElement('plate');
-  plate.className = 'plate';
-  const lemon: HTMLElement = document.createElement('lemon');
-  lemon.className = 'lemon';
   const interection: HTMLElement = document.createElement('section');
   interection.className = 'playground__interection interection';
   const editor: HTMLElement = document.createElement('section');
@@ -26,8 +24,6 @@ export default function createTemplate(): HTMLBodyElement | null {
   if (body) {
     interection.append(editor);
     interection.append(viewer);
-    table.append(plate);
-    plate.append(lemon);
     playground.append(table);
     playground.append(interection);
     main.append(playground);
@@ -36,5 +32,6 @@ export default function createTemplate(): HTMLBodyElement | null {
     body.append(main);
     body.append(footer);
   }
+  generateTable();
   return body || null;
 }
