@@ -9,7 +9,7 @@ html {
 }
 
 h1 {
-  color: $color-opacity-light;
+  @include color-opacity(0.3);
   font-size: 3.0rem;
 }
 

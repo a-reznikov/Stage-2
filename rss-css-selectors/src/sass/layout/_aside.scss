@@ -1,7 +1,7 @@
 .aside {
   width: 30%;
   background: $color-background-dark;
-  color: $color-opacity-light;
+  @include color-opacity(0.4);
   &__title {
     padding: 10px;
   }

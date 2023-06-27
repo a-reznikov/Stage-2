@@ -12,10 +12,10 @@ export default function createSection(section: HTMLElement, id: string, titleHea
   const container: HTMLElement = document.createElement('div');
   container.className = 'interection__container container';
   const numbers: HTMLElement = document.createElement('div');
-  numbers.className = 'container__numbers';
+  numbers.className = `container__numbers container__numbers_${id}`;
   numbers.innerHTML = Constants.fieldNumbers;
   const field: HTMLElement = document.createElement('div');
-  field.className = `container__field ${id}`;
+  field.className = `container__field container__field_${id}`;
   header.append(title);
   header.append(file);
   container.append(numbers);
