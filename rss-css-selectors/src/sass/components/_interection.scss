@@ -2,6 +2,9 @@
   width: 80%;
   height: 50%;
   display: flex;
+  margin-top: 20px;
+  border: solid 10px $color-background-dark;
+  border-radius: 5px;
 
   &__editor {
     flex-basis: 50%;

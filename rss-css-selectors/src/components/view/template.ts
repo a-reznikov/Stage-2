@@ -1,5 +1,6 @@
 import Generator from '../model/generator';
 import createAside from './aside';
+import createInterection from './interection';
 import createTable from './table';
 
 export default function createTemplate(): void {
@@ -15,12 +16,7 @@ export default function createTemplate(): void {
   taskTitle.className = 'task';
   const table: HTMLElement = document.createElement('section');
   table.className = 'table';
-  const interection: HTMLElement = document.createElement('section');
-  interection.className = 'playground__interection interection';
-  const editor: HTMLElement = document.createElement('section');
-  editor.className = 'interection__editor editor';
-  const viewer: HTMLElement = document.createElement('section');
-  viewer.className = 'interection__viewer viewer';
+  const interection: HTMLElement = createInterection();
   const aside: HTMLElement = document.createElement('aside');
   aside.className = 'aside';
   const footer: HTMLElement = document.createElement('footer');
@@ -28,8 +24,6 @@ export default function createTemplate(): void {
   createTable(table);
   createAside(aside);
   if (body) {
-    interection.append(editor);
-    interection.append(viewer);
     playground.append(taskTitle);
     playground.append(table);
     playground.append(interection);
