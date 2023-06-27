@@ -1,6 +1,8 @@
 [
   {
-    "level": "1",
+    "levelId": 1,
+    "levelName": "Plates",
+    "task": "Select all the plates",
     "items": [
       {
         "tag": "plate",
@@ -15,7 +17,9 @@
     ]
   },
   {
-    "level": "2",
+    "levelId": 2,
+    "levelName": "Fruits",
+    "task": "Select all the fruits",
     "items": [
       {
         "tag": "plate",
@@ -28,12 +32,12 @@
         "id": ""
       },
       {
-        "tag": "lemon",
+        "tag": "fruits",
         "classItem": "lemon",
         "id": ""
       },
       {
-        "tag": "pear",
+        "tag": "fruits",
         "classItem": "pear",
         "id": ""
       }

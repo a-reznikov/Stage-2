@@ -1,4 +1,4 @@
-import generatItems from '../model/generator';
+import Generator from '../model/generator';
 import createTable from './table';
 
 export default async function createTemplate(): Promise<void> {
@@ -34,6 +34,7 @@ export default async function createTemplate(): Promise<void> {
     body.append(main);
     body.append(footer);
   }
-  generatItems();
+  Generator.generateItems();
+  Generator.generateLevels();
   // return body || null;
 }

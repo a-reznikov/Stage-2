@@ -1,4 +1,10 @@
 .level {
   width: 20%;
-  background: brown;
+  background: $color-background-dark;
+  &__link {
+    display: flex;
+    color: white;
+    font-size: 1.8rem;
+    cursor: pointer;
+  }
 }
