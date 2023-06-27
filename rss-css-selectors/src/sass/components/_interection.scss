@@ -5,6 +5,16 @@
   margin-top: 20px;
   border: solid 10px $color-background-dark;
   border-radius: 5px;
+  @include color-opacity(0.4);
+  &__header {
+    background: $color-background;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+  }
+  &__title {
+    @include color-opacity(0.6);
+  }
 
   &__editor {
     flex-basis: 50%;
