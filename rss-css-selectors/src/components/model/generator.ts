@@ -6,9 +6,15 @@ import Level from './level';
 import renderLevels from '../view/renderLevels';
 
 class Generator {
-  public static generateItems(): void {
-    const level: number = 1;
-    const levelItems: Items[] = data[level].items;
+  private static level: number = 0;
+
+  public static generateItems(indexLevel?: number | undefined): void {
+    if (!(typeof indexLevel === 'undefined')) {
+      this.level = indexLevel;
+    }
+    const levelItems: Items[] = data[this.level].items;
+    const tableTop: HTMLElement | null = document.querySelector('.table__top');
+    if (tableTop) tableTop.innerHTML = '';
 
     levelItems.forEach((element: Items) => {
       const newItem = new Item(element);
