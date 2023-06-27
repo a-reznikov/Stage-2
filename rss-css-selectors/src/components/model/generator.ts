@@ -4,6 +4,7 @@ import Item from './item';
 import renderItems from '../view/renderItems';
 import Level from './level';
 import renderLevels from '../view/renderLevels';
+import renderPlayground from '../view/playground';
 
 class Generator {
   private static level: number = 0;
@@ -15,6 +16,7 @@ class Generator {
     const levelItems: Items[] = data[this.level].items;
     const tableTop: HTMLElement | null = document.querySelector('.table__top');
     if (tableTop) tableTop.innerHTML = '';
+    renderPlayground(data[this.level]);
 
     levelItems.forEach((element: Items) => {
       const newItem = new Item(element);

@@ -11,6 +11,8 @@ export default function createTemplate(): void {
   main.className = 'main';
   const playground: HTMLElement = document.createElement('section');
   playground.className = 'playground';
+  const taskTitle: HTMLElement = document.createElement('h1');
+  taskTitle.className = 'task';
   const table: HTMLElement = document.createElement('section');
   table.className = 'table';
   const interection: HTMLElement = document.createElement('section');
@@ -28,6 +30,7 @@ export default function createTemplate(): void {
   if (body) {
     interection.append(editor);
     interection.append(viewer);
+    playground.append(taskTitle);
     playground.append(table);
     playground.append(interection);
     main.append(playground);
