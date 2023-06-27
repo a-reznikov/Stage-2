@@ -12,12 +12,12 @@ class Level {
 
   public createLevel(): HTMLElement {
     const level: HTMLElement = document.createElement('a');
-    level.className = 'level__link';
+    level.className = 'level';
+    level.setAttribute('id', `${this.levelId}`);
     const check: HTMLSpanElement = document.createElement('span');
     check.className = 'level__check';
     const levelNumber: HTMLSpanElement = document.createElement('span');
     levelNumber.className = 'level__id';
-    levelNumber.setAttribute('id', `${this.levelId}`);
     levelNumber.textContent = `${this.levelId}`;
     const levelNames: HTMLSpanElement = document.createElement('span');
     levelNames.className = 'level__name';

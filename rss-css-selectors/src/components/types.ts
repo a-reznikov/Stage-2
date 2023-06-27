@@ -10,3 +10,7 @@ export interface Levels {
   task: string;
   items: Items[];
 }
+
+export enum Constants {
+  asideTitle = 'Choose a level',
+}

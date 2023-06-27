@@ -1,7 +1,7 @@
 export default function renderLevels(item: HTMLElement): HTMLElement | null {
-  const level: HTMLElement | null = document.querySelector('.level');
-  if (level) {
-    level.append(item);
+  const aside: HTMLElement | null = document.querySelector('.aside');
+  if (aside) {
+    aside.append(item);
   }
-  return level || null;
+  return aside || null;
 }
