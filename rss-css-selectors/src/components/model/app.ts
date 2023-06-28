@@ -16,7 +16,7 @@ class App {
       aside.addEventListener('click', (e: MouseEvent): number => this.controller.getItems(e));
     }
     if (formButton) {
-      formButton.addEventListener('click', (e: MouseEvent): void => this.controller.checkResult(e));
+      formButton.addEventListener('click', (e: MouseEvent): void => this.controller.checkRequest(e));
     }
   }
 }

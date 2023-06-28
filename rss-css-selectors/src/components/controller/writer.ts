@@ -1,5 +1,4 @@
-export default function writeAnswer(event: MouseEvent): void {
-  event.preventDefault();
+export default function writeAnswer(): void {
   const input: HTMLInputElement | null = document.querySelector('.form__input');
   const text: string = 'answer';
   const { length } = text;

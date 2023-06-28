@@ -13,7 +13,7 @@ class Generator {
 
   public static generateItems(indexLevel?: number | undefined): void {
     if (!(typeof indexLevel === 'undefined')) {
-      this.level = indexLevel;
+      this.level = indexLevel - 1;
     }
     const levelItems: Items[] = data[this.level].items;
     const tableTop: HTMLElement | null = document.querySelector('.table__top');
