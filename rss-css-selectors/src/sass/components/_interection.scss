@@ -1,6 +1,6 @@
 .editor {
   flex-basis: 50%;
-  @include background-opacity(0.95, $color-light);
+  @include background-opacity(0.9, $color-light);
 }
 
 .viewer {
@@ -13,6 +13,7 @@
   display: flex;
   border: solid 10px $color-background-dark;
   border-radius: 5px;
+  @extend %font-second;
   @include color-opacity(0.4);
   &__header {
     background: $color-background;
@@ -24,11 +25,15 @@
   &__title {
     @include color-opacity(0.6);
   }
+  &__file {
+    font-size: 1.2rem;
+  }
 }
 
 .container {
   display: flex;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
+  line-height: 2.0rem;
   &__numbers {
     text-align: end;
     padding: 10px;

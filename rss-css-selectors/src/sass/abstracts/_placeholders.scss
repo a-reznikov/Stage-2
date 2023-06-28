@@ -2,6 +2,14 @@
   transition: transform ease-out 0.2s;
 }
 
+%font-main {
+  font-family: 'Exo 2', 'Lato', 'Helvetica Neue', sans-serif;
+}
+
+%font-second {
+  font-family: 'Menlo', monospace;
+}
+
 %items {
   display: inline-block;
   width: 100px;
