@@ -21,6 +21,22 @@ class Item {
     }
     return item;
   }
+
+  public createMarkup(): HTMLElement {
+    const markupElement: HTMLDivElement = document.createElement('div');
+    markupElement.className = 'markup__element';
+    let markupContent: string = '';
+    markupContent += `<${this.tag} `;
+    if (this.classItem) {
+      markupContent += `class="${this.classItem}" `;
+    }
+    if (this.id) {
+      markupContent += `id="${this.id}" `;
+    }
+    markupContent += '/>';
+    markupElement.textContent = markupContent;
+    return markupElement;
+  }
 }
 
 export default Item;

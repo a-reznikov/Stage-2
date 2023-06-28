@@ -3,6 +3,7 @@ import createAside from './aside';
 import createEditor from './editor';
 import createInterection from './interection';
 import createTable from './table';
+import { createViewer } from './viewer';
 
 export default function createTemplate(): void {
   const body: HTMLBodyElement | null = document.querySelector('body');
@@ -35,6 +36,7 @@ export default function createTemplate(): void {
     body.append(footer);
   }
   createEditor();
+  createViewer();
   Generator.generateItems();
   Generator.generateLevels();
 }

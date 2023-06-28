@@ -5,6 +5,8 @@ import renderItems from '../view/renderItems';
 import Level from './level';
 import renderLevels from '../view/renderLevels';
 import renderPlayground from '../view/playground';
+import renderMarkupElement from '../view/renderMarkup';
+import { renderViewer } from '../view/viewer';
 
 class Generator {
   private static level: number = 0;
@@ -16,13 +18,18 @@ class Generator {
     const levelItems: Items[] = data[this.level].items;
     const tableTop: HTMLElement | null = document.querySelector('.table__top');
     if (tableTop) tableTop.innerHTML = '';
+    const markup: HTMLElement | null = document.querySelector('.markup');
+    if (markup) markup.innerHTML = '';
     renderPlayground(data[this.level]);
 
     levelItems.forEach((element: Items) => {
       const newItem = new Item(element);
       const item = newItem.createItme();
+      const markupElement = newItem.createMarkup();
       renderItems(item);
+      renderMarkupElement(markupElement);
     });
+    renderViewer();
   }
 
   public static generateLevels(): void {
