@@ -54,6 +54,7 @@
     margin: 0 5px;
     background: inherit;
     @extend %pulsing;
+    @extend %font-second ;
     &:focus {
       animation: none;
     }
