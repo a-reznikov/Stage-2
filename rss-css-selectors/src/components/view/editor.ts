@@ -16,6 +16,9 @@ export default function createEditor(): void {
   const description: HTMLDivElement = document.createElement('div');
   description.className = 'editor__description';
   description.innerHTML = Constants.descriptionEditor;
+  const help: HTMLDivElement = document.createElement('div');
+  help.className = 'editor__help';
+  help.innerHTML = Constants.helpEditor;
   const skip: HTMLDivElement = document.createElement('div');
   skip.className = 'editor__skip';
   skip.innerHTML = Constants.skipEditor;
@@ -25,6 +28,7 @@ export default function createEditor(): void {
     form.append(inputButton);
     field.append(form);
     field.append(description);
+    field.append(help);
     field.append(skip);
   }
 }

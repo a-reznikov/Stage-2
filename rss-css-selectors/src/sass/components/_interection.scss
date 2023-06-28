@@ -40,6 +40,9 @@
   &__field {
     @include color-opacity(0.6, $color-dark);
   }
+  &__description {
+    padding-top: 12px;
+  }
 }
 
 .form {
