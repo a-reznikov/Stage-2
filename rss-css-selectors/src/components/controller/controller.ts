@@ -15,6 +15,20 @@ class Controller {
     }
     return this.indexLevel;
   }
+
+  public checkResult(event: MouseEvent): void {
+    event.preventDefault();
+    const input: HTMLInputElement | null = document.querySelector('.form__input');
+    const text: string = 'answer';
+    let step: number = 0;
+    const int = setInterval(function IntervalAnsver() {
+      if (step === text.length) {
+        clearInterval(int);
+      }
+      if (input) input.value = text.slice(0, step); // Текст от начала до текущей позиции
+      step += 1;
+    }, 500);
+  }
 }
 
 export default Controller;

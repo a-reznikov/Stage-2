@@ -11,8 +11,12 @@ class App {
     createTemplate();
 
     const aside: HTMLElement | null = document.querySelector('.aside');
+    const formButton: HTMLElement | null = document.querySelector('.form__button');
     if (aside) {
       aside.addEventListener('click', (e: MouseEvent): number => this.controller.getItems(e));
+    }
+    if (formButton) {
+      formButton.addEventListener('click', (e: MouseEvent): void => this.controller.checkResult(e));
     }
   }
 }
