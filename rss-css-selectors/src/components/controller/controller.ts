@@ -11,7 +11,6 @@ class Controller {
       if (levelId) {
         this.indexLevel = +levelId - 1;
         Generator.generateItems(this.indexLevel);
-        console.log(this.indexLevel);
       }
     }
     return this.indexLevel;

@@ -2,6 +2,18 @@
   transition: transform ease-out 0.2s;
 }
 
+%pulsing {
+  animation: pulsing .5s infinite;
+  @keyframes pulsing {
+    0% {
+      background: inherit;
+    }
+    100% {
+      @include background-opacity(0.3, #3ecbff)
+    }
+  }
+}
+
 %font-main {
   font-family: 'Exo 2', 'Lato', 'Helvetica Neue', sans-serif;
 }

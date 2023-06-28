@@ -1,5 +1,6 @@
 import Generator from '../model/generator';
 import createAside from './aside';
+import createEditor from './editor';
 import createInterection from './interection';
 import createTable from './table';
 
@@ -33,6 +34,7 @@ export default function createTemplate(): void {
     body.append(main);
     body.append(footer);
   }
+  createEditor();
   Generator.generateItems();
   Generator.generateLevels();
 }
