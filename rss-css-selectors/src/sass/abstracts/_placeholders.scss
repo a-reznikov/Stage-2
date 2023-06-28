@@ -14,6 +14,24 @@
   }
 }
 
+%shake {
+  animation: shake .1s 5;
+  @keyframes shake {
+    0% {
+      transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-5px);
+    }
+    50% {
+        transform: translateX(0);
+    }
+    75% {
+        transform: translateX(5px);
+    }
+  }
+}
+
 %font-main {
   font-family: 'Exo 2', 'Lato', 'Helvetica Neue', sans-serif;
 }

@@ -1,5 +1,5 @@
 import Generator from '../model/generator';
-import isLevel from './checkLevel';
+import { isAnswer, isLevel } from './checkLevel';
 import writeAnswer from './writer';
 
 class Controller {
@@ -31,6 +31,8 @@ class Controller {
     } else if (requestIsLevel) {
       console.log('requestIsLevel', requestIsLevel);
       Generator.generateItems(+request);
+    } else {
+      isAnswer(request);
     }
   }
 }
