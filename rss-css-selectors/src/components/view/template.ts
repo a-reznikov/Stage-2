@@ -26,12 +26,12 @@ export default function createTemplate(): void {
   createTable(table);
   createAside(aside);
   if (body) {
+    playground.append(header);
     playground.append(taskTitle);
     playground.append(table);
     playground.append(interection);
     main.append(playground);
     main.append(aside);
-    body.append(header);
     body.append(main);
     body.append(footer);
   }
