@@ -5,7 +5,7 @@ import createInterection from './interection';
 import createTable from './table';
 import { createViewer } from './viewer';
 
-export default function createTemplate(): void {
+export default function createTemplate(): HTMLBodyElement | null {
   const body: HTMLBodyElement | null = document.querySelector('body');
   if (body) body.className = 'body';
   const header: HTMLHeadElement = document.createElement('header');
@@ -39,4 +39,5 @@ export default function createTemplate(): void {
   createViewer();
   Generator.generateItems();
   Generator.generateLevels();
+  return body || null;
 }
