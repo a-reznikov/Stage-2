@@ -5,10 +5,7 @@ function isLevel(request: string): boolean {
   const newLevel: number = +request;
   const minLevel: number = 1;
   const maxLevel: number = data.length;
-  if (newLevel && newLevel >= minLevel && newLevel <= maxLevel) {
-    return true;
-  }
-  return false;
+  return !!newLevel && newLevel >= minLevel && newLevel <= maxLevel;
 }
 
 function isAnswer(request: string): void {
