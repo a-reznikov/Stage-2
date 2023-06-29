@@ -15,7 +15,7 @@ class Item {
 
   public createItme(): HTMLElement {
     const item: HTMLElement = document.createElement(`${this.tag}`);
-    item.className = `${this.classItem}`;
+    item.className = `${this.classItem} move`;
     if (this.id) {
       item.setAttribute('id', `${this.id}`);
     }
