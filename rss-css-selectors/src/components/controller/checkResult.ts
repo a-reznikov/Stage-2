@@ -5,8 +5,6 @@ function isLevel(request: string): boolean {
   const newLevel: number = +request;
   const minLevel: number = 1;
   const maxLevel: number = data.length;
-  console.log(newLevel);
-  console.log(maxLevel);
   if (newLevel && newLevel >= minLevel && newLevel <= maxLevel) {
     return true;
   }
@@ -15,8 +13,19 @@ function isLevel(request: string): boolean {
 
 function isAnswer(request: string): void {
   const currentLevel: number = 0;
-  const rightAnswer: string | undefined = data[currentLevel].answer;
-  if (request === rightAnswer) {
+  let isRightAnswer: boolean = false;
+  const rightAnswer: NodeListOf<Element> = document.querySelectorAll(`.selected`);
+  const answer: NodeListOf<Element> = document.querySelectorAll(`${request}`);
+  for (let index = 0; index < answer.length; ) {
+    if (answer[index] !== rightAnswer[index]) {
+      isRightAnswer = false;
+      break;
+    } else {
+      isRightAnswer = true;
+    }
+    index += 1;
+  }
+  if (isRightAnswer && request !== '.selected') {
     const nextLevel: number = currentLevel + 2;
     Generator.generateItems(nextLevel);
   } else {

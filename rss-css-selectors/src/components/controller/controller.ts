@@ -1,5 +1,5 @@
 import Generator from '../model/generator';
-import { isAnswer, isLevel } from './checkLevel';
+import { isAnswer, isLevel } from './checkResult';
 import writeAnswer from './writer';
 
 class Controller {

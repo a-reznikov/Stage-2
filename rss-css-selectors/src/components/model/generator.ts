@@ -21,13 +21,23 @@ class Generator {
     const markup: HTMLElement | null = document.querySelector('.markup');
     if (markup) markup.innerHTML = '';
     renderPlayground(data[this.level]);
-
+    // ToDo put in a separate function.
     levelItems.forEach((element: Items) => {
       const newItem = new Item(element);
       const item = newItem.createItme();
       const markupElement = newItem.createMarkup();
       renderItems(item);
       renderMarkupElement(markupElement);
+      if (element.subItems) {
+        console.log(element.subItems);
+        element.subItems.forEach((subElement: Items) => {
+          const newSubItem = new Item(subElement);
+          const subItem = newSubItem.createItme();
+          const markupSubElement = newSubItem.createMarkup();
+          renderItems(subItem, item);
+          renderMarkupElement(markupSubElement, markupElement);
+        });
+      }
     });
     renderViewer();
   }

@@ -3,17 +3,25 @@
     "levelId": 1,
     "levelName": "Plates",
     "task": "Select all the plates",
-    "answer": "plate",
     "items": [
       {
         "tag": "plate",
         "classItem": "plate",
-        "id": ""
+        "id": "",
+        "subItems": [
+          {
+            "tag": "fruits",
+            "classItem": "pear",
+            "id": "",
+            "animated": "selected"
+          }
+        ]
       },
       {
         "tag": "plate",
         "classItem": "plate",
-        "id": "dark"
+        "id": "dark",
+        "animated": "selected"
       }
     ]
   },
@@ -35,12 +43,14 @@
       {
         "tag": "fruits",
         "classItem": "lemon",
-        "id": ""
+        "id": "",
+        "animated": "selected"
       },
       {
         "tag": "fruits",
         "classItem": "pear",
-        "id": ""
+        "id": "",
+        "animated": "selected"
       }
       ,
       {

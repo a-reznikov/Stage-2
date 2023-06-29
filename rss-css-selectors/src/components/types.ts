@@ -2,6 +2,8 @@ export interface Items {
   tag: string;
   classItem: string;
   id: string;
+  animated?: string;
+  subItems?: Items[];
 }
 
 export interface Levels {
