@@ -3,6 +3,13 @@
     "levelId": 1,
     "levelName": "Plates",
     "task": "Select all the plates",
+    "info": {
+      "selector": "Tag Selector",
+      "title": "Select elements by tag",
+      "syntax": "div",
+      "description": "Selects all elements of tag div. Type refers to the type of tag, so div, p and ul are all different element types.",
+      "examples": "div selects all div elements."
+    },
     "items": [
       {
         "tag": "plate",
@@ -35,6 +42,13 @@
     "levelId": 2,
     "levelName": "Fruits",
     "task": "Select all the fruits",
+    "info": {
+      "selector": "Tag Selector",
+      "title": "Select elements by tag",
+      "syntax": "div",
+      "description": "Selects all elements of tag div. Type refers to the type of tag, so div, p and ul are all different element types.",
+      "examples": "div selects all div elements."
+    },
     "items": [
       {
         "tag": "plate",

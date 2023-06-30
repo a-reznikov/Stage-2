@@ -6,10 +6,19 @@ export interface Items {
   subItems?: Items[];
 }
 
+export interface Info {
+  selector: string;
+  title: string;
+  syntax: string;
+  description: string;
+  examples: string;
+}
+
 export interface Levels {
   levelId: number;
   levelName: string;
   task: string;
+  info: Info;
   items: Items[];
 }
 
