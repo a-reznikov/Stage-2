@@ -1,8 +1,10 @@
 .aside {
-  width: 30%;
+  width: 300px;
   background: $color-background-dark;
   @include color-opacity(0.4);
-  &__title {
-    padding: 10px;
+  .levels {
+    &__title {
+      padding: 10px;
+    }
   }
 }
