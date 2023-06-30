@@ -1,3 +1,11 @@
+.levels {
+  position: absolute;
+  transform: translateY(500px);
+  &__title {
+    padding: 10px;
+  }
+}
+
 .level {
   display: flex;
   padding: 5px 10px;

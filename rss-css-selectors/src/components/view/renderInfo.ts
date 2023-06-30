@@ -3,10 +3,14 @@ import renderHelp from './help';
 
 function renderLevelInfo(level: Levels): void {
   const taskTitle: HTMLElement | null = document.querySelector('.task');
+  const infoCurrentLevel: HTMLElement | null = document.querySelector('.info__current-level');
   const { task } = level;
-  if (taskTitle) {
+  const { levelId } = level;
+  if (taskTitle && infoCurrentLevel) {
     taskTitle.innerHTML = '';
     taskTitle.textContent = task;
+    infoCurrentLevel.innerHTML = '';
+    infoCurrentLevel.textContent = `Level ${levelId} of 10`;
   }
 }
 
