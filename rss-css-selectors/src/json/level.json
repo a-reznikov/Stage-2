@@ -6,27 +6,26 @@
     "items": [
       {
         "tag": "plate",
-        "classItem": "plate",
+        "classItem": "",
         "id": "",
+        "animated": "selected",
         "subItems": [
           {
             "tag": "fruits",
             "classItem": "pear",
-            "id": "",
-            "animated": "selected"
+            "id": ""
           }
         ]
       },
       {
         "tag": "plate",
-        "classItem": "plate",
+        "classItem": "",
         "id": "dark",
         "subItems": [
           {
             "tag": "egg",
             "classItem": "egg",
-            "id": "",
-            "animated": "selected"
+            "id": ""
           }
         ]
       }
@@ -39,7 +38,7 @@
     "items": [
       {
         "tag": "plate",
-        "classItem": "plate",
+        "classItem": "",
         "id": ""
       },
       {
@@ -67,7 +66,7 @@
       },
       {
         "tag": "plate",
-        "classItem": "plate",
+        "classItem": "",
         "id": "dark"
       }
     ]
