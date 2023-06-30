@@ -1,5 +1,5 @@
 %transition {
-  transition: transform ease-out 0.2s;
+  transition: all 0.2s ease-out;
 }
 
 %pulsing {
@@ -86,4 +86,12 @@
   &:hover {
     box-shadow: 0 0 0 6px $color-opacity-light;
   }
+}
+
+%hamburger-line {
+  position: absolute;
+  display: inline-block;
+  background-color: $color-light;
+  height: 2px;
+  width: 100%;
 }

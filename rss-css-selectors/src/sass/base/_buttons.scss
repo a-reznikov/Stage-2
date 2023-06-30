@@ -4,7 +4,7 @@
   padding: 5px;
   height: 30px;
   width: 30px;
-  opacity: 0.2;
+  opacity: 0.3;
   cursor: pointer;
   @extend %transition;
   &:after {
@@ -25,6 +25,6 @@
     transform: rotate(45deg);
   }
   &:hover {
-    opacity: 0.4;
+    opacity: 0.6;
   }
 }

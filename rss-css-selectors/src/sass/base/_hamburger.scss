@@ -1,0 +1,32 @@
+.hamburger {
+  display: inline-block;
+  position: relative;
+  width: 30px;
+  height: 22px;
+  margin-left: 10px;
+  cursor: pointer;
+  @extend %transition;
+  opacity: 0.3;
+  &_opened {
+    transform: rotate(-90deg);
+  }
+  &:hover {
+    opacity: 0.6;
+  }
+}
+
+.hamburger__line {
+  @extend %hamburger-line;
+}
+
+.hamburger__line:nth-child(1) {
+  transform: translateY(0px);
+}
+
+.hamburger__line:nth-child(2) {
+  transform: translateY(10px);
+}
+
+.hamburger__line:nth-child(3) {
+  transform: translateY(20px);
+}
