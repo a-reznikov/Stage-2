@@ -1,13 +1,43 @@
 .info {
+  display: flex;
+  flex-direction: column;
   padding: 20px;
+  row-gap: 20px;
   &__header {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding-bottom: 5px;
+    border-bottom: solid 1px $color-opacity-light;
   }
   &__level {
     display: flex;
     align-items: center;
     column-gap: 5px;
+  }
+}
+
+.help {
+  &__selector {
+    font-size: 1.8rem;
+  }
+  &__title {
+    font-size: 1.6rem;
+  }
+  &__syntax {
+    display: inline-block;
+    font-size: 2.4rem;
+    margin: 20px 0px;
+    padding: 8px;
+    border-bottom: solid 1px $color-opacity-light;
+    background: $color-background;
+  }
+  &__description {
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+  }
+  &__examples {
+    margin-top: 5px;
+    font-size: 1.6rem;
   }
 }

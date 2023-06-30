@@ -30,7 +30,7 @@ export enum Constants {
   skipEditor = '<br/>/* <br/>Type a number to skip to a level.<br/>Ex &rarr; "5" for level 5 <br/>*/',
   markupHeader = '<div class="table">',
   markupFooter = '</div>',
-  examplesTitle = 'Example',
+  examplesTitle = 'Examples:',
 }
 
 export enum Editor {
