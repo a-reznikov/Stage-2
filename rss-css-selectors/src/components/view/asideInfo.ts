@@ -16,7 +16,7 @@ export default function createAsideInfo(): HTMLElement {
   const previousLevel: HTMLElement = document.createElement('a');
   previousLevel.className = 'nav__buttons nav__buttons_previous';
   const nextLevel: HTMLElement = document.createElement('a');
-  nextLevel.className = 'nav__buttons nav__buttons__next';
+  nextLevel.className = 'nav__buttons nav__buttons_next';
   const hamburger: HTMLElement = createHamburger();
   const help: HTMLElement = document.createElement('div');
   help.className = 'info__help help';

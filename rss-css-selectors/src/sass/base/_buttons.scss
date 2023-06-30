@@ -1,0 +1,30 @@
+.nav__buttons {
+  display: block;
+  position: relative;
+  padding: 5px;
+  height: 30px;
+  width: 30px;
+  opacity: 0.2;
+  cursor: pointer;
+  @extend %transition;
+  &:after {
+    content: "";
+    position: absolute;
+    height: 18px;
+    width: 18px;
+    border: solid 2px $color-light;
+    border-width: 2px 2px 0 0;
+    transform-origin: center center;
+    bottom: 5px;
+    box-sizing: border-box;
+  }
+  &_previous:after {
+    transform: rotate(-135deg);
+  }
+  &_next:after {
+    transform: rotate(45deg);
+  }
+  &:hover {
+    opacity: 0.4;
+  }
+}
