@@ -21,7 +21,14 @@
         "tag": "plate",
         "classItem": "plate",
         "id": "dark",
-        "animated": "selected"
+        "subItems": [
+          {
+            "tag": "egg",
+            "classItem": "egg",
+            "id": "",
+            "animated": "selected"
+          }
+        ]
       }
     ]
   },

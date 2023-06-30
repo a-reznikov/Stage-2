@@ -23,7 +23,7 @@ class Item {
       item.setAttribute('id', `${this.id}`);
     }
     if (this.animated) {
-      item.classList.add('selected');
+      item.classList.add(`${this.animated}`);
     }
     return item;
   }

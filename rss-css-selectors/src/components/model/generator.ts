@@ -1,12 +1,10 @@
 import data from '../../json/level.json';
 import { Items, Levels } from '../types';
-import Item from './item';
-import renderItems from '../view/renderItems';
 import Level from './level';
 import renderLevels from '../view/renderLevels';
 import renderPlayground from '../view/playground';
-import renderMarkupElement from '../view/renderMarkup';
 import { renderViewer } from '../view/viewer';
+import deepGenerateItems from './deepGenerator';
 
 class Generator {
   private static level: number = 0;
@@ -21,24 +19,7 @@ class Generator {
     const markup: HTMLElement | null = document.querySelector('.markup');
     if (markup) markup.innerHTML = '';
     renderPlayground(data[this.level]);
-    // ToDo put in a separate function.
-    levelItems.forEach((element: Items) => {
-      const newItem = new Item(element);
-      const item = newItem.createItme();
-      const markupElement = newItem.createMarkup();
-      renderItems(item);
-      renderMarkupElement(markupElement);
-      if (element.subItems) {
-        console.log(element.subItems);
-        element.subItems.forEach((subElement: Items) => {
-          const newSubItem = new Item(subElement);
-          const subItem = newSubItem.createItme();
-          const markupSubElement = newSubItem.createMarkup();
-          renderItems(subItem, item);
-          renderMarkupElement(markupSubElement, markupElement);
-        });
-      }
-    });
+    deepGenerateItems(levelItems);
     renderViewer();
   }
 
