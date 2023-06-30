@@ -1,11 +1,8 @@
 import Controller from '../controller/controller';
 import createTemplate from '../view/template';
-import Generator from './generator';
 
 class App {
   private controller: Controller = new Controller();
-
-  private generator: Generator = new Generator();
 
   public start(): void {
     createTemplate();

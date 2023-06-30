@@ -2,7 +2,7 @@ import data from '../../json/level.json';
 import { Items, Levels } from '../types';
 import Level from './level';
 import renderLevels from '../view/renderLevels';
-import renderPlayground from '../view/playground';
+import { renderHelpContainer, renderLevelInfo } from '../view/renderInfo';
 import { renderViewer } from '../view/viewer';
 import deepGenerateItems from './deepGenerator';
 
@@ -18,7 +18,8 @@ class Generator {
     if (tableTop) tableTop.innerHTML = '';
     const markup: HTMLElement | null = document.querySelector('.markup');
     if (markup) markup.innerHTML = '';
-    renderPlayground(data[this.level]);
+    renderLevelInfo(data[this.level]);
+    renderHelpContainer(data[this.level].help);
     deepGenerateItems(levelItems);
     renderViewer();
   }

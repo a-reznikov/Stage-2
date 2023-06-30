@@ -6,7 +6,7 @@ export interface Items {
   subItems?: Items[];
 }
 
-export interface Info {
+export interface Help {
   selector: string;
   title: string;
   syntax: string;
@@ -18,7 +18,7 @@ export interface Levels {
   levelId: number;
   levelName: string;
   task: string;
-  info: Info;
+  help: Help;
   items: Items[];
 }
 
@@ -30,6 +30,7 @@ export enum Constants {
   skipEditor = '<br/>/* <br/>Type a number to skip to a level.<br/>Ex &rarr; "5" for level 5 <br/>*/',
   markupHeader = '<div class="table">',
   markupFooter = '</div>',
+  examplesTitle = 'Example',
 }
 
 export enum Editor {
