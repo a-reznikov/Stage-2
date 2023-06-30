@@ -1,3 +1,12 @@
 .info {
   padding: 10px;
+  &__header {
+    display: flex;
+    align-items: center;
+  }
+  &__level {
+    display: flex;
+    align-items: center;
+    column-gap: 5px;
+  }
 }

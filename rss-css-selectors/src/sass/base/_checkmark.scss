@@ -1,0 +1,11 @@
+.checkmark {
+  position: relative;
+  width: 12px;
+  height: 20px;
+  margin-left: 8px;
+  border: solid 3px $color-light;
+  border-width: 0 4px 4px 0;
+  opacity: 0.2;
+  bottom: 3px;
+  transform: rotate(40deg);
+}

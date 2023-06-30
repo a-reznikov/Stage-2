@@ -5,10 +5,12 @@ export default function createAsideInfo(): HTMLElement {
   asideInfo.className = 'aside__info info';
   const infoHeader: HTMLElement = document.createElement('div');
   infoHeader.className = 'info__header';
-  const currentLevel: HTMLElement = document.createElement('span');
+  const infoLevel: HTMLElement = document.createElement('div');
+  infoLevel.className = 'info__level';
+  const currentLevel: HTMLElement = document.createElement('h2');
   currentLevel.className = 'info__current-level';
   const checkLevel: HTMLElement = document.createElement('span');
-  checkLevel.className = 'info__check-level';
+  checkLevel.className = 'checkmark info__check-level';
   const infoNavigation: HTMLElement = document.createElement('nav');
   infoNavigation.className = 'info__nav nav';
   const previousLevel: HTMLElement = document.createElement('a');
@@ -18,8 +20,9 @@ export default function createAsideInfo(): HTMLElement {
   const hamburger: HTMLElement = createHamburger();
   const help: HTMLElement = document.createElement('div');
   help.className = 'info__help help';
-  infoHeader.append(currentLevel);
-  infoHeader.append(checkLevel);
+  infoLevel.append(currentLevel);
+  infoLevel.append(checkLevel);
+  infoHeader.append(infoLevel);
   infoNavigation.append(previousLevel);
   infoNavigation.append(nextLevel);
   infoNavigation.append(hamburger);
