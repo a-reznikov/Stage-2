@@ -29,7 +29,6 @@ class Controller {
     if (request === 'help') {
       writeAnswer();
     } else if (requestIsLevel) {
-      console.log('requestIsLevel', requestIsLevel);
       Generator.generateItems(+request);
     } else {
       isAnswer(request);

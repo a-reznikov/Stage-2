@@ -1,7 +1,6 @@
 export default function renderMarkupElement(item: HTMLElement, parent?: HTMLElement): void {
   const markup: HTMLElement | null = document.querySelector('.markup');
   if (parent) {
-    console.log(parent?.textContent);
     const lastChars: number = 3;
     const firstPart: string | undefined = `${parent.textContent?.slice(0, -lastChars)}>`;
     const secondPart: string | undefined = `<${parent.textContent?.split(' ')[0].slice(1)}/>`;
