@@ -1,6 +1,7 @@
 import data from '../../json/level.json';
 import Generator from '../model/generator';
 import { nextLevel } from './changeLevel';
+import shakeTable from './shaker';
 
 const minLevel: number = 1;
 const maxLevel: number = data.length;
@@ -13,6 +14,10 @@ function isLevel(request: string): boolean {
 function isAnswer(request: string): void {
   const currentLevel: number = Generator.level + 1;
   let isRightAnswer: boolean = false;
+  if (Number.isInteger(+request[0])) {
+    shakeTable();
+    return;
+  }
   const rightAnswer: NodeListOf<Element> = document.querySelectorAll(`.selected`);
   const answer: NodeListOf<Element> = document.querySelectorAll(`${request}`);
   for (let index = 0; index < answer.length; ) {
@@ -27,13 +32,7 @@ function isAnswer(request: string): void {
   if (isRightAnswer && request !== '.selected') {
     nextLevel(currentLevel);
   } else {
-    const interection: HTMLElement | null = document.querySelector('.interection');
-    if (interection) {
-      interection.classList.add('shake');
-      interection.addEventListener('animationend', () => {
-        interection.classList.remove('shake');
-      });
-    }
+    shakeTable();
   }
 }
 
