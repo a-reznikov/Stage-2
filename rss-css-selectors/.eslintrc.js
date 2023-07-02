@@ -26,6 +26,7 @@ module.exports = {
     '@typescript-eslint/no-explicit-any': 'error',
     '@typescript-eslint/no-inferrable-types': 'off',
     'import/extensions': ['off'],
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": true}],
     '@typescript-eslint/explicit-member-accessibility': [
       'error',
       {

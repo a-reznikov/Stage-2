@@ -1,4 +1,7 @@
+import hljs from 'highlight.js/lib/common';
 import { Items } from '../types';
+
+hljs.initHighlightingOnLoad();
 
 class Item {
   private tag: string;
@@ -30,6 +33,8 @@ class Item {
 
   public createMarkup(): HTMLElement {
     const markupElement: HTMLDivElement = document.createElement('div');
+    const pre: HTMLElement = document.createElement('pre');
+    const code: HTMLElement = document.createElement('code');
     markupElement.className = 'markup__element';
     let markupContent: string = '';
     markupContent += `<${this.tag} `;
@@ -40,7 +45,10 @@ class Item {
       markupContent += `id="${this.id}" `;
     }
     markupContent += '/>';
-    markupElement.textContent = markupContent;
+    code.textContent = markupContent;
+    pre.append(code);
+    markupElement.append(pre);
+    hljs.highlightElement(markupElement);
     return markupElement;
   }
 }
