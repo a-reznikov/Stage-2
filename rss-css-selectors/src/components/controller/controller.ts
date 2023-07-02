@@ -34,6 +34,15 @@ class Controller {
       isAnswer(request);
     }
   }
+
+  public toggleAside(event: MouseEvent): void {
+    const buttonAsideHidden: HTMLElement = <HTMLElement>event.target;
+    const aside: HTMLInputElement | null = document.querySelector('.aside');
+    if (aside && buttonAsideHidden) {
+      aside.classList.toggle('aside__hidden');
+      buttonAsideHidden.classList.toggle('aside__button_hidden');
+    }
+  }
 }
 
 export default Controller;
