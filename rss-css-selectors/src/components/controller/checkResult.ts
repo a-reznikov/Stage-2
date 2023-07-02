@@ -1,15 +1,17 @@
 import data from '../../json/level.json';
 import Generator from '../model/generator';
+import nextLevel from './changeLevel';
+
+const minLevel: number = 1;
+const maxLevel: number = data.length;
 
 function isLevel(request: string): boolean {
   const newLevel: number = +request;
-  const minLevel: number = 1;
-  const maxLevel: number = data.length;
   return !!newLevel && newLevel >= minLevel && newLevel <= maxLevel;
 }
 
 function isAnswer(request: string): void {
-  const currentLevel: number = 0;
+  const currentLevel: number = Generator.level + 1;
   let isRightAnswer: boolean = false;
   const rightAnswer: NodeListOf<Element> = document.querySelectorAll(`.selected`);
   const answer: NodeListOf<Element> = document.querySelectorAll(`${request}`);
@@ -23,8 +25,7 @@ function isAnswer(request: string): void {
     index += 1;
   }
   if (isRightAnswer && request !== '.selected') {
-    const nextLevel: number = currentLevel + 2;
-    Generator.generateItems(nextLevel);
+    nextLevel(currentLevel);
   } else {
     const interection: HTMLElement | null = document.querySelector('.interection');
     if (interection) {
