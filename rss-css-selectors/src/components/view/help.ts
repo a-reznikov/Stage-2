@@ -1,4 +1,5 @@
 import { Constants, Help } from '../types';
+import highlightElement from './highlight';
 
 export default function renderHelp(help: Help): HTMLElement {
   const helpWrapper: HTMLElement = document.createElement('div');
@@ -21,6 +22,8 @@ export default function renderHelp(help: Help): HTMLElement {
   const helpExamples: HTMLElement = document.createElement('p');
   helpExamples.className = 'help__examples';
   helpExamples.textContent = `${help.examples}`;
+  highlightElement(helpSyntax);
+  highlightElement(helpExamples);
   helpWrapper.append(helpSelector);
   helpWrapper.append(helpTitle);
   helpWrapper.append(helpSyntax);
