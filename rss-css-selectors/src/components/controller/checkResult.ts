@@ -1,6 +1,6 @@
 import data from '../../json/level.json';
 import Generator from '../model/generator';
-import nextLevel from './changeLevel';
+import { nextLevel } from './changeLevel';
 
 const minLevel: number = 1;
 const maxLevel: number = data.length;

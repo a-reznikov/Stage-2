@@ -1,4 +1,9 @@
+import Generator from '../model/generator';
+import { nextLevel, previousLevel } from './changeLevel';
+
 class Navigator {
+  public currentLevel: number = Generator.level + 1;
+
   public chooseNavButton(event: MouseEvent): void {
     const hamburger: HTMLInputElement | null = document.querySelector('.hamburger');
     const previous: HTMLInputElement | null = document.querySelector('.nav__buttons_previous');
@@ -7,9 +12,9 @@ class Navigator {
     if (hamburger && hamburger.contains(navButton)) {
       this.toggleBurger(hamburger);
     } else if (previous && previous.contains(navButton)) {
-      console.log(previous);
+      previousLevel(this.currentLevel);
     } else if (next && next.contains(navButton)) {
-      console.log(next);
+      nextLevel(this.currentLevel);
     }
   }
 

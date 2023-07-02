@@ -8,10 +8,18 @@ function isRightLevel(newLevel: number): boolean {
   return !!newLevel && newLevel >= minLevel && newLevel <= maxLevel;
 }
 
-export default function nextLevel(currentLevel: number): void {
-  const newLevel: number = currentLevel + 1;
-  console.log(newLevel);
+function previousLevel(currentIndexLevel: number): void {
+  const newLevel: number = currentIndexLevel;
   if (isRightLevel(newLevel)) {
     Generator.generateItems(newLevel);
   }
 }
+
+function nextLevel(currentIndexLevel: number): void {
+  const newLevel: number = currentIndexLevel + 1;
+  if (isRightLevel(newLevel)) {
+    Generator.generateItems(newLevel);
+  }
+}
+
+export { nextLevel, previousLevel };
