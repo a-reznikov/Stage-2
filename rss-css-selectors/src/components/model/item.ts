@@ -1,7 +1,5 @@
-import hljs from 'highlight.js/lib/common';
 import { Items } from '../types';
-
-hljs.initHighlightingOnLoad();
+import highlightElement from '../view/highlight';
 
 class Item {
   private tag: string;
@@ -48,7 +46,7 @@ class Item {
     code.textContent = markupContent;
     pre.append(code);
     markupElement.append(pre);
-    hljs.highlightElement(markupElement);
+    highlightElement(markupElement);
     return markupElement;
   }
 }
