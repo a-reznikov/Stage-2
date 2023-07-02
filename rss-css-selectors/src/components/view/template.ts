@@ -14,6 +14,8 @@ export default function createTemplate(): HTMLBodyElement | null {
   main.className = 'main';
   const playground: HTMLElement = document.createElement('section');
   playground.className = 'playground';
+  const asideHiddeButton: HTMLElement = document.createElement('div');
+  asideHiddeButton.className = 'aside__button';
   const taskTitle: HTMLElement = document.createElement('h1');
   taskTitle.className = 'task';
   const table: HTMLElement = document.createElement('section');
@@ -27,6 +29,7 @@ export default function createTemplate(): HTMLBodyElement | null {
   createAside(aside);
   if (body) {
     playground.append(header);
+    playground.append(asideHiddeButton);
     playground.append(taskTitle);
     playground.append(table);
     playground.append(interection);

@@ -4,4 +4,46 @@
   width: 400px;
   background: $color-background-dark;
   @include color-opacity(0.4);
+  &__hidden {
+    position: absolute;
+    right: 0;
+    width: 0;
+  }
+  &__button {
+    display: block;
+    position: absolute;
+    padding: 5px;
+    height: 60px;
+    width: 30px;
+    opacity: 0.3;
+    top: 70px;
+    right: 0px;
+    cursor: pointer;
+    background: $color-background-dark;
+    border-top: solid 2px $color-light;
+    border-left: solid 2px $color-light;
+    border-bottom: solid 2px $color-light;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    @extend %transition;
+    &:after {
+      content: "";  
+      position: absolute;
+      height: 18px;
+      width: 18px;
+      top: 19px;
+      border: solid 2px $color-light;
+      border-width: 2px 2px 0 0;
+      transform-origin: center center;
+      bottom: 5px;
+      box-sizing: border-box;
+      transform: rotate(45deg);
+    }
+    &_hidden:after {
+      transform: rotate(-135deg);
+    }
+    &:hover {
+      opacity: 0.6;
+    }
+  }
 }
