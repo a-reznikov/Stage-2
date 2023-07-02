@@ -20,7 +20,11 @@
   font-weight: 800;
   cursor: pointer;
   column-gap: 5px;
+  @extend %transition;
   &:hover {
     background: $color-background;
+  }
+  &_current {
+    @include background-opacity(0.1, $color-light);
   }
 }

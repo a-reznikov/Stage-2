@@ -1,11 +1,13 @@
 import { Help, Levels } from '../types';
 import renderHelp from './help';
+import selectCurrentLevel from './statusLevel';
 
 function renderLevelInfo(level: Levels): void {
   const taskTitle: HTMLElement | null = document.querySelector('.task');
   const infoCurrentLevel: HTMLElement | null = document.querySelector('.info__current-level');
   const { task } = level;
   const { levelId } = level;
+  selectCurrentLevel(levelId);
   if (taskTitle && infoCurrentLevel) {
     taskTitle.innerHTML = '';
     taskTitle.textContent = task;

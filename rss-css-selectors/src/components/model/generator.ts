@@ -7,7 +7,7 @@ import { renderViewer } from '../view/viewer';
 import deepGenerateItems from './deepGenerator';
 
 class Generator {
-  private static level: number = 0;
+  public static level: number = 0;
 
   public static generateItems(indexLevel?: number | undefined): void {
     if (!(typeof indexLevel === 'undefined')) {

@@ -7,8 +7,8 @@ class App {
 
   private navigator: Navigator = new Navigator();
 
-  public start(): void {
-    createTemplate();
+  public start(level?: number): void {
+    createTemplate(level);
 
     const aside: HTMLElement | null = document.querySelector('.aside');
     const formButton: HTMLElement | null = document.querySelector('.form__button');

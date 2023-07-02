@@ -17,7 +17,6 @@ class Navigator {
     const asideLevels: HTMLElement | null = document.querySelector('.levels');
     asideLevels?.classList.toggle('levels__hidden');
     hamburgerButton?.classList.toggle('hamburger__opened');
-    console.log(hamburgerButton);
   }
 }
 
