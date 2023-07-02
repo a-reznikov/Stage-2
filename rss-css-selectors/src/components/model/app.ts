@@ -1,5 +1,6 @@
 import Controller from '../controller/controller';
 import Navigator from '../controller/navigator';
+import transmitCode from '../controller/transmitter';
 import createTemplate from '../view/template';
 
 class App {
@@ -14,11 +15,15 @@ class App {
     const formButton: HTMLElement | null = document.querySelector('.form__button');
     const asideHiddenButton: HTMLElement | null = document.querySelector('.aside__button');
     const navigation: HTMLElement | null = document.querySelector('.nav');
+    const input: HTMLElement | null = document.querySelector('.form__input');
     if (aside) {
       aside.addEventListener('click', (e: MouseEvent): number => this.controller.getItems(e));
     }
     if (formButton) {
       formButton.addEventListener('click', (e: MouseEvent): void => this.controller.checkRequest(e));
+    }
+    if (input) {
+      input.addEventListener('input', (): void => transmitCode());
     }
     if (asideHiddenButton) {
       asideHiddenButton.addEventListener('click', (e: MouseEvent): void => this.controller.toggleAside(e));

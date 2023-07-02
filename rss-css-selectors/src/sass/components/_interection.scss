@@ -51,6 +51,7 @@
 
 .form {
   display: flex;
+  position: relative;
   justify-content: space-between;
   &__input {
     width: 0;
@@ -62,6 +63,8 @@
     background: inherit;
     @extend %pulsing;
     @extend %font-second ;
+    @include color-opacity(0.0, $color-dark);
+    caret-color: red;
     &:focus {
       animation: none;
     }
@@ -78,6 +81,15 @@
     font-size: 0.9rem;
     @extend %font-second ;
     cursor: pointer;
+  }
+  &__label {
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    margin: 0 5px;
+    width: 70%;
+    min-height: 28px;
   }
 }
 
