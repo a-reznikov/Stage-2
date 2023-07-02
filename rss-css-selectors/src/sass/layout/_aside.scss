@@ -4,6 +4,7 @@
   width: 400px;
   background: $color-background-dark;
   @include color-opacity(0.4);
+  @extend %transition;
   &__hidden {
     position: absolute;
     right: 0;
