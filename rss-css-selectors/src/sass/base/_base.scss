@@ -12,6 +12,7 @@ html {
 h1 {
   @include font(400, 3.4rem, 100%, $color-light);
   @include color-opacity(0.3);
+  margin-top: 15px;
 }
 
 h2 {

@@ -9,8 +9,6 @@ import { createViewer } from './viewer';
 export default function createTemplate(level?: number): HTMLBodyElement | null {
   const body: HTMLBodyElement | null = document.querySelector('body');
   if (body) body.className = 'body';
-  const header: HTMLHeadElement = document.createElement('header');
-  header.className = 'header';
   const main: HTMLElement = document.createElement('main');
   main.className = 'main';
   const playground: HTMLElement = document.createElement('section');
@@ -30,7 +28,6 @@ export default function createTemplate(level?: number): HTMLBodyElement | null {
   createAside(aside);
   createFooter(footer);
   if (body) {
-    playground.append(header);
     playground.append(asideHiddeButton);
     playground.append(taskTitle);
     playground.append(table);
