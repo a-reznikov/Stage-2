@@ -1,5 +1,6 @@
 import { Status } from '../types';
 import renderStatusLevels from '../view/renderStatus';
+import checkRightAnswer from '../view/rightAnswer';
 
 let statusLevels: Partial<Storage> = {};
 function selectCurrentLevel(levelId: number): number {
@@ -22,6 +23,7 @@ function addPassedLevel(levelId: number): void {
     currentPassedLevel.passed = true;
     statusLevels[levelId] = currentPassedLevel;
   }
+  checkRightAnswer(levelId, 'passed');
 }
 
 function addWithHelpLevel(levelId: number): void {
@@ -34,6 +36,7 @@ function addWithHelpLevel(levelId: number): void {
     currentPassedLevel.withHelp = true;
     statusLevels[levelId] = currentPassedLevel;
   }
+  checkRightAnswer(levelId, 'with-help');
 }
 
 function reloadFromStorage(fromStorage: Partial<Storage>): void {
