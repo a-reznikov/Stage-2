@@ -9,7 +9,7 @@ function setLocalStorage(): void {
   const currentLevel: number = Generator.level + 1;
   localStorage.setItem('level', `${currentLevel}`);
   const exportInfoLevel: Partial<Storage> = exportLevel();
-  localStorage.setItem('passed', JSON.stringify(exportInfoLevel));
+  localStorage.setItem('storage', JSON.stringify(exportInfoLevel));
 }
 
 function getLocalStorage(): void {
@@ -22,8 +22,8 @@ function getLocalStorage(): void {
   } else {
     app.start();
   }
-  if (localStorage.getItem('passed')) {
-    const getStorage: string | null = localStorage.getItem('passed');
+  if (localStorage.getItem('storage')) {
+    const getStorage: string | null = localStorage.getItem('storage');
     if (getStorage) {
       const storage: Partial<Storage> = JSON.parse(getStorage);
       reloadFromStorage(storage);

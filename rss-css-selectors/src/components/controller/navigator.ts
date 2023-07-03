@@ -5,9 +5,9 @@ class Navigator {
   public currentLevel: number = Generator.level + 1;
 
   public chooseNavButton(event: MouseEvent): void {
-    const hamburger: HTMLInputElement | null = document.querySelector('.hamburger');
-    const previous: HTMLInputElement | null = document.querySelector('.nav__buttons_previous');
-    const next: HTMLInputElement | null = document.querySelector('.nav__buttons_next');
+    const hamburger: HTMLElement | null = document.querySelector('.hamburger');
+    const previous: HTMLElement | null = document.querySelector('.nav__buttons_previous');
+    const next: HTMLElement | null = document.querySelector('.nav__buttons_next');
     const navButton: HTMLElement = <HTMLElement>event.target;
     if (hamburger && hamburger.contains(navButton)) {
       this.toggleBurger(hamburger);

@@ -48,4 +48,9 @@ function exportLevel(): Partial<Storage> {
   return statusLevels;
 }
 
-export { selectCurrentLevel, addPassedLevel, exportLevel, reloadFromStorage, addWithHelpLevel };
+function resetProgress(): Partial<Storage> {
+  statusLevels = {};
+  return statusLevels;
+}
+
+export { selectCurrentLevel, addPassedLevel, exportLevel, reloadFromStorage, addWithHelpLevel, resetProgress };
