@@ -1,6 +1,8 @@
 import Generator from '../model/generator';
-import { resetProgress } from '../model/statusLevel';
+import { addWithHelpLevel, resetProgress } from '../model/statusLevel';
+import { renderCurrentCheckLevel } from '../view/renderInfo';
 import renderStatusLevels from '../view/renderStatus';
+import writeAnswer from './writer';
 
 export default function delegateEventClick(event: MouseEvent): void {
   const resetButton: HTMLElement | null = document.querySelector('.levels__button');
@@ -11,8 +13,9 @@ export default function delegateEventClick(event: MouseEvent): void {
     Generator.generateItems(1);
     renderStatusLevels(resetStorage);
   } else if (helpButton && helpButton.contains(button)) {
-      // previousLevel(this.currentLevel);
+    const currentLevel: number = Generator.getLevel();
+    addWithHelpLevel(currentLevel);
+    renderCurrentCheckLevel(currentLevel);
+    writeAnswer();
   }
 }
-
-// export { delegateEventClick }

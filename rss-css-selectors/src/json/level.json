@@ -3,6 +3,7 @@
     "levelId": 1,
     "levelName": "Plates",
     "task": "Select all the plates",
+    "answer": "plate",
     "help": {
       "selector": "Tag Selector",
       "title": "Select elements by tag",
@@ -43,6 +44,7 @@
     "levelId": 2,
     "levelName": "Fruits",
     "task": "Select all the fruits",
+    "answer": ".fruits",
     "help": {
       "selector": "Tag Selector Fruits",
       "title": "Select elements by tag",

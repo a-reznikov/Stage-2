@@ -18,6 +18,7 @@ export interface Levels {
   levelId: number;
   levelName: string;
   task: string;
+  answer: string;
   help: Help;
   items: Items[];
 }

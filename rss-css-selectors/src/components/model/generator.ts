@@ -5,6 +5,7 @@ import renderLevels from '../view/renderLevels';
 import { renderHelpContainer, renderLevelInfo } from '../view/renderInfo';
 import { renderViewer } from '../view/viewer';
 import deepGenerateItems from './deepGenerator';
+import clearPlayground from '../view/clearPlayground';
 
 class Generator {
   public static level: number = 0;
@@ -14,14 +15,15 @@ class Generator {
       this.level = indexLevel - 1;
     }
     const levelItems: Items[] = data[this.level].items;
-    const tableTop: HTMLElement | null = document.querySelector('.table__top');
-    if (tableTop) tableTop.innerHTML = '';
-    const markup: HTMLElement | null = document.querySelector('.markup');
-    if (markup) markup.innerHTML = '';
+    clearPlayground();
     renderLevelInfo(data[this.level]);
     renderHelpContainer(data[this.level].help);
     deepGenerateItems(levelItems);
     renderViewer();
+  }
+
+  public static getLevel(): number {
+    return Generator.level + 1;
   }
 
   public static generateLevels(): void {
