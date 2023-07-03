@@ -9,7 +9,7 @@ function isRightLevel(newLevel: number): boolean {
 }
 
 function previousLevel(currentIndexLevel: number): void {
-  const newLevel: number = currentIndexLevel;
+  const newLevel: number = currentIndexLevel - 1;
   if (isRightLevel(newLevel)) {
     Generator.generateItems(newLevel);
   }
