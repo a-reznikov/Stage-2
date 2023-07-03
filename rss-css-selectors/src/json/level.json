@@ -22,7 +22,8 @@
           {
             "tag": "fruits",
             "classItem": "pear",
-            "id": ""
+            "id": "",
+            "tooltip": "<fruits class='pear'></fruits>"
           }
         ]
       },
@@ -31,11 +32,13 @@
         "classItem": "",
         "id": "dark",
         "animated": "selected",
+        "tooltip": "<plate #id='dark'></plate>",
         "subItems": [
           {
             "tag": "egg",
             "classItem": "egg",
-            "id": ""
+            "id": "",
+            "tooltip": "<egg class='egg'></egg>"
           }
         ]
       }
@@ -57,35 +60,41 @@
       {
         "tag": "plate",
         "classItem": "",
-        "id": ""
+        "id": "",
+        "tooltip": "<plate></plate>"
       },
       {
         "tag": "bento",
         "classItem": "bento",
-        "id": ""
+        "id": "",
+        "tooltip": "<bento></bento>"
       },
       {
         "tag": "fruits",
         "classItem": "lemon",
         "id": "",
-        "animated": "selected"
+        "animated": "selected",
+        "tooltip": "<fruits class='lemon'></fruits>"
       },
       {
         "tag": "fruits",
         "classItem": "pear",
         "id": "",
-        "animated": "selected"
+        "animated": "selected",
+        "tooltip": "<fruits class='pear'></fruits>"
       }
       ,
       {
         "tag": "egg",
         "classItem": "egg",
-        "id": ""
+        "id": "",
+        "tooltip": "<egg class='egg'></egg>"
       },
       {
         "tag": "plate",
         "classItem": "",
-        "id": "dark"
+        "id": "dark",
+        "tooltip": "<plate #id='dark'></plate>"
       }
     ]
   }

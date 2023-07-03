@@ -39,13 +39,16 @@ h4 {
   display: none;
 }
 
-.hovered > .tooltip{
+.hovered > .tooltip {
   display: block;
   position: absolute;
+  width: max-content;
   top: -60px;
+  left: -60px;
   padding: 5px 10px;
   font-size: 1.6rem;
   background: $color-light;
   border-bottom: solid 3px $color-opacity-dark;
   color: $color-background;
+  box-shadow: 10px 5px 5px $color-opacity-dark;
 }
