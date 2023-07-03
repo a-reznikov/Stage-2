@@ -1,6 +1,7 @@
 import Generator from '../model/generator';
 import createAside from './aside';
 import createEditor from './editor';
+import createFooter from './footer';
 import createInterection from './interection';
 import createTable from './table';
 import { createViewer } from './viewer';
@@ -27,16 +28,17 @@ export default function createTemplate(level?: number): HTMLBodyElement | null {
   footer.className = 'footer';
   createTable(table);
   createAside(aside);
+  createFooter(footer);
   if (body) {
     playground.append(header);
     playground.append(asideHiddeButton);
     playground.append(taskTitle);
     playground.append(table);
     playground.append(interection);
+    playground.append(footer);
     main.append(playground);
     main.append(aside);
     body.append(main);
-    body.append(footer);
   }
   createEditor();
   createViewer();
