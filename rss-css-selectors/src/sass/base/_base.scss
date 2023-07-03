@@ -34,3 +34,18 @@ h4 {
 .selected {
   @extend %move;
 }
+
+.tooltip {
+  display: none;
+}
+
+.hovered > .tooltip{
+  display: block;
+  position: absolute;
+  top: -60px;
+  padding: 5px 10px;
+  font-size: 1.6rem;
+  background: $color-light;
+  border-bottom: solid 3px $color-opacity-dark;
+  color: $color-background;
+}

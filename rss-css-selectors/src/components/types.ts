@@ -3,6 +3,7 @@ export interface Items {
   classItem: string;
   id: string;
   animated?: string;
+  tooltip?: string;
   subItems?: Items[];
 }
 

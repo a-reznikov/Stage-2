@@ -1,5 +1,6 @@
 import Controller from '../controller/controller';
 import delegateEventClick from '../controller/eventDelegator';
+import setHover from '../controller/hover';
 import Navigator from '../controller/navigator';
 import transmitCode from '../controller/transmitter';
 import createTemplate from '../view/template';
@@ -13,6 +14,7 @@ class App {
     createTemplate(level);
 
     const aside: HTMLElement | null = document.querySelector('.aside');
+    const playground: HTMLElement | null = document.querySelector('.playground');
     const levels: HTMLElement | null = document.querySelector('.levels');
     const formButton: HTMLElement | null = document.querySelector('.form__button');
     const asideHiddenButton: HTMLElement | null = document.querySelector('.aside__button');
@@ -20,6 +22,9 @@ class App {
     const input: HTMLElement | null = document.querySelector('.form__input');
     if (levels) {
       levels.addEventListener('click', (e: MouseEvent): number => this.controller.getItems(e));
+    }
+    if (playground) {
+      playground.addEventListener('mouseover', (e: MouseEvent): void => setHover(e));
     }
     if (aside) {
       aside.addEventListener('click', (e: MouseEvent): void => delegateEventClick(e));

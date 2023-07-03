@@ -17,6 +17,7 @@
         "classItem": "",
         "id": "",
         "animated": "selected",
+        "tooltip": "<plate></plate>",
         "subItems": [
           {
             "tag": "fruits",

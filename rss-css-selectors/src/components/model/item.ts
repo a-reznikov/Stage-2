@@ -10,22 +10,29 @@ class Item {
 
   private animated: string | undefined;
 
-  constructor({ tag, classItem, id, animated }: Items) {
+  private tooltip: string | undefined;
+
+  constructor({ tag, classItem, id, animated, tooltip }: Items) {
     this.tag = tag;
     this.classItem = classItem;
     this.id = id;
     this.animated = animated;
+    this.tooltip = tooltip;
   }
 
   public createItme(): HTMLElement {
     const item: HTMLElement = document.createElement(`${this.tag}`);
     item.className = `${this.classItem}`;
+    const itemToolTip: HTMLElement = document.createElement('div');
+    itemToolTip.className = 'tooltip';
+    itemToolTip.textContent = `${this.tooltip}`;
     if (this.id) {
       item.setAttribute('id', `${this.id}`);
     }
     if (this.animated) {
       item.classList.add(`${this.animated}`);
     }
+    item.append(itemToolTip);
     return item;
   }
 

@@ -1,6 +1,5 @@
 import Generator from '../model/generator';
 import highlightElement from '../view/highlight';
-import { nextLevel } from './changeLevel';
 import data from '../../json/level.json';
 import callRightAnswer from './rightAnswer';
 
@@ -14,10 +13,9 @@ export default function writeAnswer(): void {
   const speedWrite: number = 500;
   let step: number = 0;
   const increment: number = 1;
-  callRightAnswer();
   const interval: NodeJS.Timer = setInterval(function IntervalAnsver() {
     if (step === length) {
-      nextLevel(currentLevel);
+      callRightAnswer();
       clearInterval(interval);
     }
     if (input && output) {
