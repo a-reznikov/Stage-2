@@ -42,6 +42,27 @@
   }
 }
 
+%disappearance {
+  animation: disappearance .5s 2;
+  @keyframes disappearance {
+    0% {
+      opacity: 1;
+    }
+    25% {
+      opacity: 0.5;
+    }
+    50% {
+      opacity: 1;
+    }
+    75% {
+      opacity: 0.5;
+    }
+    100% {
+      opacity: 0.0;
+    }
+  }
+}
+
 %move {
   animation: moveStart .5s ease-out, moveEnd 1s infinite;
   @keyframes moveStart {

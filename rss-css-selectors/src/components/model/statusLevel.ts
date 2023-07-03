@@ -1,6 +1,6 @@
 import { Status } from '../types';
 import renderStatusLevels from '../view/renderStatus';
-import checkRightAnswer from '../view/rightAnswer';
+import checkRightAnswer from '../view/checkRightAnswer';
 
 let statusLevels: Partial<Storage> = {};
 function selectCurrentLevel(levelId: number): number {

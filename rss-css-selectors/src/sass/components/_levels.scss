@@ -52,6 +52,7 @@
   }
   &_passed {
     .checkmark {
+      opacity: 0.5;
       border-color: $color-check;
     }
   }

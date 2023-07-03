@@ -1,7 +1,5 @@
 import data from '../../json/level.json';
-import Generator from '../model/generator';
-import { addPassedLevel } from '../model/statusLevel';
-import { nextLevel } from './changeLevel';
+import callRightAnswer from './rightAnswer';
 import shakeTable from './shaker';
 
 const minLevel: number = 1;
@@ -13,7 +11,6 @@ function isLevel(request: string): boolean {
 }
 
 function isAnswer(request: string): void {
-  const currentLevel: number = Generator.level + 1;
   let isRightAnswer: boolean = false;
   if (Number.isInteger(+request[0])) {
     shakeTable();
@@ -31,8 +28,8 @@ function isAnswer(request: string): void {
     index += 1;
   }
   if (isRightAnswer && request !== '.selected') {
-    nextLevel(currentLevel);
-    addPassedLevel(currentLevel);
+    console.log(rightAnswer);
+    callRightAnswer();
   } else {
     shakeTable();
   }

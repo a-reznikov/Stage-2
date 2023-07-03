@@ -44,7 +44,7 @@
     "levelId": 2,
     "levelName": "Fruits",
     "task": "Select all the fruits",
-    "answer": ".fruits",
+    "answer": "fruits",
     "help": {
       "selector": "Tag Selector Fruits",
       "title": "Select elements by tag",

@@ -49,4 +49,10 @@
       background: $color-table-legs;
     }
   }
+
+  .right-answer {
+    opacity: 0;
+    @extend %transition;
+    @extend %disappearance;
+  }
 }
