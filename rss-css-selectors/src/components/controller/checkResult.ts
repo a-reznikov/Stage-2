@@ -1,5 +1,6 @@
 import data from '../../json/level.json';
 import Generator from '../model/generator';
+import { addPassedLevel } from '../model/statusLevel';
 import { nextLevel } from './changeLevel';
 import shakeTable from './shaker';
 
@@ -31,6 +32,7 @@ function isAnswer(request: string): void {
   }
   if (isRightAnswer && request !== '.selected') {
     nextLevel(currentLevel);
+    addPassedLevel(currentLevel);
   } else {
     shakeTable();
   }

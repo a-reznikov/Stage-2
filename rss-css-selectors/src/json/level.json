@@ -28,6 +28,7 @@
         "tag": "plate",
         "classItem": "",
         "id": "dark",
+        "animated": "selected",
         "subItems": [
           {
             "tag": "egg",

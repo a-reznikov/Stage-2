@@ -1,6 +1,6 @@
 import { Help, Levels } from '../types';
 import renderHelp from './help';
-import selectCurrentLevel from './statusLevel';
+import { selectCurrentLevel } from '../model/statusLevel';
 
 function renderLevelInfo(level: Levels): void {
   const taskTitle: HTMLElement | null = document.querySelector('.task');

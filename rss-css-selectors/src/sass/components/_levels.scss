@@ -15,6 +15,8 @@
 
 .level {
   display: flex;
+  position: relative;
+  align-items: center;
   padding: 5px 10px;
   font-size: 1.8rem;
   font-weight: 800;
@@ -26,5 +28,30 @@
   }
   &_current {
     @include background-opacity(0.1, $color-light);
+  }
+  &__check {
+    margin-right: 10px;
+  }
+  &__help {
+    display: none;
+    justify-content: center;
+    position: absolute;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    border-radius: 20px;
+    color: $color-help;
+    opacity: 0.5;
+    border: solid 1px $color-opacity-light;
+  }
+  &_passed {
+    .checkmark {
+      border-color: $color-check;
+    }
+  }
+  &_with-help {
+    .level__help {
+      display: flex;
+    }
   }
 }

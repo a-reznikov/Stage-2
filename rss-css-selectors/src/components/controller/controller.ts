@@ -1,4 +1,5 @@
 import Generator from '../model/generator';
+import { addWithHelpLevel } from '../model/statusLevel';
 import { isAnswer, isLevel } from './checkResult';
 import writeAnswer from './writer';
 
@@ -27,6 +28,8 @@ class Controller {
     }
     const requestIsLevel: boolean = isLevel(request);
     if (request === 'help') {
+      const currentLevel: number = Generator.level + 1;
+      addWithHelpLevel(currentLevel);
       writeAnswer();
     } else if (requestIsLevel) {
       Generator.generateItems(+request);
