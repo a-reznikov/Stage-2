@@ -111,8 +111,22 @@
             "tag": "fruits",
             "classItem": "lemon",
             "id": "",
-            "animated": "selected",
             "tooltip": "<fruits class='lemon'></fruits>"
+          }
+        ]
+      },
+      {
+        "tag": "plate",
+        "classItem": "",
+        "id": "dark",
+        "tooltip": "<plate #id='dark'></plate>",
+        "subItems": [
+          {
+            "tag": "fruits",
+            "classItem": "pear",
+            "id": "",
+            "animated": "selected",
+            "tooltip": "<fruits class='pear'></fruits>"
           }
         ]
       }

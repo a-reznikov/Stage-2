@@ -18,7 +18,7 @@ function isAnswer(request: string): void {
   }
   const rightAnswer: NodeListOf<Element> = document.querySelectorAll(`.selected`);
   const answer: NodeListOf<Element> = document.querySelectorAll(`${request}`);
-  for (let index = 0; index < answer.length; ) {
+  for (let index = 0; index <= answer.length; ) {
     if (answer[index] !== rightAnswer[index]) {
       isRightAnswer = false;
       break;
@@ -28,7 +28,6 @@ function isAnswer(request: string): void {
     index += 1;
   }
   if (isRightAnswer && request !== '.selected') {
-    console.log(rightAnswer);
     callRightAnswer();
   } else {
     shakeTable();
