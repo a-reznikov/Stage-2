@@ -28,14 +28,15 @@ function addPassedLevel(levelId: number): void {
 
 function addWithHelpLevel(levelId: number): void {
   if (levelId in statusLevels) {
-    addPassedLevel(levelId);
+    statusLevels[levelId].passed = true;
     statusLevels[levelId].withHelp = true;
   } else {
     const currentPassedLevel: Partial<Status> = {};
-    addPassedLevel(levelId);
+    currentPassedLevel.passed = true;
     currentPassedLevel.withHelp = true;
     statusLevels[levelId] = currentPassedLevel;
   }
+  console.log(levelId);
   checkRightAnswer(levelId, 'with-help');
 }
 

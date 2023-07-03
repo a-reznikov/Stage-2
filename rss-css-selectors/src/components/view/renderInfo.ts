@@ -5,6 +5,7 @@ import { exportLevel, selectCurrentLevel } from '../model/statusLevel';
 function renderCurrentCheckLevel(levelId: number): void {
   const checkLevel: HTMLElement | null = document.querySelector('.info__check-level');
   const satatus: Partial<Storage> = exportLevel();
+  console.log(satatus);
   if (levelId in satatus) {
     if (satatus[levelId].passed && checkLevel) {
       checkLevel.classList.add('passed');

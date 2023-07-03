@@ -47,7 +47,7 @@
     height: 30px;
     border-radius: 20px;
     color: $color-help;
-    opacity: 0.5;
+    opacity: 0.7;
     border: solid 1px $color-opacity-light;
   }
   &_passed {
@@ -58,6 +58,10 @@
   &_with-help {
     .level__help {
       display: flex;
+    }
+    .checkmark {
+      opacity: 0.5;
+      border-color: $color-check;
     }
   }
 }
