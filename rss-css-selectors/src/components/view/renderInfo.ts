@@ -1,6 +1,16 @@
 import { Help, Levels } from '../types';
 import renderHelp from './help';
-import { selectCurrentLevel } from '../model/statusLevel';
+import { exportLevel, selectCurrentLevel } from '../model/statusLevel';
+
+function renderCurrentCheckLevel(levelId: number): void {
+  const checkLevel: HTMLElement | null = document.querySelector('.info__check-level');
+  const satatus: Partial<Storage> = exportLevel();
+  if (levelId in satatus) {
+    if (satatus[levelId].passed && checkLevel) {
+      checkLevel.classList.add('passed');
+    }
+  } else if (checkLevel) checkLevel.classList.remove('passed');
+}
 
 function renderLevelInfo(level: Levels): void {
   const taskTitle: HTMLElement | null = document.querySelector('.task');
@@ -13,6 +23,7 @@ function renderLevelInfo(level: Levels): void {
     taskTitle.textContent = task;
     infoCurrentLevel.innerHTML = '';
     infoCurrentLevel.textContent = `Level ${levelId} of 10`;
+    renderCurrentCheckLevel(levelId);
   }
 }
 
@@ -25,4 +36,4 @@ function renderHelpContainer(help: Help): void {
   }
 }
 
-export { renderLevelInfo, renderHelpContainer };
+export { renderLevelInfo, renderHelpContainer, renderCurrentCheckLevel };

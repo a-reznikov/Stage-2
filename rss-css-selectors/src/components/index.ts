@@ -1,6 +1,7 @@
 import App from './model/app';
 import Generator from './model/generator';
-import { exportLevel, fillStorage } from './model/statusLevel';
+import { exportLevel, reloadFromStorage } from './model/statusLevel';
+import { renderCurrentCheckLevel } from './view/renderInfo';
 
 const app: App = new App();
 
@@ -25,7 +26,9 @@ function getLocalStorage(): void {
     const getStorage: string | null = localStorage.getItem('passed');
     if (getStorage) {
       const storage: Partial<Storage> = JSON.parse(getStorage);
-      fillStorage(storage);
+      reloadFromStorage(storage);
+      const currentLevel: number = Generator.level + 1;
+      renderCurrentCheckLevel(currentLevel);
     }
   }
 }

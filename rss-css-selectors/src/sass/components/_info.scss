@@ -15,6 +15,10 @@
     align-items: center;
     column-gap: 5px;
   }
+  .passed {
+    opacity: 0.5;
+    border-color: $color-check;
+  }
 }
 
 .help {

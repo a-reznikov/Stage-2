@@ -26,19 +26,17 @@ function addPassedLevel(levelId: number): void {
 
 function addWithHelpLevel(levelId: number): void {
   if (levelId in statusLevels) {
+    addPassedLevel(levelId);
     statusLevels[levelId].withHelp = true;
   } else {
     const currentPassedLevel: Partial<Status> = {};
+    addPassedLevel(levelId);
     currentPassedLevel.withHelp = true;
     statusLevels[levelId] = currentPassedLevel;
   }
 }
 
-function checkLevel(levels: string | null): void {
-  console.log(levels);
-}
-
-function fillStorage(fromStorage: Partial<Storage>): void {
+function reloadFromStorage(fromStorage: Partial<Storage>): void {
   statusLevels = fromStorage;
   renderStatusLevels(fromStorage);
 }
@@ -47,4 +45,4 @@ function exportLevel(): Partial<Storage> {
   return statusLevels;
 }
 
-export { selectCurrentLevel, addPassedLevel, checkLevel, exportLevel, fillStorage, addWithHelpLevel };
+export { selectCurrentLevel, addPassedLevel, exportLevel, reloadFromStorage, addWithHelpLevel };
