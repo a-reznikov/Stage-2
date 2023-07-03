@@ -6,10 +6,10 @@
     "answer": "plate",
     "help": {
       "selector": "Tag Selector",
-      "title": "Select elements by tag",
-      "syntax": "div",
-      "description": "Selects all elements of tag div. Type refers to the type of tag, so div, p and ul are all different element types.",
-      "examples": "div selects all div elements."
+      "title": "Use the tag as a selector.",
+      "syntax": "div span",
+      "description": "To select all elements with the same tag, use the tag as a selector.",
+      "examples": "span selects all span elements."
     },
     "items": [
       {
@@ -17,12 +17,41 @@
         "classItem": "",
         "id": "",
         "animated": "selected",
+        "tooltip": "<plate></plate>"
+      },
+      {
+        "tag": "plate",
+        "classItem": "",
+        "id": "dark",
+        "animated": "selected",
+        "tooltip": "<plate #id='dark'></plate>"
+      }
+    ]
+  },
+  {
+    "levelId": 2,
+    "levelName": "Fruits",
+    "task": "Select all the fruits",
+    "answer": "fruits",
+    "help": {
+      "selector": "Tag Selector",
+      "title": "Let's practice a little more with fruit.",
+      "syntax": "p h2 a",
+      "description": "This will work with any tag names.",
+      "examples": "banana selects all banana elements."
+    },
+    "items": [
+      {
+        "tag": "plate",
+        "classItem": "",
+        "id": "",
         "tooltip": "<plate></plate>",
         "subItems": [
           {
             "tag": "fruits",
             "classItem": "pear",
             "id": "",
+            "animated": "selected",
             "tooltip": "<fruits class='pear'></fruits>"
           }
         ]
@@ -31,21 +60,66 @@
         "tag": "plate",
         "classItem": "",
         "id": "dark",
-        "animated": "selected",
         "tooltip": "<plate #id='dark'></plate>",
         "subItems": [
           {
-            "tag": "egg",
-            "classItem": "egg",
+            "tag": "fruits",
+            "classItem": "lemon",
             "id": "",
-            "tooltip": "<egg class='egg'></egg>"
+            "animated": "selected",
+            "tooltip": "<fruits class='lemon'></fruits>"
           }
         ]
       }
     ]
   },
   {
-    "levelId": 2,
+    "levelId": 3,
+    "levelName": "Pear",
+    "task": "Select all the pears",
+    "answer": ".pear",
+    "help": {
+      "selector": "Class Selector",
+      "title": "Not every fruit is a pear.",
+      "syntax": ".className",
+      "description": "In order to select elements by their class, it is necessary to put a . (dot) before the name of the class.",
+      "examples": ".section selects all section  elements."
+    },
+    "items": [
+      {
+        "tag": "plate",
+        "classItem": "",
+        "id": "",
+        "tooltip": "<plate></plate>",
+        "subItems": [
+          {
+            "tag": "fruits",
+            "classItem": "pear",
+            "id": "",
+            "animated": "selected",
+            "tooltip": "<fruits class='pear'></fruits>"
+          }
+        ]
+      },
+      {
+        "tag": "plate",
+        "classItem": "",
+        "id": "dark",
+        "tooltip": "<plate #id='dark'></plate>",
+        "subItems": [
+          {
+            "tag": "fruits",
+            "classItem": "lemon",
+            "id": "",
+            "animated": "selected",
+            "tooltip": "<fruits class='lemon'></fruits>"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "levelId": 4,
     "levelName": "Fruits",
     "task": "Select all the fruits",
     "answer": "fruits",

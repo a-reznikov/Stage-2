@@ -11,7 +11,7 @@ export default function renderHelp(help: Help): HTMLElement {
   helpTitle.className = 'help__title';
   helpTitle.textContent = `${help.title}`;
   const helpSyntax: HTMLElement = document.createElement('p');
-  helpSyntax.className = 'help__syntax';
+  helpSyntax.className = 'help__syntax hljs language-css';
   helpSyntax.textContent = `${help.syntax}`;
   const helpDescription: HTMLElement = document.createElement('p');
   helpDescription.className = 'help__description';
