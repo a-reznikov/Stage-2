@@ -22,6 +22,12 @@ export default function renderHelp(help: Help): HTMLElement {
   const helpExamples: HTMLElement = document.createElement('p');
   helpExamples.className = 'help__examples';
   helpExamples.textContent = `${help.examples}`;
+  const helpUse: HTMLElement = document.createElement('p');
+  helpUse.className = 'help__use';
+  helpUse.textContent = `${Constants.useHelp}`;
+  const helpButton: HTMLElement = document.createElement('button');
+  helpButton.className = 'help__button buttons buttons_aside';
+  helpButton.textContent = `Help`;
   highlightElement(helpSyntax);
   highlightElement(helpExamples);
   helpWrapper.append(helpSelector);
@@ -30,5 +36,7 @@ export default function renderHelp(help: Help): HTMLElement {
   helpWrapper.append(helpDescription);
   helpWrapper.append(helpExampleTitle);
   helpWrapper.append(helpExamples);
+  helpWrapper.append(helpUse);
+  helpWrapper.append(helpButton);
   return helpWrapper;
 }

@@ -40,6 +40,7 @@ export enum Constants {
   markupHeader = '<div class="table">',
   markupFooter = '</div>',
   examplesTitle = 'Examples:',
+  useHelp = 'Use the Help button or type "help" in the input box to see the correct answer.:',
 }
 
 export enum Editor {

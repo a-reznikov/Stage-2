@@ -13,7 +13,7 @@ export default function createEditor(): void {
   inputLine.setAttribute('placeholder', 'Type in a CSS selector');
   highlightElement(inputLine);
   const inputButton: HTMLInputElement = document.createElement('input');
-  inputButton.className = 'form__button';
+  inputButton.className = 'form__button buttons';
   inputButton.setAttribute('type', 'submit');
   inputButton.setAttribute('value', 'enter');
   const inputLabel: HTMLElement = createOutput();

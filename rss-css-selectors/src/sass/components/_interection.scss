@@ -69,19 +69,6 @@
       animation: none;
     }
   }
-  &__button {
-    display: block;
-    padding: 2px 7px 2px 7px;
-    flex-shrink: 0;
-    @include background-opacity(0.4, $color-light);
-    border-radius: 2px;
-    @include color-opacity(0.8, $color-dark);
-    border: solid 3px $color-gray;
-    border-width: 1px 1px 6px 1px;
-    font-size: 0.9rem;
-    @extend %font-second ;
-    cursor: pointer;
-  }
   &__label {
     overflow: hidden;
     display: flex;
