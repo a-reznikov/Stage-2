@@ -10,6 +10,7 @@ export default function callRightAnswer(): void {
     console.log(element);
   });
   const currentLevel: number = Generator.getLevel();
+  const lastLevel: number = 10;
   const speedWrite: number = 250;
   let step: number = 0;
   const length: number = 2;
@@ -22,4 +23,14 @@ export default function callRightAnswer(): void {
     }
     step += increment;
   }, speedWrite);
+  if (currentLevel === lastLevel) {
+    const tableTop: HTMLElement | null = document.querySelector('.table__top');
+    const congratulation: HTMLElement = document.createElement('span');
+    congratulation.className = 'table__top_congrat';
+    congratulation.innerHTML = 'Congratulations!';
+    if (tableTop) {
+      tableTop.innerHTML = '';
+      tableTop.append(congratulation);
+    }
+  }
 }
