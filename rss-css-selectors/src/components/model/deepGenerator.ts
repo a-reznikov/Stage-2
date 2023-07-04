@@ -12,16 +12,20 @@ export default function deepGenerateItems(
     const newItem: Item = new Item(element);
     const item: HTMLElement = newItem.createItme();
     const markupElement: HTMLElement = newItem.createMarkup();
-    const observer = new MutationObserver((mutations) => {
-      mutations.forEach((mutation) => {
-        if (mutation.type === 'attributes') {
-          if (item.classList.contains('hovered')) {
-            markupElement.classList.add('hovered');
-          } else {
-            markupElement.classList.remove('hovered');
-          }
-        }
-      });
+    const observer = new MutationObserver((): void => {
+      if (item.classList.contains('hovered')) {
+        console.log(item);
+        markupElement.classList.add('hovered');
+      } else {
+        markupElement.classList.remove('hovered');
+      }
+    });
+    markupElement.addEventListener('mouseover', (e: MouseEvent): void => {
+      e.stopPropagation();
+      item.classList.add('hovered');
+    });
+    markupElement.addEventListener('mouseout', (): void => {
+      item.classList.remove('hovered');
     });
     observer.observe(item, { attributes: true });
     renderItems(item, parentItem);
