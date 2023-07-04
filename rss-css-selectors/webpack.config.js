@@ -35,6 +35,7 @@ const baseConfig = {
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, './src/template.html'),
       filename: 'index.html',
+      favicon: 'src/assets/ico/favicon.ico',
     }),
     new MiniCssExtractPlugin({
       filename: 'style.css',
