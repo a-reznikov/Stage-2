@@ -14,7 +14,6 @@ export default function deepGenerateItems(
     const markupElement: HTMLElement = newItem.createMarkup();
     const observer = new MutationObserver((): void => {
       if (item.classList.contains('hovered')) {
-        console.log(item);
         markupElement.classList.add('hovered');
       } else {
         markupElement.classList.remove('hovered');
