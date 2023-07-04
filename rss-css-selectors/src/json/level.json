@@ -379,7 +379,7 @@
             "tag": "fruits",
             "classItem": "lemon",
             "id": "",
-            "tooltip": "<fruits class='pear'></fruits>"
+            "tooltip": "<fruits class='lemon'></fruits>"
           }
         ]
       },
@@ -394,7 +394,7 @@
             "classItem": "lemon",
             "id": "",
             "animated": "selected",
-            "tooltip": "<fruits class='pear'></fruits>"
+            "tooltip": "<fruits class='lemon'></fruits>"
           }
         ]
       },
@@ -409,7 +409,7 @@
             "classItem": "lemon",
             "id": "",
             "animated": "selected",
-            "tooltip": "<fruits class='pear'></fruits>"
+            "tooltip": "<fruits class='lemon'></fruits>"
           }
         ]
       },
@@ -452,7 +452,7 @@
             "tag": "fruits",
             "classItem": "lemon",
             "id": "",
-            "tooltip": "<fruits class='pear'></fruits>"
+            "tooltip": "<fruits class='lemon'></fruits>"
           }
         ]
       },
@@ -467,7 +467,7 @@
             "classItem": "lemon",
             "id": "",
             "animated": "selected",
-            "tooltip": "<fruits class='pear'></fruits>"
+            "tooltip": "<fruits class='lemon'></fruits>"
           }
         ]
       },
@@ -526,7 +526,7 @@
             "tag": "fruits",
             "classItem": "lemon",
             "id": "",
-            "tooltip": "<fruits class='pear'></fruits>"
+            "tooltip": "<fruits class='lemon'></fruits>"
           }
         ]
       },
@@ -540,7 +540,7 @@
             "tag": "fruits",
             "classItem": "lemon",
             "id": "",
-            "tooltip": "<fruits class='pear'></fruits>"
+            "tooltip": "<fruits class='lemon'></fruits>"
           }
         ]
       },
@@ -626,7 +626,7 @@
             "tag": "fruits",
             "classItem": "lemon",
             "id": "",
-            "tooltip": "<fruits class='pear'></fruits>"
+            "tooltip": "<fruits class='lemon'></fruits>"
           }
         ]
       },
