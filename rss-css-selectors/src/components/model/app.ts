@@ -1,6 +1,7 @@
 import Controller from '../controller/controller';
 import delegateEventClick from '../controller/eventDelegator';
 import setHover from '../controller/hover';
+import observeMediaQuery from '../controller/media';
 import Navigator from '../controller/navigator';
 import transmitCode from '../controller/transmitter';
 import createTemplate from '../view/template';
@@ -20,6 +21,10 @@ class App {
     const asideHiddenButton: HTMLElement | null = document.querySelector('.aside__button');
     const navigation: HTMLElement | null = document.querySelector('.nav');
     const input: HTMLElement | null = document.querySelector('.form__input');
+    const mediaQuery = window.matchMedia('(max-width: 900px)');
+    mediaQuery.onchange = (e: MediaQueryListEvent): void => {
+      if (e.matches) observeMediaQuery();
+    };
     if (levels) {
       levels.addEventListener('click', (e: MouseEvent): number => this.controller.getItems(e));
     }

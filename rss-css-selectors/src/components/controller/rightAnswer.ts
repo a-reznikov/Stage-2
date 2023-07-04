@@ -7,7 +7,6 @@ export default function callRightAnswer(): void {
   rightAnswer.forEach((element) => {
     element.classList.remove('selected');
     element.classList.add('right-answer');
-    console.log(element);
   });
   const currentLevel: number = Generator.getLevel();
   const lastLevel: number = 10;

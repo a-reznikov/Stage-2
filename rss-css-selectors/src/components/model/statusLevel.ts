@@ -36,7 +36,6 @@ function addWithHelpLevel(levelId: number): void {
     currentPassedLevel.withHelp = true;
     statusLevels[levelId] = currentPassedLevel;
   }
-  console.log(levelId);
   checkRightAnswer(levelId, 'with-help');
 }
 

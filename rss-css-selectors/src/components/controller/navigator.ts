@@ -11,10 +11,8 @@ class Navigator {
     if (hamburger && hamburger.contains(navButton)) {
       this.toggleBurger(hamburger);
     } else if (previous && previous.contains(navButton)) {
-      console.log(currentLevel);
       previousLevel(currentLevel);
     } else if (next && next.contains(navButton)) {
-      console.log(currentLevel);
       nextLevel(currentLevel);
     }
   }

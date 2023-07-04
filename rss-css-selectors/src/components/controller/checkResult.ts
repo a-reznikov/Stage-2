@@ -18,10 +18,6 @@ function isAnswer(request: string): void {
   }
   const rightAnswer: NodeListOf<Element> = document.querySelectorAll(`.selected`);
   const answer: NodeListOf<Element> = document.querySelectorAll(`${request}`);
-  console.log(rightAnswer);
-  console.log(answer);
-  console.log(request);
-  console.log(document.querySelectorAll(`.egg:first-child`));
   for (let index = 0; index <= answer.length; ) {
     if (answer[index] !== rightAnswer[index]) {
       isRightAnswer = false;
