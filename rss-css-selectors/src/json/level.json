@@ -7,9 +7,9 @@
     "help": {
       "selector": "Tag Selector",
       "title": "Use the tag as a selector.",
-      "syntax": "div span",
+      "syntax": "span",
       "description": "To select all elements with the same tag, use the tag as a selector.",
-      "examples": "span selects all span elements."
+      "examples": "span { color: white; }"
     },
     "items": [
       {
@@ -36,9 +36,9 @@
     "help": {
       "selector": "Tag Selector",
       "title": "Let's practice a little more with fruit.",
-      "syntax": "p h2 a",
+      "syntax": "p",
       "description": "This will work with any tag names.",
-      "examples": "banana selects all banana elements."
+      "examples": "p { text-align: center; }"
     },
     "items": [
       {
@@ -75,7 +75,7 @@
   },
   {
     "levelId": 3,
-    "levelName": "Pear",
+    "levelName": "Pears",
     "task": "Select all the pears",
     "answer": ".pear",
     "help": {
@@ -83,7 +83,7 @@
       "title": "Not every fruit is a pear.",
       "syntax": ".className",
       "description": "In order to select elements by their class, it is necessary to put a . (dot) before the name of the class.",
-      "examples": ".section selects all section  elements."
+      "examples": ".footer { display: flex; }"
     },
     "items": [
       {
@@ -134,55 +134,516 @@
   },
   {
     "levelId": 4,
-    "levelName": "Fruits",
-    "task": "Select all the fruits",
-    "answer": "fruits",
+    "levelName": "Dark Plates",
+    "task": "Select all dark plates",
+    "answer": "#dark",
     "help": {
-      "selector": "Tag Selector Fruits",
-      "title": "Select elements by tag",
-      "syntax": "div",
-      "description": "Selects all elements of tag div. Type refers to the type of tag, so div, p and ul are all different element types.",
-      "examples": "div selects all div elements."
+      "selector": "Id Selector",
+      "title": "The color of the plate matters.",
+      "syntax": "#white",
+      "description": "To select an element with a specific id, write a hash (#) character, followed by the id of the element.",
+      "examples": "#button { border: solid 1px white; }"
+    },
+    "items": [
+      {
+        "tag": "plate",
+        "classItem": "",
+        "id": "dark",
+        "animated": "selected",
+        "tooltip": "<plate #id='dark'></plate>",
+        "subItems": [
+          {
+            "tag": "fruits",
+            "classItem": "lemon",
+            "id": "",
+            "tooltip": "<fruits class='lemon'></fruits>"
+          }
+        ]
+      },
+      {
+        "tag": "plate",
+        "classItem": "",
+        "id": "",
+        "tooltip": "<plate></plate>",
+        "subItems": [
+          {
+            "tag": "egg",
+            "classItem": "egg",
+            "id": "",
+            "tooltip": "<egg class='egg'></egg>"
+          }
+        ]
+      },
+      {
+        "tag": "plate",
+        "classItem": "",
+        "id": "dark",
+        "animated": "selected",
+        "tooltip": "<plate #id='dark'></plate>",
+        "subItems": [
+          {
+            "tag": "fruits",
+            "classItem": "lemon",
+            "id": "",
+            "tooltip": "<fruits class='lemon'></fruits>"
+          }
+        ]
+      },
+      {
+        "tag": "plate",
+        "classItem": "",
+        "id": "dark",
+        "animated": "selected",
+        "tooltip": "<plate #id='dark'></plate>",
+        "subItems": [
+          {
+            "tag": "fruits",
+            "classItem": "pear",
+            "id": "",
+            "tooltip": "<fruits class='pear'></fruits>"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "levelId": 5,
+    "levelName": "Edible",
+    "task": "Choose everything edible",
+    "answer": "fruits, .egg",
+    "help": {
+      "selector": "Grouping Selector",
+      "title": "Maybe someone is eating plates, but we will consider them inedible.",
+      "syntax": ".banana, #lime",
+      "description": "The grouping selector selects all the HTML elements with the same style definitions.",
+      "examples": "h1, h2, p { text-align: center; color: red; }"
+    },
+    "items": [
+      {
+        "tag": "bento",
+        "classItem": "bento",
+        "id": "",
+        "tooltip": "<bento></bento>",
+        "subItems": [
+          {
+            "tag": "fruits",
+            "classItem": "pear",
+            "id": "",
+            "animated": "selected",
+            "tooltip": "<fruits class='pear'></fruits>"
+          }
+        ]
+      },
+      {
+        "tag": "plate",
+        "classItem": "",
+        "id": "dark",
+        "tooltip": "<plate #id='dark'></plate>",
+        "subItems": [
+          {
+            "tag": "fruits",
+            "classItem": "lemon",
+            "id": "",
+            "animated": "selected",
+            "tooltip": "<fruits class='lemon'></fruits>"
+          }
+        ]
+      },
+      {
+        "tag": "plate",
+        "classItem": "",
+        "id": "",
+        "tooltip": "<plate></plate>",
+        "subItems": [
+          {
+            "tag": "egg",
+            "classItem": "egg",
+            "id": "",
+            "animated": "selected",
+            "tooltip": "<egg class='egg'></egg>"
+          }
+        ]
+      },
+      {
+        "tag": "plate",
+        "classItem": "",
+        "id": "dark",
+        "tooltip": "<plate #id='dark'></plate>",
+        "subItems": [
+          {
+            "tag": "fruits",
+            "classItem": "pear",
+            "id": "",
+            "animated": "selected",
+            "tooltip": "<fruits class='pear'></fruits>"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "levelId": 6,
+    "levelName": "EIB",
+    "task": "Egg in black",
+    "answer": "#dark egg",
+    "help": {
+      "selector": "Descendant combinator",
+      "title": "Have you watched the movie 'Men in Black'?",
+      "syntax": "men #black",
+      "description": "The descendant combinator — typically represented by a single space (' ') character — combines two selectors.",
+      "examples": "div h2 { font-size: 20px; color: black; }"
+    },
+    "items": [
+      {
+        "tag": "plate",
+        "classItem": "",
+        "id": "dark",
+        "tooltip": "<plate #id='dark'></plate>",
+        "subItems": [
+          {
+            "tag": "egg",
+            "classItem": "egg",
+            "id": "",
+            "animated": "selected",
+            "tooltip": "<egg class='egg'></egg>"
+          }
+        ]
+      },
+      {
+        "tag": "plate",
+        "classItem": "",
+        "id": "dark",
+        "tooltip": "<plate #id='dark'></plate>",
+        "subItems": [
+          {
+            "tag": "egg",
+            "classItem": "egg",
+            "id": "",
+            "animated": "selected",
+            "tooltip": "<egg class='egg'></egg>"
+          }
+        ]
+      },
+      {
+        "tag": "plate",
+        "classItem": "",
+        "id": "",
+        "tooltip": "<plate></plate>",
+        "subItems": [
+          {
+            "tag": "egg",
+            "classItem": "egg",
+            "id": "",
+            "tooltip": "<egg class='egg'></egg>"
+          }
+        ]
+      },
+      
+      {
+        "tag": "plate",
+        "classItem": "",
+        "id": "dark",
+        "tooltip": "<plate #id='dark'></plate>",
+        "subItems": [
+          {
+            "tag": "egg",
+            "classItem": "egg",
+            "id": "",
+            "animated": "selected",
+            "tooltip": "<egg class='egg'></egg>"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "levelId": 7,
+    "levelName": "Lemon",
+    "task": "Select all lemons in bento",
+    "answer": ".bento .lemon",
+    "help": {
+      "selector": "Combinator",
+      "title": "Meyer's lemon is the most sour in the world.",
+      "syntax": ".body .div",
+      "description": "Selectors that utilize a descendant combinator are called descendant selectors.",
+      "examples": ".header .nav { position: fixed; }"
+    },
+    "items": [
+      {
+        "tag": "plate",
+        "classItem": "",
+        "id": "dark",
+        "tooltip": "<plate #id='dark'></plate>",
+        "subItems": [
+          {
+            "tag": "fruits",
+            "classItem": "lemon",
+            "id": "",
+            "tooltip": "<fruits class='pear'></fruits>"
+          }
+        ]
+      },
+      {
+        "tag": "bento",
+        "classItem": "bento",
+        "id": "",
+        "tooltip": "<bento></bento>",
+        "subItems": [
+          {
+            "tag": "fruits",
+            "classItem": "lemon",
+            "id": "",
+            "animated": "selected",
+            "tooltip": "<fruits class='pear'></fruits>"
+          }
+        ]
+      },
+      {
+        "tag": "bento",
+        "classItem": "bento",
+        "id": "",
+        "tooltip": "<bento></bento>",
+        "subItems": [
+          {
+            "tag": "fruits",
+            "classItem": "lemon",
+            "id": "",
+            "animated": "selected",
+            "tooltip": "<fruits class='pear'></fruits>"
+          }
+        ]
+      },
+      {
+        "tag": "bento",
+        "classItem": "bento",
+        "id": "",
+        "tooltip": "<bento></bento>",
+        "subItems": [
+          {
+            "tag": "fruits",
+            "classItem": "pear",
+            "id": "",
+            "tooltip": "<fruits class='pear'></fruits>"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "levelId": 8,
+    "levelName": "NOT",
+    "task": "Select all fruits not in dark plate",
+    "answer": "plate:not(#dark) fruits",
+    "help": {
+      "selector": ":not() Selector",
+      "title": "Just not dark",
+      "syntax": "ul:not(#li)",
+      "description": "The :not() CSS pseudo-class represents elements that do not match a list of selectors.",
+      "examples": ":not(<complex-selector-list>)"
+    },
+    "items": [
+      {
+        "tag": "plate",
+        "classItem": "",
+        "id": "dark",
+        "tooltip": "<plate #id='dark'></plate>",
+        "subItems": [
+          {
+            "tag": "fruits",
+            "classItem": "lemon",
+            "id": "",
+            "tooltip": "<fruits class='pear'></fruits>"
+          }
+        ]
+      },
+      {
+        "tag": "plate",
+        "classItem": "",
+        "id": "",
+        "tooltip": "<plate></plate>",
+        "subItems": [
+          {
+            "tag": "fruits",
+            "classItem": "lemon",
+            "id": "",
+            "animated": "selected",
+            "tooltip": "<fruits class='pear'></fruits>"
+          }
+        ]
+      },
+      {
+        "tag": "plate",
+        "classItem": "",
+        "id": "",
+        "tooltip": "<plate></plate>",
+        "subItems": [
+          {
+            "tag": "fruits",
+            "classItem": "pear",
+            "id": "",
+            "animated": "selected",
+            "tooltip": "<fruits class='pear'></fruits>"
+          }
+        ]
+      },
+      {
+        "tag": "plate",
+        "classItem": "",
+        "id": "dark",
+        "tooltip": "<plate #id='dark'></plate>",
+        "subItems": [
+          {
+            "tag": "egg",
+            "classItem": "egg",
+            "id": "",
+            "tooltip": "<egg class='egg'></egg>"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "levelId": 9,
+    "levelName": "Odd",
+    "task": "Select every ODD plates",
+    "answer": "plate:nth-child(odd)",
+    "help": {
+      "selector": ":nth-child() Selector",
+      "title": "Only odd numbers are needed",
+      "syntax": "li:nth-child()",
+      "description": ":nth-child() takes a single argument that describes a pattern for matching element indices in a list of siblings. Element indices are 1-based.",
+      "examples": "tr:nth-child(odd)"
     },
     "items": [
       {
         "tag": "plate",
         "classItem": "",
         "id": "",
-        "tooltip": "<plate></plate>"
-      },
-      {
-        "tag": "bento",
-        "classItem": "bento",
-        "id": "",
-        "tooltip": "<bento></bento>"
-      },
-      {
-        "tag": "fruits",
-        "classItem": "lemon",
-        "id": "",
         "animated": "selected",
-        "tooltip": "<fruits class='lemon'></fruits>"
+        "tooltip": "<plate></plate>",
+        "subItems": [
+          {
+            "tag": "fruits",
+            "classItem": "lemon",
+            "id": "",
+            "tooltip": "<fruits class='pear'></fruits>"
+          }
+        ]
       },
       {
-        "tag": "fruits",
-        "classItem": "pear",
+        "tag": "plate",
+        "classItem": "",
         "id": "",
-        "animated": "selected",
-        "tooltip": "<fruits class='pear'></fruits>"
-      }
-      ,
-      {
-        "tag": "egg",
-        "classItem": "egg",
-        "id": "",
-        "tooltip": "<egg class='egg'></egg>"
+        "tooltip": "<plate></plate>",
+        "subItems": [
+          {
+            "tag": "fruits",
+            "classItem": "lemon",
+            "id": "",
+            "tooltip": "<fruits class='pear'></fruits>"
+          }
+        ]
       },
       {
         "tag": "plate",
         "classItem": "",
         "id": "dark",
-        "tooltip": "<plate #id='dark'></plate>"
+        "animated": "selected",
+        "tooltip": "<plate #id='dark'></plate>",
+        "subItems": [
+          {
+            "tag": "fruits",
+            "classItem": "pear",
+            "id": "",
+            "tooltip": "<fruits class='pear'></fruits>"
+          }
+        ]
+      },
+      {
+        "tag": "plate",
+        "classItem": "",
+        "id": "dark",
+        "tooltip": "<plate #id='dark'></plate>",
+        "subItems": [
+          {
+            "tag": "egg",
+            "classItem": "egg",
+            "id": "",
+            "tooltip": "<egg class='egg'></egg>"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "levelId": 10,
+    "levelName": "Last",
+    "task": "Select last plate",
+    "answer": "plate:last-child",
+    "help": {
+      "selector": ":last-child ",
+      "title": "And finally, let's choose the last plate.",
+      "syntax": ":last-child",
+      "description": "The :last-child CSS pseudo-class represents the last element among a group of sibling elements.",
+      "examples": "li:last-child { border: 2px solid orange; }"
+    },
+    "items": [
+      {
+        "tag": "plate",
+        "classItem": "",
+        "id": "",
+        "tooltip": "<plate></plate>",
+        "subItems": [
+          {
+            "tag": "egg",
+            "classItem": "egg",
+            "id": "",
+            "tooltip": "<egg class='egg'></egg>"
+          }
+        ]
+      },
+      {
+        "tag": "plate",
+        "classItem": "",
+        "id": "dark",
+        "tooltip": "<plate #id='dark'></plate>",
+        "subItems": [
+          {
+            "tag": "fruits",
+            "classItem": "pear",
+            "id": "",
+            "tooltip": "<fruits class='pear'></fruits>"
+          }
+        ]
+      },
+      {
+        "tag": "bento",
+        "classItem": "bento",
+        "id": "",
+        "tooltip": "<bento></bento>",
+        "subItems": [
+          {
+            "tag": "fruits",
+            "classItem": "lemon",
+            "id": "",
+            "tooltip": "<fruits class='pear'></fruits>"
+          }
+        ]
+      },
+      {
+        "tag": "plate",
+        "classItem": "",
+        "id": "",
+        "animated": "selected",
+        "tooltip": "<plate></plate>",
+        "subItems": [
+          {
+            "tag": "egg",
+            "classItem": "egg",
+            "id": "",
+            "tooltip": "<egg class='egg'></egg>"
+          }
+        ]
       }
     ]
   }
