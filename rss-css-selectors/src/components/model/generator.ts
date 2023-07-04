@@ -27,7 +27,7 @@ class Generator {
   }
 
   public static generateLevels(): void {
-    data.forEach((element: Levels) => {
+    data.forEach((element: Levels): void => {
       const newItem = new Level(element);
       const item = newItem.createLevel();
       renderLevels(item);

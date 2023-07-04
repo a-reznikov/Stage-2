@@ -4,7 +4,7 @@ import { nextLevel } from './changeLevel';
 
 export default function callRightAnswer(): void {
   const rightAnswer: NodeListOf<Element> = document.querySelectorAll(`.selected`);
-  rightAnswer.forEach((element) => {
+  rightAnswer.forEach((element): void => {
     element.classList.remove('selected');
     element.classList.add('right-answer');
   });

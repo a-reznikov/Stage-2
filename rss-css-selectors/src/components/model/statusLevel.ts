@@ -6,7 +6,7 @@ let statusLevels: Partial<Storage> = {};
 function selectCurrentLevel(levelId: number): number {
   const allLevels: NodeListOf<Element> = document.querySelectorAll('.level');
   const CurrentLevel: HTMLElement | null = document.getElementById(`${levelId}`);
-  allLevels.forEach((element) => {
+  allLevels.forEach((element): void => {
     element.classList.remove('level_current');
   });
   if (CurrentLevel) {

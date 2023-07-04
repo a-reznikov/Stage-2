@@ -8,7 +8,7 @@ export default function deepGenerateItems(
   parentItem?: HTMLElement,
   parentMarkup?: HTMLElement
 ): void {
-  listItems.forEach((element: Items) => {
+  listItems.forEach((element: Items): void => {
     const newItem: Item = new Item(element);
     const item: HTMLElement = newItem.createItme();
     const markupElement: HTMLElement = newItem.createMarkup();

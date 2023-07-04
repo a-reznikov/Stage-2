@@ -1,6 +1,6 @@
 export default function renderStatusLevels(status: Partial<Storage>): void {
   const levels: NodeListOf<Element> = document.querySelectorAll('.level');
-  levels.forEach((level) => {
+  levels.forEach((level): void => {
     const levelId: string | null = level.getAttribute('id');
     if (levelId && +levelId in status) {
       if (status[+levelId].passed) {
