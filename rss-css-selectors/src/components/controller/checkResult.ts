@@ -5,7 +5,7 @@ import shakeTable from './shaker';
 const minLevel: number = 1;
 const maxLevel: number = data.length;
 
-function isLevel(request: string): boolean {
+function isLevel<Answer>(request: Answer): boolean {
   const newLevel: number = +request;
   return !!newLevel && newLevel >= minLevel && newLevel <= maxLevel;
 }

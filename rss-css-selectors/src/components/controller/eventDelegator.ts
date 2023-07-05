@@ -8,9 +8,10 @@ export default function delegateEventClick(event: MouseEvent): void {
   const resetButton: HTMLElement | null = document.querySelector('.levels__button');
   const helpButton: HTMLElement | null = document.querySelector('.help__button');
   const button: HTMLElement = <HTMLElement>event.target;
+  const firstLevel: number = 1;
   if (resetButton && resetButton.contains(button)) {
     const resetStorage: Partial<Storage> = resetProgress();
-    Generator.generateItems(1);
+    Generator.generateItems(firstLevel);
     renderStatusLevels(resetStorage);
   } else if (helpButton && helpButton.contains(button)) {
     const currentLevel: number = Generator.getLevel();
