@@ -8,18 +8,20 @@ function isRightLevel(newLevel: number): boolean {
   return !!newLevel && newLevel >= minLevel && newLevel <= maxLevel;
 }
 
-function previousLevel(currentIndexLevel: number): void {
+function previousLevel(currentIndexLevel: number): number {
   const newLevel: number = currentIndexLevel - 1;
   if (isRightLevel(newLevel)) {
     Generator.generateItems(newLevel);
   }
+  return newLevel;
 }
 
-function nextLevel(currentIndexLevel: number): void {
+function nextLevel(currentIndexLevel: number): number {
   const newLevel: number = currentIndexLevel + 1;
   if (isRightLevel(newLevel)) {
     Generator.generateItems(newLevel);
   }
+  return newLevel;
 }
 
-export { nextLevel, previousLevel };
+export { nextLevel, previousLevel, isRightLevel };
