@@ -20,6 +20,10 @@ class Item {
     this.tooltip = tooltip;
   }
 
+  public getTag(): string {
+    return this.tag;
+  }
+
   public createItme(): HTMLElement {
     const item: HTMLElement = document.createElement(`${this.tag}`);
     item.className = `${this.classItem}`;

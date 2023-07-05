@@ -10,6 +10,14 @@ class Level {
     this.levelName = levelName;
   }
 
+  public getLevelId(): number {
+    return this.levelId;
+  }
+
+  public getLevelName(): string {
+    return this.levelName;
+  }
+
   public createLevel(): HTMLElement {
     const level: HTMLElement = document.createElement('a');
     level.className = 'level';
