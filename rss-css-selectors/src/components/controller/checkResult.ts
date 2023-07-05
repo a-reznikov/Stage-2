@@ -10,11 +10,13 @@ function isLevel(request: string): boolean {
   return !!newLevel && newLevel >= minLevel && newLevel <= maxLevel;
 }
 
-function isAnswer(request: string): void {
+function isAnswer(request: string): boolean {
   let isRightAnswer: boolean = false;
+  let isCorrectRequest: boolean = true;
   if (Number.isInteger(+request[0])) {
     shakeTable();
-    return;
+    isCorrectRequest = false;
+    return isCorrectRequest;
   }
   const rightAnswer: NodeListOf<Element> = document.querySelectorAll(`.selected`);
   const answer: NodeListOf<Element> = document.querySelectorAll(`${request}`);
@@ -32,6 +34,7 @@ function isAnswer(request: string): void {
   } else {
     shakeTable();
   }
+  return isCorrectRequest;
 }
 
 export { isLevel, isAnswer };
