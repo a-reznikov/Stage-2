@@ -1,4 +1,7 @@
 export enum ButtonNames {
-  garage = 'TO GARAGE',
-  winners = 'TO WINNERS',
+  toGarage = 'to garage',
+  toWinners = 'to winners',
+  create = 'create',
+  update = 'update',
+  remove = 'remove',
 }

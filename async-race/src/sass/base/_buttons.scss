@@ -1,5 +1,6 @@
 .buttons {
-  display: block;
+  display: inline-block;
+  min-width: 100px;
   padding: 5px 10px;
   opacity: 0.7;
   @extend %font-main;

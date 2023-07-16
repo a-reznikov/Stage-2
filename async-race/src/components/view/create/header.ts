@@ -1,16 +1,13 @@
 import { ButtonNames } from '../../types';
+import createButton from './button';
 
 export default function createHeader(): HTMLElement {
   const header: HTMLElement = document.createElement('header');
   header.className = 'header';
   const nav: HTMLElement = document.createElement('nav');
   nav.className = 'nav';
-  const buttonGarage: HTMLElement = document.createElement('button');
-  buttonGarage.className = 'buttons buttons_garage';
-  buttonGarage.textContent = `${ButtonNames.garage}`;
-  const buttonWinners: HTMLElement = document.createElement('button');
-  buttonWinners.className = 'buttons buttons_winners';
-  buttonWinners.textContent = `${ButtonNames.winners}`;
+  const buttonGarage: HTMLButtonElement = createButton('nav', `${ButtonNames.toGarage}`);
+  const buttonWinners: HTMLButtonElement = createButton('nav', `${ButtonNames.toWinners}`);
   header.append(buttonGarage);
   header.append(buttonWinners);
   return header;
