@@ -1,0 +1,31 @@
+export default function createScore(): HTMLElement {
+  const score: HTMLDivElement = document.createElement('div');
+  score.className = `winners__score score`;
+  const scoreHeader: HTMLDivElement = document.createElement('div');
+  scoreHeader.className = `score__header score__table`;
+  const number: HTMLSpanElement = document.createElement('span');
+  number.className = `header__number`;
+  number.textContent = 'Number';
+  const carIco: HTMLSpanElement = document.createElement('span');
+  carIco.className = `header__car-ico`;
+  carIco.textContent = 'Car';
+  const carBrand: HTMLSpanElement = document.createElement('span');
+  carBrand.className = `header__car-brand`;
+  carBrand.textContent = 'Brand and model';
+  const wins: HTMLSpanElement = document.createElement('span');
+  wins.className = `header__wins`;
+  wins.textContent = 'Wins';
+  const time: HTMLSpanElement = document.createElement('span');
+  time.className = `header__time`;
+  time.textContent = 'Best time (seconds)';
+  const scoreBody: HTMLDivElement = document.createElement('div');
+  scoreBody.className = `score__body score__table`;
+  scoreHeader.append(number);
+  scoreHeader.append(carIco);
+  scoreHeader.append(carBrand);
+  scoreHeader.append(wins);
+  scoreHeader.append(time);
+  score.append(scoreHeader);
+  score.append(scoreBody);
+  return score;
+}

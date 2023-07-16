@@ -15,7 +15,7 @@ export default function createGarage(): HTMLElement {
   const playground: HTMLElement = document.createElement('div');
   playground.className = 'garage__playground';
   const track: HTMLElement = createTrack();
-  const pagination: HTMLElement = createPagination();
+  const pagination: HTMLElement = createPagination('garage');
   playground.append(track);
   garage.append(setup);
   garage.append(title);
