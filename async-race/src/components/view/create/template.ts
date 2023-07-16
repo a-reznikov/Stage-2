@@ -6,12 +6,9 @@ export default function createTemplate(): HTMLBodyElement | null {
   if (body) body.className = 'body';
   const header: HTMLElement = createHeader();
   const main: HTMLElement = createMain();
-  const footer: HTMLElement = document.createElement('footer');
-  footer.className = 'footer';
   if (body) {
     body.append(header);
     body.append(main);
-    body.append(footer);
   }
   return body || null;
 }

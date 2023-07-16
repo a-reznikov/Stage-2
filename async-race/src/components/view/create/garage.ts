@@ -1,4 +1,6 @@
+import createPagination from './pagination';
 import createSetup from './setup';
+import createTrack from './track';
 
 export default function createGarage(): HTMLElement {
   const garage: HTMLElement = document.createElement('section');
@@ -12,9 +14,13 @@ export default function createGarage(): HTMLElement {
   page.textContent = 'Page # 1';
   const playground: HTMLElement = document.createElement('div');
   playground.className = 'garage__playground';
+  const track: HTMLElement = createTrack();
+  const pagination: HTMLElement = createPagination();
+  playground.append(track);
   garage.append(setup);
   garage.append(title);
   garage.append(page);
   garage.append(playground);
+  garage.append(pagination);
   return garage;
 }

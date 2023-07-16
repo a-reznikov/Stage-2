@@ -1,0 +1,39 @@
+.track {
+  border-bottom: dashed 2px $color-light;
+  &__race {
+    display: flex;
+    column-gap: 10px;
+    height: 50px;
+  }
+  &__progress {
+    position: relative;
+    flex-grow: 1;
+    &::after {
+      content: '';
+      width: 60px;
+      height: 30px;
+      position: absolute;
+      right: 80px;
+      bottom: 0px;
+      background: url('./../assets/ico/flag.svg');
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+  }
+  &__car {
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    height: 50px;
+    width: 70px;  
+    background: url('./../assets/ico/car.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+}
+
+.engine-control {
+  &__buttons {
+    min-width: 0;
+  }
+}
