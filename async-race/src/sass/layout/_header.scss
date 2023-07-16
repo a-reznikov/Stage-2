@@ -1,8 +1,11 @@
 .header {
   width: 100%;
-  display: flex;
-  column-gap: 10px;
   align-items: center;
   padding: 10px 10px;
   background: $color-dark;
+}
+
+.nav {
+  display: flex;
+  column-gap: 10px;
 }

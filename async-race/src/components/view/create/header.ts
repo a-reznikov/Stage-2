@@ -8,7 +8,8 @@ export default function createHeader(): HTMLElement {
   nav.className = 'nav';
   const buttonGarage: HTMLButtonElement = createButton('nav', `${ButtonNames.toGarage}`);
   const buttonWinners: HTMLButtonElement = createButton('nav', `${ButtonNames.toWinners}`);
-  header.append(buttonGarage);
-  header.append(buttonWinners);
+  nav.append(buttonGarage);
+  nav.append(buttonWinners);
+  header.append(nav);
   return header;
 }
