@@ -2,7 +2,7 @@ import createButton from './button';
 
 export default function createForm(buttonName: string): HTMLFormElement {
   const form: HTMLFormElement = document.createElement('form');
-  form.className = `form form_${buttonName} control-panel__form `;
+  form.className = `form form_${buttonName} setup__form `;
   const inputName: HTMLInputElement = document.createElement('input');
   inputName.className = `form__input input__name_${buttonName}`;
   inputName.setAttribute('type', 'text');
