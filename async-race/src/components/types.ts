@@ -1,3 +1,11 @@
+export type Hex = `#${string}`;
+
+export interface Cars {
+  name: string;
+  color: Hex;
+  id: number;
+}
+
 export enum ButtonNames {
   toGarage = 'to garage',
   toWinners = 'to winners',
@@ -12,4 +20,8 @@ export enum ButtonNames {
   stop = 'b',
   previous = 'previous',
   next = 'next',
+}
+
+export enum Links {
+  garage = 'http://127.0.0.1:3000/garage',
 }

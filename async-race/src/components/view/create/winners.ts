@@ -3,7 +3,7 @@ import createScore from './score';
 
 export default function createWinners(): HTMLElement {
   const winners: HTMLElement = document.createElement('section');
-  winners.className = 'section winners';
+  winners.className = 'section winners winners_hidden';
   const title: HTMLElement = document.createElement('h2');
   title.className = 'winners__title';
   title.textContent = 'Winners (amount winners)';

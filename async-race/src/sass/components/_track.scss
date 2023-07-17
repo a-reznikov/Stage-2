@@ -22,8 +22,7 @@
   }
   &__car {
     display: inline-block;
-    position: absolute;
-    right: 0;
+    position: relative;
     height: 50px;
     width: 70px;  
     background: url('./../assets/ico/car.svg');
