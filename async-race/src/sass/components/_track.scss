@@ -1,5 +1,11 @@
 .track {
+  display: grid;
+  row-gap: 5px;
   border-bottom: dashed 2px $color-light;
+  &__settings {
+    display: flex;
+    column-gap: 5px;
+  }
   &__race {
     display: flex;
     column-gap: 10px;
@@ -20,14 +26,20 @@
       background-size: contain;
     }
   }
+  &__car-name {
+    font-size: 1.4rem;
+  }
   &__car {
-    display: inline-block;
+    display: block;
     position: relative;
     height: 50px;
-    width: 70px;  
-    background: url('./../assets/ico/car.svg');
-    background-repeat: no-repeat;
-    background-size: contain;
+    width: 70px;
+    -webkit-mask-image: url(./../assets/ico/car.svg);
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+    mask-image: url(./../assets/ico/car.svg);
+    mask-repeat: no-repeat;
+    mask-size: contain;
   }
 }
 

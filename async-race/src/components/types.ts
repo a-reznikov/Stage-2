@@ -1,8 +1,6 @@
-export type Hex = `#${string}`;
-
 export interface Cars {
   name: string;
-  color: Hex;
+  color: string;
   id: number;
 }
 
@@ -23,5 +21,6 @@ export enum ButtonNames {
 }
 
 export enum Links {
-  garage = 'http://127.0.0.1:3000/garage',
+  baseLink = 'http://127.0.0.1:3000/',
+  garage = 'garage',
 }

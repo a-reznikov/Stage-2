@@ -23,6 +23,7 @@ export default function renderTrack(car: Cars): HTMLElement {
   const carIco: HTMLDivElement = document.createElement('div');
   carIco.className = 'track__car car';
   carIco.setAttribute('id', `${car.id}`);
+  carIco.style.background = car.color;
   settings.append(buttonSelect);
   settings.append(buttonRemove);
   settings.append(carName);

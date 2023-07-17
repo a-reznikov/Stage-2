@@ -1,15 +1,20 @@
 import generateCars from '../model/generator';
-import { Cars } from '../types';
+import { Cars, Links } from '../types';
 
 class Loader {
-  constructor(private baseLink: string) {}
+  public amountCars: number = 4;
 
-  public getCars(): void {
+  constructor(private baselink: string) {}
+
+  public async getCars(): Promise<void> {
     const method: string = 'GET';
-    fetch(this.baseLink, { method })
-      .then((res: Response): Promise<Cars[]> => res.json())
-      .then((data: Cars[]): void => generateCars(data))
-      .catch((err: Error): void => console.error(err));
+    try {
+      const response: Response = await fetch(`${this.baselink}${Links.garage}`, { method });
+      const data: Cars[] = await response.json();
+      generateCars(data);
+    } catch (err: Error | unknown) {
+      console.error(err);
+    }
   }
 }
 

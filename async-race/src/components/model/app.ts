@@ -6,7 +6,7 @@ import createTemplate from '../view/create/template';
 class App {
   private controller: Controller = new Controller();
 
-  private loader: Loader = new Loader(Links.garage);
+  private loader: Loader = new Loader(Links.baseLink);
 
   public start(): void {
     createTemplate();
@@ -14,7 +14,7 @@ class App {
 
     const body: HTMLElement | null = document.querySelector('.body');
     if (body) {
-      body.addEventListener('click', (e: MouseEvent): void => this.controller.getTest(e));
+      body.addEventListener('click', (e: MouseEvent): void => this.controller.eventDelegate(e));
     }
   }
 }
