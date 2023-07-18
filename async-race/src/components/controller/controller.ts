@@ -1,6 +1,6 @@
 import { getCarId, getCarProperties, getTrack } from './getter';
 import { ButtonNames } from '../types';
-import { deleteCar, isInputs, selectTrack, unselectTrack } from './eventer';
+import { deleteCar, isInputs, selectTrack, startDrive, unselectTrack } from './eventer';
 
 class Controller {
   public idSelectedCar: number = 0;
@@ -11,6 +11,7 @@ class Controller {
     const isRemoveButton: boolean = target.classList.contains('settings__buttons_remove');
     const isSelectButton: boolean = target.classList.contains('settings__buttons_select');
     const isUpdateButton: boolean = target.classList.contains('form__buttons_update');
+    const isStartButton: boolean = target.classList.contains('engine-control__buttons_start');
     const isSetupInputs: boolean = isInputs(target);
     if (target === createButton) {
       event.preventDefault();
@@ -30,6 +31,9 @@ class Controller {
     if (isUpdateButton) {
       event.preventDefault();
       getCarProperties(`${ButtonNames.update}`, this.idSelectedCar);
+    }
+    if (isStartButton) {
+      startDrive(getCarId(target));
     }
   }
 }

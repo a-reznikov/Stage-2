@@ -1,4 +1,6 @@
 import Car from '../model/car';
+import Engine from '../model/engine';
+import { EngineStatus } from '../types';
 
 function deleteCar(id: number): void {
   Car.deleteCar(id);
@@ -55,4 +57,9 @@ function selectTrack(track: HTMLElement): void {
   toggleDiasbleUpdate('enabled');
 }
 
-export { deleteCar, createNewCar, updateOldCar, selectTrack, unselectTrack, isInputs };
+async function startDrive(id: number): Promise<void> {
+  await Engine.eventEngine(id, EngineStatus.started);
+  await Engine.eventEngine(id, EngineStatus.drive);
+}
+
+export { deleteCar, createNewCar, updateOldCar, selectTrack, unselectTrack, isInputs, startDrive };

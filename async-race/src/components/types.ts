@@ -4,6 +4,11 @@ export interface Cars {
   id?: number;
 }
 
+export interface Engines {
+  velocity: 64;
+  distance: 500000;
+}
+
 export enum ButtonNames {
   toGarage = 'to garage',
   toWinners = 'to winners',
@@ -14,8 +19,8 @@ export enum ButtonNames {
   generate = 'generate cars',
   select = 'select',
   remove = 'remove',
-  start = 'a',
-  stop = 'b',
+  start = 'start',
+  stop = 'stop',
   previous = 'previous',
   next = 'next',
 }
@@ -23,6 +28,7 @@ export enum ButtonNames {
 export enum Links {
   baseLink = 'http://127.0.0.1:3000/',
   garage = 'garage',
+  engine = 'engine',
 }
 
 export enum Methods {
@@ -30,4 +36,10 @@ export enum Methods {
   delete = 'DELETE',
   post = 'POST',
   patch = 'PATCH',
+}
+
+export enum EngineStatus {
+  drive = 'drive',
+  started = 'started',
+  stopped = 'stopped',
 }

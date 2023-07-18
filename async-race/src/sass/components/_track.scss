@@ -48,6 +48,8 @@
 }
 
 .engine-control {
+  display: flex;
+  flex-direction: column;
   &__buttons {
     min-width: 0;
   }
