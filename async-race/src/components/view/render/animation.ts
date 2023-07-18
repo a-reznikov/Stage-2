@@ -1,4 +1,4 @@
-export default function activeAnimation(id: number, time: number): void {
+export default function activeAnimation(id: number, time: number): NodeJS.Timer | boolean {
   const carIco: HTMLElement | null = document.getElementById(`${id}`);
   const stepSeconds: number = time / 100;
   if (carIco) {
@@ -14,6 +14,8 @@ export default function activeAnimation(id: number, time: number): void {
           clearInterval(IntervalId);
         }
       }, stepSeconds);
+      return IntervalId;
     }
   }
+  return false;
 }

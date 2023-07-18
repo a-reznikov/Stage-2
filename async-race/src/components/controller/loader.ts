@@ -16,9 +16,7 @@ class Loader {
   public static async getCar(id: number): Promise<void> {
     const method: string = Methods.get;
     try {
-      const response: Response = await fetch(`${Links.baseLink}${Links.garage}/${id}`, { method });
-      const data: Cars = await response.json();
-      console.log(data);
+      await fetch(`${Links.baseLink}${Links.garage}/${id}`, { method });
     } catch (err: Error | unknown) {
       console.error(err);
     }
