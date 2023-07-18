@@ -1,5 +1,6 @@
 import { Cars, Links, Methods } from '../types';
 import renderTrack from '../view/render/track';
+import updateTrack from '../view/render/updateTrack';
 
 class Car {
   constructor(public name: string, public color: string) {}
@@ -30,18 +31,17 @@ class Car {
     }
   }
 
-  public async updateCar(body: Cars): Promise<void> {
+  public static async updateCar(body: Cars, id: number): Promise<void> {
     const method: string = Methods.patch;
     try {
-      const response: Response = await fetch(`${Links.baseLink}${Links.garage}`, {
+      await fetch(`${Links.baseLink}${Links.garage}/${id}`, {
         method: `${method}`,
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(body),
       });
-      const data: Cars = await response.json();
-      renderTrack(data);
+      updateTrack(body, id);
     } catch (err: Error | unknown) {
       console.error(err);
     }

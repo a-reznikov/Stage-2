@@ -9,6 +9,11 @@ function createNewCar(name: string, color: string): void {
   newCar.createCar(newCar);
 }
 
+function updateOldCar(name: string, color: string, id: number): void {
+  const oldCar: Car = new Car(name, color);
+  Car.updateCar(oldCar, id);
+}
+
 function isInputs(target: HTMLElement): boolean {
   const inputName: HTMLInputElement | null = document.querySelector('.input__name_update');
   const inputColor: HTMLInputElement | null = document.querySelector('.input__color_update');
@@ -50,4 +55,4 @@ function selectTrack(track: HTMLElement): void {
   toggleDiasbleUpdate('enabled');
 }
 
-export { createNewCar, deleteCar, selectTrack, unselectTrack, isInputs };
+export { deleteCar, createNewCar, updateOldCar, selectTrack, unselectTrack, isInputs };

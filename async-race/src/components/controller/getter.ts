@@ -1,5 +1,5 @@
 import { ButtonNames, Links } from '../types';
-import { createNewCar } from './eventer';
+import { createNewCar, updateOldCar } from './eventer';
 
 function getCarId(target: HTMLElement): number {
   let carId: number = 0;
@@ -30,19 +30,22 @@ async function getTotalCount(): Promise<number> {
   return amountCars;
 }
 
-async function getCarProperties(event: string): Promise<void> {
+async function getCarProperties(event: string, id: number): Promise<void> {
   let nameCar: string = '';
   let colorCar: string = '';
-  const inputNameCreate: HTMLInputElement | null = document.querySelector('.input__name_create');
+  const inputNameCreate: HTMLInputElement | null = document.querySelector(`.input__name_${event}`);
   if (inputNameCreate) {
     nameCar = inputNameCreate.value;
   }
-  const inputColorCreate: HTMLInputElement | null = document.querySelector('.input__color_create');
+  const inputColorCreate: HTMLInputElement | null = document.querySelector(`.input__color_${event}`);
   if (inputColorCreate) {
     colorCar = inputColorCreate.value;
   }
   if (event === ButtonNames.create) {
     createNewCar(nameCar, colorCar);
+  }
+  if (event === ButtonNames.update) {
+    updateOldCar(nameCar, colorCar, id);
   }
 }
 
