@@ -1,5 +1,6 @@
-import { getCarId, getCarProperties } from './getter';
+import { getCarId, getCarProperties, getTrack } from './getter';
 import { ButtonNames } from '../types';
+import { deleteCar } from './eventer';
 
 class Controller {
   public eventDelegate(event: MouseEvent): void {
@@ -11,7 +12,8 @@ class Controller {
       getCarProperties(`${ButtonNames.create}`);
     }
     if (isRemoveButton) {
-      getCarId(target);
+      deleteCar(getCarId(target));
+      getTrack(target)?.remove();
     }
   }
 }

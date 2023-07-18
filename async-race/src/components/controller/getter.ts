@@ -13,6 +13,11 @@ function getCarId(target: HTMLElement): number {
   return carId;
 }
 
+function getTrack(target: HTMLElement): HTMLElement | null {
+  const track: HTMLElement | null = target.closest('.track');
+  return track || null;
+}
+
 async function getTotalCount(): Promise<number> {
   let amountCars: number = 0;
   const method: string = 'GET';
@@ -37,10 +42,8 @@ async function getCarProperties(event: string): Promise<void> {
     colorCar = inputColorCreate.value;
   }
   if (event === ButtonNames.create) {
-    const amount: number = await getTotalCount();
-    const newCarId: number = amount + 1;
-    createNewCar(nameCar, colorCar, newCarId);
+    createNewCar(nameCar, colorCar);
   }
 }
 
-export { getCarProperties, getCarId };
+export { getCarProperties, getCarId, getTrack };

@@ -1,7 +1,7 @@
 export interface Cars {
   name: string;
   color: string;
-  id: number;
+  id?: number;
 }
 
 export enum ButtonNames {
