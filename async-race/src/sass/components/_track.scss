@@ -14,12 +14,13 @@
   &__progress {
     position: relative;
     flex-grow: 1;
+    margin-right: 80px;
     &::after {
       content: '';
       width: 60px;
       height: 30px;
       position: absolute;
-      right: 80px;
+      right: 0px;
       bottom: 0px;
       background: url('./../assets/ico/flag.svg');
       background-repeat: no-repeat;
@@ -30,10 +31,12 @@
     font-size: 1.4rem;
   }
   &__car {
-    display: block;
+    display: inline-block;
     position: relative;
     height: 50px;
     width: 70px;
+    left: 0px;
+    @extend %transition;
     -webkit-mask-image: url(./../assets/ico/car.svg);
     -webkit-mask-repeat: no-repeat;
     -webkit-mask-size: contain;

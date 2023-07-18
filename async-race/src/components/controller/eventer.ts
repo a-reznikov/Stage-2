@@ -59,7 +59,6 @@ function selectTrack(track: HTMLElement): void {
 
 async function startDrive(id: number): Promise<void> {
   await Engine.eventEngine(id, EngineStatus.started);
-  await Engine.eventEngine(id, EngineStatus.drive);
 }
 
 export { deleteCar, createNewCar, updateOldCar, selectTrack, unselectTrack, isInputs, startDrive };
