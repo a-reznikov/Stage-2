@@ -1,7 +1,17 @@
 import { ButtonNames, Links } from '../types';
-import Car from '../model/car';
+import { createNewCar } from './eventer';
 
-function getCarInfo(): void {}
+function getCarId(target: HTMLElement): number {
+  let carId: number = 0;
+  const track: HTMLElement | null = target.closest('.track');
+  if (track) {
+    const car: HTMLElement | null = track.querySelector('.car');
+    if (car) {
+      carId = Number(car.getAttribute('id'));
+    }
+  }
+  return carId;
+}
 
 async function getTotalCount(): Promise<number> {
   let amountCars: number = 0;
@@ -14,10 +24,6 @@ async function getTotalCount(): Promise<number> {
   }
   return amountCars;
 }
-
-// public getTotalCount(): number {
-//   return this.amountCars;
-// }
 
 async function getCarProperties(event: string): Promise<void> {
   let nameCar: string = '';
@@ -33,10 +39,8 @@ async function getCarProperties(event: string): Promise<void> {
   if (event === ButtonNames.create) {
     const amount: number = await getTotalCount();
     const newCarId: number = amount + 1;
-    const newCar: Car = new Car(nameCar, colorCar, newCarId);
-    console.log(newCar);
-    newCar.createCar(newCar);
+    createNewCar(nameCar, colorCar, newCarId);
   }
 }
 
-export { getCarProperties, getCarInfo };
+export { getCarProperties, getCarId };
