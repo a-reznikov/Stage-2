@@ -1,12 +1,11 @@
 import Controller from '../controller/controller';
 import Loader from '../controller/loader';
-import { Links } from '../types';
 import createTemplate from '../view/create/template';
 
 class App {
   private controller: Controller = new Controller();
 
-  private loader: Loader = new Loader(Links.baseLink);
+  private loader: Loader = new Loader();
 
   public start(): void {
     createTemplate();

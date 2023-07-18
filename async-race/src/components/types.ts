@@ -24,3 +24,10 @@ export enum Links {
   baseLink = 'http://127.0.0.1:3000/',
   garage = 'garage',
 }
+
+export enum Methods {
+  get = 'GET',
+  delete = 'DELETE',
+  post = 'POST',
+  patch = 'PATCH',
+}

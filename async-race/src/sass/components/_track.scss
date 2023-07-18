@@ -43,6 +43,10 @@
   }
 }
 
+.selected {
+  background: gray;
+}
+
 .engine-control {
   &__buttons {
     min-width: 0;
