@@ -18,6 +18,7 @@ export default function renderTrack(car: Cars): HTMLElement {
   engineControl.className = 'track__engine-control engine-control';
   const buttonStart: HTMLButtonElement = createButton(' engine-control', `${ButtonNames.start}`);
   const buttonStop: HTMLButtonElement = createButton(' engine-control', `${ButtonNames.stop}`);
+  buttonStop.setAttribute('disabled', '');
   const progress: HTMLDivElement = document.createElement('div');
   progress.className = 'track__progress progress';
   const carIco: HTMLDivElement = document.createElement('div');
