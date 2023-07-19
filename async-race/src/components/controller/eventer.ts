@@ -1,6 +1,6 @@
 import Car from '../model/car';
 import Engine from '../model/engine';
-import { EngineStatus } from '../types';
+import { Cars, EngineStatus } from '../types';
 
 function deleteCar(id: number): void {
   Car.deleteCar(id);
@@ -23,6 +23,17 @@ function isInputs(target: HTMLElement): boolean {
     return true;
   }
   return false;
+}
+
+function isControl(target: HTMLElement): boolean {
+  let isControlButton: boolean = false;
+  const controlButtons: NodeListOf<Element> = document.querySelectorAll('.control__buttons ');
+  controlButtons.forEach((button) => {
+    if (target === button) {
+      isControlButton = true;
+    }
+  });
+  return isControlButton;
 }
 
 function toggleDiasbleUpdate(status: string): void {
@@ -61,4 +72,36 @@ async function startDrive(id: number): Promise<void> {
   await Engine.eventEngine(id, EngineStatus.started);
 }
 
-export { deleteCar, createNewCar, updateOldCar, selectTrack, unselectTrack, isInputs, startDrive };
+async function stopDrive(id: number): Promise<void> {
+  await Engine.eventEngine(id, EngineStatus.stopped);
+}
+
+async function startRace(cars: Cars[]): Promise<void> {
+  cars.forEach((car: Cars) => {
+    if (car.id) {
+      startDrive(car.id);
+    }
+  });
+}
+
+async function resetRace(cars: Cars[]): Promise<void> {
+  cars.forEach((car: Cars) => {
+    if (car.id) {
+      // stopEngine(car.id);
+    }
+  });
+}
+
+export {
+  deleteCar,
+  createNewCar,
+  updateOldCar,
+  selectTrack,
+  unselectTrack,
+  isInputs,
+  isControl,
+  startDrive,
+  stopDrive,
+  startRace,
+  resetRace,
+};

@@ -4,6 +4,10 @@ export interface Cars {
   id?: number;
 }
 
+export interface Timers {
+  [key: number]: NodeJS.Timer;
+}
+
 export interface Engines {
   velocity: 64;
   distance: 500000;

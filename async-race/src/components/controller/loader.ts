@@ -1,5 +1,6 @@
 import generateCars from '../model/generator';
-import { Cars, Links, Methods } from '../types';
+import { ButtonNames, Cars, Links, Methods } from '../types';
+import { resetRace, startRace } from './eventer';
 
 class Loader {
   public async getCars(): Promise<void> {
@@ -8,6 +9,18 @@ class Loader {
       const response: Response = await fetch(`${Links.baseLink}${Links.garage}`, { method });
       const data: Cars[] = await response.json();
       generateCars(data);
+    } catch (err: Error | unknown) {
+      console.error(err);
+    }
+  }
+
+  public static async getCarsOnPage(page: string, event: string): Promise<void> {
+    const method: string = Methods.get;
+    try {
+      const response: Response = await fetch(`${Links.baseLink}${Links.garage}?_page=${page}&_limit=7`, { method });
+      const data: Cars[] = await response.json();
+      if (event === ButtonNames.race) startRace(data);
+      if (event === ButtonNames.reset) resetRace(data);
     } catch (err: Error | unknown) {
       console.error(err);
     }
