@@ -1,7 +1,7 @@
 import { getCarId, getCarProperties } from './getter';
 import { ButtonNames } from '../types';
 import { isControl } from './eventer';
-import eventRaceControl from './raceController';
+import { eventRaceControl } from './raceController';
 import eventTrack from './trackController';
 import Paginator from './paginator';
 

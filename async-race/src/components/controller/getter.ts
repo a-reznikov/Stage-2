@@ -1,4 +1,4 @@
-import { ButtonNames, Links, Methods } from '../types';
+import { ButtonNames } from '../types';
 import { createNewCar, updateOldCar } from './eventer';
 
 function getCarId(target: HTMLElement): number {
@@ -16,18 +16,6 @@ function getCarId(target: HTMLElement): number {
 function getTrack(target: HTMLElement): HTMLElement | null {
   const track: HTMLElement | null = target.closest('.track');
   return track || null;
-}
-
-async function getTotalCount(): Promise<number> {
-  let amountCars: number = 0;
-  const method: string = Methods.get;
-  try {
-    const response: Response = await fetch(`${Links.baseLink}${Links.garage}?_limit=${Links.limitCars}`, { method });
-    amountCars = Number(response.headers.get('X-Total-Count'));
-  } catch (err: Error | unknown) {
-    console.error(err);
-  }
-  return amountCars;
 }
 
 async function getCarProperties(event: string, id: number): Promise<void> {
@@ -49,4 +37,4 @@ async function getCarProperties(event: string, id: number): Promise<void> {
   }
 }
 
-export { getCarProperties, getCarId, getTrack, getTotalCount };
+export { getCarProperties, getCarId, getTrack };

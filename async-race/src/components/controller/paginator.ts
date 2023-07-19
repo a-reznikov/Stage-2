@@ -1,5 +1,4 @@
-import { Links, Pages } from '../types';
-import { getTotalCount } from './getter';
+import { Links, Methods, Pages } from '../types';
 import Loader from './loader';
 
 class Paginator {
@@ -11,9 +10,32 @@ class Paginator {
     this.currentGaragePage = newPage;
   }
 
+  public static getCurrentPage(page: string): number {
+    let pageNember: number = 0;
+    if (page === Pages.garage) {
+      pageNember = this.currentGaragePage;
+    }
+    if (page === Pages.winners) {
+      pageNember = this.currentGaragePage;
+    }
+    return pageNember;
+  }
+
+  public static async getTotalCount(): Promise<number> {
+    let amountCars: number = 0;
+    const method: string = Methods.get;
+    try {
+      const response: Response = await fetch(`${Links.baseLink}${Links.garage}?_limit=${Links.limitCars}`, { method });
+      amountCars = Number(response.headers.get('X-Total-Count'));
+    } catch (err: Error | unknown) {
+      console.error(err);
+    }
+    return amountCars;
+  }
+
   public static async getAmountPage(pageName: string): Promise<number> {
     let amountPage: number = 0;
-    const amountCars: number = await getTotalCount();
+    const amountCars: number = await this.getTotalCount();
     if (pageName === Pages.garage) {
       amountPage = Math.ceil(amountCars / Links.limitCars);
     }

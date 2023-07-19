@@ -1,7 +1,7 @@
 import generateCars from '../model/generator';
-import { ButtonNames, Cars, Links, Methods } from '../types';
+import { Cars, Links, Methods } from '../types';
+import changeAmountCars from '../view/render/amountCars';
 import changePageNumber from '../view/render/pageNumber';
-import { resetRace, startRace } from './eventer';
 
 class Loader {
   public static async getCars(page: number): Promise<void> {
@@ -12,20 +12,10 @@ class Loader {
         { method }
       );
       const data: Cars[] = await response.json();
+      const amountCars = Number(response.headers.get('X-Total-Count'));
       generateCars(data);
       changePageNumber(page);
-    } catch (err: Error | unknown) {
-      console.error(err);
-    }
-  }
-
-  public static async getCarsOnPage(page: number, event: string): Promise<void> {
-    const method: string = Methods.get;
-    try {
-      const response: Response = await fetch(`${Links.baseLink}${Links.garage}?_page=${page}&_limit=7`, { method });
-      const data: Cars[] = await response.json();
-      if (event === ButtonNames.race) startRace(data);
-      if (event === ButtonNames.reset) resetRace(data);
+      changeAmountCars(amountCars);
     } catch (err: Error | unknown) {
       console.error(err);
     }
