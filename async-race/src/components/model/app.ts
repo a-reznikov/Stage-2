@@ -9,7 +9,7 @@ class App {
 
   public start(): void {
     createTemplate();
-    this.loader.getCars();
+    this.loader.getCars(1);
 
     const body: HTMLElement | null = document.querySelector('.body');
     if (body) {

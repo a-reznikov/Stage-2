@@ -31,6 +31,8 @@ export enum ButtonNames {
 
 export enum Links {
   baseLink = 'http://127.0.0.1:3000/',
+  limitCars = '7',
+  limitWinners = '10',
   garage = 'garage',
   engine = 'engine',
 }
