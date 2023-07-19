@@ -87,7 +87,7 @@ async function startRace(cars: Cars[]): Promise<void> {
 async function resetRace(cars: Cars[]): Promise<void> {
   cars.forEach((car: Cars) => {
     if (car.id) {
-      // stopEngine(car.id);
+      stopDrive(car.id);
     }
   });
 }
