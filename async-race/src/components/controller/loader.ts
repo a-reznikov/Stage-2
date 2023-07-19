@@ -1,5 +1,6 @@
 import generateCars from '../model/generator';
 import { ButtonNames, Cars, Links, Methods } from '../types';
+import changePageNumber from '../view/render/pageNumber';
 import { resetRace, startRace } from './eventer';
 
 class Loader {
@@ -12,6 +13,7 @@ class Loader {
       );
       const data: Cars[] = await response.json();
       generateCars(data);
+      changePageNumber(page);
     } catch (err: Error | unknown) {
       console.error(err);
     }
