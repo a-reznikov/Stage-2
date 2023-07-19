@@ -5,11 +5,9 @@ import createTemplate from '../view/create/template';
 class App {
   private controller: Controller = new Controller();
 
-  private loader: Loader = new Loader();
-
   public start(): void {
     createTemplate();
-    this.loader.getCars(1);
+    Loader.getCars(1);
 
     const body: HTMLElement | null = document.querySelector('.body');
     if (body) {

@@ -3,7 +3,7 @@ import { ButtonNames, Cars, Links, Methods } from '../types';
 import { resetRace, startRace } from './eventer';
 
 class Loader {
-  public async getCars(page: number): Promise<void> {
+  public static async getCars(page: number): Promise<void> {
     const method: string = Methods.get;
     try {
       const response: Response = await fetch(
