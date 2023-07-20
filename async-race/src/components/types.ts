@@ -8,6 +8,11 @@ export interface Timers {
   [key: number]: NodeJS.Timer;
 }
 
+export interface Winner {
+  winnerId: number;
+  winnerTime: number;
+}
+
 export interface Engines {
   velocity: 64;
   distance: 500000;
