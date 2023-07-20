@@ -53,6 +53,7 @@ export enum EngineStatus {
   drive = 'drive',
   started = 'started',
   stopped = 'stopped',
+  finished = 'finished',
 }
 
 export enum Pages {
