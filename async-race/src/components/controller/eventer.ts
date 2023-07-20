@@ -76,12 +76,17 @@ async function stopDrive(id: number): Promise<void> {
   await Engine.eventEngine(id, EngineStatus.stopped);
 }
 
+async function startDriveRace(cars: Cars[]): Promise<void> {
+  await Engine.eventEngineRace(cars, EngineStatus.started);
+}
+
 async function startRace(cars: Cars[]): Promise<void> {
-  cars.forEach((car: Cars) => {
-    if (car.id) {
-      startDrive(car.id);
-    }
-  });
+  startDriveRace(cars);
+  // cars.forEach((car: Cars) => {
+  //   if (car.id) {
+  //     startDrive(car.id);
+  //   }
+  // });
 }
 
 async function resetRace(cars: Cars[]): Promise<void> {
