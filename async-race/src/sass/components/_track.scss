@@ -43,6 +43,10 @@
     mask-image: url(./../assets/ico/car.svg);
     mask-repeat: no-repeat;
     mask-size: contain;
+    &_body {
+      height: 25px;
+      width: 35px;
+    }
   }
 }
 

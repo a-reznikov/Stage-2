@@ -1,26 +1,27 @@
-import { ButtonNames } from '../../types';
+import { Cars, Winners } from '../../types';
 
-export default function toggleWinnerText(id?: number, event?: string, time?: number): void {
-  const winner: HTMLElement | null = document.querySelector('.garage__winner');
-  if (id && event && time) {
-    const carIco: HTMLElement | null = document.getElementById(`${id}`);
-    const timeInSeconds: string = (time / 1000).toFixed(2);
-    if (carIco) {
-      const track: HTMLElement | null = carIco.closest('.track');
-      if (track) {
-        const carName: HTMLSpanElement | null = track.querySelector('.track__car-name');
-        if (carName) {
-          if (winner) {
-            if (event === ButtonNames.race) {
-              const name: string | null = carName.textContent;
-              winner.textContent = `${name} went first [${timeInSeconds}s]!`;
-              winner.classList.remove('winner_hidden');
-            }
-          }
-        }
-      }
-    }
-  } else if (winner) {
-    winner.classList.add('winner_hidden');
+export default function renderWinner(car: Cars, winner: Winners, position: number): void {
+  const scoreBody: HTMLElement | null = document.querySelector('.score__body');
+  const number: HTMLSpanElement = document.createElement('span');
+  number.className = `body__number`;
+  number.textContent = `${position}`;
+  const carIco: HTMLDivElement = document.createElement('div');
+  carIco.className = 'track__car track__car_body';
+  carIco.style.background = car.color;
+  const carBrand: HTMLSpanElement = document.createElement('span');
+  carBrand.className = `body__car-brand`;
+  carBrand.textContent = `${car.name}`;
+  const wins: HTMLSpanElement = document.createElement('span');
+  wins.className = `body__wins`;
+  wins.textContent = `${winner.wins}`;
+  const time: HTMLSpanElement = document.createElement('span');
+  time.className = `body__time`;
+  time.textContent = `${winner.time}`;
+  if (scoreBody) {
+    scoreBody.append(number);
+    scoreBody.append(carIco);
+    scoreBody.append(carBrand);
+    scoreBody.append(wins);
+    scoreBody.append(time);
   }
 }

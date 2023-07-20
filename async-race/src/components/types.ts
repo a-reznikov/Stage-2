@@ -4,6 +4,12 @@ export interface Cars {
   id?: number;
 }
 
+export interface Winners {
+  id: number;
+  wins: number;
+  time: number;
+}
+
 export interface Timers {
   [key: number]: NodeJS.Timer;
 }
@@ -39,6 +45,7 @@ export enum Links {
   limitCars = 7,
   limitWinners = 10,
   garage = 'garage',
+  winners = 'winners',
   engine = 'engine',
 }
 

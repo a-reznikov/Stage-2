@@ -27,13 +27,24 @@ function isInputs(target: HTMLElement): boolean {
 
 function isControl(target: HTMLElement): boolean {
   let isControlButton: boolean = false;
-  const controlButtons: NodeListOf<Element> = document.querySelectorAll('.control__buttons ');
+  const controlButtons: NodeListOf<Element> = document.querySelectorAll('.control__buttons');
   controlButtons.forEach((button) => {
     if (target === button) {
       isControlButton = true;
     }
   });
   return isControlButton;
+}
+
+function isNavigation(target: HTMLElement): boolean {
+  let isNavButton: boolean = false;
+  const navButtons: NodeListOf<Element> = document.querySelectorAll('.nav__buttons');
+  navButtons.forEach((button) => {
+    if (target === button) {
+      isNavButton = true;
+    }
+  });
+  return isNavButton;
 }
 
 function toggleDiasbleUpdate(status: string): void {
@@ -82,11 +93,6 @@ async function startDriveRace(cars: Cars[]): Promise<void> {
 
 async function startRace(cars: Cars[]): Promise<void> {
   startDriveRace(cars);
-  // cars.forEach((car: Cars) => {
-  //   if (car.id) {
-  //     startDrive(car.id);
-  //   }
-  // });
 }
 
 async function resetRace(cars: Cars[]): Promise<void> {
@@ -105,6 +111,7 @@ export {
   unselectTrack,
   isInputs,
   isControl,
+  isNavigation,
   startDrive,
   stopDrive,
   startRace,

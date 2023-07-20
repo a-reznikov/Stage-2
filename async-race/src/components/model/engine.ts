@@ -2,7 +2,7 @@ import { ButtonNames, Cars, EngineStatus, Engines, Links, Methods, Timers, Winne
 import activeAnimation from '../view/render/animation';
 import resetPosition from '../view/render/reset';
 import { toggleButton, toggleRaceButton } from '../view/render/toggleButton';
-import toggleWinnerText from '../view/render/winner';
+import toggleWinnerText from '../view/render/winnerMessage';
 
 class Engine {
   public static timers: Timers = {};

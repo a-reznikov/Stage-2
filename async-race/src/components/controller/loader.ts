@@ -1,5 +1,5 @@
-import generateCars from '../model/generator';
-import { Cars, Links, Methods } from '../types';
+import { generateCars, generateWinners } from '../model/generator';
+import { Cars, Links, Methods, Winners } from '../types';
 import changeAmountCars from '../view/render/amountCars';
 import changePageNumber from '../view/render/pageNumber';
 
@@ -21,10 +21,18 @@ class Loader {
     }
   }
 
-  public static async getCar(id: number): Promise<void> {
+  public static async getWinners(page: number): Promise<void> {
     const method: string = Methods.get;
     try {
-      await fetch(`${Links.baseLink}${Links.garage}/${id}`, { method });
+      const response: Response = await fetch(
+        `${Links.baseLink}${Links.winners}?_page=${page}&_limit=${Links.limitWinners}`,
+        { method }
+      );
+      const data: Winners[] = await response.json();
+      const amountWinners = Number(response.headers.get('X-Total-Count'));
+      generateWinners(data);
+      console.log(data);
+      console.log(amountWinners);
     } catch (err: Error | unknown) {
       console.error(err);
     }

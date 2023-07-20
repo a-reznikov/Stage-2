@@ -7,7 +7,8 @@ class App {
 
   public start(): void {
     createTemplate();
-    Loader.getCars(1);
+    Loader.getCars(1); // TODO this is current page number, it will get from Local Storage.
+    Loader.getWinners(1); // TODO this is current page number, it will get from Local Storage.
 
     const body: HTMLElement | null = document.querySelector('.body');
     if (body) {
