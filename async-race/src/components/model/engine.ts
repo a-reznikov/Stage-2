@@ -3,6 +3,7 @@ import activeAnimation from '../view/render/animation';
 import resetPosition from '../view/render/reset';
 import { toggleButton, toggleRaceButton } from '../view/render/toggleButton';
 import toggleWinnerText from '../view/render/winnerMessage';
+import Win from './win';
 
 class Engine {
   public static timers: Timers = {};
@@ -45,7 +46,9 @@ class Engine {
         if (!this.winner.winnerId) {
           this.winner.winnerId = id;
           this.winner.winnerTime = times;
-          toggleWinnerText(id, race, times);
+          const time: number = Number((times / 1000).toFixed(2));
+          Win.eventWin(id, time);
+          toggleWinnerText(id, race, time);
         }
       }
     } catch (err: Error | unknown) {

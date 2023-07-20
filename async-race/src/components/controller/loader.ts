@@ -31,8 +31,6 @@ class Loader {
       const data: Winners[] = await response.json();
       const amountWinners = Number(response.headers.get('X-Total-Count'));
       generateWinners(data);
-      console.log(data);
-      console.log(amountWinners);
     } catch (err: Error | unknown) {
       console.error(err);
     }

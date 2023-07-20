@@ -31,7 +31,6 @@ function generateCars(cars: Cars[]): void {
 function generateWinners(winners: Winners[]): void {
   const amountWinnersOnPage: number = winners.length;
   let counter: number = 0;
-  console.log('amountWinnersOnPage', amountWinnersOnPage);
   const scoreBody: HTMLElement | null = document.querySelector('.score__body');
   if (scoreBody) {
     scoreBody.innerHTML = '';
@@ -40,8 +39,6 @@ function generateWinners(winners: Winners[]): void {
     async (winner: Winners): Promise<void> => {
       counter += 1;
       const car: Cars = await getCar(winner.id);
-      console.log(car);
-      console.log(winner);
       renderWinner(car, winner, counter);
     }
   );
