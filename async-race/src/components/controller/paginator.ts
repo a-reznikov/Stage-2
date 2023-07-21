@@ -16,7 +16,7 @@ class Paginator {
       pageNember = this.currentGaragePage;
     }
     if (page === Pages.winners) {
-      pageNember = this.currentGaragePage;
+      pageNember = this.currenWinnersPage;
     }
     return pageNember;
   }

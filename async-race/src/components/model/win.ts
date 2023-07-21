@@ -1,7 +1,14 @@
-import { Links, Methods, Winners } from '../types';
+import Loader from '../controller/loader';
+import Paginator from '../controller/paginator';
+import { Links, Methods, Pages, Winners } from '../types';
 
 class Win {
   constructor(public id: number, public wins: number, public time: number) {}
+
+  public static updatePage(): void {
+    const page: number = Paginator.getCurrentPage(`${Pages.winners}`);
+    Loader.getWinners(page);
+  }
 
   public static async createWinner(body: Winners): Promise<void> {
     const method: string = Methods.post;
@@ -13,6 +20,7 @@ class Win {
         },
         body: JSON.stringify(body),
       });
+      this.updatePage();
     } catch (err: Error | unknown) {
       console.error(err);
     }

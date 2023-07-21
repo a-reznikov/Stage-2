@@ -1,13 +1,13 @@
 import Loader from '../controller/loader';
 import Paginator from '../controller/paginator';
-import { Cars, Links, Methods } from '../types';
+import { Cars, Links, Methods, Pages } from '../types';
 import updateTrack from '../view/render/updateTrack';
 
 class Car {
   constructor(public name: string, public color: string) {}
 
   public static updatePage(): void {
-    const page: number = Paginator.getCurrentPage('garage');
+    const page: number = Paginator.getCurrentPage(`${Pages.garage}`);
     Loader.getCars(page);
   }
 
