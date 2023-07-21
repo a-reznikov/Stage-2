@@ -47,7 +47,7 @@ class Engine {
           this.winner.winnerId = id;
           this.winner.winnerTime = times;
           const time: number = Number((times / 1000).toFixed(2));
-          Win.eventWin(id, time);
+          Win.eventWin(id, race, time);
           toggleWinnerText(id, race, time);
         }
       }

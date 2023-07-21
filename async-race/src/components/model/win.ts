@@ -1,9 +1,17 @@
 import Loader from '../controller/loader';
 import Paginator from '../controller/paginator';
-import { Links, Methods, Pages, Winners } from '../types';
+import { ButtonNames, Links, Methods, Pages, Winners } from '../types';
 
 class Win {
   constructor(public id: number, public wins: number, public time: number) {}
+
+  private static errorHandler(res: Response): Response {
+    if (!res.ok) {
+      if (res.status === 404) console.log(`There is no such winner`);
+      throw Error(res.statusText);
+    }
+    return res;
+  }
 
   public static updatePage(): void {
     const page: number = Paginator.getCurrentPage(`${Pages.winners}`);
@@ -26,12 +34,20 @@ class Win {
     }
   }
 
-  private static errorHandler(res: Response): Response {
-    if (!res.ok) {
-      if (res.status === 404) console.log(`There is no such winner`);
-      throw Error(res.statusText);
+  public static async updateWinner(body: Winners, id: number): Promise<void> {
+    const method: string = Methods.patch;
+    try {
+      await fetch(`${Links.baseLink}${Links.winners}/${id}`, {
+        method: `${method}`,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(body),
+      });
+      this.updatePage();
+    } catch (err: Error | unknown) {
+      console.error(err);
     }
-    return res;
   }
 
   public static async getWinner(id: number): Promise<Winners> {
@@ -66,7 +82,7 @@ class Win {
     return winners;
   }
 
-  public static async eventWin(id: number, time: number): Promise<void> {
+  public static async eventWin(id: number, event: string, time?: number): Promise<void> {
     let isWinner: boolean = false;
     const winners: Winners[] = await this.getWinners();
     winners.forEach((winner) => {
@@ -75,11 +91,28 @@ class Win {
       }
     });
     if (isWinner) {
-      console.log('Need Update');
+      if (event === ButtonNames.update) {
+        this.updatePage();
+      }
+      if (event === ButtonNames.race) {
+        const winner: Winners = await this.getWinner(id);
+        const countWins: number = winner.wins + 1;
+        if (time) {
+          if (time < winner.time) {
+            const oldWinner: Win = new Win(id, countWins, time);
+            this.updateWinner(oldWinner, id);
+          } else {
+            const oldWinner: Win = new Win(id, countWins, winner.time);
+            this.updateWinner(oldWinner, id);
+          }
+        }
+      }
     } else {
       const firstWin: number = 1;
-      const newWinner: Win = new Win(id, firstWin, time);
-      this.createWinner(newWinner);
+      if (time) {
+        const newWinner: Win = new Win(id, firstWin, time);
+        this.createWinner(newWinner);
+      }
     }
   }
 }

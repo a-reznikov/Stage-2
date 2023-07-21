@@ -1,7 +1,8 @@
 import Loader from '../controller/loader';
 import Paginator from '../controller/paginator';
-import { Cars, Links, Methods, Pages } from '../types';
+import { ButtonNames, Cars, Links, Methods, Pages } from '../types';
 import updateTrack from '../view/render/updateTrack';
+import Win from './win';
 
 class Car {
   constructor(public name: string, public color: string) {}
@@ -48,6 +49,7 @@ class Car {
         body: JSON.stringify(body),
       });
       updateTrack(body, id);
+      Win.eventWin(id, ButtonNames.update);
     } catch (err: Error | unknown) {
       console.error(err);
     }
