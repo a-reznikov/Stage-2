@@ -13,6 +13,8 @@ class Paginator {
     if (pageName === Pages.winners) {
       this.currenWinnersPage = newPage;
     }
+    console.log('this.currentGaragePage', this.currentGaragePage);
+    console.log('this.currenWinnersPage', this.currenWinnersPage);
   }
 
   public static getCurrentPage(pageName: string): number {
@@ -26,11 +28,13 @@ class Paginator {
     return pageNember;
   }
 
-  public static async getTotalCount(): Promise<number> {
+  public static async getTotalCount(pageName: string): Promise<number> {
     let amountCars: number = 0;
+    const section: string = pageName === Links.garage ? Links.garage : Links.winners;
+    const limit: number = pageName === Links.garage ? Links.limitCars : Links.limitWinners;
     const method: string = Methods.get;
     try {
-      const response: Response = await fetch(`${Links.baseLink}${Links.garage}?_limit=${Links.limitCars}`, { method });
+      const response: Response = await fetch(`${Links.baseLink}${section}?_limit=${limit}`, { method });
       amountCars = Number(response.headers.get('X-Total-Count'));
     } catch (err: Error | unknown) {
       console.error(err);
@@ -40,7 +44,7 @@ class Paginator {
 
   public static async getAmountPage(pageName: string): Promise<number> {
     let amountPage: number = 0;
-    const amountCars: number = await this.getTotalCount();
+    const amountCars: number = await this.getTotalCount(pageName);
     if (pageName === Pages.garage) {
       amountPage = Math.ceil(amountCars / Links.limitCars);
     }
