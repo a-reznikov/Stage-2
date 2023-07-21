@@ -10,6 +10,7 @@ export default function createForm(buttonName: string): HTMLFormElement {
   const inputColor: HTMLInputElement = document.createElement('input');
   inputColor.className = `form__input input__color_${buttonName}`;
   inputColor.setAttribute('type', 'color');
+  inputColor.value = `#FFFFFF`;
   const buttonForm: HTMLButtonElement = createButton('form', `${buttonName}`);
   if (buttonName === ButtonNames.update) {
     inputName.setAttribute('disabled', '');
