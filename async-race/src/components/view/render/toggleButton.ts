@@ -51,7 +51,6 @@ function changeDisableButton(amount: number, page: number, section: string): voi
   if (!amount) {
     lastPage = 1;
   }
-  console.log('amount:', amount, 'page:', page, 'lastPage', lastPage, 'section:', section);
   if (pagePaginetion) {
     if (page === firstPage) {
       const button: HTMLElement | null = pagePaginetion.querySelector(`.pagination__buttons_previous`);

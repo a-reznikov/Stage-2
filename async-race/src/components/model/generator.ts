@@ -28,17 +28,21 @@ function generateCars(cars: Cars[]): void {
   });
 }
 
-function generateWinners(winners: Winners[]): void {
-  const amountWinnersOnPage: number = winners.length;
-  let counter: number = 0;
+function generateWinners(winners: Winners[], page: number): void {
+  let counter: number = 1;
+  if (page > counter) {
+    counter = (page - 1) * 10;
+  } else {
+    counter = 0;
+  }
   const scoreBody: HTMLElement | null = document.querySelector('.score__body');
   if (scoreBody) {
     scoreBody.innerHTML = '';
   }
   winners.forEach(
     async (winner: Winners): Promise<void> => {
-      counter += 1;
       const car: Cars = await getCar(winner.id);
+      counter += 1;
       renderWinner(car, winner, counter);
     }
   );

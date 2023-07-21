@@ -13,8 +13,6 @@ class Paginator {
     if (pageName === Pages.winners) {
       this.currenWinnersPage = newPage;
     }
-    console.log('this.currentGaragePage', this.currentGaragePage);
-    console.log('this.currenWinnersPage', this.currenWinnersPage);
   }
 
   public static getCurrentPage(pageName: string): number {

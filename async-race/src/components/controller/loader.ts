@@ -46,7 +46,7 @@ class Loader {
       const response: Response = await fetch(url, { method });
       const data: Winners[] = await response.json();
       const amountWinners = Number(response.headers.get('X-Total-Count'));
-      generateWinners(data);
+      generateWinners(data, page);
       changePageNumber(page, Links.winners);
       changeAmount(amountWinners, Links.winners);
       changeDisableButton(amountWinners, page, Links.winners);
