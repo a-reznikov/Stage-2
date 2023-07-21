@@ -16,6 +16,7 @@
   top: 50%;
   transform: translate(-50%, -50%);
   @include font(700, 3.4rem, 100%, $color-light);
+  text-align: center;
   text-shadow: #FC0 1px 0 10px;
   &_hidden{
     display: none;

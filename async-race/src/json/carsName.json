@@ -1,0 +1,26 @@
+{
+  "brands": [
+    "Nissan", 
+    "Renault",
+    "Skoda",
+    "Toyota",
+    "VW",
+    "Audi",
+    "Ford",
+    "BMW",
+    "Honda",
+    "Porsche"
+  ],
+  "models": [
+    "X-TRAIL", 
+    "Logan",
+    "Octavia",
+    "Corolla",
+    "Polo",
+    "A4",
+    "Mustang",
+    "525i",
+    "Civic",
+    "Cayenne"
+  ]
+}

@@ -3,6 +3,7 @@ import Paginator from '../controller/paginator';
 import { ButtonNames, Cars, Links, Methods, Pages } from '../types';
 import updateTrack from '../view/render/updateTrack';
 import Win from './win';
+import carsName from '../../json/carsName.json';
 
 class Car {
   constructor(public name: string, public color: string) {}
@@ -22,6 +23,26 @@ class Car {
         },
         body: JSON.stringify(body),
       });
+      Car.updatePage();
+    } catch (err: Error | unknown) {
+      console.error(err);
+    }
+  }
+
+  public static async createCars(cars: Cars[]): Promise<void> {
+    const method: string = Methods.post;
+    try {
+      await Promise.all(
+        cars.map((car: Cars) =>
+          fetch(`${Links.baseLink}${Links.garage}`, {
+            method: `${method}`,
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(car),
+          })
+        )
+      );
       Car.updatePage();
     } catch (err: Error | unknown) {
       console.error(err);
@@ -54,6 +75,39 @@ class Car {
     } catch (err: Error | unknown) {
       console.error(err);
     }
+  }
+
+  public static randomNumber(amountNames: number): number {
+    const number: number = Math.floor(Math.random() * amountNames);
+    return number;
+  }
+
+  public static randomColor(): string {
+    const startColorCode: number = 2;
+    const endColorCode: number = 8;
+    const color: string = `${Math.random().toString(16)}000000$`.substring(startColorCode, endColorCode).toUpperCase();
+    return color;
+  }
+
+  public static generateNewCar(): Cars {
+    const amountNames: number = carsName.brands.length;
+    const brend: string = `${carsName.brands[this.randomNumber(amountNames)]}`;
+    const model: string = `${carsName.models[this.randomNumber(amountNames)]}`;
+    const nameCar: string = `${brend} ${model}`;
+    const colorCar: string = `#${this.randomColor()}`;
+    const newCar: Cars = new Car(nameCar, colorCar);
+    return newCar;
+  }
+
+  public static generateRandomCars(): void {
+    const amountCars: number = 100;
+    const randomCars: Cars[] = [];
+    for (let i = 0; i < amountCars; ) {
+      const newCar: Cars = this.generateNewCar();
+      randomCars.push(newCar);
+      i += 1;
+    }
+    this.createCars(randomCars);
   }
 }
 

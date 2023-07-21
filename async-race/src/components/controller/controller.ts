@@ -1,7 +1,7 @@
 import { getCarId, getCarProperties } from './getter';
 import { ButtonNames } from '../types';
 import { isControl, isNavigation } from './eventer';
-import { eventRaceControl } from './raceController';
+import { eventControlButton } from './raceController';
 import eventTrack from './trackController';
 import Paginator from './paginator';
 import changeSection from '../view/render/section';
@@ -35,7 +35,7 @@ class Controller {
       getCarProperties(`${ButtonNames.update}`, Controller.idSelectedCar);
     }
     if (isControlButton) {
-      eventRaceControl(target);
+      eventControlButton(target);
     }
     if (isNav) {
       changeSection(target);

@@ -1,3 +1,4 @@
+import Car from '../model/car';
 import { ButtonNames, Cars, Links, Methods } from '../types';
 import { resetRace, startRace } from './eventer';
 import Paginator from './paginator';
@@ -16,9 +17,10 @@ async function getCarsOnPage(page: number, event: string): Promise<void> {
   }
 }
 
-function eventRaceControl(target: HTMLElement): void {
+function eventControlButton(target: HTMLElement): void {
   const isRaceStartButton: boolean = target.classList.contains('control__buttons_race');
   const isRaceResetButton: boolean = target.classList.contains('control__buttons_reset');
+  const isGenerateButton: boolean = target.classList.contains('control__buttons_generate-cars');
   const currentPage: number = Paginator.getCurrentPage('garage');
   if (isRaceStartButton) {
     getCarsOnPage(currentPage, ButtonNames.race);
@@ -26,6 +28,9 @@ function eventRaceControl(target: HTMLElement): void {
   if (isRaceResetButton) {
     getCarsOnPage(currentPage, ButtonNames.reset);
   }
+  if (isGenerateButton) {
+    Car.generateRandomCars();
+  }
 }
 
-export { getCarsOnPage, eventRaceControl };
+export { getCarsOnPage, eventControlButton };
