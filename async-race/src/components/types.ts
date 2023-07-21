@@ -29,6 +29,11 @@ export interface Sort {
   order: string;
 }
 
+export interface PagesNumber {
+  garage: number;
+  winners: number;
+}
+
 export enum ButtonNames {
   toGarage = 'to garage',
   toWinners = 'to winners',

@@ -1,14 +1,21 @@
 import Controller from '../controller/controller';
 import Loader from '../controller/loader';
+import { PagesNumber } from '../types';
 import createTemplate from '../view/create/template';
 
 class App {
   private controller: Controller = new Controller();
 
-  public start(): void {
+  public start(pagesNumber?: PagesNumber): void {
+    const firstPage: number = 1;
     createTemplate();
-    Loader.getCars(1); // TODO this is current page number, it will get from Local Storage.
-    Loader.getWinners(1); // TODO this is current page number, it will get from Local Storage.
+    if (pagesNumber) {
+      Loader.getCars(pagesNumber.garage);
+      Loader.getWinners(pagesNumber.winners);
+    } else {
+      Loader.getCars(firstPage);
+      Loader.getWinners(firstPage);
+    }
 
     const body: HTMLElement | null = document.querySelector('.body');
     if (body) {

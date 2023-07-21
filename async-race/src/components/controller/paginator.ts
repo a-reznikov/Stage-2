@@ -1,4 +1,4 @@
-import { Links, Methods, Order, Pages, Sort, Sorted } from '../types';
+import { Links, Methods, Order, Pages, PagesNumber, Sort, Sorted } from '../types';
 import Loader from './loader';
 
 class Paginator {
@@ -13,6 +13,14 @@ class Paginator {
     if (pageName === Pages.winners) {
       this.currenWinnersPage = newPage;
     }
+  }
+
+  public static getPagesNumber(): PagesNumber {
+    const numbers: PagesNumber = {
+      garage: this.currentGaragePage,
+      winners: this.currenWinnersPage,
+    };
+    return numbers;
   }
 
   public static getCurrentPage(pageName: string): number {
