@@ -2,6 +2,7 @@ import { generateCars, generateWinners } from '../model/generator';
 import { Cars, Links, Methods, Winners } from '../types';
 import changeAmount from '../view/render/amount';
 import changePageNumber from '../view/render/pageNumber';
+import { changeDisableButton } from '../view/render/toggleButton';
 
 class Loader {
   public static urlMaker(section: string, page: number, limit: number, sort?: string, order?: string): string {
@@ -27,6 +28,7 @@ class Loader {
       generateCars(data);
       changePageNumber(page, Links.garage);
       changeAmount(amountCars, Links.garage);
+      changeDisableButton(amountCars, page, Links.garage);
     } catch (err: Error | unknown) {
       console.error(err);
     }
@@ -47,6 +49,7 @@ class Loader {
       generateWinners(data);
       changePageNumber(page, Links.winners);
       changeAmount(amountWinners, Links.winners);
+      changeDisableButton(amountWinners, page, Links.winners);
     } catch (err: Error | unknown) {
       console.error(err);
     }

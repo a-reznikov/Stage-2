@@ -1,4 +1,4 @@
-import { ButtonNames, EngineStatus } from '../../types';
+import { ButtonNames, EngineStatus, Links, Pages } from '../../types';
 
 function toggleButton(id: number, event: string): void {
   const carIco: HTMLElement | null = document.getElementById(`${id}`);
@@ -38,4 +38,40 @@ function toggleRaceButton(event: string): void {
   }
 }
 
-export { toggleButton, toggleRaceButton };
+function changeDisableButton(amount: number, page: number, section: string): void {
+  const firstPage: number = 1;
+  let lastPage: number = 1;
+  const pagePaginetion: HTMLElement | null = document.querySelector(`.${section}__pagination`);
+  if (section === Pages.garage) {
+    lastPage = Math.ceil(amount / Links.limitCars);
+  }
+  if (section === Pages.winners) {
+    lastPage = Math.ceil(amount / Links.limitWinners);
+  }
+  if (!amount) {
+    lastPage = 1;
+  }
+  console.log('amount:', amount, 'page:', page, 'lastPage', lastPage, 'section:', section);
+  if (pagePaginetion) {
+    if (page === firstPage) {
+      const button: HTMLElement | null = pagePaginetion.querySelector(`.pagination__buttons_previous`);
+      if (button) {
+        button.setAttribute('disabled', '');
+      }
+    }
+    if (page === lastPage) {
+      const button: HTMLElement | null = pagePaginetion.querySelector(`.pagination__buttons_next`);
+      if (button) {
+        button.setAttribute('disabled', '');
+      }
+    }
+    if (page < lastPage) {
+      const button: HTMLElement | null = pagePaginetion.querySelector(`.pagination__buttons_next`);
+      if (button) {
+        button.removeAttribute('disabled');
+      }
+    }
+  }
+}
+
+export { toggleButton, toggleRaceButton, changeDisableButton };
