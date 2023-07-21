@@ -82,6 +82,16 @@ class Win {
     return winners;
   }
 
+  public static async deleteWinner(id: number): Promise<void> {
+    const method: string = Methods.delete;
+    try {
+      await fetch(`${Links.baseLink}${Links.winners}/${id}`, { method });
+      this.updatePage();
+    } catch (err: Error | unknown) {
+      console.error(err);
+    }
+  }
+
   public static async eventWin(id: number, event: string, time?: number): Promise<void> {
     let isWinner: boolean = false;
     const winners: Winners[] = await this.getWinners();
@@ -106,6 +116,9 @@ class Win {
             this.updateWinner(oldWinner, id);
           }
         }
+      }
+      if (event === ButtonNames.remove) {
+        this.deleteWinner(id);
       }
     } else {
       const firstWin: number = 1;

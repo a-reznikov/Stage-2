@@ -33,6 +33,7 @@ class Car {
     try {
       await fetch(`${Links.baseLink}${Links.garage}/${id}`, { method });
       this.updatePage();
+      Win.eventWin(id, ButtonNames.remove);
     } catch (err: Error | unknown) {
       console.error(err);
     }
