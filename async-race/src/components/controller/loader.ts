@@ -1,6 +1,6 @@
 import { generateCars, generateWinners } from '../model/generator';
 import { Cars, Links, Methods, Winners } from '../types';
-import changeAmountCars from '../view/render/amountCars';
+import changeAmount from '../view/render/amount';
 import changePageNumber from '../view/render/pageNumber';
 
 class Loader {
@@ -14,8 +14,8 @@ class Loader {
       const data: Cars[] = await response.json();
       const amountCars = Number(response.headers.get('X-Total-Count'));
       generateCars(data);
-      changePageNumber(page);
-      changeAmountCars(amountCars);
+      changePageNumber(page, Links.garage);
+      changeAmount(amountCars, Links.garage);
     } catch (err: Error | unknown) {
       console.error(err);
     }
@@ -31,6 +31,8 @@ class Loader {
       const data: Winners[] = await response.json();
       const amountWinners = Number(response.headers.get('X-Total-Count'));
       generateWinners(data);
+      changePageNumber(page, Links.winners);
+      changeAmount(amountWinners, Links.winners);
     } catch (err: Error | unknown) {
       console.error(err);
     }
