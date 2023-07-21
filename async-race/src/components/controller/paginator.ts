@@ -6,16 +6,21 @@ class Paginator {
 
   public static currenWinnersPage: number = 1;
 
-  public static setCurrentPage(newPage: number): void {
-    this.currentGaragePage = newPage;
+  public static setCurrentPage(newPage: number, pageName: string): void {
+    if (pageName === Pages.garage) {
+      this.currentGaragePage = newPage;
+    }
+    if (pageName === Pages.winners) {
+      this.currenWinnersPage = newPage;
+    }
   }
 
-  public static getCurrentPage(page: string): number {
+  public static getCurrentPage(pageName: string): number {
     let pageNember: number = 0;
-    if (page === Pages.garage) {
+    if (pageName === Pages.garage) {
       pageNember = this.currentGaragePage;
     }
-    if (page === Pages.winners) {
+    if (pageName === Pages.winners) {
       pageNember = this.currenWinnersPage;
     }
     return pageNember;
@@ -45,47 +50,67 @@ class Paginator {
     return amountPage;
   }
 
-  public static disableButton(selector: string): void {
-    const button: HTMLElement | null = document.querySelector(`${selector}`);
-    if (button) {
-      button.setAttribute('disabled', '');
+  public static disableButton(selector: string, pageName: string): void {
+    const pagePaginetion: HTMLElement | null = document.querySelector(`.${pageName}__pagination`);
+    if (pagePaginetion) {
+      const button: HTMLElement | null = pagePaginetion.querySelector(`${selector}`);
+      if (button) {
+        button.setAttribute('disabled', '');
+      }
     }
   }
 
-  public static enableButton(selector: string): void {
-    const button: HTMLElement | null = document.querySelector(`${selector}`);
-    if (button) {
-      button.removeAttribute('disabled');
+  public static enableButton(selector: string, pageName: string): void {
+    const pagePaginetion: HTMLElement | null = document.querySelector(`.${pageName}__pagination`);
+    if (pagePaginetion) {
+      const button: HTMLElement | null = pagePaginetion.querySelector(`${selector}`);
+      if (button) {
+        button.removeAttribute('disabled');
+      }
     }
   }
 
-  public static nextPage(amountPage: number, currentPage: number): void {
+  public static nextPage(amountPage: number, currentPage: number, pageName: string): void {
     const secondPage: number = 2;
     const nextPage: number = currentPage + 1;
     if (amountPage > currentPage) {
-      this.setCurrentPage(nextPage);
-      Loader.getCars(nextPage);
+      this.setCurrentPage(nextPage, pageName);
+      console.log(
+        'this.currentGaragePage =',
+        this.currentGaragePage,
+        'this.currenWinnersPage =',
+        this.currenWinnersPage
+      );
+      if (pageName === Pages.garage) Loader.getCars(nextPage);
+      if (pageName === Pages.winners) Loader.getWinners(nextPage);
       if (amountPage === nextPage) {
-        this.disableButton('.pagination__buttons_next');
+        this.disableButton('.pagination__buttons_next', pageName);
       }
       if (nextPage >= secondPage) {
-        this.enableButton('.pagination__buttons_previous');
+        this.enableButton('.pagination__buttons_previous', pageName);
       }
     }
   }
 
-  public static previousPage(amountPage: number, currentPage: number): void {
+  public static previousPage(amountPage: number, currentPage: number, pageName: string): void {
     const firstPage: number = 1;
     const secondPage: number = 2;
     const prevoiusePage: number = currentPage - 1;
     if (currentPage >= secondPage) {
-      this.setCurrentPage(prevoiusePage);
-      Loader.getCars(prevoiusePage);
+      this.setCurrentPage(prevoiusePage, pageName);
+      console.log(
+        'this.currentGaragePage =',
+        this.currentGaragePage,
+        'this.currenWinnersPage =',
+        this.currenWinnersPage
+      );
+      if (pageName === Pages.garage) Loader.getCars(prevoiusePage);
+      if (pageName === Pages.winners) Loader.getWinners(prevoiusePage);
       if (prevoiusePage === firstPage) {
-        this.disableButton('.pagination__buttons_previous');
+        this.disableButton('.pagination__buttons_previous', pageName);
       }
       if (amountPage > prevoiusePage) {
-        this.enableButton('.pagination__buttons_next');
+        this.enableButton('.pagination__buttons_next', pageName);
       }
     }
   }
@@ -105,10 +130,11 @@ class Paginator {
     const isNext: boolean = target.classList.contains('pagination__buttons_next');
     const amountPage: number = await this.getAmountPage(pageName);
     if (isNext) {
-      this.nextPage(amountPage, currentPage);
+      console.log('nextButton', 'currentPage =', currentPage);
+      this.nextPage(amountPage, currentPage, pageName);
     }
     if (isPrevious) {
-      this.previousPage(amountPage, currentPage);
+      this.previousPage(amountPage, currentPage, pageName);
     }
   }
 }
