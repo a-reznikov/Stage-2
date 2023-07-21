@@ -5,6 +5,7 @@ import { eventRaceControl } from './raceController';
 import eventTrack from './trackController';
 import Paginator from './paginator';
 import changeSection from '../view/render/section';
+import { eventSort } from './sorter';
 
 class Controller {
   public static idSelectedCar: number = 0;
@@ -41,6 +42,9 @@ class Controller {
     }
     if (target.closest('.pagination')) {
       Paginator.eventPagination(target);
+    }
+    if (target.closest('.score__buttons')) {
+      eventSort(target);
     }
   }
 }

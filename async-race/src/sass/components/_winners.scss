@@ -12,15 +12,47 @@
 .score {
   &__table {
     display: grid;
-    grid-template-columns: 40px 30px 100px 25px 90px;
+    align-items: baseline;
+    grid-template-columns: 52px 36px 160px 50px 112px;
     column-gap: 10px;
     padding: 5px;
-    background: #520aa5;
     max-width: fit-content;
+  }
+  &__header {
+    background: $color-header;
+    font-size: 1.4rem;
+  }
+  &__buttons {
+    position: relative;
+    background: $color-header;
+    color: $color-light;
+    border: none;
+    font: inherit;
+    height: 3.4rem;
+    cursor: pointer;
+    text-align: left;
   }
   &__body {
     text-align: left;
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     background: $color-dark;
   }
 }
+
+
+.order_ASC  {
+  &:after {
+    content: '\25B2';
+    position: absolute;
+    right: 0px;
+  }
+}
+
+.order_DESC {
+  &:after {
+    content: '\25BC';
+    position: absolute;
+    right: 0px;
+  }
+}
+

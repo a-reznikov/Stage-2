@@ -1,4 +1,4 @@
-import { Links, Methods, Pages } from '../types';
+import { Links, Methods, Order, Pages, Sort, Sorted } from '../types';
 import Loader from './loader';
 
 class Paginator {
@@ -70,19 +70,45 @@ class Paginator {
     }
   }
 
+  public static isSorted(): HTMLElement | null {
+    return document.querySelector('.sorted');
+  }
+
+  public static getSortOptions(): Sort {
+    const sortOptions: Sort = {
+      sort: '',
+      order: '',
+    };
+    let sort: string = '';
+    let order: string = '';
+    const sorted: HTMLElement | null = document.querySelector('.sorted');
+    if (sorted) {
+      if (sorted.classList.contains(`header__${Sorted.wins}`)) {
+        sort = Sorted.wins;
+      } else {
+        sort = Sorted.time;
+      }
+      if (sorted.classList.contains(`order_${Order.asc}`)) {
+        order = Order.asc;
+      } else {
+        order = Order.desc;
+      }
+    }
+    sortOptions.sort = sort;
+    sortOptions.order = order;
+    return sortOptions;
+  }
+
   public static nextPage(amountPage: number, currentPage: number, pageName: string): void {
     const secondPage: number = 2;
     const nextPage: number = currentPage + 1;
     if (amountPage > currentPage) {
       this.setCurrentPage(nextPage, pageName);
-      console.log(
-        'this.currentGaragePage =',
-        this.currentGaragePage,
-        'this.currenWinnersPage =',
-        this.currenWinnersPage
-      );
       if (pageName === Pages.garage) Loader.getCars(nextPage);
-      if (pageName === Pages.winners) Loader.getWinners(nextPage);
+      if (this.isSorted()) {
+        const sortOptions: Sort = this.getSortOptions();
+        if (pageName === Pages.winners) Loader.getWinners(nextPage, sortOptions.sort, sortOptions.order);
+      } else if (pageName === Pages.winners) Loader.getWinners(nextPage);
       if (amountPage === nextPage) {
         this.disableButton('.pagination__buttons_next', pageName);
       }
@@ -98,14 +124,11 @@ class Paginator {
     const prevoiusePage: number = currentPage - 1;
     if (currentPage >= secondPage) {
       this.setCurrentPage(prevoiusePage, pageName);
-      console.log(
-        'this.currentGaragePage =',
-        this.currentGaragePage,
-        'this.currenWinnersPage =',
-        this.currenWinnersPage
-      );
       if (pageName === Pages.garage) Loader.getCars(prevoiusePage);
-      if (pageName === Pages.winners) Loader.getWinners(prevoiusePage);
+      if (this.isSorted()) {
+        const sortOptions: Sort = this.getSortOptions();
+        if (pageName === Pages.winners) Loader.getWinners(prevoiusePage, sortOptions.sort, sortOptions.order);
+      } else if (pageName === Pages.winners) Loader.getWinners(prevoiusePage);
       if (prevoiusePage === firstPage) {
         this.disableButton('.pagination__buttons_previous', pageName);
       }
@@ -130,7 +153,6 @@ class Paginator {
     const isNext: boolean = target.classList.contains('pagination__buttons_next');
     const amountPage: number = await this.getAmountPage(pageName);
     if (isNext) {
-      console.log('nextButton', 'currentPage =', currentPage);
       this.nextPage(amountPage, currentPage, pageName);
     }
     if (isPrevious) {

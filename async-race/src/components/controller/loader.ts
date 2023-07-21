@@ -4,6 +4,17 @@ import changeAmount from '../view/render/amount';
 import changePageNumber from '../view/render/pageNumber';
 
 class Loader {
+  public static urlMaker(section: string, page: number, limit: number, sort?: string, order?: string): string {
+    let url: string = `${Links.baseLink}${section}?_page=${page}&_limit=${limit}`;
+    if (sort) {
+      url += `&_sort=${sort}`;
+    }
+    if (order) {
+      url += `&_order=${order}`;
+    }
+    return url;
+  }
+
   public static async getCars(page: number): Promise<void> {
     const method: string = Methods.get;
     try {
@@ -21,13 +32,16 @@ class Loader {
     }
   }
 
-  public static async getWinners(page: number): Promise<void> {
+  public static async getWinners(page: number, sort?: string, order?: string): Promise<void> {
     const method: string = Methods.get;
+    let url: string = '';
+    if (sort && order) {
+      url = this.urlMaker(Links.winners, page, Links.limitWinners, sort, order);
+    } else {
+      url = this.urlMaker(Links.winners, page, Links.limitWinners);
+    }
     try {
-      const response: Response = await fetch(
-        `${Links.baseLink}${Links.winners}?_page=${page}&_limit=${Links.limitWinners}`,
-        { method }
-      );
+      const response: Response = await fetch(url, { method });
       const data: Winners[] = await response.json();
       const amountWinners = Number(response.headers.get('X-Total-Count'));
       generateWinners(data);

@@ -24,6 +24,11 @@ export interface Engines {
   distance: 500000;
 }
 
+export interface Sort {
+  sort: string;
+  order: string;
+}
+
 export enum ButtonNames {
   toGarage = 'to garage',
   toWinners = 'to winners',
@@ -66,4 +71,15 @@ export enum EngineStatus {
 export enum Pages {
   garage = 'garage',
   winners = 'winners',
+}
+
+export enum Sorted {
+  id = 'id',
+  wins = 'wins',
+  time = 'time',
+}
+
+export enum Order {
+  asc = 'ASC',
+  desc = 'DESC',
 }
