@@ -9,7 +9,6 @@ function toggleButton(id: number, event: string): void {
       const stopButton: HTMLElement | null = track.querySelector('.engine-control__buttons_stop');
       if (startButton && stopButton) {
         if (event === EngineStatus.preStart) {
-          console.log(EngineStatus.preStart);
           startButton.setAttribute('disabled', '');
           startButton.classList.add('buttons_red');
         }

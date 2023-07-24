@@ -20,7 +20,6 @@ class Engine {
   }
 
   public static runPreStart(id: number, event: string): void {
-    console.log(event);
     if (event === EngineStatus.started) {
       toggleButton(id, EngineStatus.preStart);
     }
@@ -71,7 +70,6 @@ class Engine {
 
   public static async eventEngineRace(cars: Cars[], event: string): Promise<void> {
     toggleRaceButton(event);
-    console.log(event);
     const method: string = Methods.patch;
     this.counter = cars.length;
     try {
