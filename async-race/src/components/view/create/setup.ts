@@ -11,6 +11,7 @@ export default function createSetup(): HTMLElement {
   control.className = 'setup__control control';
   const buttonRace: HTMLButtonElement = createButton('control', `${ButtonNames.race}`);
   const buttonReset: HTMLButtonElement = createButton('control', `${ButtonNames.reset}`);
+  buttonReset.setAttribute('disabled', '');
   const buttonGenerate: HTMLButtonElement = createButton('control', `${ButtonNames.generate}`);
   control.append(buttonRace);
   control.append(buttonReset);

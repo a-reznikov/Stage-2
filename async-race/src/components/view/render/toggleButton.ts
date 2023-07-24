@@ -34,6 +34,7 @@ function toggleRaceButton(event: string): void {
     }
     if (event === ButtonNames.reset) {
       startRaceButton.removeAttribute('disabled');
+      resetRaceButton.setAttribute('disabled', '');
     }
   }
 }
