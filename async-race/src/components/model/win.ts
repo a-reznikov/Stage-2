@@ -1,6 +1,6 @@
 import Loader from '../controller/loader';
 import Paginator from '../controller/paginator';
-import { ButtonNames, Links, Methods, Pages, Winners } from '../types';
+import { ButtonNames, Links, Methods, Pages, Sort, Winners } from '../types';
 
 class Win {
   constructor(public id: number, public wins: number, public time: number) {}
@@ -15,7 +15,12 @@ class Win {
 
   public static updatePage(): void {
     const page: number = Paginator.getCurrentPage(`${Pages.winners}`);
-    Loader.getWinners(page);
+    if (Paginator.isSorted()) {
+      const sortOptions: Sort = Paginator.getSortOptions();
+      Loader.getWinners(page, sortOptions.sort, sortOptions.order);
+    } else {
+      Loader.getWinners(page);
+    }
   }
 
   public static async createWinner(body: Winners): Promise<void> {

@@ -20,6 +20,7 @@ class Controller {
     const target: HTMLElement = <HTMLElement>event.target;
     const createButton: HTMLElement | null = document.querySelector('.form__buttons_create');
     const isUpdateButton: boolean = target.classList.contains('form__buttons_update');
+    const isSelectButton: boolean = target.classList.contains('settings__buttons_select');
     const isControlButton: boolean = isControl(target);
     const isNav: boolean = isNavigation(target);
     const isSetupInputs: boolean = isInputs(target);
@@ -48,7 +49,7 @@ class Controller {
     if (target.closest('.score__buttons')) {
       eventSort(target);
     }
-    if (!isSetupInputs) {
+    if (!isSetupInputs && !isSelectButton) {
       unselectTrack();
     }
   }

@@ -25,7 +25,6 @@ class Car {
       );
       const data: Cars[] = await response.json();
       const amountCarsOnPage: number = data.length;
-      console.log(amountCarsOnPage);
       if (!amountCarsOnPage) {
         isEmpty = true;
       }
