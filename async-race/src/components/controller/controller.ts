@@ -1,6 +1,6 @@
 import { getCarId, getCarProperties } from './getter';
 import { ButtonNames } from '../types';
-import { isControl, isNavigation } from './eventer';
+import { isControl, isInputs, isNavigation, unselectTrack } from './eventer';
 import { eventControlButton } from './raceController';
 import eventTrack from './trackController';
 import Paginator from './paginator';
@@ -22,9 +22,11 @@ class Controller {
     const isUpdateButton: boolean = target.classList.contains('form__buttons_update');
     const isControlButton: boolean = isControl(target);
     const isNav: boolean = isNavigation(target);
+    const isSetupInputs: boolean = isInputs(target);
     if (target.closest('.track')) {
-      Controller.setIdSelectedCar(getCarId(target));
-      eventTrack(target);
+      const carId: number = getCarId(target);
+      Controller.setIdSelectedCar(carId);
+      eventTrack(target, carId);
     }
     if (target === createButton) {
       event.preventDefault();
@@ -45,6 +47,9 @@ class Controller {
     }
     if (target.closest('.score__buttons')) {
       eventSort(target);
+    }
+    if (!isSetupInputs) {
+      unselectTrack();
     }
   }
 }

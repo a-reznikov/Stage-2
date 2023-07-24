@@ -1,4 +1,4 @@
-import { ButtonNames } from '../../types';
+import { Base, ButtonNames } from '../../types';
 import createButton from './button';
 
 export default function createForm(buttonName: string): HTMLFormElement {
@@ -10,7 +10,7 @@ export default function createForm(buttonName: string): HTMLFormElement {
   const inputColor: HTMLInputElement = document.createElement('input');
   inputColor.className = `form__input input__color_${buttonName}`;
   inputColor.setAttribute('type', 'color');
-  inputColor.value = `#FFFFFF`;
+  inputColor.value = Base.color;
   const buttonForm: HTMLButtonElement = createButton('form', `${buttonName}`);
   if (buttonName === ButtonNames.update) {
     inputName.setAttribute('disabled', '');

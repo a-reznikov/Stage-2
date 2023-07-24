@@ -60,6 +60,22 @@ class Car {
     }
   }
 
+  public static async getCar(id: number): Promise<Cars> {
+    let car: Cars = {
+      name: '',
+      color: '',
+    };
+    const method: string = Methods.get;
+    try {
+      const response: Response = await fetch(`${Links.baseLink}${Links.garage}/${id}`, { method });
+      const data: Cars = await response.json();
+      car = data;
+    } catch (err: Error | unknown) {
+      console.error(err);
+    }
+    return car;
+  }
+
   public static async updateCar(body: Cars, id: number): Promise<void> {
     const method: string = Methods.patch;
     try {

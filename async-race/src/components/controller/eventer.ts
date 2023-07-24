@@ -1,6 +1,6 @@
 import Car from '../model/car';
 import Engine from '../model/engine';
-import { Cars, EngineStatus } from '../types';
+import { Base, Cars, EngineStatus } from '../types';
 
 function deleteCar(id: number): void {
   Car.deleteCar(id);
@@ -47,7 +47,7 @@ function isNavigation(target: HTMLElement): boolean {
   return isNavButton;
 }
 
-function toggleDiasbleUpdate(status: string): void {
+function toggleDiasbleUpdate(status: string, selectedCar?: Cars): void {
   const inputName: HTMLInputElement | null = document.querySelector('.input__name_update');
   const inputColor: HTMLInputElement | null = document.querySelector('.input__color_update');
   const buttonForm: HTMLButtonElement | null = document.querySelector('.form__buttons_update');
@@ -56,11 +56,17 @@ function toggleDiasbleUpdate(status: string): void {
       inputName.removeAttribute('disabled');
       inputColor.removeAttribute('disabled');
       buttonForm.removeAttribute('disabled');
+      if (selectedCar) {
+        inputName.value = selectedCar.name;
+        inputColor.value = selectedCar.color;
+      }
     }
     if (status === 'disabled') {
       inputName.setAttribute('disabled', '');
       inputColor.setAttribute('disabled', '');
       buttonForm.setAttribute('disabled', '');
+      inputName.value = Base.name;
+      inputColor.value = Base.color;
     }
   }
 }
@@ -73,10 +79,11 @@ function unselectTrack(): void {
   toggleDiasbleUpdate('disabled');
 }
 
-function selectTrack(track: HTMLElement): void {
+async function selectTrack(track: HTMLElement, id: number): Promise<void> {
   unselectTrack();
   track.classList.add('selected');
-  toggleDiasbleUpdate('enabled');
+  const selectedCar: Cars = await Car.getCar(id);
+  toggleDiasbleUpdate('enabled', selectedCar);
 }
 
 async function startDrive(id: number): Promise<void> {

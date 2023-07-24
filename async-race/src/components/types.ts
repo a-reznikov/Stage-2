@@ -88,3 +88,8 @@ export enum Order {
   asc = 'ASC',
   desc = 'DESC',
 }
+
+export enum Base {
+  name = '',
+  color = '#FFFFFF',
+}
