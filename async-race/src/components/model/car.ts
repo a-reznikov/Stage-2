@@ -13,6 +13,28 @@ class Car {
     Loader.getCars(page);
   }
 
+  public static async isEmptyPage(page: number): Promise<boolean> {
+    let isEmpty: boolean = false;
+    const method: string = Methods.get;
+    try {
+      const response: Response = await fetch(
+        `${Links.baseLink}${Links.garage}?_page=${page}&_limit=${Links.limitCars}`,
+        {
+          method,
+        }
+      );
+      const data: Cars[] = await response.json();
+      const amountCarsOnPage: number = data.length;
+      console.log(amountCarsOnPage);
+      if (!amountCarsOnPage) {
+        isEmpty = true;
+      }
+    } catch (err: Error | unknown) {
+      console.error(err);
+    }
+    return isEmpty;
+  }
+
   public async createCar(body: Cars): Promise<void> {
     const method: string = Methods.post;
     try {
@@ -53,6 +75,12 @@ class Car {
     const method: string = Methods.delete;
     try {
       await fetch(`${Links.baseLink}${Links.garage}/${id}`, { method });
+      const page: number = Paginator.getCurrentPage(`${Pages.garage}`);
+      const isEmpty: boolean = await this.isEmptyPage(page);
+      if (isEmpty) {
+        const previousPageButton: HTMLElement | null = document.querySelector('.pagination__buttons_previous');
+        if (previousPageButton) Paginator.eventPagination(previousPageButton);
+      }
       this.updatePage();
       Win.eventWin(id, ButtonNames.remove);
     } catch (err: Error | unknown) {
