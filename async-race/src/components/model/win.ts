@@ -5,14 +5,6 @@ import { ButtonNames, Links, Methods, Pages, Sort, Winners } from '../types';
 class Win {
   constructor(public id: number, public wins: number, public time: number) {}
 
-  private static errorHandler(res: Response): Response {
-    if (!res.ok) {
-      if (res.status === 404) console.log(`There is no such winner`);
-      throw Error(res.statusText);
-    }
-    return res;
-  }
-
   public static updatePage(): void {
     const page: number = Paginator.getCurrentPage(`${Pages.winners}`);
     if (Paginator.isSorted()) {
@@ -63,9 +55,7 @@ class Win {
     };
     const method: string = Methods.get;
     try {
-      const response: Response = await fetch(`${Links.baseLink}${Links.winners}/${id}`, { method }).then(
-        this.errorHandler
-      );
+      const response: Response = await fetch(`${Links.baseLink}${Links.winners}/${id}`, { method });
       const data: Winners = await response.json();
       winner = data;
     } catch (err: Error | unknown) {
@@ -78,7 +68,7 @@ class Win {
     let winners: Winners[] = [];
     const method: string = Methods.get;
     try {
-      const response: Response = await fetch(`${Links.baseLink}${Links.winners}`, { method }).then(this.errorHandler);
+      const response: Response = await fetch(`${Links.baseLink}${Links.winners}`, { method });
       const data: Winners[] = await response.json();
       winners = data;
     } catch (err: Error | unknown) {

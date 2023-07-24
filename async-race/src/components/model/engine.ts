@@ -29,11 +29,10 @@ class Engine {
         toggleWinnerText();
         this.winner = {};
       }
-      const response: Response = await fetch(`${Links.baseLink}${Links.engine}?id=${id}&status=${event}`, { method });
+      const response: Response = await fetch(`${Links.baseLink}${Links.engine}?id=${id}&status=${event}`, {
+        method,
+      });
       const data: Engines = await response.json();
-      if (race) {
-        this.changeCounter();
-      }
       if (event === EngineStatus.started) {
         const time: number = data.distance / data.velocity;
         const animationId = <NodeJS.Timer>activeAnimation(id, time);
@@ -51,11 +50,11 @@ class Engine {
         }
       }
     } catch (err: Error | unknown) {
+      clearInterval(Engine.timers[`${id}`]);
+    } finally {
       if (race) {
         this.changeCounter();
       }
-      clearInterval(Engine.timers[`${id}`]);
-      console.error(err);
     }
   }
 
