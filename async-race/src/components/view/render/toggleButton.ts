@@ -24,10 +24,16 @@ function toggleButton(id: number, event: string): void {
 function toggleRaceButton(event: string): void {
   const startRaceButton: HTMLElement | null = document.querySelector('.control__buttons_race');
   const resetRaceButton: HTMLElement | null = document.querySelector('.control__buttons_reset');
+  const removeButtons: NodeListOf<Element> = document.querySelectorAll('.settings__buttons_remove');
   if (startRaceButton && resetRaceButton) {
     if (event === EngineStatus.started) {
       startRaceButton.setAttribute('disabled', '');
       resetRaceButton.setAttribute('disabled', '');
+      if (removeButtons) {
+        removeButtons.forEach((button) => {
+          button.setAttribute('disabled', '');
+        });
+      }
     }
     if (event === EngineStatus.finished) {
       resetRaceButton.removeAttribute('disabled');
@@ -35,6 +41,11 @@ function toggleRaceButton(event: string): void {
     if (event === ButtonNames.reset) {
       startRaceButton.removeAttribute('disabled');
       resetRaceButton.setAttribute('disabled', '');
+      if (removeButtons) {
+        removeButtons.forEach((button) => {
+          button.removeAttribute('disabled');
+        });
+      }
     }
   }
 }
