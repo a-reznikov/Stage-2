@@ -8,13 +8,20 @@ function toggleButton(id: number, event: string): void {
       const startButton: HTMLElement | null = track.querySelector('.engine-control__buttons_start');
       const stopButton: HTMLElement | null = track.querySelector('.engine-control__buttons_stop');
       if (startButton && stopButton) {
-        if (event === EngineStatus.started) {
+        if (event === EngineStatus.preStart) {
+          console.log(EngineStatus.preStart);
           startButton.setAttribute('disabled', '');
+          startButton.classList.add('buttons_red');
+        }
+        if (event === EngineStatus.started) {
+          startButton.classList.remove('buttons_red');
           stopButton.removeAttribute('disabled');
+          stopButton.classList.add('buttons_green');
         }
         if (event === EngineStatus.stopped) {
           startButton.removeAttribute('disabled');
           stopButton.setAttribute('disabled', '');
+          stopButton.classList.remove('buttons_green');
         }
       }
     }
@@ -25,6 +32,7 @@ function toggleRaceButton(event: string): void {
   const startRaceButton: HTMLElement | null = document.querySelector('.control__buttons_race');
   const resetRaceButton: HTMLElement | null = document.querySelector('.control__buttons_reset');
   const removeButtons: NodeListOf<Element> = document.querySelectorAll('.settings__buttons_remove');
+  const startButtonsButtons: NodeListOf<Element> = document.querySelectorAll('.engine-control__buttons_start');
   if (startRaceButton && resetRaceButton) {
     if (event === EngineStatus.started) {
       startRaceButton.setAttribute('disabled', '');
@@ -32,6 +40,12 @@ function toggleRaceButton(event: string): void {
       if (removeButtons) {
         removeButtons.forEach((button) => {
           button.setAttribute('disabled', '');
+        });
+      }
+      if (startButtonsButtons) {
+        startButtonsButtons.forEach((button) => {
+          button.setAttribute('disabled', '');
+          button.classList.add('buttons_red');
         });
       }
     }

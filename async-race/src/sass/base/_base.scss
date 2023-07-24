@@ -21,3 +21,8 @@ html {
 h1, h2 {
   @include font(700, 1.6rem, 100%, $color-light);
 }
+
+p {
+  @include font(700, 1.4rem, 100%, $color-light);
+  margin-bottom: 5px;
+}

@@ -29,6 +29,7 @@
   }
   &__car-name {
     font-size: 1.4rem;
+    font-weight: 700;
   }
   &__car {
     display: inline-block;
@@ -51,13 +52,15 @@
 }
 
 .selected {
-  background: gray;
+  background: $color-selected;
 }
 
 .engine-control {
   display: flex;
   flex-direction: column;
+  row-gap: 4px;
   &__buttons {
     min-width: 0;
+    padding: 2px 7px;
   }
 }

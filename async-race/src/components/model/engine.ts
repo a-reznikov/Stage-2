@@ -19,6 +19,16 @@ class Engine {
     }
   }
 
+  public static runPreStart(id: number, event: string): void {
+    console.log(event);
+    if (event === EngineStatus.started) {
+      toggleButton(id, EngineStatus.preStart);
+    }
+    if (event === EngineStatus.drive) {
+      toggleButton(id, EngineStatus.started);
+    }
+  }
+
   public static async eventEngine(id: number, event: string, times?: number, race?: string): Promise<void> {
     const method: string = Methods.patch;
     try {
@@ -29,6 +39,7 @@ class Engine {
         toggleWinnerText();
         this.winner = {};
       }
+      this.runPreStart(id, event);
       const response: Response = await fetch(`${Links.baseLink}${Links.engine}?id=${id}&status=${event}`, {
         method,
       });
@@ -60,6 +71,7 @@ class Engine {
 
   public static async eventEngineRace(cars: Cars[], event: string): Promise<void> {
     toggleRaceButton(event);
+    console.log(event);
     const method: string = Methods.patch;
     this.counter = cars.length;
     try {

@@ -71,6 +71,7 @@ export enum EngineStatus {
   started = 'started',
   stopped = 'stopped',
   finished = 'finished',
+  preStart = 'preStart',
 }
 
 export enum Pages {

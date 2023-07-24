@@ -1,25 +1,50 @@
 .buttons {
   display: inline-block;
   min-width: 100px;
-  padding: 5px 10px;
-  opacity: 0.7;
+  padding: 5px 7px;
   @extend %font-main;
   @extend %transition;
   @include font(700, 1.2rem, 100%, $color-dark);
+  box-shadow: 0 5px $color-shadow-light;
   cursor: pointer;
   &:active {
-    scale: 0.9;
+    box-shadow: 0 1px $color-shadow-dark;
+    transform: translateY(4px);
   }
   &:hover {
-    opacity: 1;
+    opacity: 0.8;
   }
   &:disabled {
     cursor: default;
     &:active {
-      scale: none;
+      box-shadow: 0 5px $color-shadow-light;
+      transform: none;
     }
     &:hover {
-      opacity: 0.7;
+      opacity: 1;
+    }
+  }
+  &_red {
+    background: #b90000;
+  }
+  &_green {
+    background: #80c000;
+  }
+}
+
+.engine-control__buttons,
+.settings__buttons {
+  @include font(700, 1.0rem, 100%, $color-dark);
+  box-shadow: 0 2px $color-shadow-light;
+  min-width: 70px;
+  &:active {
+    box-shadow: 0 0px $color-shadow-dark;
+    transform: translateY(2px);
+  }
+  &:disabled {
+    &:active {
+      box-shadow: 0 2px $color-shadow-light;
+      transform: none;
     }
   }
 }
