@@ -26,7 +26,6 @@ class Engine {
         clearInterval(this.timers[`${id}`]);
         toggleButton(id, EngineStatus.stopped);
         resetPosition(id);
-        toggleRaceButton(ButtonNames.reset);
         toggleWinnerText();
         this.winner = {};
       }

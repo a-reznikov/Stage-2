@@ -1,5 +1,6 @@
 import Car from '../model/car';
 import { ButtonNames, Cars, Links, Methods } from '../types';
+import { toggleRaceButton } from '../view/render/toggleButton';
 import { resetRace, startRace } from './eventer';
 import Paginator from './paginator';
 
@@ -26,6 +27,7 @@ function eventControlButton(target: HTMLElement): void {
     getCarsOnPage(currentPage, ButtonNames.race);
   }
   if (isRaceResetButton) {
+    toggleRaceButton(ButtonNames.reset);
     getCarsOnPage(currentPage, ButtonNames.reset);
   }
   if (isGenerateButton) {
