@@ -5,10 +5,10 @@
   @extend %font-main;
   @extend %transition;
   @include font(700, 1.2rem, 100%, $color-dark);
-  box-shadow: 0 5px $color-shadow-light;
+  box-shadow: 1px 5px $color-shadow-light;
   cursor: pointer;
   &:active {
-    box-shadow: 0 1px $color-shadow-dark;
+    box-shadow: 1px 1px $color-shadow-dark;
     transform: translateY(4px);
   }
   &:hover {
@@ -17,7 +17,7 @@
   &:disabled {
     cursor: default;
     &:active {
-      box-shadow: 0 5px $color-shadow-light;
+      box-shadow: 1px 5px $color-shadow-light;
       transform: none;
     }
     &:hover {
@@ -35,15 +35,15 @@
 .engine-control__buttons,
 .settings__buttons {
   @include font(700, 1.0rem, 100%, $color-dark);
-  box-shadow: 0 2px $color-shadow-light;
+  box-shadow: 1px 2px $color-shadow-light;
   min-width: 70px;
   &:active {
-    box-shadow: 0 0px $color-shadow-dark;
+    box-shadow: 1px 0px $color-shadow-dark;
     transform: translateY(2px);
   }
   &:disabled {
     &:active {
-      box-shadow: 0 2px $color-shadow-light;
+      box-shadow: 1px 2px $color-shadow-light;
       transform: none;
     }
   }
