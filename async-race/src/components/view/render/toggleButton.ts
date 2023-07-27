@@ -1,4 +1,4 @@
-import { ButtonNames, EngineStatus, Links, Pages } from '../../types';
+import { ButtonNames, EngineStatus, Links, PageNumber, Pages } from '../../types';
 
 function toggleButton(id: number, event: string): void {
   const carIco: HTMLElement | null = document.getElementById(`${id}`);
@@ -64,8 +64,7 @@ function toggleRaceButton(event: string): void {
 }
 
 function changeDisableButton(amount: number, page: number, section: string): void {
-  const firstPage: number = 1;
-  let lastPage: number = 1;
+  let lastPage: number = PageNumber.firstPage;
   const pagePaginetion: HTMLElement | null = document.querySelector(`.${section}__pagination`);
   if (section === Pages.garage) {
     lastPage = Math.ceil(amount / Links.limitCars);
@@ -77,7 +76,7 @@ function changeDisableButton(amount: number, page: number, section: string): voi
     lastPage = 1;
   }
   if (pagePaginetion) {
-    if (page === firstPage) {
+    if (page === PageNumber.firstPage) {
       const button: HTMLElement | null = pagePaginetion.querySelector(`.pagination__buttons_previous`);
       if (button) {
         button.setAttribute('disabled', '');

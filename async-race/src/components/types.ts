@@ -94,3 +94,8 @@ export enum Base {
   name = '',
   color = '#FFFFFF',
 }
+
+export enum PageNumber {
+  firstPage = 1,
+  secondPage = 2,
+}

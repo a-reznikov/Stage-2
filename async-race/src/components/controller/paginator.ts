@@ -1,4 +1,4 @@
-import { Links, Methods, Order, Pages, PagesNumber, Sort, Sorted } from '../types';
+import { Links, Methods, Order, PageNumber, Pages, PagesNumber, Sort, Sorted } from '../types';
 import Loader from './loader';
 
 class Paginator {
@@ -110,7 +110,6 @@ class Paginator {
   }
 
   public static nextPage(amountPage: number, currentPage: number, pageName: string): void {
-    const secondPage: number = 2;
     const nextPage: number = currentPage + 1;
     if (amountPage > currentPage) {
       this.setCurrentPage(nextPage, pageName);
@@ -122,24 +121,22 @@ class Paginator {
       if (amountPage === nextPage) {
         this.disableButton('.pagination__buttons_next', pageName);
       }
-      if (nextPage >= secondPage) {
+      if (nextPage >= PageNumber.secondPage) {
         this.enableButton('.pagination__buttons_previous', pageName);
       }
     }
   }
 
   public static previousPage(amountPage: number, currentPage: number, pageName: string): void {
-    const firstPage: number = 1;
-    const secondPage: number = 2;
     const prevoiusePage: number = currentPage - 1;
-    if (currentPage >= secondPage) {
+    if (currentPage >= PageNumber.secondPage) {
       this.setCurrentPage(prevoiusePage, pageName);
       if (pageName === Pages.garage) Loader.getCars(prevoiusePage);
       if (this.isSorted()) {
         const sortOptions: Sort = this.getSortOptions();
         if (pageName === Pages.winners) Loader.getWinners(prevoiusePage, sortOptions.sort, sortOptions.order);
       } else if (pageName === Pages.winners) Loader.getWinners(prevoiusePage);
-      if (prevoiusePage === firstPage) {
+      if (prevoiusePage === PageNumber.firstPage) {
         this.disableButton('.pagination__buttons_previous', pageName);
       }
       if (amountPage > prevoiusePage) {
