@@ -10,8 +10,6 @@ import { eventSort } from './sorter';
 class Controller {
   public static idSelectedCar: number = 0;
 
-  public currentPage: number = 1;
-
   public static setIdSelectedCar(id: number): void {
     this.idSelectedCar = id;
   }
