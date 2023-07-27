@@ -22,6 +22,7 @@ class Controller {
     const isControlButton: boolean = isControl(target);
     const isNav: boolean = isNavigation(target);
     const isSetupInputs: boolean = isInputs(target);
+
     if (target.closest('.track')) {
       const carId: number = getCarId(target);
       Controller.setIdSelectedCar(carId);

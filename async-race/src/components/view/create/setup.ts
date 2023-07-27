@@ -19,5 +19,6 @@ export default function createSetup(): HTMLElement {
   setup.append(formCreate);
   setup.append(formUpdate);
   setup.append(control);
+
   return setup;
 }

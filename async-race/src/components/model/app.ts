@@ -8,6 +8,7 @@ class App {
 
   public start(pagesNumber?: PagesNumber): void {
     createTemplate();
+
     if (pagesNumber) {
       Loader.getCars(pagesNumber.garage);
       Loader.getWinners(pagesNumber.winners);
@@ -17,6 +18,7 @@ class App {
     }
 
     const body: HTMLElement | null = document.querySelector('.body');
+
     if (body) {
       body.addEventListener('click', (e: MouseEvent): void => this.controller.eventDelegate(e));
     }

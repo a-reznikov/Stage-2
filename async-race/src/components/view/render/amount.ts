@@ -7,6 +7,7 @@ export default function changeAmount(amount: number, section: string): void {
       pageTitle.textContent = `Garage (${amount})`;
     }
   }
+
   if (section === Links.winners) {
     const pageTitle: HTMLElement | null = document.querySelector('.winners__title');
     if (pageTitle) {

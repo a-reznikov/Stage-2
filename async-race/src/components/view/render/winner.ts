@@ -17,6 +17,7 @@ export default function renderWinner(car: Cars, winner: Winners, position: numbe
   const time: HTMLSpanElement = document.createElement('span');
   time.className = `body__time`;
   time.textContent = `${winner.time}`;
+
   if (scoreBody) {
     scoreBody.append(number);
     scoreBody.append(carIco);

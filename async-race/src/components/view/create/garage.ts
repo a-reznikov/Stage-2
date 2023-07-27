@@ -22,5 +22,6 @@ export default function createGarage(): HTMLElement {
   garage.append(page);
   garage.append(playground);
   garage.append(pagination);
+
   return garage;
 }

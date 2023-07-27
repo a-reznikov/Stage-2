@@ -2,6 +2,7 @@ import { ButtonNames, EngineStatus, Links, PageNumber, Pages } from '../../types
 
 function toggleButton(id: number, event: string): void {
   const carIco: HTMLElement | null = document.getElementById(`${id}`);
+
   if (carIco) {
     const track: HTMLElement | null = carIco.closest('.track');
     if (track) {
@@ -32,6 +33,7 @@ function toggleRaceButton(event: string): void {
   const resetRaceButton: HTMLElement | null = document.querySelector('.control__buttons_reset');
   const removeButtons: NodeListOf<Element> = document.querySelectorAll('.settings__buttons_remove');
   const startButtonsButtons: NodeListOf<Element> = document.querySelectorAll('.engine-control__buttons_start');
+
   if (startRaceButton && resetRaceButton) {
     if (event === EngineStatus.started) {
       startRaceButton.setAttribute('disabled', '');
@@ -48,6 +50,7 @@ function toggleRaceButton(event: string): void {
         });
       }
     }
+
     if (event === EngineStatus.finished) {
       resetRaceButton.removeAttribute('disabled');
     }
@@ -66,15 +69,19 @@ function toggleRaceButton(event: string): void {
 function changeDisableButton(amount: number, page: number, section: string): void {
   let lastPage: number = PageNumber.firstPage;
   const pagePaginetion: HTMLElement | null = document.querySelector(`.${section}__pagination`);
+
   if (section === Pages.garage) {
     lastPage = Math.ceil(amount / Links.limitCars);
   }
+
   if (section === Pages.winners) {
     lastPage = Math.ceil(amount / Links.limitWinners);
   }
+
   if (!amount) {
     lastPage = 1;
   }
+
   if (pagePaginetion) {
     if (page === PageNumber.firstPage) {
       const button: HTMLElement | null = pagePaginetion.querySelector(`.pagination__buttons_previous`);
@@ -82,12 +89,14 @@ function changeDisableButton(amount: number, page: number, section: string): voi
         button.setAttribute('disabled', '');
       }
     }
+
     if (page === lastPage) {
       const button: HTMLElement | null = pagePaginetion.querySelector(`.pagination__buttons_next`);
       if (button) {
         button.setAttribute('disabled', '');
       }
     }
+
     if (page < lastPage) {
       const button: HTMLElement | null = pagePaginetion.querySelector(`.pagination__buttons_next`);
       if (button) {

@@ -14,6 +14,7 @@ class Engine {
 
   public static changeCounter(): void {
     this.counter -= 1;
+
     if (!this.counter) {
       toggleRaceButton(EngineStatus.finished);
     }
@@ -23,6 +24,7 @@ class Engine {
     if (event === EngineStatus.started) {
       toggleButton(id, EngineStatus.preStart);
     }
+
     if (event === EngineStatus.drive) {
       toggleButton(id, EngineStatus.started);
     }
@@ -30,6 +32,7 @@ class Engine {
 
   public static async eventEngine(id: number, event: string, times?: number, race?: string): Promise<void> {
     const method: string = Methods.patch;
+
     try {
       if (event === EngineStatus.stopped) {
         clearInterval(this.timers[`${id}`]);
@@ -70,8 +73,10 @@ class Engine {
 
   public static async eventEngineRace(cars: Cars[], event: string): Promise<void> {
     toggleRaceButton(event);
+
     const method: string = Methods.patch;
     this.counter = cars.length;
+
     try {
       if (event === EngineStatus.started) {
         const responses: Response[] = await Promise.all(
@@ -79,11 +84,13 @@ class Engine {
         );
         const data: Engines[] = await Promise.all(responses.map((response: Response) => response.json()));
         let i: number = 0;
+
         cars.forEach((car: Cars) => {
           const { id } = car;
           if (id) {
             const time: number = data[i].distance / data[i].velocity;
             const animationId = <NodeJS.Timer>activeAnimation(id, time);
+
             toggleButton(id, EngineStatus.started);
             this.timers[`${id}`] = animationId;
             this.eventEngine(id, EngineStatus.drive, time, ButtonNames.race);

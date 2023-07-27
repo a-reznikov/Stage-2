@@ -35,6 +35,8 @@ export default function renderTrack(car: Cars): HTMLElement {
   race.append(progress);
   track.append(settings);
   track.append(race);
+
   if (playground) playground.append(track);
+
   return track;
 }

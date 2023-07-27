@@ -27,5 +27,6 @@ export default function createScore(): HTMLElement {
   scoreHeader.append(time);
   score.append(scoreHeader);
   score.append(scoreBody);
+
   return score;
 }

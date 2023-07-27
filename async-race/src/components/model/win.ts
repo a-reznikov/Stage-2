@@ -7,8 +7,10 @@ class Win {
 
   public static updatePage(): void {
     const page: number = Paginator.getCurrentPage(`${Pages.winners}`);
+
     if (Paginator.isSorted()) {
       const sortOptions: Sort = Paginator.getSortOptions();
+
       Loader.getWinners(page, sortOptions.sort, sortOptions.order);
     } else {
       Loader.getWinners(page);
@@ -17,6 +19,7 @@ class Win {
 
   public static async createWinner(body: Winners): Promise<void> {
     const method: string = Methods.post;
+
     try {
       await fetch(`${Links.baseLink}${Links.winners}`, {
         method: `${method}`,
@@ -33,6 +36,7 @@ class Win {
 
   public static async updateWinner(body: Winners, id: number): Promise<void> {
     const method: string = Methods.patch;
+
     try {
       await fetch(`${Links.baseLink}${Links.winners}/${id}`, {
         method: `${method}`,
@@ -54,6 +58,7 @@ class Win {
       time: 0,
     };
     const method: string = Methods.get;
+
     try {
       const response: Response = await fetch(`${Links.baseLink}${Links.winners}/${id}`, { method });
       const data: Winners = await response.json();
@@ -61,12 +66,14 @@ class Win {
     } catch (err: Error | unknown) {
       console.error(err);
     }
+
     return winner;
   }
 
   public static async getWinners(): Promise<Winners[]> {
     let winners: Winners[] = [];
     const method: string = Methods.get;
+
     try {
       const response: Response = await fetch(`${Links.baseLink}${Links.winners}`, { method });
       const data: Winners[] = await response.json();
@@ -74,6 +81,7 @@ class Win {
     } catch (err: Error | unknown) {
       console.error(err);
     }
+
     return winners;
   }
 
@@ -90,15 +98,18 @@ class Win {
   public static async eventWin(id: number, event: string, time?: number): Promise<void> {
     let isWinner: boolean = false;
     const winners: Winners[] = await this.getWinners();
+
     winners.forEach((winner) => {
       if (winner.id === id) {
         isWinner = true;
       }
     });
+
     if (isWinner) {
       if (event === ButtonNames.update) {
         this.updatePage();
       }
+
       if (event === ButtonNames.race) {
         const winner: Winners = await this.getWinner(id);
         const countWins: number = winner.wins + 1;
@@ -112,6 +123,7 @@ class Win {
           }
         }
       }
+
       if (event === ButtonNames.remove) {
         this.deleteWinner(id);
       }

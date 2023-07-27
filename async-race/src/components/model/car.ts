@@ -10,12 +10,14 @@ class Car {
 
   public static updatePage(): void {
     const page: number = Paginator.getCurrentPage(`${Pages.garage}`);
+
     Loader.getCars(page);
   }
 
   public static async isEmptyPage(page: number): Promise<boolean> {
     let isEmpty: boolean = false;
     const method: string = Methods.get;
+
     try {
       const response: Response = await fetch(
         `${Links.baseLink}${Links.garage}?_page=${page}&_limit=${Links.limitCars}`,
@@ -25,17 +27,20 @@ class Car {
       );
       const data: Cars[] = await response.json();
       const amountCarsOnPage: number = data.length;
+
       if (!amountCarsOnPage) {
         isEmpty = true;
       }
     } catch (err: Error | unknown) {
       console.error(err);
     }
+
     return isEmpty;
   }
 
   public async createCar(body: Cars): Promise<void> {
     const method: string = Methods.post;
+
     try {
       await fetch(`${Links.baseLink}${Links.garage}`, {
         method: `${method}`,
@@ -52,6 +57,7 @@ class Car {
 
   public static async createCars(cars: Cars[]): Promise<void> {
     const method: string = Methods.post;
+
     try {
       await Promise.all(
         cars.map((car: Cars) =>
@@ -72,6 +78,7 @@ class Car {
 
   public static async deleteCar(id: number): Promise<void> {
     const method: string = Methods.delete;
+
     try {
       await fetch(`${Links.baseLink}${Links.garage}/${id}`, { method });
       const page: number = Paginator.getCurrentPage(`${Pages.garage}`);
@@ -93,6 +100,7 @@ class Car {
       color: '',
     };
     const method: string = Methods.get;
+
     try {
       const response: Response = await fetch(`${Links.baseLink}${Links.garage}/${id}`, { method });
       const data: Cars = await response.json();
@@ -100,11 +108,13 @@ class Car {
     } catch (err: Error | unknown) {
       console.error(err);
     }
+
     return car;
   }
 
   public static async updateCar(body: Cars, id: number): Promise<void> {
     const method: string = Methods.patch;
+
     try {
       await fetch(`${Links.baseLink}${Links.garage}/${id}`, {
         method: `${method}`,
@@ -122,6 +132,7 @@ class Car {
 
   public static randomNumber(amountNames: number): number {
     const number: number = Math.floor(Math.random() * amountNames);
+
     return number;
   }
 
@@ -129,6 +140,7 @@ class Car {
     const startColorCode: number = 2;
     const endColorCode: number = 8;
     const color: string = `${Math.random().toString(16)}000000$`.substring(startColorCode, endColorCode).toUpperCase();
+
     return color;
   }
 
@@ -139,12 +151,14 @@ class Car {
     const nameCar: string = `${brend} ${model}`;
     const colorCar: string = `#${this.randomColor()}`;
     const newCar: Cars = new Car(nameCar, colorCar);
+
     return newCar;
   }
 
   public static generateRandomCars(): void {
     const amountCars: number = 100;
     const randomCars: Cars[] = [];
+
     for (let i = 0; i < amountCars; ) {
       const newCar: Cars = this.generateNewCar();
       randomCars.push(newCar);

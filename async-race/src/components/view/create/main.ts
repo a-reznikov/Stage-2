@@ -8,5 +8,6 @@ export default function createMain(): HTMLElement {
   const winners: HTMLElement = createWinners();
   main.append(garage);
   main.append(winners);
+
   return main;
 }

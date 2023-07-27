@@ -8,39 +8,46 @@ function deleteCar(id: number): void {
 
 function createNewCar(name: string, color: string): void {
   const newCar: Car = new Car(name, color);
+
   newCar.createCar(newCar);
 }
 
 function updateOldCar(name: string, color: string, id: number): void {
   const oldCar: Car = new Car(name, color);
+
   Car.updateCar(oldCar, id);
 }
 
 function isInputs(target: HTMLElement): boolean {
   const inputName: HTMLInputElement | null = document.querySelector('.input__name_update');
   const inputColor: HTMLInputElement | null = document.querySelector('.input__color_update');
+
   return !!(target === inputName || target === inputColor);
 }
 
 function isControl(target: HTMLElement): boolean {
   let isControlButton: boolean = false;
   const controlButtons: NodeListOf<Element> = document.querySelectorAll('.control__buttons');
+
   controlButtons.forEach((button) => {
     if (target === button) {
       isControlButton = true;
     }
   });
+
   return isControlButton;
 }
 
 function isNavigation(target: HTMLElement): boolean {
   let isNavButton: boolean = false;
   const navButtons: NodeListOf<Element> = document.querySelectorAll('.nav__buttons');
+
   navButtons.forEach((button) => {
     if (target === button) {
       isNavButton = true;
     }
   });
+
   return isNavButton;
 }
 
@@ -48,6 +55,7 @@ function toggleDiasbleUpdate(status: string, selectedCar?: Cars): void {
   const inputName: HTMLInputElement | null = document.querySelector('.input__name_update');
   const inputColor: HTMLInputElement | null = document.querySelector('.input__color_update');
   const buttonForm: HTMLButtonElement | null = document.querySelector('.form__buttons_update');
+
   if (inputName && inputColor && buttonForm) {
     if (status === 'enabled') {
       inputName.removeAttribute('disabled');
@@ -58,6 +66,7 @@ function toggleDiasbleUpdate(status: string, selectedCar?: Cars): void {
         inputColor.value = selectedCar.color;
       }
     }
+
     if (status === 'disabled') {
       inputName.setAttribute('disabled', '');
       inputColor.setAttribute('disabled', '');
@@ -70,9 +79,11 @@ function toggleDiasbleUpdate(status: string, selectedCar?: Cars): void {
 
 function unselectTrack(): void {
   const selectedTrack: HTMLElement | null = document.querySelector('.selected');
+
   if (selectedTrack) {
     selectedTrack.classList.remove('selected');
   }
+
   toggleDiasbleUpdate('disabled');
 }
 

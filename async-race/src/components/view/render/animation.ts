@@ -1,6 +1,7 @@
 export default function activeAnimation(id: number, time: number): NodeJS.Timer | boolean {
   const carIco: HTMLElement | null = document.getElementById(`${id}`);
   const stepSeconds: number = time / 100;
+
   if (carIco) {
     const progress: HTMLElement | null = carIco.closest('.progress');
     if (progress) {
@@ -17,5 +18,6 @@ export default function activeAnimation(id: number, time: number): NodeJS.Timer 
       return IntervalId;
     }
   }
+
   return false;
 }

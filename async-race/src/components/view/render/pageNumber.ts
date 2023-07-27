@@ -7,6 +7,7 @@ export default function changePageNumber(page: number, section: string): void {
       pageNumber.textContent = `Page # ${page}`;
     }
   }
+
   if (section === Links.winners) {
     const pageNumber: HTMLElement | null = document.querySelector('.winners__page');
     if (pageNumber) {

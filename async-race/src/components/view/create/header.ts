@@ -11,5 +11,6 @@ export default function createHeader(): HTMLElement {
   nav.append(buttonGarage);
   nav.append(buttonWinners);
   header.append(nav);
+
   return header;
 }

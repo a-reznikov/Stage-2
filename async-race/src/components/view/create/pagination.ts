@@ -8,5 +8,6 @@ export default function createPagination(section: string): HTMLElement {
   const buttonNext: HTMLButtonElement = createButton('pagination', `${ButtonNames.next}`);
   pagination.append(buttonPrevious);
   pagination.append(buttonNext);
+
   return pagination;
 }

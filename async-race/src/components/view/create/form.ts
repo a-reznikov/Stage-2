@@ -12,13 +12,16 @@ export default function createForm(buttonName: string): HTMLFormElement {
   inputColor.setAttribute('type', 'color');
   inputColor.value = Base.color;
   const buttonForm: HTMLButtonElement = createButton('form', `${buttonName}`);
+
   if (buttonName === ButtonNames.update) {
     inputName.setAttribute('disabled', '');
     inputColor.setAttribute('disabled', '');
     buttonForm.setAttribute('disabled', '');
   }
+
   form.append(inputName);
   form.append(inputColor);
   form.append(buttonForm);
+
   return form;
 }

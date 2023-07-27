@@ -16,5 +16,6 @@ export default function createWinners(): HTMLElement {
   winners.append(page);
   winners.append(score);
   winners.append(pagination);
+
   return winners;
 }
