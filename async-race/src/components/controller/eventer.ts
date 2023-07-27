@@ -19,10 +19,7 @@ function updateOldCar(name: string, color: string, id: number): void {
 function isInputs(target: HTMLElement): boolean {
   const inputName: HTMLInputElement | null = document.querySelector('.input__name_update');
   const inputColor: HTMLInputElement | null = document.querySelector('.input__color_update');
-  if (target === inputName || target === inputColor) {
-    return true;
-  }
-  return false;
+  return !!(target === inputName || target === inputColor);
 }
 
 function isControl(target: HTMLElement): boolean {
