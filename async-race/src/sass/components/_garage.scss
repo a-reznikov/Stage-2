@@ -23,6 +23,21 @@
   }
 }
 
+.error {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  z-index: 10;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  @include font(700, 2.6rem, 100%, $color-light);
+  text-align: center;
+  &_hidden{
+    display: none;
+  }
+}
+
 .setup {
   display: flex;
   flex-direction: column;

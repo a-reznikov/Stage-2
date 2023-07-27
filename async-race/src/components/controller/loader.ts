@@ -1,10 +1,17 @@
 import { generateCars, generateWinners } from '../model/generator';
-import { Cars, Links, Methods, Winners } from '../types';
+import { Cars, Errors, Links, Methods, Winners } from '../types';
 import changeAmount from '../view/render/amount';
+import showError from '../view/render/errorMessage';
 import changePageNumber from '../view/render/pageNumber';
 import { changeDisableButton } from '../view/render/toggleButton';
 
 class Loader {
+  public static errorHandler(err: Error): void {
+    if (err.message === Errors.fetch) {
+      showError();
+    }
+  }
+
   public static urlMaker(section: string, page: number, limit: number, sort?: string, order?: string): string {
     let url: string = `${Links.baseLink}${section}?_page=${page}&_limit=${limit}`;
 
@@ -35,6 +42,9 @@ class Loader {
       changeAmount(amountCars, Links.garage);
       changeDisableButton(amountCars, page, Links.garage);
     } catch (err: Error | unknown) {
+      if (err instanceof Error) {
+        this.errorHandler(err);
+      }
       console.error(err);
     }
   }
@@ -58,6 +68,9 @@ class Loader {
       changeAmount(amountWinners, Links.winners);
       changeDisableButton(amountWinners, page, Links.winners);
     } catch (err: Error | unknown) {
+      if (err instanceof Error) {
+        this.errorHandler(err);
+      }
       console.error(err);
     }
   }

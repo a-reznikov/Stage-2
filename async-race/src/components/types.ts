@@ -99,3 +99,10 @@ export enum PageNumber {
   firstPage = 1,
   secondPage = 2,
 }
+
+export enum Errors {
+  fetch = 'Failed to fetch',
+  fetchMessage = 'Please follow the link to install and run the server.',
+  serverLink = 'https://github.com/mikhama/async-race-api',
+  serverName = 'Async race api server',
+}
