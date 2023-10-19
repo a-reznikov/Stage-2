@@ -3,7 +3,7 @@ import Loader from './loader';
 
 class AppLoader extends Loader {
   constructor() {
-    super(BaseLink.main, {
+    super(BaseLink.rss, {
       apiKey: ApiKeys.main,
     });
   }

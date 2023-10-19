@@ -51,6 +51,8 @@ export enum BaseLink {
   main = 'https://newsapi.org/v2/',
   rss = 'https://rss-news-api.onrender.com/',
   proxy = 'https://news-proxy.spanb4.shop/',
+  node = 'https://nodenews.up.railway.app/',
+  prod = 'https://newsapi-redirect-production.up.railway.app/',
 }
 
 export enum ApiKeys {
