@@ -8,7 +8,7 @@ const baseConfig = {
   entry: ['./src/components/index.ts', './src/sass/style.scss'],
   output: {
     filename: 'index.js',
-    path: path.resolve(__dirname, '../dist'),
+    path: path.resolve(__dirname, './dist'),
   },
   mode: 'development',
   module: {
